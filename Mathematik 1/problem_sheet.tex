@@ -1,0 +1,52 @@
+\documentclass[a4paper,onecolumn,draft,pdftex]{report}
+
+\usepackage[p,osf]{scholax}
+\usepackage{amsmath}
+\usepackage[scaled=1.075,ncf,vvarbb]{newtxmath}
+
+\fontfamily{scholax}
+
+\begin{document}
+    \author{Noah Tjorven Burdorf}
+    \title{Problem Sheet \\ Mathematik 1 \\ Vorlesung vom 23/10/10}
+    \date{10.10.2023}
+    \maketitle
+
+    \overfullrule=0pt
+
+    \begin{enumerate}
+        \item Fill in the table and prove the derived rules from thr slides.
+        \item Simplify the following expressions:
+            \begin{enumerate}
+                \item $\cos(\frac{\pi}{6}+x)-\cos(\frac{\pi}{6}-x)$
+                \begin{align*}
+                    &= \cos(\frac{\pi}{6})*\cos(x)-\sin(\frac{\pi}{6})*\sin(x)-(\cos(\frac{\pi}{6})*\cos(x)+\sin(\frac{\pi}{6})*\sin(x)) \\
+                    &= \cos(\frac{\pi}{6})*\cos(x)-\sin(\frac{\pi}{6})*\sin(x)-\cos(\frac{\pi}{6})*\cos(x)-\sin(\frac{\pi}{6})*\sin(x) \\
+                    &= -\sin(\frac{\pi}{6})*\sin(x)-\sin(\frac{\pi}{6})*\sin(x) \\
+                    &= -2(\sin(\frac{\pi}{6})*\sin(x)) \\
+                    &= -2*(0.5*\sin(x)) \\
+                    &= -\sin(x)
+                \end{align*}
+                \item $\cos(x-330^\circ)-\cos(120^\circ-x)+\sin(270^\circ-x)$
+                \item $\sin(\frac{2\pi}{3}-x)+\cos(\frac{5\pi}{6}-x)$
+                \item $\frac{1-\cos^2(2x)}{2\sin(x)}$
+            \end{enumerate}
+        \item Prove the following identities:
+            \begin{enumerate}
+                \item $\frac{\sin x+\cos x\tan x}{\cos x-\sin x\tan x} = \tan(x+y)$
+                \item $\tan(\frac{\pi}{4}+x)=\frac{cot x+1}{cot x-1}$
+                \item $\frac{\tan x}{\tan(2x)}=\frac{1}{2}-\frac{1}{2}\tan^2 x$
+                \item $\tan^2(\frac{\pi}{4}+\frac{x}{2})=\frac{1+\sin x}{1-\cos x}$
+                \item $\cos x*\cos y=\frac{1}{2}(\cos(x+y)+\cos(x-y))$
+                \item $\sin^2(45^\circ+2x)=\frac{1+\sin(2x)}{2}$
+                \item $\tan^2 x=\frac{1-\cos(2x)}{1+\cos(2x)}$
+                \item $cot^2 x-\tan^2 x=\frac{4*cot(2x)}{\sin(2x)}$
+                \item $\frac{\sin(2x)+\sin x}{\cos(2x)+\cos x}=\tan(\frac{3}{2}x)$
+            \end{enumerate}
+        \item (Arens et al., 4.12 page 138) One of the following identities contains a typo. Correct it and prove both identities.
+            \begin{enumerate}
+                \item $\sin(x+y)\sin^2(\frac{x-y}{2})=\frac{1}{2}\sin(x+y)-\frac{1}{4}\sin(2x)-\frac{1}{4}\sin(2y)$
+                \item $cos(3(x+y))=4\cos^3(x+y)-3\cos x*cos y-3\sin x*\sin y$
+            \end{enumerate}
+    \end{enumerate}
+\end{document}
