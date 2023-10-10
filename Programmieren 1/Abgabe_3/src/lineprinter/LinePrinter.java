@@ -20,6 +20,6 @@ public class LinePrinter {
         System.out.println("\nLimit: " + charLimit + " Zeichen.");
         System.out.println("Es wurden " + output.length() + " Zeichen ausgegeben.");
         System.out.println("Es wurden " + counter + " Zeilen ausgegeben.");
-        System.out.println("Es wurden " + output.length()/word.length() + " Wörter ausgegeben.");
+        System.out.println("Es wurden " + output.length() / word.length() + " Wörter ausgegeben.");
     }
 }
