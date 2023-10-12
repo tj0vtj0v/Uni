@@ -3,17 +3,19 @@ package xmastree;
 public class XMasTree {
     public static void main(String[] args) {
         int height = 5;
-        int numberOfStars = 0;
+        int numberOfStars = 0; // " = 0" für den Wichtel
+        int numberOfSpaces;
 
         for (int i = 1; i < height; i++) {
             System.out.print(" ");
         }
         System.out.println("+");
 
-        for (int line = height; line > 0; line--) {
-            numberOfStars = numberOfStars == 0 ? 1 : numberOfStars + 2;
+        for (int line = 1; line <= height; line++) {
+            numberOfStars = 2 * line -1;
+            numberOfSpaces = height - line;
 
-            for (int space = line - 1; space > 0; space--) {
+            for (int space = numberOfSpaces; space > 0; space--) {
                 System.out.print(" ");
             }
 

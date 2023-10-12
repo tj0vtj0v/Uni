@@ -9,7 +9,7 @@ public class FirstArray {
         strings[0] = "Anfang";
         strings[size - 1] = "Ende";
 
-        for (int i = 1; i < size - 1; i++) {
+        for (int i = 1; i < size - 1; i++) { // "size - 1" für den Wichtel
             strings[i] = "Mitte";
         }
 
