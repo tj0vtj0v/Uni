@@ -5,7 +5,6 @@
 \usepackage[p,osf]{scholax}
 \usepackage{amsmath}
 \usepackage{MnSymbol}
-\usepackage[scaled=1.075,ncf,vvarbb]{newtxmath}
 \usepackage[margin=1in]{geometry}
 
 \fontfamily{scholax}
@@ -32,9 +31,15 @@
         \cot\alpha&=\frac{\cos\alpha}{\sin\alpha} \\\\
         \sin(90-\alpha) &= \frac{||AB||}{||AC||} = \cos\alpha
     \end{align*}
+
+    \vspace{20px}
     \subsection*{Zwei Dreiecke sind \"ahnlich wenn deren Winkel gleich gross sind.}
+    
+    \vspace{20px}
     $$\Delta ABC \backsim \Delta PQR \Rightarrow \frac{||AC||}{||PR||}=\frac{||BC||}{||QR||}=\frac{||AB||}{||PQ||}$$
     SATZ DES THALES!!!
+
+    \vspace{20px}
     \subsection*{Positionen und Gradmass zu Bogenmass}
     \begin{wrapfigure}[1]{l}{0\textwidth}
         \includegraphics[width=6cm]{2023-10-10_21h42_30.png}
@@ -53,9 +58,11 @@
         \cos(90-\alpha) &= \sin\alpha \\
         \sin^2\alpha + \cos^2\alpha &= 1
     \end{align*}
+
     \newpage
+
     \subsection*{Herleitung von $\sin\frac{\pi}{4}$}
-    \begin{wrapfigure}[4]{l}{0.3\textwidth}
+    \begin{wrapfigure}[1]{l}{0.3\textwidth}
         \includegraphics[width=6cm]{2023-10-11_23h34_34.png}
     \end{wrapfigure}
     \begin{align*}
@@ -64,5 +71,25 @@
         \Rightarrow \sin^2\frac{\pi}{4}&=\frac{1}{2} \\
         \Rightarrow \sin\frac{\pi}{4}&= \sqrt{\frac{1}{2}}
     \end{align*}
+    Daraus folgt auch $\sin\frac{\pi}{6}=\sin30^\circ=\frac{1}{2}$
+
+    \vspace{20px}
+    \subsection*{Beweis von $\sin(\alpha+\beta) = \sin\alpha\cos\beta + \cos\alpha\sin\beta$}
+    \begin{wrapfigure}[6]{l}{0.6\textwidth}
+        \includegraphics[width=8cm]{2023-10-15_22h32_08.png}
+    \end{wrapfigure}
+    \vspace{20px}
+    Voraussetzungen:
+    \vspace{10px} \\
+    $||OP|| = \cos\alpha$ \\
+    $||AP|| = \sin\alpha$ \\
+    $||OQ|| = \sin(\alpha+\beta)$ \\
+    $||BR|| = \sin\beta$ \\
+    $||OR|| = \cos\beta$
+    \vspace{200px} \\
+    $$\sin(\alpha+\beta)$$
+    $||OQ|| = ||OS|| + ||SQ||$
+    
+
 
 \end{document}
