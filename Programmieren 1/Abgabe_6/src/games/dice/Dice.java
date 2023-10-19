@@ -1,7 +1,7 @@
 package games.dice;
 
 public class Dice {
-    private String color;
+    private final String color;
     private int pips;
 
     public Dice(String color) {
