@@ -4,7 +4,7 @@ public class Palindrom {
     public static void main(String[] args) {
         String word = "Reliefpfeiler";
         String wordInLowerCase = word.toLowerCase();
-        System.out.println(palindrom(wordInLowerCase))q;
+        System.out.println(palindrom(wordInLowerCase));
     }
 
     private static boolean palindrom(String word) {
