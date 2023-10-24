@@ -1,5 +1,3 @@
-package palindrom;
-
 public class Palindrom {
     public static void main(String[] args) {
         String word = "Reliefpfeiler";
