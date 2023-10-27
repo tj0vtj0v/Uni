@@ -24,7 +24,7 @@ class Cell {
 
         for (Cell cell : this.neighbors) {
             if (cell != null && cell.alive) {
-                livingNeighbors++;
+                this.livingNeighbors++;
             }
         }
     }
