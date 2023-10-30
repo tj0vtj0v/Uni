@@ -1,8 +1,8 @@
 package halloween;
 
-public abstract class Creature {
-    protected String name;
-    protected String color;
+abstract class Creature {
+    private final String name;
+    private final String color;
 
     Creature(String name, String color) {
         this.name = name;

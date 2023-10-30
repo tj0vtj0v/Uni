@@ -9,6 +9,13 @@ public class Halloween {
 
         for (Creature creature : creatures) {
             System.out.println(creature.jumpScare());
+
+            if (creature instanceof Vampire) {
+                Vampire vampire = (Vampire) creature;
+                System.out.println(vampire.bite());
+            } else if (creature instanceof Ghost ghost) {
+                System.out.println(ghost.flyAway());
+            }
         }
     }
 }

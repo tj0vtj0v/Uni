@@ -1,6 +1,6 @@
 package halloween;
 
-public class Vampire extends Creature {
+class Vampire extends Creature {
     Vampire(String name) {
         super(name, "schwarz");
     }
@@ -10,7 +10,7 @@ public class Vampire extends Creature {
         return super.jumpScare() + "AAAAHHHH!";
     }
 
-    private String bite() {
+    String bite() {
         return "-> Beißt zu.";
     }
 }

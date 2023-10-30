@@ -1,6 +1,6 @@
 package halloween;
 
-public class Ghost extends Creature {
+class Ghost extends Creature {
     Ghost(String name) {
         super(name, "weiß");
     }
@@ -10,7 +10,7 @@ public class Ghost extends Creature {
         return super.jumpScare() + "BUUUH!";
     }
 
-    private String flyAway() {
+    String flyAway() {
         return "-> Fliegt weg.";
     }
 }
