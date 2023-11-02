@@ -2,13 +2,13 @@ package gameoflife;
 
 class PetriDish {
     private final Cell[][] cells;
-    private final int lines;
-    private final int columns;
+    private int lines;
+    private int columns;
     private int generationNumber;
 
     PetriDish(int lines, int columns, double probabilityToLive) {
-        this.lines = lines;
-        this.columns = columns;
+        // this.lines = lines;
+        // this.columns = columns;
         cells = new Cell[lines][columns];
         generationNumber = 1;
 
@@ -17,16 +17,20 @@ class PetriDish {
     }
 
     private void createAllCells(double probabilityToLive) {
-        for (int line = 0; line < lines; line++) {
-            for (int column = 0; column < columns; column++) {
+        // for (int line = 0; line < lines; line++) {
+        // for (int column = 0; column < columns; column++) {
+        for (int line = 0; line < cells.length; line++) {
+            for (int column = 0; column < cells[line].length; column++) {
                 cells[line][column] = new Cell(probabilityToLive);
             }
         }
     }
 
     private void addNeighborsToAllCells() {
-        for (int line = 0; line < lines; line++) {
-            for (int column = 0; column < columns; column++) {
+        // for (int line = 0; line < lines; line++) {
+        // for (int column = 0; column < columns; column++) {
+        for (int line = 0; line < cells.length; line++) {
+            for (int column = 0; column < cells[line].length; column++) {
                 addNeighborsToCellIn(line, column);
             }
         }
@@ -43,7 +47,8 @@ class PetriDish {
     }
 
     private boolean withinBoundaries(int line, int column) {
-        return (line < lines && line >= 0 && column < columns && column >= 0);
+        // return (line < lines && line >= 0 && column < columns && column >= 0);
+        return (line < cells.length && line >= 0 && column < cells[line].length && column >= 0);
     }
 
     void nextGeneration() {
