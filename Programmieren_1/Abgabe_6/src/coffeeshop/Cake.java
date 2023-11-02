@@ -12,20 +12,20 @@ public class Cake {
     }
 
     public void takePiece() {
-        if (this.pieces > 0) {
-            this.pieces--;
+        if (pieces > 0) {
+            pieces--;
         }
     }
 
     public boolean hasPieces() {
-        return this.pieces > 0;
+        return pieces > 0;
     }
 
     public void print() {
-        System.out.println(this.name + " mit " + this.pieces + " Stücken. Restwert: " + remainingValue() + " Euro.");
+        System.out.println(name + " mit " + pieces + " Stücken. Restwert: " + remainingValue() + " Euro.");
     }
 
     private float remainingValue() {
-        return Math.round(this.pieces * this.pricePerPiece * 10) / 10f;
+        return Math.round(pieces * pricePerPiece * 10) / 10f;
     }
 }
