@@ -5,19 +5,19 @@ public class Dice {
     private int pips;
 
     public Dice(String color) {
-        this.pips = -1;
+        pips = -1;
         this.color = color;
     }
 
     public int getPips() {
-        return this.pips;
+        return pips;
     }
 
     public String getColor() {
-        return this.color;
+        return color;
     }
 
     public void roll() {
-        this.pips = (int) Math.round(1 + Math.random() * 5);
+        pips = (int) Math.round(1 + Math.random() * 5);
     }
 }

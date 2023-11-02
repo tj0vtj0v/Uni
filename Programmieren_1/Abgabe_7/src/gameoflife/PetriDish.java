@@ -36,7 +36,7 @@ class PetriDish {
         for (int deltaLine = -1; deltaLine <= 1; deltaLine++) {
             for (int deltaColumn = -1; deltaColumn <= 1; deltaColumn++) {
                 if (!(deltaLine == 0 && deltaColumn == 0) && withinBoundaries(line + deltaLine, column + deltaColumn)) {
-                    this.cells[line][column].addNeighbor(cells[line + deltaLine][column + deltaColumn]);
+                    cells[line][column].addNeighbor(cells[line + deltaLine][column + deltaColumn]);
                 }
             }
         }
