@@ -1,36 +1,47 @@
 package commandlinetools;
 
+import java.util.Arrays;
+import java.util.Objects;
 import java.util.Scanner;
 
 public class Reverse {
 
     public static void main(String[] args) {
+        if (args.length != 1 || !args[0].equals("-char-by-char") && !args[0].equals("-line-by-line")) {
+            System.out.println("Es wurden unpassende Aufrufargumente übergeben.");
+            System.exit(1);
+        }
 
+
+        String nextLine;
         StringBuilder inputText = new StringBuilder();
         Scanner scanner = new Scanner(System.in);
-        while(scanner.hasNextLine()) {
-            inputText.append(scanner.nextLine()).append("\n");
+
+        while (scanner.hasNextLine()) {
+            nextLine = scanner.nextLine();
+
+            if (nextLine.equals(":wq")) {
+                break;
+            }
+
+            inputText.append(nextLine).append("\n");
         }
         scanner.close();
 
-        StringBuilder output = new StringBuilder();
 
+
+        StringBuilder outputText = new StringBuilder();
         if (args[0].equals("-char-by-char")) {
-            output.append("-char-by-char");
-            inputText.reverse();
-        } else if (args[0].equals("-line-by-line")) {
-            output.append("-line-by-line");
+            outputText = inputText;
+            outputText.reverse();
         } else {
-            exit(2);
+            String bufferText = inputText.toString();
+            String[] linesOfText = bufferText.split("\n");
+            for (String line : linesOfText) {
+                outputText.insert(0, line).append("\n");
+            }
         }
-        System.out.println("OK");
-        System.out.println(output);
 
-        System.out.println(inputText);
-    }
-
-    private static void exit(int code) {
-        System.out.println("Es wurden unpassende Aufrufargumente übergeben." + code);
-        System.exit(1);
+        System.out.println(outputText);
     }
 }
