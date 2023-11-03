@@ -36,4 +36,12 @@ public class Jones extends GamePiece {
             column = column < (columns - 1) ? column + 1 : column;
         }
     }
+
+    public boolean hasGrail() {
+        return grail;
+    }
+
+    public void setGrail(boolean grail) {
+        this.grail = grail;
+    }
 }

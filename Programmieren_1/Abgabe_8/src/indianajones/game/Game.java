@@ -29,11 +29,14 @@ public class Game extends GameElements {
     private void updateGameLogic() {
         if (jones.hasSamePositionAs(grail)) {
             grail.beInvisible();
+            jones.setGrail(true);
         }
-        if (jones.hasSamePositionAs(exit) && grail.getLetter() == ' ') {
+
+        if (jones.hasSamePositionAs(exit) && jones.hasGrail()) {
             jonesWonTheGame = true;
             gameOver = true;
         }
+
         for (Snake snake : this.snakes) {
             if (jones.hasSamePositionAs(snake)) {
                 gameOver = true;
