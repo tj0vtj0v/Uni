@@ -15,8 +15,8 @@
 
 # Setzen des Pfades und Einlesen der Beispiel-Daten
 
-  setwd("C:/Users/rhable.AIKIW10NB01/Nextcloud2/Lehre/Daten/Einfuehrung-KI")
-  Daten <- read.csv2("Koerpergewicht_2.csv",header=TRUE,sep=";",fill=TRUE,stringsAsFactors=TRUE)
+  setwd("C:/Users/burdo/Desktop/Git/Uni/Einfuhrung KI")
+  Daten <- read.csv2("Data/Koerpergewicht_2.csv",header=TRUE,sep=";",fill=TRUE,stringsAsFactors=TRUE)
   Daten[1:5,]
 
 # Kontrolle der Datentypen und Ausgabe der Summary.r
