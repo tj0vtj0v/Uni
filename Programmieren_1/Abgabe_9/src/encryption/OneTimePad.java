@@ -78,14 +78,11 @@ class OneTimePad {
      * @return Das Byte-Array.
      */
     private byte[] toByteArray(String binaryString) {
-        String byteString;
         String[] binaryStringArray = binaryString.split(" ");
         byte[] byteArray = new byte[binaryStringArray.length];
 
         for (int i = 0; i < binaryStringArray.length; i++) {
-            byteString = binaryStringArray[i];
-            byte b = (byte) Integer.parseInt(byteString, 2);
-            byteArray[i] = b;
+            byteArray[i] = (byte) Integer.parseInt(binaryStringArray[i], 2);
         }
 
         return byteArray;

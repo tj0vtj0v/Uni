@@ -21,7 +21,7 @@ public class Game {
 
     private void shuffleFrogs() {
         for (int i = 0; i < frogs.length; i++) {
-            swapFrogs(i, (int) (Math.random() * (frogs.length)));
+            swapFrogs(i, (int) (Math.random() * frogs.length));
         }
     }
 

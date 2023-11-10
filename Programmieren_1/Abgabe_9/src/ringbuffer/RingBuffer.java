@@ -7,6 +7,7 @@ class RingBuffer {
     RingBuffer(int size) {
         Element first = new Element();
         Element element = first;
+
         for (int i = 1; i < size; i++) {
             element.next = new Element();
             element = element.next;
@@ -45,8 +46,10 @@ class RingBuffer {
             } else {
                 output.append("    ");
             }
+
             output.append(element.integer).append("\n");
             element = element.next;
+
         } while (!element.equals(readElement));
 
         return output.toString();
