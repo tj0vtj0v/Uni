@@ -1,8 +1,5 @@
 package frograce.game;
 
-import java.util.Arrays;
-import java.util.Collections;
-
 public class Game {
     private final Track track;
     private final Frog[] frogs;
@@ -23,7 +20,15 @@ public class Game {
     }
 
     private void shuffleFrogs() {
-        Collections.shuffle(Arrays.asList(frogs));
+        for (int i = 0; i < frogs.length; i++) {
+            swapFrogs(i, (int) (Math.random() * (frogs.length)));
+        }
+    }
+
+    private void swapFrogs(int index1, int index2) {
+        Frog saved = frogs[index1];
+        frogs[index1] = frogs[index2];
+        frogs[index2] = saved;
     }
 
     private void letFrogsJumpAndCheckForWinner() {

@@ -14,17 +14,17 @@ public class FrogRace {
 
     FrogRace() {
         Frog[] frogs = new Frog[]{
-                new Frog("Hugo", 1, 1, 1),
-                new Frog("Willi", 1, 1, 1),
-                new Frog("Frank", 1, 1, 1),
-                new Frog("Rudolf", 1, 1, 1),
+                new Frog("Hugo", .1, .1, 1),
+                new Frog("Willi", .1, .1, 1),
+                new Frog("Frank", .1, .1, 1),
+                new Frog("Rudolf", .1, .1, 1),
         };
 
         String trackName = "Monte Carlo";
         int trackLength = 600;
         game = new Game(trackName, trackLength, frogs);
 
-        gameViewPrinter = new GameViewPrinter(game, 600);
+        gameViewPrinter = new GameViewPrinter(game, trackLength);
         gameViewPrinter.printAndSleep(1000);
     }
 
