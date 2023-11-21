@@ -2,6 +2,8 @@ package ledpanel.controller;
 
 import ledpanel.hardware.LEDPanel;
 
+import static java.lang.Integer.toBinaryString;
+
 /**
  * Diese Klasse enthält das API (Application Programming Interface) für das LED-Panel. Die angebotenen Methoden können
  * genutzt werden, um das Panel komfortabel für unterschiedliche Anzeigen. zu nutzen. Alle 320 LEDs des Panels (40 mal 8
@@ -19,6 +21,15 @@ import ledpanel.hardware.LEDPanel;
  *  240 . . . . . . . . . . . . . . . . . . . . . 279<br>
  *  280 . . . . . . . . . . . . . . . . . . . . . 319</pre>
  * <br>
+ *
+ *      x  x  x  x  x  x  x  x
+ *      x  x  x  x  x  x  x  x
+ *      x  x  x  x  x  x  x  x
+ *      x  x  x  x  x  x  x  x
+ *      x  x  x  x  x  x  x  x
+ *      x  x  x  x  x  x  x  x
+ *      x  x  x  x  x  x  x  x
+ *      x  x  x  x  x  x  x  x
  */
 public class API {
     LEDPanel ledPanel;
@@ -81,27 +92,28 @@ public class API {
         int addressedLedRow = ledIndex / 40;
         int addressedLedMatrix = (ledIndex % 40) / 8;
         int addressedLedColumn = ledIndex % 40 % 8;
-        switchSingleLed(addressedLedMatrix, addressedLedRow, addressedLedColumn);
-    }
 
-    private void switchSingleLed(int matrix, int row, int column) {
-        switch (matrix) {
+        switch (addressedLedMatrix) {
             case 0:
-                ledPanel.matrix0[row] += (byte) Math.pow(2, column);
+                changeLedByte(ledPanel.matrix0, addressedLedRow, addressedLedColumn);
                 break;
             case 1:
-                ledPanel.matrix1[row] += (byte) Math.pow(2, column);
+                changeLedByte(ledPanel.matrix1, addressedLedRow, addressedLedColumn);
                 break;
             case 2:
-                ledPanel.matrix2[row] += (byte) Math.pow(2, column);
+                changeLedByte(ledPanel.matrix2, addressedLedRow, addressedLedColumn);
                 break;
             case 3:
-                ledPanel.matrix3[row] += (byte) Math.pow(2, column);
+                changeLedByte(ledPanel.matrix3, addressedLedRow, addressedLedColumn);
                 break;
             case 4:
-                ledPanel.matrix4[row] += (byte) Math.pow(2, column);
+                changeLedByte(ledPanel.matrix4, addressedLedRow, addressedLedColumn);
                 break;
         }
+    }
+
+    private void changeLedByte(byte[] matrix, int row, int column) {
+        matrix[row] = (byte) (matrix[row] ^ (byte) Math.pow(2, column));
     }
 
 

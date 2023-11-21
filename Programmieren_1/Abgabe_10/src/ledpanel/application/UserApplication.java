@@ -22,8 +22,7 @@ public class UserApplication {
         }
         for (int i = 0; i < 320; i++) {
             api.addressSingleLed(i);
-            api.waitFor(100);
+            api.waitFor(10);
         }
-
     }
 }
