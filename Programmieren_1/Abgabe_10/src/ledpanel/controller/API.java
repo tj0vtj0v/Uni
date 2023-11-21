@@ -21,6 +21,11 @@ import ledpanel.hardware.LEDPanel;
  * <br>
  */
 public class API {
+    LEDPanel ledPanel;
+
+    public API() {
+        ledPanel = new LEDPanel();
+    }
 
 
     /**
@@ -30,7 +35,7 @@ public class API {
      * @return Das für die API genutzte LED-Panel.
      */
     public LEDPanel directHardwareAccess() {
-        return new LEDPanel();
+        return ledPanel;
     }
 
     /**
@@ -38,26 +43,21 @@ public class API {
      * gelöscht.
      */
     public void testLEDPanel() {
-        LEDPanel testPanel = directHardwareAccess();
-
-        for (int matrixRow = 0; matrixRow < 8; matrixRow++) {
-            testPanel.matrix0[matrixRow] = (byte) 128;
-            testPanel.matrix1[matrixRow] = (byte) 255;
-            testPanel.matrix2[matrixRow] = (byte) 255;
-            testPanel.matrix3[matrixRow] = (byte) 255;
-            testPanel.matrix4[matrixRow] = (byte) 255;
-        }
-
+        addressAllMatrixRows((byte) 255);
         waitFor(500);
+        addressAllMatrixRows((byte) 0);
+    }
 
-        for (int panelRow = 0; panelRow < 8; panelRow++) {
-            testPanel.matrix0[panelRow] = (byte) 0;
-            testPanel.matrix1[panelRow] = (byte) 0;
-            testPanel.matrix2[panelRow] = (byte) 0;
-            testPanel.matrix3[panelRow] = (byte) 0;
-            testPanel.matrix4[panelRow] = (byte) 0;
+    private void addressAllMatrixRows(byte lightStatus) {
+        for (int row = 0; row < 8; row++) {
+            ledPanel.matrix0[row] = lightStatus;
+            ledPanel.matrix1[row] = lightStatus;
+            ledPanel.matrix2[row] = lightStatus;
+            ledPanel.matrix3[row] = lightStatus;
+            ledPanel.matrix4[row] = lightStatus;
         }
     }
+
 
     /**
      * Die im Array übergebenen LEDs werden gleichzeitig für den angegebenen Zeitraum eingeschaltet. Danach wird die
