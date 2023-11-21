@@ -1,6 +1,7 @@
 package ledpanel.application;
 
 import ledpanel.controller.API;
+import ledpanel.controller.Path;
 
 public class UserApplication {
 
@@ -17,12 +18,19 @@ public class UserApplication {
 
     private void lightShow() {
         for (int i = 0; i < 320; i++) {
-            api.addressSingleLed(i);
-            api.waitFor(10);
+            api.switchSingleLed(i);
+            api.waitFor(8);
         }
         for (int i = 0; i < 320; i++) {
-            api.addressSingleLed(i);
-            api.waitFor(10);
+            api.switchSingleLed(i);
+            api.waitFor(5);
         }
+
+        api.showRunningDot(new Path(0, 39, 319, 280, 0), 20, 1);
+
+        Path[] paths = new Path[2];
+        paths[0] = new Path(0, 39, 319, 280, 0);
+        paths[1] = new Path(278, 78, 41, 241, 278);
+        api.showRunningDots(paths, 20, 1);
     }
 }
