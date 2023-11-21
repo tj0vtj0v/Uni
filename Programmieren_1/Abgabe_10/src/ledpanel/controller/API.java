@@ -43,12 +43,12 @@ public class API {
      * gelöscht.
      */
     public void testLEDPanel() {
-        addressAllMatrixRows((byte) 255);
+        addressAllLedRows((byte) 255);
         waitFor(500);
-        addressAllMatrixRows((byte) 0);
+        addressAllLedRows((byte) 0);
     }
 
-    private void addressAllMatrixRows(byte lightStatus) {
+    private void addressAllLedRows(byte lightStatus) {
         for (int row = 0; row < 8; row++) {
             ledPanel.matrix0[row] = lightStatus;
             ledPanel.matrix1[row] = lightStatus;
@@ -70,7 +70,40 @@ public class API {
      * @param milliseconds Die LEDs bleiben für diesen Zeitraum eingeschaltet.
      */
     public void showLEDs(int[] ledIndices, int milliseconds) {
+        for (int ledIndex : ledIndices) {
+            addressSingleLed(ledIndex);
+        }
+        waitFor(milliseconds);
+        addressAllLedRows((byte) 0);
     }
+
+    public void addressSingleLed(int ledIndex) {
+        int addressedLedRow = ledIndex / 40;
+        int addressedLedMatrix = (ledIndex % 40) / 8;
+        int addressedLedColumn = ledIndex % 40 % 8;
+        switchSingleLed(addressedLedMatrix, addressedLedRow, addressedLedColumn);
+    }
+
+    private void switchSingleLed(int matrix, int row, int column) {
+        switch (matrix) {
+            case 0:
+                ledPanel.matrix0[row] += (byte) Math.pow(2, column);
+                break;
+            case 1:
+                ledPanel.matrix1[row] += (byte) Math.pow(2, column);
+                break;
+            case 2:
+                ledPanel.matrix2[row] += (byte) Math.pow(2, column);
+                break;
+            case 3:
+                ledPanel.matrix3[row] += (byte) Math.pow(2, column);
+                break;
+            case 4:
+                ledPanel.matrix4[row] += (byte) Math.pow(2, column);
+                break;
+        }
+    }
+
 
     /**
      * Die im Array übergebenen LEDs blinken. Nach Ablauf aller Wiederholungen ist die Anzeige wieder leer.

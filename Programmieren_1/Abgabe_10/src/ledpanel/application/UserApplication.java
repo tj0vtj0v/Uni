@@ -16,7 +16,14 @@ public class UserApplication {
     }
 
     private void lightShow() {
-        api.testLEDPanel();
+        for (int i = 0; i < 320; i++) {
+            api.addressSingleLed(i);
+            api.waitFor(10);
+        }
+        for (int i = 0; i < 320; i++) {
+            api.addressSingleLed(i);
+            api.waitFor(100);
+        }
 
     }
 }
