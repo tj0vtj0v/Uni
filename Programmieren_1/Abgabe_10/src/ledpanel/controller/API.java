@@ -22,9 +22,11 @@ import ledpanel.hardware.LEDPanel;
  */
 public class API {
     LEDPanel ledPanel;
+    byte[][] matrices;
 
     public API() {
         ledPanel = new LEDPanel();
+        matrices = new byte[][]{ledPanel.matrix0, ledPanel.matrix1, ledPanel.matrix2, ledPanel.matrix3, ledPanel.matrix4};
     }
 
 
@@ -49,12 +51,10 @@ public class API {
     }
 
     private void addressAllLedRows(byte lightStatus) {
-        for (int row = 0; row < 8; row++) {
-            ledPanel.matrix0[row] = lightStatus;
-            ledPanel.matrix1[row] = lightStatus;
-            ledPanel.matrix2[row] = lightStatus;
-            ledPanel.matrix3[row] = lightStatus;
-            ledPanel.matrix4[row] = lightStatus;
+        for (byte[] matrix : matrices) {
+            for (int row = 0; row < 8; row++) {
+                matrix[row] = lightStatus;
+            }
         }
     }
 
@@ -71,7 +71,7 @@ public class API {
      */
     public void showLEDs(int[] ledIndices, int milliseconds) {
         for (int ledIndex : ledIndices) {
-            switchSingleLed(ledIndex);
+            onSingleLed(ledIndex);
         }
         waitFor(milliseconds);
         addressAllLedRows((byte) 0);
@@ -82,27 +82,23 @@ public class API {
         int addressedLedMatrix = (ledIndex % 40) / 8;
         int addressedLedColumn = ledIndex % 40 % 8;
 
-        switch (addressedLedMatrix) {
-            case 0:
-                updateLedRow(ledPanel.matrix0, addressedLedRow, addressedLedColumn);
-                break;
-            case 1:
-                updateLedRow(ledPanel.matrix1, addressedLedRow, addressedLedColumn);
-                break;
-            case 2:
-                updateLedRow(ledPanel.matrix2, addressedLedRow, addressedLedColumn);
-                break;
-            case 3:
-                updateLedRow(ledPanel.matrix3, addressedLedRow, addressedLedColumn);
-                break;
-            case 4:
-                updateLedRow(ledPanel.matrix4, addressedLedRow, addressedLedColumn);
-                break;
-        }
+        matrices[addressedLedMatrix][addressedLedRow] = (byte) (matrices[addressedLedMatrix][addressedLedRow] ^ (byte) Math.pow(2, addressedLedColumn));
     }
 
-    private void updateLedRow(byte[] matrix, int row, int column) {
-        matrix[row] = (byte) (matrix[row] ^ (byte) Math.pow(2, column));
+    public void onSingleLed(int ledIndex) {
+        int addressedLedRow = ledIndex / 40;
+        int addressedLedMatrix = (ledIndex % 40) / 8;
+        int addressedLedColumn = ledIndex % 40 % 8;
+
+        matrices[addressedLedMatrix][addressedLedRow] = (byte) (matrices[addressedLedMatrix][addressedLedRow] | (byte) Math.pow(2, addressedLedColumn));
+    }
+
+    public void offSingleLed(int ledIndex) {
+        int addressedLedRow = ledIndex / 40;
+        int addressedLedMatrix = (ledIndex % 40) / 8;
+        int addressedLedColumn = ledIndex % 40 % 8;
+
+        matrices[addressedLedMatrix][addressedLedRow] = (byte) (matrices[addressedLedMatrix][addressedLedRow] & (byte) (255 - Math.pow(2, addressedLedColumn)));
     }
 
 
@@ -122,7 +118,7 @@ public class API {
     public void showBlinkingLEDs(int[] leds, int millisecondsOn, int millisecondsOff, int repetitions) {
         for (int repetition = 0; repetition < repetitions; repetition++) {
             for (int led : leds) {
-                switchSingleLed(led);
+                onSingleLed(led);
             }
             waitFor(millisecondsOn);
             addressAllLedRows((byte) 0);
@@ -148,11 +144,11 @@ public class API {
      * @param repetitions  Anzahl der Wiederholungen.
      */
     public void showRunningDot(Path path, int milliseconds, int repetitions) {
-        for (int repetition = 0; repetition < repetitions; repetition++) {
+        for (int repetition = 0; repetition <= repetitions; repetition++) {
             for (int pathPosition : path.getLeds()) {
-                switchSingleLed(pathPosition);
+                onSingleLed(pathPosition);
                 waitFor(milliseconds);
-                switchSingleLed(pathPosition);
+                offSingleLed(pathPosition);
             }
         }
     }
@@ -171,13 +167,17 @@ public class API {
             longestPath = Math.max(longestPath, currentPath.size());
         }
 
-        for (int repetition = 0; repetition < repetitions; repetition++) {
+        for (int repetition = 0; repetition <= repetitions; repetition++) {
             for (int pathPosition = 0; pathPosition < longestPath; pathPosition++) {
                 for (Path currentPath : path) {
-                    if (currentPath.size() >= pathPosition) {
-                        switchSingleLed(currentPath.getLeds()[pathPosition]);
-                        waitFor(milliseconds);
-                        switchSingleLed(currentPath.getLeds()[pathPosition]);
+                    if (currentPath.size() > pathPosition) {
+                        onSingleLed(currentPath.getLeds()[pathPosition]);
+                    }
+                }
+                waitFor(milliseconds);
+                for (Path currentPath : path) {
+                    if (currentPath.size() > pathPosition) {
+                        offSingleLed(currentPath.getLeds()[pathPosition]);
                     }
                 }
             }

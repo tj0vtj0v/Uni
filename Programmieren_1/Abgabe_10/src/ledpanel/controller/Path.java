@@ -26,7 +26,7 @@ public class Path {
     public Path(int... keyPositions) {
         this.keyPositions = keyPositions;
         leds = new int[0];
-        getLeds();
+        calculatePath();
     }
 
     /**
@@ -35,6 +35,10 @@ public class Path {
      * @return Der fertiggestellte Pfad.
      */
     int[] getLeds() {
+        return leds;
+    }
+
+    private void calculatePath() {
         for (int keyIndex = 1; keyIndex < keyPositions.length; keyIndex++) {
             if (Math.abs(keyPositions[keyIndex - 1] - keyPositions[keyIndex]) < 40) {
                 if (keyPositions[keyIndex - 1] < keyPositions[keyIndex]) {
@@ -48,23 +52,23 @@ public class Path {
                 }
             } else {
                 if (keyPositions[keyIndex - 1] < keyPositions[keyIndex]) {
-                    for (int pathStep = keyPositions[keyIndex - 1]; pathStep <= keyPositions[keyIndex]; pathStep+=40) {
+                    for (int pathStep = keyPositions[keyIndex - 1]; pathStep <= keyPositions[keyIndex]; pathStep += 40) {
                         appendLed(pathStep);
                     }
                 } else {
-                    for (int pathStep = keyPositions[keyIndex - 1]; pathStep >= keyPositions[keyIndex]; pathStep-=40) {
+                    for (int pathStep = keyPositions[keyIndex - 1]; pathStep >= keyPositions[keyIndex]; pathStep -= 40) {
                         appendLed(pathStep);
                     }
                 }
             }
         }
-
-        return leds;
     }
 
     private void appendLed(int led) {
         int[] newLeds = new int[size() + 1];
-        if (size() >= 0) System.arraycopy(leds, 0, newLeds, 0, size());
+        if (size() >= 0) {
+            System.arraycopy(leds, 0, newLeds, 0, size());
+        }
         newLeds[size()] = led;
 
         leds = newLeds;
