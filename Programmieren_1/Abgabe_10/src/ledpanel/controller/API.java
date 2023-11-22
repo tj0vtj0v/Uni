@@ -160,24 +160,65 @@ public class API {
      * @param path         Der Pfad, auf dem sich der laufende Punkt bewegen soll.
      * @param milliseconds Zeitraum, für den der laufende Punkt auf einer LED verweilt.
      * @param repetitions  Anzahl der Wiederholungen.
-     */
+
     public void showRunningDots(Path[] path, int milliseconds, int repetitions) {
         int longestPath = 0;
         for (Path currentPath : path) {
             longestPath = Math.max(longestPath, currentPath.size());
         }
 
+        int[][] ledsPerStep = new int[longestPath][0];
+        for (Path currentPath : path) {
+            for (int step = 0; step < currentPath.size(); step++) {
+                ledsPerStep[step] = appendLed(ledsPerStep[step], currentPath.getLeds()[step]);
+            }
+        }
+
+        for (int repetition = 0; repetition <= repetitions; repetition++) {
+            for (int[] step : ledsPerStep) {
+                for (int led : step) {
+                    onSingleLed(led);
+                }
+                waitFor(milliseconds);
+                for (int led : step) {
+                    offSingleLed(led);
+                }
+            }
+        }
+    }
+
+    private int[] appendLed(int[] stepArray, int led) {
+        int[] newStepArray = new int[stepArray.length + 1];
+        System.arraycopy(stepArray, 0, newStepArray, 0, stepArray.length);
+
+        newStepArray[stepArray.length] = led;
+
+        return newStepArray;
+    }
+     */
+
+    public void showRunningDots(Path[] path, int milliseconds, int repetitions) {
+        int longestPath = 0;
+        for (Path currentPath : path) {
+            longestPath = Math.max(longestPath, currentPath.size());
+        }
+
+        int[][] dotsOfPaths = new int[path.length][];
+        for (int singlePath = 0; singlePath < path.length; singlePath++) {
+            dotsOfPaths[singlePath] = path[singlePath].getLeds();
+        }
+
         for (int repetition = 0; repetition <= repetitions; repetition++) {
             for (int pathPosition = 0; pathPosition < longestPath; pathPosition++) {
-                for (Path currentPath : path) {
-                    if (currentPath.size() > pathPosition) {
-                        onSingleLed(currentPath.getLeds()[pathPosition]);
+                for (int[] ff : dotsOfPaths) {
+                    if (ff.length > pathPosition) {
+                        onSingleLed(ff[pathPosition]);
                     }
                 }
                 waitFor(milliseconds);
-                for (Path currentPath : path) {
-                    if (currentPath.size() > pathPosition) {
-                        offSingleLed(currentPath.getLeds()[pathPosition]);
+                for (int[] ff : dotsOfPaths) {
+                    if (ff.length > pathPosition) {
+                        offSingleLed(ff[pathPosition]);
                     }
                 }
             }
