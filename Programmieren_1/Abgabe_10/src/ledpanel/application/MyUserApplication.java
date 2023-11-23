@@ -35,9 +35,13 @@ public class MyUserApplication {
         paths[2] = new Path(278, 78, 41, 241, 278);
         api.showRunningDots(paths, 3, 0);
         */
+        Path path1 = new Path(40, 0, 8);
+        Path path2 = new Path(279, 319, 311);
+        api.showRunningDots(new Path[]{path1, path2}, 500, 1);
+
         Path[] paths = new Path[8];
-        paths[0] = new Path(0, 39);
-        paths[1] = new Path(40, 79);
+        paths[0] = new Path(0, 39, 0);
+        paths[1] = new Path(40, 79, 40);
         paths[2] = new Path(0, 39);
         paths[3] = new Path(40, 79);
         paths[4] = new Path(0, 39);
@@ -45,7 +49,7 @@ public class MyUserApplication {
         paths[6] = new Path(0, 39);
         paths[7] = new Path(40, 79);
         long time = System.currentTimeMillis();
-        api.showRunningDots(paths, 5, 5);
+        api.showRunningDots(paths, 10, 1);
         System.out.println(System.currentTimeMillis() - time);
     }
 }

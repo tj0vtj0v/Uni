@@ -2,6 +2,8 @@ package ledpanel.controller;
 
 import ledpanel.hardware.LEDPanel;
 
+import java.util.Arrays;
+
 /**
  * Diese Klasse enthält das API (Application Programming Interface) für das LED-Panel. Die angebotenen Methoden können
  * genutzt werden, um das Panel komfortabel für unterschiedliche Anzeigen. zu nutzen. Alle 320 LEDs des Panels (40 mal 8
@@ -77,14 +79,6 @@ public class API {
         addressAllLedRows((byte) 0);
     }
 
-    public void switchSingleLed(int ledIndex) {
-        int addressedLedRow = ledIndex / 40;
-        int addressedLedMatrix = (ledIndex % 40) / 8;
-        int addressedLedColumn = ledIndex % 40 % 8;
-
-        matrices[addressedLedMatrix][addressedLedRow] = (byte) (matrices[addressedLedMatrix][addressedLedRow] ^ (byte) Math.pow(2, addressedLedColumn));
-    }
-
     public void onSingleLed(int ledIndex) {
         int addressedLedRow = ledIndex / 40;
         int addressedLedMatrix = (ledIndex % 40) / 8;
@@ -116,7 +110,7 @@ public class API {
      * @param repetitions     Anzahl der Wiederholungen.
      */
     public void showBlinkingLEDs(int[] leds, int millisecondsOn, int millisecondsOff, int repetitions) {
-        for (int repetition = 0; repetition < repetitions; repetition++) {
+        for (int repetition = 1; repetition <= repetitions; repetition++) {
             for (int led : leds) {
                 onSingleLed(led);
             }
@@ -160,12 +154,15 @@ public class API {
      * @param path         Der Pfad, auf dem sich der laufende Punkt bewegen soll.
      * @param milliseconds Zeitraum, für den der laufende Punkt auf einer LED verweilt.
      * @param repetitions  Anzahl der Wiederholungen.
-
+     **/
+    /*
     public void showRunningDots(Path[] path, int milliseconds, int repetitions) {
         int longestPath = 0;
         for (Path currentPath : path) {
             longestPath = Math.max(longestPath, currentPath.size());
         }
+        System.out.println(Arrays.toString(path[0].getLeds()));
+        System.out.println(Arrays.toString(path[1].getLeds()));
 
         int[][] ledsPerStep = new int[longestPath][0];
         for (Path currentPath : path) {
@@ -174,7 +171,7 @@ public class API {
             }
         }
 
-        for (int repetition = 0; repetition <= repetitions; repetition++) {
+        for (int repetition = 1; repetition <= repetitions; repetition++) {
             for (int[] step : ledsPerStep) {
                 for (int led : step) {
                     onSingleLed(led);
@@ -195,8 +192,7 @@ public class API {
 
         return newStepArray;
     }
-     */
-
+    */
     public void showRunningDots(Path[] path, int milliseconds, int repetitions) {
         int longestPath = 0;
         for (Path currentPath : path) {
@@ -208,7 +204,7 @@ public class API {
             dotsOfPaths[singlePath] = path[singlePath].getLeds();
         }
 
-        for (int repetition = 0; repetition <= repetitions; repetition++) {
+        for (int repetition = 1; repetition <= repetitions; repetition++) {
             for (int pathPosition = 0; pathPosition < longestPath; pathPosition++) {
                 for (int[] ff : dotsOfPaths) {
                     if (ff.length > pathPosition) {
