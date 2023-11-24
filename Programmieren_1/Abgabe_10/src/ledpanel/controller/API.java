@@ -2,8 +2,6 @@ package ledpanel.controller;
 
 import ledpanel.hardware.LEDPanel;
 
-import java.util.Arrays;
-
 /**
  * Diese Klasse enthält das API (Application Programming Interface) für das LED-Panel. Die angebotenen Methoden können
  * genutzt werden, um das Panel komfortabel für unterschiedliche Anzeigen. zu nutzen. Alle 320 LEDs des Panels (40 mal 8
@@ -155,44 +153,7 @@ public class API {
      * @param milliseconds Zeitraum, für den der laufende Punkt auf einer LED verweilt.
      * @param repetitions  Anzahl der Wiederholungen.
      **/
-    /*
-    public void showRunningDots(Path[] path, int milliseconds, int repetitions) {
-        int longestPath = 0;
-        for (Path currentPath : path) {
-            longestPath = Math.max(longestPath, currentPath.size());
-        }
-        System.out.println(Arrays.toString(path[0].getLeds()));
-        System.out.println(Arrays.toString(path[1].getLeds()));
 
-        int[][] ledsPerStep = new int[longestPath][0];
-        for (Path currentPath : path) {
-            for (int step = 0; step < currentPath.size(); step++) {
-                ledsPerStep[step] = appendLed(ledsPerStep[step], currentPath.getLeds()[step]);
-            }
-        }
-
-        for (int repetition = 1; repetition <= repetitions; repetition++) {
-            for (int[] step : ledsPerStep) {
-                for (int led : step) {
-                    onSingleLed(led);
-                }
-                waitFor(milliseconds);
-                for (int led : step) {
-                    offSingleLed(led);
-                }
-            }
-        }
-    }
-
-    private int[] appendLed(int[] stepArray, int led) {
-        int[] newStepArray = new int[stepArray.length + 1];
-        System.arraycopy(stepArray, 0, newStepArray, 0, stepArray.length);
-
-        newStepArray[stepArray.length] = led;
-
-        return newStepArray;
-    }
-    */
     public void showRunningDots(Path[] path, int milliseconds, int repetitions) {
         int longestPath = 0;
         for (Path currentPath : path) {
