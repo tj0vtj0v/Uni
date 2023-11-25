@@ -198,6 +198,37 @@ public class API {
      * @param milliseconds Zeitdauer der Anzeige.
      */
     public void showString(String string, int milliseconds) {
+        printString(string);
+        waitFor(milliseconds);
+        addressAllLedRows((byte) 0);
+    }
+
+    private void printString(String string) {
+        String[] ledLines = string.split("\n");
+        int onLeds = 0;
+        for (int line = 0; line < ledLines.length; line++) {
+            if (ledLines[line].length() > 40) {
+                ledLines[line] = ledLines[line].substring(0, 39);
+            }
+            onLeds += ledLines[line].replace(" ", "").replace("\n", "").length();
+        }
+
+        int[] textLeds = new int[onLeds];
+        for (int lineIndex = 0; lineIndex < ledLines.length; lineIndex++) {
+            for (int columnIndex = 0; columnIndex < ledLines[lineIndex].length(); columnIndex++) {
+                if (ledLines[lineIndex].charAt(columnIndex) == '#') {
+                    for (int textLedIndex = 0; textLedIndex < textLeds.length; textLedIndex++) {
+                        if (textLeds[textLedIndex] == 0) {
+                            textLeds[textLedIndex] = lineIndex * 40 + columnIndex;
+                            break;
+                        }
+                    }
+                }
+            }
+        }
+        for (int led : textLeds) {
+            onSingleLed(led);
+        }
     }
 
     /**
@@ -215,6 +246,13 @@ public class API {
      * @param repetitions  Anzahl der Wiederholungen des kompletten Durchlaufs.
      */
     public void showMovingString(String[] strings, int milliseconds, int repetitions) {
+        for (int repetition = 1; repetition <= repetitions; repetition++) {
+            for (String stringAtTick : strings) {
+                printString(stringAtTick);
+                waitFor(milliseconds);
+                addressAllLedRows((byte) 0);
+            }
+        }
     }
 
     /**
