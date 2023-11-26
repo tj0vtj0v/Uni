@@ -38,16 +38,8 @@ class LedController extends PanelController{
         }
     }
 
-    void addressLed(int ledIndex, boolean on) {
-        int row = rowByIndex(ledIndex);
-        int matrix = matrixByIndex(ledIndex);
-        int column = columnOfMatrixByIndex(ledIndex);
-
-        if (on) {
-            matrices[matrix][row] = (byte) (matrices[matrix][row] | (byte) Math.pow(2, column));
-        } else {
-            matrices[matrix][row] = (byte) (matrices[matrix][row] & (byte) (255 - Math.pow(2, column)));
-        }
+    void addressAllLeds(boolean on) {
+        addressLedCollection(allLeds, on);
     }
 
     void addressLedCollection(int[] ledIndices, boolean on) {
@@ -56,8 +48,16 @@ class LedController extends PanelController{
         }
     }
 
-    void addressAllLeds(boolean on) {
-        addressLedCollection(allLeds, on);
+    void addressLed(int ledIndex, boolean on) {
+        int matrix = matrixByIndex(ledIndex);
+        int row = rowByIndex(ledIndex);
+        int column = columnOfMatrixByIndex(ledIndex);
+
+        if (on) {
+            matrices[matrix][row] = (byte) (matrices[matrix][row] | (byte) Math.pow(2, column));
+        } else {
+            matrices[matrix][row] = (byte) (matrices[matrix][row] & (byte) (255 - Math.pow(2, column)));
+        }
     }
 
     private int matrixByIndex(int ledIndex) {

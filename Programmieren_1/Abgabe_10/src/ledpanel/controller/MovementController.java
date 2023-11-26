@@ -10,7 +10,7 @@ class MovementController extends LedController {
 
     void apiShowRunningDots(Path[] path, int milliseconds, int repetitions) {
         int longestPath = calculateLongestPath(path);
-        int[][] ledsPerPathStep = ledPathBySteps(path);
+        int[][] ledsPerPathStep = calculatePathLedsBySteps(path);
 
 
         for (int repetition = 1; repetition <= repetitions; repetition++) {
@@ -39,7 +39,7 @@ class MovementController extends LedController {
         return longestPath;
     }
 
-    private int[][] ledPathBySteps(Path[] paths) {
+    private int[][] calculatePathLedsBySteps(Path[] paths) {
         int[][] dotsOfPaths = new int[paths.length][];
 
         for (int singlePath = 0; singlePath < paths.length; singlePath++) {
