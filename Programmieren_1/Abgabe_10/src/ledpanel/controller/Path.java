@@ -29,6 +29,45 @@ public class Path {
         calculatePath();
     }
 
+    private void calculatePath() {
+        int lastPosition;
+        int nextPosition = 0;
+
+        for (int keyIndex = 1; keyIndex < keyPositions.length; keyIndex++) {
+            lastPosition = keyPositions[keyIndex - 1];
+            nextPosition = keyPositions[keyIndex];
+
+            if (Math.abs(lastPosition - nextPosition) < 40) {
+                if (lastPosition < nextPosition) {
+                    addPathSection(lastPosition, nextPosition, 1);
+                } else {
+                    addPathSection(lastPosition, nextPosition, -1);
+                }
+            } else {
+                if (lastPosition < nextPosition) {
+                    addPathSection(lastPosition, nextPosition, 40);
+                } else {
+                    addPathSection(lastPosition, nextPosition, -40);
+                }
+            }
+        }
+        appendLed(nextPosition);
+    }
+
+    private void addPathSection(int lastPosition, int nextPosition, int additionalValuePerStep) {
+        for (int pathStep = lastPosition; pathStep != nextPosition; pathStep += additionalValuePerStep) {
+            appendLed(pathStep);
+        }
+    }
+
+    private void appendLed(int ledIndex) {
+        int[] newLeds = new int[size() + 1];
+        System.arraycopy(leds, 0, newLeds, 0, size());
+        newLeds[size()] = ledIndex;
+
+        leds = newLeds;
+    }
+
     /**
      * Der Pfad wird als LED-Array zurückgegeben.
      *
@@ -36,49 +75,6 @@ public class Path {
      */
     int[] getLeds() {
         return leds;
-    }
-
-    private void calculatePath() {
-        for (int keyIndex = 1; keyIndex < keyPositions.length; keyIndex++) {
-            deleteLastLed();
-            if (Math.abs(keyPositions[keyIndex - 1] - keyPositions[keyIndex]) < 40) {
-                if (keyPositions[keyIndex - 1] < keyPositions[keyIndex]) {
-                    for (int pathStep = keyPositions[keyIndex - 1]; pathStep <= keyPositions[keyIndex]; pathStep++) {
-                        appendLed(pathStep);
-                    }
-                } else {
-                    for (int pathStep = keyPositions[keyIndex - 1]; pathStep >= keyPositions[keyIndex]; pathStep--) {
-                        appendLed(pathStep);
-                    }
-                }
-            } else {
-                if (keyPositions[keyIndex - 1] < keyPositions[keyIndex]) {
-                    for (int pathStep = keyPositions[keyIndex - 1]; pathStep <= keyPositions[keyIndex]; pathStep += 40) {
-                        appendLed(pathStep);
-                    }
-                } else {
-                    for (int pathStep = keyPositions[keyIndex - 1]; pathStep >= keyPositions[keyIndex]; pathStep -= 40) {
-                        appendLed(pathStep);
-                    }
-                }
-            }
-        }
-    }
-
-    private void deleteLastLed() {
-        if (size() > 0) {
-            int[] newLeds = new int[size() - 1];
-            System.arraycopy(leds, 0, newLeds, 0, size() - 1);
-
-            leds = newLeds;
-        }
-    }
-    private void appendLed(int led) {
-        int[] newLeds = new int[size() + 1];
-        System.arraycopy(leds, 0, newLeds, 0, size());
-        newLeds[size()] = led;
-
-        leds = newLeds;
     }
 
     /**

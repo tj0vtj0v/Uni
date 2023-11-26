@@ -51,25 +51,24 @@ public class StringImage {
      * @return Das Array mit der Animation.
      */
     public String[] movingStrings() {
-        stringImage = new StringImage("     "+string).stringImage;
+        stringImage = new StringImage("     " + string).stringImage;
         String[] ledLines = stringImage.split("\n");
-        int lineLength = ledLines[0].length();
-        String[] returnString = new String[lineLength];
-        StringBuilder thisTickString;
-        for (int stringColumns = 0; stringColumns < lineLength; stringColumns++) {
-            thisTickString = new StringBuilder();
+        int stringImageLength = ledLines[0].length();
+        String[] movedStrings = new String[stringImageLength];
+        StringBuilder stringImageOfTick;
+
+        for (int stringImageTick = 0; stringImageTick < stringImageLength; stringImageTick++) {
+            stringImageOfTick = new StringBuilder();
+
             for (int lineIndex = 0; lineIndex < ledLines.length; lineIndex++) {
-                if (stringColumns <= 1) {
-                    ledLines[lineIndex] = ledLines[lineIndex].substring(1);
-                }
-                thisTickString.append(ledLines[lineIndex]).append("\n");
+                stringImageOfTick.append(ledLines[lineIndex]).append("\n");
                 ledLines[lineIndex] = ledLines[lineIndex].substring(1);
-                System.out.println(ledLines[lineIndex].length());
             }
-            System.out.println("stringColumns = " + stringColumns);
-            returnString[stringColumns] = thisTickString.toString();
+
+            movedStrings[stringImageTick] = stringImageOfTick.toString();
         }
-        return returnString;
+
+        return movedStrings;
     }
 
     private void createStringImage() {

@@ -1,6 +1,6 @@
 package ledpanel.controller;
 
-import ledpanel.hardware.LEDPanel;
+import ledpanel.hardware.*;
 
 /**
  * Diese Klasse enthält das API (Application Programming Interface) für das LED-Panel. Die angebotenen Methoden können
@@ -21,12 +21,16 @@ import ledpanel.hardware.LEDPanel;
  * <br>
  */
 public class API {
-    LEDPanel ledPanel;
-    byte[][] matrices;
+    private final LEDPanel ledPanel;
+    private final PanelController panelController;
+    private final LedController ledController;
+    private final MovementController movementController;
 
     public API() {
         ledPanel = new LEDPanel();
-        matrices = new byte[][]{ledPanel.matrix0, ledPanel.matrix1, ledPanel.matrix2, ledPanel.matrix3, ledPanel.matrix4};
+        panelController = new PanelController(ledPanel);
+        ledController = new LedController(ledPanel);
+        movementController = new MovementController(ledPanel);
     }
 
 
@@ -37,7 +41,7 @@ public class API {
      * @return Das für die API genutzte LED-Panel.
      */
     public LEDPanel directHardwareAccess() {
-        return ledPanel;
+        return panelController.getLedPanel();
     }
 
     /**
@@ -45,17 +49,7 @@ public class API {
      * gelöscht.
      */
     public void testLEDPanel() {
-        addressAllLedRows((byte) 255);
-        waitFor(500);
-        addressAllLedRows((byte) 0);
-    }
-
-    private void addressAllLedRows(byte lightStatus) {
-        for (byte[] matrix : matrices) {
-            for (int row = 0; row < 8; row++) {
-                matrix[row] = lightStatus;
-            }
-        }
+        ledController.apiTestLEDPanel();
     }
 
 
@@ -70,27 +64,7 @@ public class API {
      * @param milliseconds Die LEDs bleiben für diesen Zeitraum eingeschaltet.
      */
     public void showLEDs(int[] ledIndices, int milliseconds) {
-        for (int ledIndex : ledIndices) {
-            onSingleLed(ledIndex);
-        }
-        waitFor(milliseconds);
-        addressAllLedRows((byte) 0);
-    }
-
-    public void onSingleLed(int ledIndex) {
-        int addressedLedRow = ledIndex / 40;
-        int addressedLedMatrix = (ledIndex % 40) / 8;
-        int addressedLedColumn = ledIndex % 40 % 8;
-
-        matrices[addressedLedMatrix][addressedLedRow] = (byte) (matrices[addressedLedMatrix][addressedLedRow] | (byte) Math.pow(2, addressedLedColumn));
-    }
-
-    public void offSingleLed(int ledIndex) {
-        int addressedLedRow = ledIndex / 40;
-        int addressedLedMatrix = (ledIndex % 40) / 8;
-        int addressedLedColumn = ledIndex % 40 % 8;
-
-        matrices[addressedLedMatrix][addressedLedRow] = (byte) (matrices[addressedLedMatrix][addressedLedRow] & (byte) (255 - Math.pow(2, addressedLedColumn)));
+        ledController.apiShowLEDs(ledIndices, milliseconds);
     }
 
 
@@ -108,14 +82,7 @@ public class API {
      * @param repetitions     Anzahl der Wiederholungen.
      */
     public void showBlinkingLEDs(int[] leds, int millisecondsOn, int millisecondsOff, int repetitions) {
-        for (int repetition = 1; repetition <= repetitions; repetition++) {
-            for (int led : leds) {
-                onSingleLed(led);
-            }
-            waitFor(millisecondsOn);
-            addressAllLedRows((byte) 0);
-            waitFor(millisecondsOff);
-        }
+        ledController.apiShowBlinkingLEDs(leds, millisecondsOn, millisecondsOff, repetitions);
     }
 
     /**
@@ -136,13 +103,7 @@ public class API {
      * @param repetitions  Anzahl der Wiederholungen.
      */
     public void showRunningDot(Path path, int milliseconds, int repetitions) {
-        for (int repetition = 0; repetition <= repetitions; repetition++) {
-            for (int pathPosition : path.getLeds()) {
-                onSingleLed(pathPosition);
-                waitFor(milliseconds);
-                offSingleLed(pathPosition);
-            }
-        }
+        showRunningDots(new Path[]{path}, milliseconds, repetitions);
     }
 
     /**
@@ -155,31 +116,7 @@ public class API {
      **/
 
     public void showRunningDots(Path[] path, int milliseconds, int repetitions) {
-        int longestPath = 0;
-        for (Path currentPath : path) {
-            longestPath = Math.max(longestPath, currentPath.size());
-        }
-
-        int[][] dotsOfPaths = new int[path.length][];
-        for (int singlePath = 0; singlePath < path.length; singlePath++) {
-            dotsOfPaths[singlePath] = path[singlePath].getLeds();
-        }
-
-        for (int repetition = 1; repetition <= repetitions; repetition++) {
-            for (int pathPosition = 0; pathPosition < longestPath; pathPosition++) {
-                for (int[] ff : dotsOfPaths) {
-                    if (ff.length > pathPosition) {
-                        onSingleLed(ff[pathPosition]);
-                    }
-                }
-                waitFor(milliseconds);
-                for (int[] ff : dotsOfPaths) {
-                    if (ff.length > pathPosition) {
-                        offSingleLed(ff[pathPosition]);
-                    }
-                }
-            }
-        }
+        movementController.apiShowRunningDots(path, milliseconds, repetitions);
     }
 
     /**
@@ -198,37 +135,7 @@ public class API {
      * @param milliseconds Zeitdauer der Anzeige.
      */
     public void showString(String string, int milliseconds) {
-        printString(string);
-        waitFor(milliseconds);
-        addressAllLedRows((byte) 0);
-    }
-
-    private void printString(String string) {
-        String[] ledLines = string.split("\n");
-        int onLeds = 0;
-        for (int line = 0; line < ledLines.length; line++) {
-            if (ledLines[line].length() > 40) {
-                ledLines[line] = ledLines[line].substring(0, 39);
-            }
-            onLeds += ledLines[line].replace(" ", "").replace("\n", "").length();
-        }
-
-        int[] textLeds = new int[onLeds];
-        for (int lineIndex = 0; lineIndex < ledLines.length; lineIndex++) {
-            for (int columnIndex = 0; columnIndex < ledLines[lineIndex].length(); columnIndex++) {
-                if (ledLines[lineIndex].charAt(columnIndex) == '#') {
-                    for (int textLedIndex = 0; textLedIndex < textLeds.length; textLedIndex++) {
-                        if (textLeds[textLedIndex] == 0) {
-                            textLeds[textLedIndex] = lineIndex * 40 + columnIndex;
-                            break;
-                        }
-                    }
-                }
-            }
-        }
-        for (int led : textLeds) {
-            onSingleLed(led);
-        }
+        new StringController(ledPanel, string).displayString(milliseconds);
     }
 
     /**
@@ -246,13 +153,7 @@ public class API {
      * @param repetitions  Anzahl der Wiederholungen des kompletten Durchlaufs.
      */
     public void showMovingString(String[] strings, int milliseconds, int repetitions) {
-        for (int repetition = 1; repetition <= repetitions; repetition++) {
-            for (String stringAtTick : strings) {
-                printString(stringAtTick);
-                waitFor(milliseconds);
-                addressAllLedRows((byte) 0);
-            }
-        }
+        movementController.apiShowMovingString(strings, milliseconds, repetitions);
     }
 
     /**
