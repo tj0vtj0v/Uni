@@ -36,22 +36,14 @@ public class Path {
         for (int keyIndex = 1; keyIndex < keyPositions.length; keyIndex++) {
             lastPosition = keyPositions[keyIndex - 1];
             nextPosition = keyPositions[keyIndex];
-
-            if (Math.abs(lastPosition - nextPosition) < 40) {
-                if (lastPosition < nextPosition) {
-                    addPathSection(lastPosition, nextPosition, 1);
-                } else {
-                    addPathSection(lastPosition, nextPosition, -1);
-                }
-            } else {
-                if (lastPosition < nextPosition) {
-                    addPathSection(lastPosition, nextPosition, 40);
-                } else {
-                    addPathSection(lastPosition, nextPosition, -40);
-                }
-            }
+            addPathSection(lastPosition, nextPosition, calculateAdditionalValue(lastPosition, nextPosition));
         }
         appendLed(nextPosition);
+    }
+
+    private int calculateAdditionalValue(int lastPosition, int nextPosition) {
+        int retVal = Math.abs(lastPosition - nextPosition) < 40 ? 1 : 40;
+        return lastPosition < nextPosition ? retVal : retVal * -1;
     }
 
     private void addPathSection(int lastPosition, int nextPosition, int additionalValuePerStep) {
