@@ -7,7 +7,7 @@ class CardSorter {
     private final Card[] hand;
     private static final String[] CARD_COLORS = {"Schelln", "Herz", "Gruen", "Eichel"};
     private static final String[] CARD_RANKS = {"7", "8", "9", "10", "U", "O", "K", "A"};
-    private static final String[] BAVARIAN_COLORS = {"Schelln", "Gruen", "Eichel", "Herz"};
+    private static final String[] BAVARIAN_BULLSHIT = {"Schelln", "Gruen", "Eichel", "Herz"};
 
     CardSorter(Card[] hand) {
         this.hand = hand;
@@ -62,7 +62,19 @@ class CardSorter {
         return -1;
     }
 
+    private boolean firstCardIsHigherThanSecondCard(Card firstCard, Card secondCard) {
+        boolean firstIsTrumpf = firstCard.rank.equals("O") || firstCard.rank.equals("U");
+        boolean secondIsTrumpf = secondCard.rank.equals("O") || secondCard.rank.equals("U");
 
+        if (firstIsTrumpf ^ secondIsTrumpf) {
+            return firstIsTrumpf;
+        } else if (firstIsTrumpf && firstCard.rank.equals(secondCard.rank)) {
+            return firstCardIsOfHigherColorThanSecondCard(firstCard, secondCard);
+        } else if (firstIsTrumpf) {
+            return firstCardIsOfHigherRankThanSecondCard(firstCard, secondCard);
+        } else {
+            return firstCardIsBavarianHigherThanSecondCard(firstCard, secondCard);
+        }
     }
 
     private boolean firstCardIsOfHigherRankThanSecondCard(Card firstCard, Card secondCard) {
@@ -74,11 +86,11 @@ class CardSorter {
     }
 
     private boolean firstCardIsBavarianHigherThanSecondCard(Card firstCard, Card secondCard) {
-        if (indexOf(firstCard.color, BAVARIAN_COLORS) == indexOf(secondCard.color, BAVARIAN_COLORS)) {
+        if (indexOf(firstCard.color, BAVARIAN_BULLSHIT) == indexOf(secondCard.color, BAVARIAN_BULLSHIT)) {
             return firstCardIsOfHigherRankThanSecondCard(firstCard, secondCard);
         }
 
-        return indexOf(firstCard.color, BAVARIAN_COLORS) > indexOf(secondCard.color, BAVARIAN_COLORS);
+        return indexOf(firstCard.color, BAVARIAN_BULLSHIT) > indexOf(secondCard.color, BAVARIAN_BULLSHIT);
     }
 
     private void swap(int index1, int index2) {

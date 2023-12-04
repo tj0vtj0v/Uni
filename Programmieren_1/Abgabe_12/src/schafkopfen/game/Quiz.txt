@@ -24,19 +24,7 @@ Antwort: inWelchemRahmenIstHierDieFrage
 (Beispielantwort: shuffle)
 
 
-Debugger    private boolean firstCardIsHigherThanSecondCard(Card firstCard, Card secondCard) {
-                boolean firstIsTrumpf = firstCard.rank.equals("O") || firstCard.rank.equals("U");
-                boolean secondIsTrumpf = secondCard.rank.equals("O") || secondCard.rank.equals("U");
-
-                if (firstIsTrumpf ^ secondIsTrumpf) {
-                    return firstIsTrumpf;
-                } else if (firstIsTrumpf && firstCard.rank.equals(secondCard.rank)) {
-                    return firstCardIsOfHigherColorThanSecondCard(firstCard, secondCard);
-                } else if (firstIsTrumpf) {
-                    return firstCardIsOfHigherRankThanSecondCard(firstCard, secondCard);
-                } else {
-                    return firstCardIsBavarianHigherThanSecondCard(firstCard, secondCard);
-                }
+Debugger
 
 Setzen Sie in Performance beim Ausführen von cardSorter.bubbleSort() einen Breakpoint. Sie wollen genau dann anhalten,
 wenn der echte Test bereits gestartet ist und wenn sich in der Spielerhand an der ersten Stelle "hand[0]" zufällig der
