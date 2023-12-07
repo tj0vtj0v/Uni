@@ -29,10 +29,6 @@ public class Performance {
                 hand[index] = deck[random.nextInt(deck.length)];
             }
 
-            if (testHasStarted && hand[0].toString().equals("Eichel O")) {
-                continue;
-            }
-
             CardSorter cardSorter = new CardSorter(hand);
             if (algorithm.equals("Selectionsort")) {
                 cardSorter.selectionSort();
@@ -50,7 +46,8 @@ public class Performance {
         random = new Random(1234);
         testSortingAlgorithmAndPrintResults("Selectionsort", 1_000);
         testSortingAlgorithmAndPrintResults("Bubblesort", 1_000);
-        int seed = (int) System.currentTimeMillis();
+        int seed = 1;
+        testHasStarted = true;
         random.setSeed(seed);
         testSortingAlgorithmAndPrintResults("Selectionsort", 500_000);
         random.setSeed(seed);

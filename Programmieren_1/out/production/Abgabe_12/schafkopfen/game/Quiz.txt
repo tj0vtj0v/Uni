@@ -16,11 +16,11 @@ Antwort: Bubblesort
 (Mögliche Antworten: Bubblesort, Selectionsort, Abwechselnd)
 
 2. Welche Methode in der Klasse CardSorter verbraucht am meisten CPU-Zeit?
-Antwort: selectionSort
+Antwort: firstCardIsHigherThanSecondCard
 (Beispielantwort: shuffle)
 
 3. Welche Java-Methode (nicht von Ihnen implementiert) verbraucht am meisten Zeit?
-Antwort: inWelchemRahmenIstHierDieFrage
+Antwort: equals
 (Beispielantwort: shuffle)
 
 
@@ -57,5 +57,5 @@ Wir wollen sehen, wie gut die Testabdeckung der Klasse Performance für das Pack
 die main-Methode mit Coverage.
 
 8. Wie hoch ist die Abdeckung der Klassen in Prozent?
-Antwort:
+Antwort: 240
 (Beispielantwort: 307)
