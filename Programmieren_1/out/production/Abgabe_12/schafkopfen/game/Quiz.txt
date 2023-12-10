@@ -36,18 +36,18 @@ Antwort: testHasStarted && hand[0].toString().equals("Eichel O")
 (Beispielantwort: x < y || a == b)
 
 5. In welchem Durchlauf ist die Bedingung zum ersten Mal eingetreten?
-Antwort: 127
+Antwort: 49
 (Beispielantwort: 12056)
 
 6. Was ist die zweite Karte der Spielerhand?
-Antwort: Schelln K
+Antwort: Herz U
 (Beispielantwort: Herz 8)
 
 Ändern Sie im Debugger-Fenster die Variable run auf die Zahl 100. Springen Sie dann weiter mit „step over“ von
 Zeile zu Zeile bis sie wieder beim selben Befehl landen.
 
 7. Was ist die erste Karte der Spielerhand?
-Antwort: Eichel A
+Antwort: Schelln O
 (Beispielantwort: Herz 8)
 
 
@@ -57,5 +57,5 @@ Wir wollen sehen, wie gut die Testabdeckung der Klasse Performance für das Pack
 die main-Methode mit Coverage.
 
 8. Wie hoch ist die Abdeckung der Klassen in Prozent?
-Antwort: 240
+Antwort: 40
 (Beispielantwort: 307)

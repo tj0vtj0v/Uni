@@ -46,7 +46,8 @@ public class Performance {
         random = new Random(1234);
         testSortingAlgorithmAndPrintResults("Selectionsort", 1_000);
         testSortingAlgorithmAndPrintResults("Bubblesort", 1_000);
-        int seed = 1;
+
+        int seed = 1234;
         testHasStarted = true;
         random.setSeed(seed);
         testSortingAlgorithmAndPrintResults("Selectionsort", 500_000);

@@ -36,18 +36,18 @@ Antwort: testHasStarted && hand[0].toString().equals("Eichel O")
 (Beispielantwort: x < y || a == b)
 
 5. In welchem Durchlauf ist die Bedingung zum ersten Mal eingetreten?
-Antwort: 49
+Antwort: 25
 (Beispielantwort: 12056)
 
 6. Was ist die zweite Karte der Spielerhand?
-Antwort: Herz U
+Antwort: Schelln 9
 (Beispielantwort: Herz 8)
 
 Ändern Sie im Debugger-Fenster die Variable run auf die Zahl 100. Springen Sie dann weiter mit „step over“ von
 Zeile zu Zeile bis sie wieder beim selben Befehl landen.
 
 7. Was ist die erste Karte der Spielerhand?
-Antwort: Schelln O
+Antwort: Eichel 7
 (Beispielantwort: Herz 8)
 
 
