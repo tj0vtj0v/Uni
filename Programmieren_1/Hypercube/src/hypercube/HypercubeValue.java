@@ -6,9 +6,4 @@ public class HypercubeValue extends Hypercube {
     HypercubeValue() {
         super(0, 0);
     }
-
-    @Override
-    public String toString(){
-        return "[] = " + value;
-    }
 }
