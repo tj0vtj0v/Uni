@@ -9,10 +9,11 @@ public class TestTheCube {
         int count = 0;
         for (int i = 0; i < length; i++) {
             for (int j = 0; j < length; j++) {
+                System.out.println("["+i+", "+j+"] = "+ count);
                 hypercube2D.set(new int[]{i, j}, count++);
             }
         }
-        System.out.println(hypercube2D);
+        /*System.out.println(hypercube2D);
 
         dimension = 3;
         length = 2;
@@ -21,6 +22,7 @@ public class TestTheCube {
         for (int i = 0; i < length; i++) {
             for (int j = 0; j < length; j++) {
                 for (int k = 0; k < length; k++) {
+                    System.out.println("["+i+", "+j+", "+k+"] = "+ count);
                     hypercube3D.set(new int[]{i, j, k}, count++);
                 }
             }
@@ -36,11 +38,12 @@ public class TestTheCube {
             for (int j = 0; j < length; j++) {
                 for (int k = 0; k < length; k++) {
                     for (int l = 0; l < length; l++) {
+                        System.out.println("["+i+", "+j+", "+k+", "+l+"] = "+ count);
                         hypercube4D.set(new int[]{i, j, k, l}, count++);
                     }
                 }
             }
         }
-        System.out.println(hypercube4D);
+        System.out.println(hypercube4D);*/
     }
 }
