@@ -4,16 +4,18 @@ import java.util.Arrays;
 
 public class Hypercube {
     private final Hypercube[] content;
-    private final int[] firstCoordinate;
+    private Integer value;
+    private final int dimension;
 
     Hypercube(int dimension, int length) {
+        this.dimension = dimension;
         content = new Hypercube[length];
-        for (int i = 0; i < content.length; i++) {
-            content[i] = dimension > 1 ? new Hypercube(dimension - 1, length) : new HypercubeValue();
-        }
 
-        firstCoordinate = new int[dimension];
-        Arrays.fill(firstCoordinate, 0);
+        if (dimension > 0) {
+            for (int i = 0; i < content.length; i++) {
+                content[i] = new Hypercube(dimension - 1, length);
+            }
+        }
     }
 
     public void set(int[] coordinate, Integer value) {
@@ -22,10 +24,7 @@ public class Hypercube {
         if (coordinate.length > 1) {
             content[cubeIndex].set(Arrays.copyOfRange(coordinate, 1, coordinate.length), value);
         } else {
-
-            if (content[cubeIndex] instanceof HypercubeValue) {
-                ((HypercubeValue) content[cubeIndex]).value = value;
-            }
+            content[cubeIndex].value = value;
         }
     }
 
@@ -35,30 +34,23 @@ public class Hypercube {
         if (coordinate.length > 1) {
             return content[cubeIndex].get(Arrays.copyOfRange(coordinate, 1, coordinate.length));
         } else {
-
-            if (content[cubeIndex] instanceof HypercubeValue) {
-                return ((HypercubeValue) content[cubeIndex]).value;
-            }
+            return content[cubeIndex].value;
         }
-
-        return null;
     }
 
     @Override
     public String toString() {
         StringBuilder output = new StringBuilder();
-        int[] currentCoordinate = firstCoordinate;
+
+        int[] currentCoordinate = new int[dimension];
+        Arrays.fill(currentCoordinate, 0);
 
         while (currentCoordinate != null) {
-            output.append(entryToString(currentCoordinate));
+            output.append(Arrays.toString(currentCoordinate)).append(" = ").append(get(currentCoordinate)).append("/n");
             currentCoordinate = retrieveNextCoordinateIfAvailable(currentCoordinate);
         }
 
         return output.toString();
-    }
-
-    private String entryToString(int[] coordinate) {
-        return Arrays.toString(coordinate) + " = " + get(coordinate) + "\n";
     }
 
     private int[] retrieveNextCoordinateIfAvailable(int[] coordinate) {

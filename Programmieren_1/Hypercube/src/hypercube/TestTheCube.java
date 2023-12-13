@@ -42,5 +42,23 @@ public class TestTheCube {
             }
         }
         System.out.println(hypercube4D);
+
+
+        dimension = 5;
+        length = 15;
+        Hypercube hypercube5D = new Hypercube(dimension, length);
+        count = 0;
+        for (int i = 0; i < length; i++) {
+            for (int j = 0; j < length; j++) {
+                for (int k = 0; k < length; k++) {
+                    for (int l = 0; l < length; l++) {
+                        for (int m = 0; m < length; m++) {
+                            hypercube5D.set(new int[]{i, j, k, l, m}, count++);
+                        }
+                    }
+                }
+            }
+            System.out.println(hypercube5D);
+        }
     }
 }
