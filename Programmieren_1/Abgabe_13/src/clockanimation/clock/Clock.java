@@ -10,7 +10,7 @@ public class Clock {
 
     Clock() {
         animations = new Animations();
-        clockwork = new Clockwork(new Time(LocalTime.now().getHour(), LocalTime.now().getMinute(), LocalTime.now().getSecond()), 1);
+        clockwork = new Clockwork(new Time(LocalTime.now().getHour(), LocalTime.now().getMinute(), LocalTime.now().getSecond()), 10000);
     }
 
     public static void main(String[] args) {
