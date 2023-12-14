@@ -7,7 +7,7 @@ public class Time {
 
     Time(int hours, int minutes, int seconds) {
         if ((hours < 0 || hours > 23) || (minutes < 0 || minutes > 59) || (seconds < 0 || seconds > 59)) {
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException(hours + ", " + minutes + ", " + seconds);
         }
 
         this.hours = hours;
@@ -16,19 +16,19 @@ public class Time {
     }
 
     Time(long milliseconds) {
-        this(hoursFromMilliseconds(milliseconds), minutesFromMilliseconds(milliseconds), secondsFromMilliseconds(milliseconds));
+        this(hoursFromMilliseconds(milliseconds) % 24, minutesFromMilliseconds(milliseconds) % 60, secondsFromMilliseconds(milliseconds) % 60);
     }
 
     private static int hoursFromMilliseconds(long milliseconds) {
-        return (int) (milliseconds / 1000 / 60 / 60) % 24;
+        return (int) (milliseconds / 1000 / 60 / 60);
     }
 
     private static int minutesFromMilliseconds(long milliseconds) {
-        return (int) (milliseconds / 1000 / 60) % 60;
+        return (int) (milliseconds / 1000 / 60);
     }
 
     private static int secondsFromMilliseconds(long milliseconds) {
-        return (int) (milliseconds / 1000) % 60;
+        return (int) (milliseconds / 1000);
     }
 
     int secondsAsDegrees() {
