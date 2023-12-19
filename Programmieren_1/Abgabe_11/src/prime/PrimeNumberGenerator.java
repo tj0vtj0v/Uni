@@ -16,7 +16,7 @@ public class PrimeNumberGenerator {
 
         long limit = (long) Math.floor(Math.sqrt(number));
         for (long divisor = 2; divisor <= limit; divisor++) {
-            if (divisor > 1 && (number % divisor) == 0) {
+            if ((number % divisor) == 0) {
                 return false;
             }
         }
