@@ -14,8 +14,7 @@ public class Position {
     }
 
     public Position(Position otherPosition) {
-        x = otherPosition.getX();
-        y = otherPosition.getY();
+		this(otherPosition.getX(), otherPosition.getY());
     }
 
     public void updateCoordinates(double x, double y) {
