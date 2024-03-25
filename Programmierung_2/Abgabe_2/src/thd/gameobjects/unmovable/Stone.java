@@ -1,17 +1,19 @@
-package game;
+package thd.gameobjects.unmovable;
+
+import thd.game.utilities.GameView;
+import thd.gameobjects.base.Position;
 
 import java.awt.*;
 
-public class ScoreBoard {
-    GameView gameView;
-    Position position;
-    double speedInPixel;
+public class Stone {
+    final GameView gameView;
+    final Position position;
     double rotation;
-    double size;
-    double width;
-    double height;
+    final double size;
+    final double width;
+    final double height;
 
-    public ScoreBoard(GameView gameView) {
+    public Stone(GameView gameView) {
         this.gameView = gameView;
 
         size = 30;
@@ -27,6 +29,6 @@ public class ScoreBoard {
 
     @Override
     public String toString() {
-        return "ScoreBoard: %s".formatted(position);
+        return "Tree: %s".formatted(position);
     }
 }

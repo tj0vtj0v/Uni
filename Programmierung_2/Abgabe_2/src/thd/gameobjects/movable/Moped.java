@@ -1,15 +1,18 @@
-package game;
+package thd.gameobjects.movable;
+
+import thd.game.utilities.GameView;
+import thd.gameobjects.base.Position;
 
 import java.awt.*;
 
 public class Moped {
-    GameView gameView;
-    Position position;
-    double speedInPixel;
+    final GameView gameView;
+    final Position position;
+    final double speedInPixel;
     double rotation;
-    double size;
-    double width;
-    double height;
+    final double size;
+    final double width;
+    final double height;
 
     public Moped(GameView gameView) {
         this.gameView = gameView;
