@@ -4,8 +4,6 @@ import thd.game.utilities.GameView;
 import thd.gameobjects.base.Position;
 import thd.gameobjects.movable.Bullet;
 
-import java.awt.*;
-
 /**
  * Representation of the in-game-object 'Stone'.
  * <p>
@@ -32,11 +30,11 @@ public class Stone {
     public Stone(GameView gameView) {
         this.gameView = gameView;
 
-        size = 30;
+        size = 3;
         rotation = 0;
-        width = 150;
-        height = 33;
-        position = new Position(GameView.WIDTH - width, 0);
+        width = 16;
+        height = 0;
+        position = new Position(GameView.WIDTH - (width * size), 0);
     }
 
 
@@ -44,7 +42,7 @@ public class Stone {
      * Adds the Object to the gameView window.
      */
     public void addToCanvas() {
-        gameView.addTextToCanvas("Objekt 3", position.getX() + 3, position.getY() - 5, size, true, Color.YELLOW, rotation);
+        gameView.addBlockImageToCanvas(ObjectBlockImages.STONE, position.getX(), position.getY(), size, rotation);
     }
 
 

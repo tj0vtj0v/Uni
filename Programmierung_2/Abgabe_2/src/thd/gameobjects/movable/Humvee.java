@@ -3,8 +3,6 @@ package thd.gameobjects.movable;
 import thd.game.utilities.GameView;
 import thd.gameobjects.base.Position;
 
-import java.awt.*;
-
 
 /**
  * Representation of the in-game-object 'Humvee'.
@@ -31,11 +29,11 @@ public class Humvee {
     public Humvee(GameView gameView) {
         this.gameView = gameView;
 
-        size = 30;
+        size = 3;
         position = new Position(0, GameView.HEIGHT / 2f);
         rotation = 0;
-        width = 150;
-        height = 33;
+        width = 0;
+        height = 0;
 
         speedInPixel = 5;
     }
@@ -45,7 +43,7 @@ public class Humvee {
      * Adds the Object to the gameView window.
      */
     public void addToCanvas() {
-        gameView.addTextToCanvas("Objekt 1", position.getX(), position.getY(), size, true, Color.YELLOW, rotation);
+        gameView.addImageToCanvas("humvee.png", position.getX(), position.getY(), size, rotation);
     }
 
 
@@ -54,7 +52,6 @@ public class Humvee {
      */
     public void updatePosition() {
         position.right(speedInPixel);
-        rotation++;
     }
 
 
