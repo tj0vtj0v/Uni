@@ -39,6 +39,12 @@ public class GameObject {
     }
 
     /**
+     * Changes the status of an Object
+     */
+    public void updateStatus() {
+    }
+
+    /**
      * Returns the current position of the game object.
      *
      * @return position of the game object.
