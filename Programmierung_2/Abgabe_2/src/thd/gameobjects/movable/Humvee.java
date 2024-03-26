@@ -5,15 +5,29 @@ import thd.gameobjects.base.Position;
 
 import java.awt.*;
 
-public class Humvee {
-    final GameView gameView;
-    final Position position;
-    final double speedInPixel;
-    double rotation;
-    final double size;
-    final double width;
-    final double height;
 
+/**
+ * Representation of the in-game-object 'Humvee'.
+ * <p>
+ * passive linear moving
+ * destructible by 1 {@link Grenade} or 5 {@link Bullet}
+ * png textured
+ */
+public class Humvee {
+    private final GameView gameView;
+    private final Position position;
+    private final double speedInPixel;
+    private double rotation;
+    private final double size;
+    private final double width;
+    private final double height;
+
+
+    /**
+     * Creates Humvee with gameView window of presence.
+     *
+     * @param gameView window in which it has to be displayed.
+     */
     public Humvee(GameView gameView) {
         this.gameView = gameView;
 
@@ -26,15 +40,29 @@ public class Humvee {
         speedInPixel = 5;
     }
 
+
+    /**
+     * Adds the Object to the gameView window.
+     */
     public void addToCanvas() {
         gameView.addTextToCanvas("Objekt 1", position.getX(), position.getY(), size, true, Color.YELLOW, rotation);
     }
 
+
+    /**
+     * Updates the Position of the Object.
+     */
     public void updatePosition() {
         position.right(speedInPixel);
         rotation++;
     }
 
+
+    /**
+     * Creates a String with Name and Position.
+     *
+     * @return created String.
+     */
     @Override
     public String toString() {
         return "Humvee: %s".formatted(position);

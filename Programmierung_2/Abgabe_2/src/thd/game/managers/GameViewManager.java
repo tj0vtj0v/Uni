@@ -4,9 +4,17 @@ import thd.game.utilities.GameView;
 
 import java.awt.*;
 
-public class GameViewManager extends GameView {
-    GameManager gameManager;
 
+/**
+ * Manager for the GameView customization.
+ */
+public class GameViewManager extends GameView {
+    private GameManager gameManager;
+
+
+    /**
+     * Adjustment of the GameView Window according to my Data.
+     */
     @Override
     public void initialize() {
         gameManager = new GameManager(this);
@@ -16,6 +24,10 @@ public class GameViewManager extends GameView {
         changeBackgroundColor(Color.BLACK);
     }
 
+
+    /**
+     * Triggers the UpdateLoop from {@link GameManager}.
+     */
     @Override
     public void gameLoop() {
         gameManager.gameLoopUpdate();

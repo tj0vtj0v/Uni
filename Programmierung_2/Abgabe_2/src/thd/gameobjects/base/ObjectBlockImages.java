@@ -1,7 +1,8 @@
 package thd.gameobjects.base;
 
-public class ObjectBlockImages {
-    public static final String STONE = """
+
+class ObjectBlockImages {
+    static final String STONE = """
                 B B  BBB
                BBBBBBBYB
                BBBBBBBYBB
