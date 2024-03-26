@@ -14,8 +14,6 @@ class GameManager {
     private final Bullet bullet;
     private final Grenade grenade;
 
-    private final RandomBall randomBall;
-    private final FollowerBall followerBall;
 
     protected GameManager(GameView gameView) {
         this.gameView = gameView;
@@ -28,9 +26,6 @@ class GameManager {
 
         bullet = new Bullet(gameView);
         grenade = new Grenade(gameView);
-
-        randomBall = new RandomBall(gameView);
-        followerBall = new FollowerBall(gameView, randomBall);
     }
 
     void gameLoopUpdate() {
@@ -42,12 +37,6 @@ class GameManager {
 
         enemyGunner.updatePosition();
         enemyGunner.addToCanvas();
-
-        randomBall.updatePosition();
-        randomBall.addToCanvas();
-
-        followerBall.updatePosition();
-        followerBall.addToCanvas();
 
         stone.addToCanvas();
     }
