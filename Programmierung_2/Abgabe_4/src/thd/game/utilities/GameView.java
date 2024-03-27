@@ -1827,6 +1827,14 @@ public abstract class GameView {
             colorMap.put('o', Color.ORANGE.darker());
             colorMap.put('W', Color.WHITE);
             colorMap.put('L', Color.BLACK);
+
+            colorMap.put('s', new Color(250, 225, 110)); // Skin color of People
+            colorMap.put('e', new Color(119, 89, 35)); // Color of Enemy Uniforms
+            colorMap.put('v', new Color(255, 243, 26)); // Color of Enemy Equipment
+            colorMap.put('f', new Color(158, 102, 2)); // Fill color of Vehicles
+            colorMap.put('t', new Color(13, 140, 233)); // Color of Friendly People
+            //colorMap.put('g')
+
         }
 
         // Anzeige
