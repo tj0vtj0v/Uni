@@ -2,6 +2,7 @@ package thd.game.managers;
 
 import thd.game.utilities.GameView;
 import thd.gameobjects.movable.*;
+import thd.gameobjects.unmovable.ScoreBoard;
 import thd.gameobjects.unmovable.Stone;
 
 import java.awt.*;
@@ -9,6 +10,7 @@ import java.awt.event.KeyEvent;
 
 public class UserControlledGameObjectPool {
     protected GameView gameView;
+    protected final ScoreBoard scoreBoard;
     protected final Humvee humvee;
     protected final Moped moped;
     protected final Stone stone;
@@ -19,6 +21,8 @@ public class UserControlledGameObjectPool {
 
     protected UserControlledGameObjectPool(GameView gameView) {
         this.gameView = gameView;
+
+        scoreBoard = new ScoreBoard(gameView);
 
         humvee = new Humvee(gameView);
         moped = new Moped(gameView);

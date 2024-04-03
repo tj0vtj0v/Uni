@@ -1,7 +1,7 @@
 package thd.gameobjects.unmovable;
 
 import thd.game.utilities.GameView;
-import thd.gameobjects.base.BlockImages;
+import thd.gameobjects.base.ObjectBlockImages;
 import thd.gameobjects.base.GameObject;
 import thd.gameobjects.movable.Bullet;
 
@@ -20,7 +20,6 @@ public class Stone extends GameObject {
      *
      * @param gameView window in which it has to be displayed.
      */
-
     public Stone(GameView gameView) {
         super(gameView);
 
@@ -34,7 +33,7 @@ public class Stone extends GameObject {
 
     @Override
     public void addToCanvas() {
-        gameView.addBlockImageToCanvas(BlockImages.STONE, position.getX(), position.getY(), size, rotation);
+        gameView.addBlockImageToCanvas(ObjectBlockImages.STONE, position.getX(), position.getY(), size, rotation);
     }
 
     @Override

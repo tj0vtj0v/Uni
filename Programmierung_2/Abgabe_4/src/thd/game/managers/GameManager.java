@@ -30,5 +30,6 @@ class GameManager extends UserControlledGameObjectPool {
         mainCharacter.addToCanvas();
 
         stone.addToCanvas();
+        scoreBoard.addToCanvas();
     }
 }
