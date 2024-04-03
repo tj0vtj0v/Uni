@@ -36,6 +36,7 @@ public class ScoreBoard extends GameObject {
         gameView.addTextToCanvas("SCORE %06d".formatted(0), 0, localYZero + (height - size) / 2, size, true, new Color(81, 66, 245), rotation);
         gameView.addTextToCanvas("MEN %d".formatted(3), GameView.WIDTH / 2.5, localYZero + (height - size) / 2, size, true, new Color(148, 209, 90), rotation);
         gameView.addBlockImageToCanvas(ScoreBoardBlockImages.Grenade, GameView.WIDTH/2, localYZero + (height - size) / 2, 4, rotation);
+        // TODO all
     }
 
 }
