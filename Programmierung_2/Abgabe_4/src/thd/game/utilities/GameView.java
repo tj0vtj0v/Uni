@@ -1809,36 +1809,24 @@ public abstract class GameView {
 
         private void initColorMap() {
             colorMap = new HashMap<>();
-            // colorMap.put('R', Color.RED);
-            // colorMap.put('r', Color.RED.darker());
-            // colorMap.put('G', Color.GREEN);
-            // colorMap.put('g', Color.GREEN.darker());
-            // colorMap.put('B', Color.BLUE);
-            // colorMap.put('b', Color.BLUE.darker());
-            // colorMap.put('Y', Color.YELLOW);
-            // colorMap.put('y', Color.YELLOW.darker());
-            // colorMap.put('P', Color.PINK);
-            // colorMap.put('p', Color.PINK.darker());
-            // colorMap.put('C', Color.CYAN);
-            // colorMap.put('c', Color.CYAN.darker());
-            // colorMap.put('M', Color.MAGENTA);
-            // colorMap.put('m', Color.MAGENTA.darker());
-            // colorMap.put('O', Color.ORANGE);
-            // colorMap.put('o', Color.ORANGE.darker());
-            // colorMap.put('W', Color.WHITE);
-            // colorMap.put('L', Color.BLACK);
-
-            colorMap.put('s', new Color(250, 225, 110)); // Skin color of People
-            colorMap.put('u', new Color(119, 89, 35)); // Color of Enemy Uniforms
-            colorMap.put('e', new Color(255, 243, 26)); // Color of Enemy Equipment
-            colorMap.put('v', new Color(158, 102, 2)); // Fill color of Vehicles
-            colorMap.put('a', new Color(13, 140, 233)); // Color of Allies
-
-            colorMap.put('b', new Color(0, 0, 0)); // Black
-            colorMap.put('g', new Color(64, 64, 64)); // Grey
-            colorMap.put('w', new Color(255, 255, 255)); // White
-
-
+            colorMap.put('R', Color.RED);
+            colorMap.put('r', Color.RED.darker());
+            colorMap.put('G', Color.GREEN);
+            colorMap.put('g', Color.GREEN.darker());
+            colorMap.put('B', Color.BLUE);
+            colorMap.put('b', Color.BLUE.darker());
+            colorMap.put('Y', Color.YELLOW);
+            colorMap.put('y', Color.YELLOW.darker());
+            colorMap.put('P', Color.PINK);
+            colorMap.put('p', Color.PINK.darker());
+            colorMap.put('C', Color.CYAN);
+            colorMap.put('c', Color.CYAN.darker());
+            colorMap.put('M', Color.MAGENTA);
+            colorMap.put('m', Color.MAGENTA.darker());
+            colorMap.put('O', Color.ORANGE);
+            colorMap.put('o', Color.ORANGE.darker());
+            colorMap.put('W', Color.WHITE);
+            colorMap.put('L', Color.BLACK);
         }
 
         // Anzeige
