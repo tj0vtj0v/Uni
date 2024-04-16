@@ -3,6 +3,7 @@ package thd.gameobjects.unmovable;
 
 import thd.game.utilities.GameView;
 import thd.gameobjects.base.GameObject;
+import thd.gameobjects.base.ObjectBlockImages;
 import thd.gameobjects.base.ScoreBoardBlockImages;
 
 import java.awt.*;
@@ -14,7 +15,7 @@ import java.awt.*;
  * not part of the game.
  */
 public class ScoreBoard extends GameObject {
-    private double localYZero;
+    private final double localYZero;
 
     /**
      * Creates Scoreboard with gameView window of presence.
@@ -34,9 +35,12 @@ public class ScoreBoard extends GameObject {
     public void addToCanvas() {
         gameView.addRectangleToCanvas(0, GameView.HEIGHT - height, GameView.WIDTH, height, 0, true, Color.BLACK);
         gameView.addTextToCanvas("SCORE %06d".formatted(0), 0, localYZero + (height - size) / 2, size, true, new Color(81, 66, 245), rotation);
-        gameView.addTextToCanvas("MEN %d".formatted(3), GameView.WIDTH / 2.5, localYZero + (height - size) / 2, size, true, new Color(148, 209, 90), rotation);
-        gameView.addBlockImageToCanvas(ScoreBoardBlockImages.Grenade, GameView.WIDTH/2, localYZero + (height - size) / 2, 4, rotation);
-        // TODO all
+        gameView.addTextToCanvas("MEN %d".formatted(3), GameView.WIDTH / 3f, localYZero + (height - size) / 2, size, true, new Color(148, 209, 90), rotation);
+        gameView.addTextToCanvas("GRENADES %d".formatted(5), GameView.WIDTH / 1.8, localYZero + (height - size) / 2, size, true, new Color(200, 200, 200), rotation);
+        gameView.addTextToCanvas("HI %06d".formatted(0), GameView.WIDTH /1.3, localYZero + (height - size) / 2, size, true, new Color(255, 238, 96), rotation);
+
+
+        gameView.addBlockImageToCanvas(ObjectBlockImages.TREE, GameView.WIDTH/2f, GameView.HEIGHT/2f,4, 0);
     }
 
 }

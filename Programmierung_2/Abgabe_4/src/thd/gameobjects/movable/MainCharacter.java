@@ -1,6 +1,7 @@
 package thd.gameobjects.movable;
 
 import thd.game.utilities.GameView;
+import thd.gameobjects.base.CharacterBlockImages;
 import thd.gameobjects.base.GameObject;
 import thd.gameobjects.base.Position;
 
@@ -58,11 +59,18 @@ public class MainCharacter extends GameObject {
     }
 
     @Override
+    public void updateStatus() {
+        if (gameView.timer(5000, this)) {
+            size++;
+        }
+    }
+
+    @Override
     public void addToCanvas() {
         if (shootInProgress) {
             gameView.addTextToCanvas("X", position.getX(), position.getY(), size * 25, true, Color.BLACK, rotation);
         } else {
-            gameView.addImageToCanvas("main_character/main_down_1.png", position.getX(), position.getY(), size, rotation);
+            gameView.addBlockImageToCanvas(CharacterBlockImages.Main.DOWN_1, position.getX(), position.getY(), size, rotation);
         }
         shootInProgress = false;
     }

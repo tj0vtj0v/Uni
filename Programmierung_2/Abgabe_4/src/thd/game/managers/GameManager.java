@@ -26,6 +26,7 @@ class GameManager extends UserControlledGameObjectPool {
         enemyGunner.updatePosition();
         enemyGunner.addToCanvas();
 
+        mainCharacter.updateStatus();
         mainCharacter.updatePosition();
         mainCharacter.addToCanvas();
 

@@ -28,11 +28,11 @@ public class EnemyGunner extends GameObject {
         width = 0;
         height = 0;
 
-        speedInPixel = 1;
+        speedInPixel = 3;
 
         movementPattern = new RandomMovementPattern();
         position.updateCoordinates(new Position(0, GameView.HEIGHT / 3d));
-        targetPosition.updateCoordinates(movementPattern.nextTargetPosition());
+        targetPosition.updateCoordinates(movementPattern.nextTargetPosition(getPosition()));
     }
 
     @Override
@@ -43,7 +43,7 @@ public class EnemyGunner extends GameObject {
     @Override
     public void updatePosition() {
         if (position.similarTo(targetPosition)) {
-            targetPosition.updateCoordinates(movementPattern.nextTargetPosition());
+            targetPosition.updateCoordinates(movementPattern.nextTargetPosition(getPosition()));
         }
         position.moveToPosition(targetPosition, speedInPixel);
     }

@@ -50,7 +50,7 @@ public class GameObject {
      * @return position of the game object.
      */
     public Position getPosition() {
-        return position;
+        return new Position(position);
     }
 
     /**
