@@ -3,7 +3,7 @@ import math
 from PointMaker import PointMaker
 
 if __name__ == "__main__":
-    for point_maker in (iter(PointMaker(.001)), iter(PointMaker(0, True, 1_000_000))):
+    for point_maker in (iter(PointMaker(.001)), iter(PointMaker(0, True, 10_000_000))):
         inside = 0
         outside = 0
 
