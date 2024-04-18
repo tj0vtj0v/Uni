@@ -13,10 +13,10 @@ import java.awt.*;
  * <p>
  * active linear movement
  * destructible by 1 {@link Grenade} or 1 {@link Bullet}
- * png textured
+ * BlockImage
  */
 public class MainCharacter extends GameObject {
-    private boolean shootInProgress;
+    private boolean shotInProgress;
 
     /**
      * Creates Enemy Gunner with gameView window of presence.
@@ -35,27 +35,42 @@ public class MainCharacter extends GameObject {
 
         position.updateCoordinates(new Position(GameView.WIDTH / 2d - width / 2d, GameView.HEIGHT / 3d * 2));
 
-        shootInProgress = false;
+        shotInProgress = false;
     }
 
+    /**
+     * Moves the character its speed in pixels to the left.
+     */
     public void left() {
         position.left(speedInPixel);
     }
 
+    /**
+     * Moves the character its speed in pixels to the right.
+     */
     public void right() {
         position.right(speedInPixel);
     }
 
+    /**
+     * Moves the character its speed in pixels up.
+     */
     public void up() {
         position.up(speedInPixel);
     }
 
+    /**
+     * Moves the character its speed in pixels down.
+     */
     public void down() {
         position.down(speedInPixel);
     }
 
+    /**
+     * Detects a 'Shoot' action of the character.
+     */
     public void shoot() {
-        shootInProgress = true;
+        shotInProgress = true;
     }
 
     @Override
@@ -67,12 +82,12 @@ public class MainCharacter extends GameObject {
 
     @Override
     public void addToCanvas() {
-        if (shootInProgress) {
+        if (shotInProgress) {
             gameView.addTextToCanvas("X", position.getX(), position.getY(), size * 25, true, Color.BLACK, rotation);
         } else {
             gameView.addBlockImageToCanvas(CharacterBlockImages.Main.DOWN_1, position.getX(), position.getY(), size, rotation);
         }
-        shootInProgress = false;
+        shotInProgress = false;
     }
 
     @Override

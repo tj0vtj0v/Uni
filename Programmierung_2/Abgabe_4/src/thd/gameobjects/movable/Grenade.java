@@ -8,7 +8,7 @@ import thd.gameobjects.base.GameObject;
  * <p>
  * initial influenced parabolic movement
  * indestructible
- * png textured
+ * BlockImage
  */
 public class Grenade extends GameObject {
     /**

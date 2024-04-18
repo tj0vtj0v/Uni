@@ -6,7 +6,7 @@ package thd.gameobjects.base;
 public class ObjectBlockImages {
 
     /**
-     * Blockimage of the Stone.
+     * Blockimage of a stone.
      */
     public static final String STONE = """
                 7 7  777
@@ -23,6 +23,9 @@ public class ObjectBlockImages {
                77777777777
             """;
 
+    /**
+     * Blockimage of an ammobox.
+     */
     public static final String AMMOBOX = """
                   333333
                 33663322
@@ -33,12 +36,50 @@ public class ObjectBlockImages {
             222222
             """;
 
+    /**
+     * Blockimage of a bullet.
+     */
     public static final String BULLET = """
              s
             sss
              s
             """;
 
+    /**
+     * Blockimage of a grenade.
+     */
+    public static final String GRENADE = """
+              771
+             77711
+            777777
+             77777
+             7777
+            """;
+
+    /**
+     * Blockimage of a grenade of a mortar.
+     */
+    public static final String MORTAR_GRENADE = """
+             777771
+            77777111
+            77777711
+             7777111
+              71111
+            """;
+
+    /**
+     * Blockimage of a Rocket.
+     */
+    public static final String ROCKET = """
+            88  88
+              88
+              88
+              88
+            """;
+
+    /**
+     * Blockimage of a humvee.
+     */
     public static final String HUMVEE = """
                               22222
             333333333333333332222222   33333333333
@@ -63,6 +104,9 @@ public class ObjectBlockImages {
                   6666666                6666666
             """;
 
+    /**
+     * Blockimage of a moped.
+     */
     public static final String MOPED = """
                             2222
                           2222222
@@ -88,6 +132,9 @@ public class ObjectBlockImages {
               666666                666666
             """;
 
+    /**
+     * Blockimage of a tree.
+     */
     public static final String TREE = """
             3     33
             333  33     33
@@ -126,4 +173,149 @@ public class ObjectBlockImages {
                   22211
                   22222
             """;
+
+    /**
+     * Blockimage of a mortar.
+     */
+    public static final String MORTAR = """
+                  3333
+                336633
+                333333
+                33333333
+                  333333
+                  333333
+                6666333333
+                6666333333
+              66  66333333
+              66  66  333333
+            66    66  333333
+            66    66  3333
+            """;
+
+    /**
+     * Blockimage of a shooting-box standing on the right.
+     */
+    public static final String SHOOTING_BOX_RIGHT = """
+                  333
+                33333333
+              3333333333333
+            3333333333333333333
+            7777333333333333333333
+            7777777333333333337733
+            7777777777333333773333
+            7777777777777733333333
+            7777777777777733333333
+            7733667777777733333333
+            7733666667777733333333
+            7733666666667733333333
+            7733336666667733333333
+            7777773336667733333333
+            7777777773337733333333
+            7777777777777733333333
+            7777777777777733333333
+            7777777777777733333333
+            7777777777777733333333
+               77777777777333333
+                  777777773333
+                     7777733
+            """;
+
+    /**
+     * Blockimage of a shooting-box standing on the left.
+     */
+    public static final String SHOOTING_BOX_LEFT = """
+                                 333
+                              33333333
+                           3333333333333
+                       3333333333333333333
+                    3333333333333333337777
+                    3377333333333337777777
+                    3333773333337777777777
+                    3333333377777777777777
+                    3333333377777777777777
+                    3333333377777777663377
+                    3333333377777666663377
+                    3333333377666666663377
+                    3333333377666666333377
+                    3333333377666333777777
+                    3333333377333777777777
+                    3333333377777777777777
+                    3333333377777777777777
+                    3333333377777777777777
+                    3333333377777777777777
+                      33333377777777777
+                        333377777777
+                          3377777
+            """;
+
+
+    /**
+     * Generates a Blockimage of a sand sack wall.
+     *
+     * @param segments middle segments of the wall.
+     * @return a string containing the whole wall.
+     */
+    public String wall(int segments) {
+        String[] leftEnd = {
+                "       ",
+                "      7",
+                "      7",
+                "    777",
+                "   7117",
+                "   7111",
+                " 777111",
+                "7117111",
+                "7111777",
+                "7111117",
+                "7111117",
+                "7777771",
+                " 711111",
+                " 711111",
+                "  77777",
+        };
+
+        String[] segment = {
+                "77777 ",
+                "111117",
+                "111117",
+                "111117",
+                "111117",
+                "777771",
+                "117111",
+                "117111",
+                "771777",
+                "111117",
+                "111117",
+                "777771",
+                "711111",
+                "711111",
+                " 77777",
+        };
+
+        String[] rightEnd = {
+                "",
+                "",
+                "",
+                "77",
+                "117",
+                "117",
+                "11777",
+                "117117",
+                "771117",
+                "111117",
+                "111117",
+                "7777717",
+                "1711117",
+                "1711117",
+                "7 7777",
+        };
+
+        StringBuilder result = new StringBuilder();
+
+        for (int index = 0; index < segment.length; index++) {
+            result.append(leftEnd[index]).append(segment[index].repeat(segments)).append(rightEnd[index]).append("\n");
+        }
+
+        return result.toString();
+    }
 }

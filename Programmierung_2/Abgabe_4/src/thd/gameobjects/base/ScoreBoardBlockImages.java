@@ -1,7 +1,7 @@
 package thd.gameobjects.base;
 
-public class ScoreBoardBlockImages {
-    public static final String Grenade = """
+class ScoreBoardBlockImages {
+    public static final String GRENADE = """
              77777
             7 77 77
              7777

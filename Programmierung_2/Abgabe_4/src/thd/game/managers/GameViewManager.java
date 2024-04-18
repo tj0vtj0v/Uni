@@ -27,7 +27,7 @@ public class GameViewManager extends GameView {
     }
 
 
-    public void addBlockimageColors() {
+    private void addBlockimageColors() {
         setColorForBlockImage('1', new Color(250, 225, 110)); // Skin color of People
         setColorForBlockImage('2', new Color(119, 89, 35)); // Color of Enemy Uniforms
         setColorForBlockImage('3', new Color(255, 243, 26)); // Color of Enemy Equipment

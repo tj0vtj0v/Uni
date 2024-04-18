@@ -2,37 +2,28 @@ package thd.game.managers;
 
 import thd.game.utilities.GameView;
 import thd.gameobjects.movable.*;
-import thd.gameobjects.unmovable.ScoreBoard;
-import thd.gameobjects.unmovable.Stone;
+import thd.gameobjects.unmovable.*;
 
 import java.awt.*;
 import java.awt.event.KeyEvent;
 
-public class UserControlledGameObjectPool {
-    protected GameView gameView;
-    protected final ScoreBoard scoreBoard;
-    protected final Humvee humvee;
-    protected final Moped moped;
-    protected final Stone stone;
-    protected final EnemyGunner enemyGunner;
-    protected final MainCharacter mainCharacter;
-    protected final Bullet bullet;
-    protected final Grenade grenade;
+class UserControlledGameObjectPool {
+    protected final GameView gameView;
+    protected Humvee humvee;
+    protected Moped moped;
+    protected ScoreBoard scoreBoard;
+    protected ShootingBox shootingBox;
+    protected Tree tree;
+    protected Wall wall;
+    protected Stone stone;
+    protected MainCharacter mainCharacter;
+    protected EnemyGunner enemyGunner;
+    protected EnemyMortar enemyMortar;
+    protected Bullet bullet;
+    protected Grenade grenade;
 
     protected UserControlledGameObjectPool(GameView gameView) {
         this.gameView = gameView;
-
-        scoreBoard = new ScoreBoard(gameView);
-
-        humvee = new Humvee(gameView);
-        moped = new Moped(gameView);
-        stone = new Stone(gameView);
-
-        enemyGunner = new EnemyGunner(gameView);
-        mainCharacter = new MainCharacter(gameView);
-
-        bullet = new Bullet(gameView);
-        grenade = new Grenade(gameView);
     }
 
     protected void gameLoopUpdate() {

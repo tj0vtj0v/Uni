@@ -3,7 +3,7 @@ package thd.game.bin;
 import thd.game.managers.GameViewManager;
 
 /**
- *  Trigger for the game.
+ * Trigger for the game.
  */
 public class StartGame {
     /**

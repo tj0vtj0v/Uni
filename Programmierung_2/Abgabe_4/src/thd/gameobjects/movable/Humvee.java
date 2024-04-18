@@ -2,6 +2,7 @@ package thd.gameobjects.movable;
 
 import thd.game.utilities.GameView;
 import thd.gameobjects.base.GameObject;
+import thd.gameobjects.base.ObjectBlockImages;
 
 
 /**
@@ -9,7 +10,7 @@ import thd.gameobjects.base.GameObject;
  * <p>
  * passive linear movement
  * destructible by 1 {@link Grenade} or 5 {@link Bullet}
- * png textured
+ * BlockImage
  */
 public class Humvee extends GameObject {
 
@@ -28,14 +29,14 @@ public class Humvee extends GameObject {
 
         speedInPixel = 5;
 
-        HorizontalMovementPattern movementPattern = new HorizontalMovementPattern(GameView.HEIGHT - 100, true);
+        HorizontalMovementPattern movementPattern = new HorizontalMovementPattern(GameView.HEIGHT - 200, true);
         position.updateCoordinates(movementPattern.startPosition());
         targetPosition.updateCoordinates(movementPattern.nextTargetPosition());
     }
 
     @Override
     public void addToCanvas() {
-        gameView.addImageToCanvas("humvee.png", position.getX(), position.getY(), size, rotation);
+        gameView.addBlockImageToCanvas(ObjectBlockImages.HUMVEE, position.getX(), position.getY(), size, rotation);
     }
 
     @Override

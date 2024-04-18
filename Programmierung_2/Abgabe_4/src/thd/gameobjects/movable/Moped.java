@@ -2,6 +2,7 @@ package thd.gameobjects.movable;
 
 import thd.game.utilities.GameView;
 import thd.gameobjects.base.GameObject;
+import thd.gameobjects.base.ObjectBlockImages;
 
 
 /**
@@ -9,7 +10,7 @@ import thd.gameobjects.base.GameObject;
  * <p>
  * passive linear movement
  * destructible by 1 {@link Grenade} or 3 {@link Bullet}
- * png textured
+ * BlockImage
  */
 public class Moped extends GameObject {
 
@@ -36,7 +37,7 @@ public class Moped extends GameObject {
 
     @Override
     public void addToCanvas() {
-        gameView.addImageToCanvas("moped.png", position.getX(), position.getY(), size, rotation);
+        gameView.addBlockImageToCanvas(ObjectBlockImages.MOPED, position.getX(), position.getY(), size, rotation);
     }
 
     @Override

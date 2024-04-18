@@ -39,7 +39,7 @@ public class GameObject {
     }
 
     /**
-     * Changes the status of an Object
+     * Changes the status of an Object.
      */
     public void updateStatus() {
     }
