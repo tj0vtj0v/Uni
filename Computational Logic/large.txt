@@ -1,0 +1,8 @@
+size(fr,65).
+size(ger,83).
+size(uk,61).
+size(it,64).
+size(rus,142).
+
+largerThanUK(C) :- size(C,S1), size(uk,S2), S1 > S2.
+large(C) :- size(C,S1), S1 > 500.
