@@ -1,0 +1,18 @@
+%%% necessary %%%
+frame().          %forms, strengts, materials
+saddle().         %forms and materials
+seatPost().       %heights
+handlebar().      %forms
+shockAbsorber().  %front & back
+fork().           %forms, sizes
+wheel().          %sizes
+tube().           %materials, specifications and sizes
+pedal().          %forms
+transmission().   %type and displacement
+chain().          %type and material
+brakes().         %sizes and types
+
+%%% optional %%%
+light().          %lights and mounts
+reflectors().     %types and sizes
+securityChain().  %sizes, types and securityLabel
