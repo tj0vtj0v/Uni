@@ -1,0 +1,23 @@
+person(a; b; c; d; e; f; g; h; i; j).
+
+friend(a, b; a, c; a, f; a, h; a, i).
+friend(d, e; d, f).
+friend(e, f; e, j; e, b; e, d).
+friend(j, a, j, d).
+friend(c, b; c, f; c, d).
+friend(i, g; i, a; i, d).
+friend(g, a; g, b).
+
+dislike(a, d).
+dislike(b, c).
+dislike(i, j).
+dislike(j, i).
+dislike(f, c).
+dislike(c, a).
+
+party(a).
+
+invited(X) :- party(Y), friend(X, Y).
+invited(X) :- party(Y), friend(Y, X).
+
+#show invited/1.
