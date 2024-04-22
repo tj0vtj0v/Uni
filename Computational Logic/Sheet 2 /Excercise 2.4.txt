@@ -1,0 +1,7 @@
+person(a;c;d;e;g;i;j;l;m;o;s;t;w).
+car(a, 6).
+car(b, 5).
+car(c, 2).
+license(i;j;l;m;o).
+
+#TODO
