@@ -24,7 +24,7 @@ class LinearMovementPattern extends MovementPattern {
     protected Position nextTargetPosition(Position... referencePositions) {
         final double oldX = startPosition.getX();
         final double oldY = startPosition.getY();
-        final double saveDistance = GameView.WIDTH / 2f;
+        final double saveDistance = GameView.WIDTH * 2;
 
 
         return switch (direction) {
