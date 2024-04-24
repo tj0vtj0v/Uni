@@ -4,7 +4,6 @@ import thd.game.utilities.GameView;
 import thd.gameobjects.movable.*;
 import thd.gameobjects.unmovable.*;
 
-import java.awt.*;
 import java.awt.event.KeyEvent;
 
 class UserControlledGameObjectPool {
@@ -16,11 +15,9 @@ class UserControlledGameObjectPool {
     protected Tree tree;
     protected Wall wall;
     protected Stone stone;
-    protected MainCharacter mainCharacter;
+    protected MainCharacterUnluckyLuke mainCharacter;
     protected EnemyGunner enemyGunner;
     protected EnemyMortar enemyMortar;
-    protected Bullet bullet;
-    protected Grenade grenade;
 
     protected UserControlledGameObjectPool(GameView gameView) {
         this.gameView = gameView;

@@ -20,6 +20,7 @@ public class EnemyGunner extends GameObject {
      * Creates Enemy Gunner with gameView window of presence.
      *
      * @param gameView window in which it has to be displayed.
+     * @param gamePlayManager  GamePlayManager to manage the game actions.
      */
     public EnemyGunner(GameView gameView, GamePlayManager gamePlayManager) {
         super(gameView, gamePlayManager);

@@ -2,10 +2,7 @@ package thd.gameobjects.movable;
 
 import thd.game.managers.GamePlayManager;
 import thd.game.utilities.GameView;
-import thd.gameobjects.base.CharacterBlockImages;
-import thd.gameobjects.base.Direction;
-import thd.gameobjects.base.GameObject;
-import thd.gameobjects.base.Position;
+import thd.gameobjects.base.*;
 
 
 /**
@@ -15,15 +12,18 @@ import thd.gameobjects.base.Position;
  * destructible by 1 {@link Grenade} or 1 {@link Bullet}
  * BlockImage
  */
-public class MainCharacter extends GameObject {
+public class MainCharacterUnluckyLuke extends GameObject implements MainCharacter{
+    private final int shotDurationInMilliseconds;
+
     /**
      * Creates Enemy Gunner with gameView window of presence.
      *
      * @param gameView        window in which it has to be displayed.
      * @param gamePlayManager GamePlayManager to manage the game actions.
      */
-    public MainCharacter(GameView gameView, GamePlayManager gamePlayManager) {
+    public MainCharacterUnluckyLuke(GameView gameView, GamePlayManager gamePlayManager) {
         super(gameView, gamePlayManager);
+        shotDurationInMilliseconds = 300;
 
         size = 3;
         rotation = 0;
@@ -33,6 +33,7 @@ public class MainCharacter extends GameObject {
         speedInPixel = 2;
 
         position.updateCoordinates(new Position(GameView.WIDTH / 2d - width / 2d, GameView.HEIGHT / 3d * 2));
+        shoot();
     }
 
     /**
@@ -63,16 +64,21 @@ public class MainCharacter extends GameObject {
         position.down(speedInPixel);
     }
 
-    /**
-     * Detects a 'Shoot' action of the character.
-     */
+    @Override
     public void shoot() {
-        gamePlayManager.spawnGameObject(new Bullet(gameView, gamePlayManager, getPosition(), Direction.down));
+        if (gameView.timer(shotDurationInMilliseconds, this)) {
+            gamePlayManager.spawnGameObject(new Bullet(gameView, gamePlayManager, new Position(position.getX() + 7, position.getY() + 36), Direction.down));
+        }
     }
 
     @Override
     public void addToCanvas() {
         gameView.addBlockImageToCanvas(CharacterBlockImages.Main.DOWN_1, position.getX(), position.getY(), size, rotation);
+    }
+
+    @Override
+    public void updateStatus() {
+        super.updateStatus();
     }
 
     @Override

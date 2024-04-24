@@ -6,7 +6,7 @@ import thd.game.utilities.GameView;
 /**
  * Represents an object in the game.
  */
-public class GameObject {
+public abstract class GameObject {
     protected final GameView gameView;
     protected final GamePlayManager gamePlayManager;
     protected final Position position;
@@ -40,8 +40,7 @@ public class GameObject {
     /**
      * Draws the game object to the canvas.
      */
-    public void addToCanvas() {
-    }
+    public abstract void addToCanvas();
 
     /**
      * Changes the status of an Object.

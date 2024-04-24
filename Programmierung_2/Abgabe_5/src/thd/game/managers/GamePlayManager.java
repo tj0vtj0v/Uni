@@ -4,6 +4,9 @@ import thd.game.utilities.GameView;
 import thd.gameobjects.base.GameObject;
 import thd.gameobjects.movable.Square;
 
+/**
+ * Manages the whole plot of the game.
+ */
 public class GamePlayManager extends UserControlledGameObjectPool{
     private final GameObjectManager gameObjectManager;
     private int currentNumberOfVisibleSquares;
@@ -13,7 +16,7 @@ public class GamePlayManager extends UserControlledGameObjectPool{
      *
      * @param gameView window to manage.
      */
-    public GamePlayManager(GameView gameView) {
+    protected GamePlayManager(GameView gameView) {
         super(gameView);
 
         this.gameObjectManager = new GameObjectManager();

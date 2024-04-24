@@ -19,13 +19,10 @@ class GameManager extends GamePlayManager {
         tree = new Tree(gameView, this);
         wall = new Wall(gameView, this);
 
-        mainCharacter = new MainCharacter(gameView, this);
+        mainCharacter = new MainCharacterUnluckyLuke(gameView, this);
 
         enemyGunner = new EnemyGunner(gameView, this);
         enemyMortar = new EnemyMortar(gameView, this);
-
-        bullet = new Bullet(gameView, this);
-        grenade = new Grenade(gameView, this);
 
         spawnGameObject(humvee);
         spawnGameObject(moped);
@@ -33,7 +30,6 @@ class GameManager extends GamePlayManager {
         spawnGameObject(enemyGunner);
         spawnGameObject(enemyMortar);
         spawnGameObject(mainCharacter);
-        spawnGameObject(bullet);
         spawnGameObject(stone);
         spawnGameObject(tree);
         spawnGameObject(wall);
@@ -43,7 +39,10 @@ class GameManager extends GamePlayManager {
     @Override
     protected void gameLoopUpdate() {
         super.gameLoopUpdate();
-        //gameManagement();
+        gameManagement();
+    }
+
+    private void gameManagement() {
     }
 }
 

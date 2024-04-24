@@ -1,7 +1,6 @@
 package thd.gameobjects.movable;
 
 
-import thd.game.bin.StartGame;
 import thd.game.managers.GamePlayManager;
 import thd.game.utilities.GameView;
 import thd.gameobjects.base.Direction;
@@ -22,7 +21,7 @@ public class Bullet extends GameObject {
      *
      * @param gameView        GameView to show the bullet on.
      * @param gamePlayManager GamePlayManager to manage the game actions.
-     * @param originPosition        Position from which to start movement.
+     * @param originPosition  Position from which to start movement.
      * @param direction       Direction in which the bullet should travel.
      */
     public Bullet(GameView gameView, GamePlayManager gamePlayManager, Position originPosition, Direction direction) {
@@ -47,7 +46,7 @@ public class Bullet extends GameObject {
      * @param gamePlayManager GamePlayManager to manage the game actions.
      */
     public Bullet(GameView gameView, GamePlayManager gamePlayManager) {
-        this(gameView, gamePlayManager, new Position(0, 100), Direction.right);
+        this(gameView, gamePlayManager, new Position(0, 100), Direction.down);
     }
 
     @Override
@@ -58,5 +57,12 @@ public class Bullet extends GameObject {
     @Override
     public void updatePosition() {
         position.moveToPosition(targetPosition, speedInPixel);
+    }
+
+    @Override
+    public void updateStatus() {
+        if (0 > position.getY() || position.getY() > GameView.HEIGHT || 0 > position.getX() || position.getX() > GameView.WIDTH) {
+            gamePlayManager.destroyGameObject(this);
+        }
     }
 }

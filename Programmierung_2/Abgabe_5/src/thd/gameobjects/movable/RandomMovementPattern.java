@@ -1,6 +1,7 @@
 package thd.gameobjects.movable;
 
 import thd.game.utilities.GameView;
+import thd.gameobjects.base.Direction;
 import thd.gameobjects.base.MovementPattern;
 import thd.gameobjects.base.Position;
 
@@ -19,64 +20,43 @@ class RandomMovementPattern extends MovementPattern {
     @Override
     protected Position nextTargetPosition(Position... referencePositions) {
         Position targetPosition = new Position(referencePositions[0]);
-        int maximumDistance;
-        int stepSizeInPixel;
+        int distance = random.nextInt(150, 720);
 
-        switch (random.nextInt(8)) {
-            case 0:
-                maximumDistance = (int) targetPosition.getX() + 1;
-                stepSizeInPixel = random.nextInt(maximumDistance);
-
-                targetPosition.left(stepSizeInPixel);
+        switch (Direction.values()[random.nextInt(Direction.values().length)]) {
+            case left:
+                targetPosition.left(distance);
                 break;
-            case 1:
-                maximumDistance = (int) (GameView.WIDTH - targetPosition.getX()) + 1;
-                stepSizeInPixel = random.nextInt(maximumDistance);
-
-                targetPosition.right(stepSizeInPixel);
+            case right:
+                targetPosition.right(distance);
                 break;
-            case 2:
-                maximumDistance = (int) targetPosition.getY() + 1;
-                stepSizeInPixel = random.nextInt(maximumDistance);
-
-                targetPosition.up(stepSizeInPixel);
+            case up:
+                targetPosition.up(distance);
                 break;
-            case 3:
-                maximumDistance = (int) (GameView.HEIGHT - targetPosition.getY()) + 1;
-                stepSizeInPixel = random.nextInt(maximumDistance);
-
-                targetPosition.down(stepSizeInPixel);
+            case down:
+                targetPosition.down(distance);
                 break;
-            case 4:
-                maximumDistance = (int) Math.min(targetPosition.getX(), targetPosition.getY()) + 1;
-                stepSizeInPixel = random.nextInt(maximumDistance);
-
-                targetPosition.left(stepSizeInPixel);
-                targetPosition.up(stepSizeInPixel);
+            case upLeft:
+                targetPosition.left(distance);
+                targetPosition.up(distance);
                 break;
-            case 5:
-                maximumDistance = (int) Math.min(GameView.WIDTH - targetPosition.getX(), targetPosition.getY()) + 1;
-                stepSizeInPixel = random.nextInt(maximumDistance);
-
-                targetPosition.right(stepSizeInPixel);
-                targetPosition.up(stepSizeInPixel);
+            case upRight:
+                targetPosition.right(distance);
+                targetPosition.up(distance);
                 break;
-            case 6:
-                maximumDistance = (int) Math.min(GameView.WIDTH - targetPosition.getX(), GameView.HEIGHT - targetPosition.getY()) + 1;
-                stepSizeInPixel = random.nextInt(maximumDistance);
-
-                targetPosition.right(stepSizeInPixel);
-                targetPosition.down(stepSizeInPixel);
+            case downRight:
+                targetPosition.right(distance);
+                targetPosition.down(distance);
                 break;
-            case 7:
-                maximumDistance = (int) Math.min(targetPosition.getX(), GameView.HEIGHT - targetPosition.getY()) + 1;
-                stepSizeInPixel = random.nextInt(maximumDistance);
-
-                targetPosition.left(stepSizeInPixel);
-                targetPosition.down(stepSizeInPixel);
+            case downLeft:
+                targetPosition.left(distance);
+                targetPosition.down(distance);
                 break;
         }
 
-        return targetPosition;
+        if (targetPosition.getX() > 0 && targetPosition.getY() > 0 && targetPosition.getY() < GameView.HEIGHT && targetPosition.getX() < GameView.WIDTH) {
+            return targetPosition;
+        } else {
+            return nextTargetPosition(referencePositions);
+        }
     }
 }
