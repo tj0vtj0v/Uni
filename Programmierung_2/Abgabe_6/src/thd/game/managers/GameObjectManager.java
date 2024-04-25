@@ -28,6 +28,8 @@ class GameObjectManager extends CollisionManager {
             gameObject.updatePosition();
             gameObject.addToCanvas();
         }
+
+        manageCollisions(true);
     }
 
     private void updateLists() {
@@ -40,12 +42,18 @@ class GameObjectManager extends CollisionManager {
     }
 
     private void removeFromGameObjects() {
-        gameObjects.removeAll(gameObjectsToBeRemoved);
+        for (GameObject gameObject : gameObjectsToBeRemoved) {
+            gameObjects.remove(gameObject);
+            removeFromCollisionManagement(gameObject);
+        }
         gameObjectsToBeRemoved.clear();
     }
 
     private void addToGameObjects() {
-        gameObjects.addAll(gameObjectsToBeAdded);
+        for (GameObject gameObject : gameObjectsToBeAdded) {
+            gameObjects.add(gameObject);
+            addToCollisionManagement(gameObject);
+        }
         gameObjectsToBeAdded.clear();
     }
 

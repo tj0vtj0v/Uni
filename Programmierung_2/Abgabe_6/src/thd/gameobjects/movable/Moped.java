@@ -24,12 +24,15 @@ public class Moped extends CollidingGameObject {
     public Moped(GameView gameView, GamePlayManager gamePlayManager) {
         super(gameView, gamePlayManager);
 
+        blockImage = ObjectBlockImages.MOPED;
+
         size = 3;
         rotation = 0;
-        width = 0;
-        height = 0;
+        width = generateWidthFromBlockImage() * size;
+        height = generateHeightFromBlockImage() * size;
+        hitBoxOffsets(3, 24, -6, -33);
 
-        speedInPixel = 2;
+        speedInPixel = 1;
 
         LinearMovementPattern movementPattern = new LinearMovementPattern(Direction.LEFT, new Position(GameView.WIDTH, GameView.HEIGHT / 8f));
         position.updateCoordinates(movementPattern.startPosition());
@@ -43,7 +46,7 @@ public class Moped extends CollidingGameObject {
 
     @Override
     public void addToCanvas() {
-        gameView.addBlockImageToCanvas(ObjectBlockImages.MOPED, position.getX(), position.getY(), size, rotation);
+        gameView.addBlockImageToCanvas(blockImage, position.getX(), position.getY(), size, rotation);
     }
 
     @Override

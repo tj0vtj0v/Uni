@@ -74,7 +74,7 @@ public abstract class CollidingGameObject extends GameObject {
      */
     public void showHitBox() {
         if (hitBoxRectangle.width > 0 && hitBoxRectangle.height > 0) {
-            gameView.addRectangleToCanvas(hitBoxRectangle.x, hitBoxRectangle.y, hitBoxRectangle.width, hitBoxRectangle.height, 2, false, Color.RED);
+            gameView.addRectangleToCanvas(hitBoxRectangle.x, hitBoxRectangle.y, hitBoxRectangle.width, hitBoxRectangle.height, 1, false, Color.RED);
         }
     }
 }

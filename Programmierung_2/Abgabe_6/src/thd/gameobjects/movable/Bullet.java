@@ -24,12 +24,16 @@ public class Bullet extends CollidingGameObject {
     public Bullet(GameView gameView, GamePlayManager gamePlayManager, Position originPosition, Direction direction) {
         super(gameView, gamePlayManager);
 
+        blockImage = ObjectBlockImages.BULLET;
+
         size = 3;
         rotation = 0;
-        width = 0;
-        height = 0;
+        width = generateWidthFromBlockImage() * size;
+        height = generateHeightFromBlockImage() * size;
+        hitBoxOffsets(1, 1, -2, -2);
 
-        speedInPixel = 5;
+        speedInPixel = 10
+        ;
 
         LinearMovementPattern movementPattern = new LinearMovementPattern(direction, originPosition);
         position.updateCoordinates(movementPattern.startPosition());
@@ -53,7 +57,7 @@ public class Bullet extends CollidingGameObject {
 
     @Override
     public void addToCanvas() {
-        gameView.addBlockImageToCanvas(ObjectBlockImages.BULLET, position.getX(), position.getY(), size, rotation);
+        gameView.addBlockImageToCanvas(blockImage, position.getX(), position.getY(), size, rotation);
     }
 
     @Override

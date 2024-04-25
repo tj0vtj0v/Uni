@@ -11,6 +11,7 @@ public abstract class GameObject {
     protected final GamePlayManager gamePlayManager;
     protected final Position position;
     protected final Position targetPosition;
+    protected String blockImage;
     protected double speedInPixel;
     protected double rotation;
     protected double size;
@@ -73,5 +74,18 @@ public abstract class GameObject {
      */
     public double getHeight() {
         return height;
+    }
+
+    protected int generateWidthFromBlockImage() {
+        int maximumLineLength = 0;
+        for (String line : blockImage.split("\n")) {
+            maximumLineLength = Math.max(maximumLineLength, line.length());
+        }
+
+        return maximumLineLength;
+    }
+
+    protected int generateHeightFromBlockImage() {
+        return blockImage.split("\n").length;
     }
 }

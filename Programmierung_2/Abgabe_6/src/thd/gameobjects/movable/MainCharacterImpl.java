@@ -25,10 +25,13 @@ public class MainCharacterImpl extends CollidingGameObject implements MainCharac
         super(gameView, gamePlayManager);
         shotDurationInMilliseconds = 300;
 
+        blockImage = CharacterBlockImages.Main.DOWN_1;
+
         size = 3;
         rotation = 0;
-        width = 0;
-        height = 0;
+        width = generateWidthFromBlockImage() * size;
+        height = generateHeightFromBlockImage() * size;
+        hitBoxOffsets(6, 6, -12, -12);
 
         speedInPixel = 2;
 
@@ -78,7 +81,7 @@ public class MainCharacterImpl extends CollidingGameObject implements MainCharac
 
     @Override
     public void addToCanvas() {
-        gameView.addBlockImageToCanvas(CharacterBlockImages.Main.DOWN_1, position.getX(), position.getY(), size, rotation);
+        gameView.addBlockImageToCanvas(blockImage, position.getX(), position.getY(), size, rotation);
     }
 
     @Override

@@ -23,14 +23,17 @@ public class Humvee extends CollidingGameObject {
     public Humvee(GameView gameView, GamePlayManager gamePlayManager) {
         super(gameView, gamePlayManager);
 
+        blockImage = ObjectBlockImages.HUMVEE;
+
         size = 3;
         rotation = 0;
-        width = 0;
-        height = 0;
+        width = generateWidthFromBlockImage() * size;
+        height = generateHeightFromBlockImage() * size;
+        hitBoxOffsets(0, 3, -12, -12);
 
-        speedInPixel = 5;
+        speedInPixel = 1;
 
-        LinearMovementPattern movementPattern = new LinearMovementPattern(Direction.RIGHT, new Position(0, GameView.HEIGHT / 2));
+        LinearMovementPattern movementPattern = new LinearMovementPattern(Direction.RIGHT, new Position(0, GameView.HEIGHT / 2f));
         position.updateCoordinates(movementPattern.startPosition());
         targetPosition.updateCoordinates(movementPattern.nextTargetPosition());
     }
@@ -42,7 +45,7 @@ public class Humvee extends CollidingGameObject {
 
     @Override
     public void addToCanvas() {
-        gameView.addBlockImageToCanvas(ObjectBlockImages.HUMVEE, position.getX(), position.getY(), size, rotation);
+        gameView.addBlockImageToCanvas(blockImage, position.getX(), position.getY(), size, rotation);
     }
 
     @Override

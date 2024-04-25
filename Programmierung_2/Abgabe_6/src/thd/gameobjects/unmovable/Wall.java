@@ -3,7 +3,6 @@ package thd.gameobjects.unmovable;
 import thd.game.managers.GamePlayManager;
 import thd.game.utilities.GameView;
 import thd.gameobjects.base.CollidingGameObject;
-import thd.gameobjects.base.GameObject;
 import thd.gameobjects.base.ObjectBlockImages;
 import thd.gameobjects.movable.Bullet;
 
@@ -20,16 +19,19 @@ public class Wall extends CollidingGameObject {
     /**
      * Creates Wall with gameView window of presence.
      *
-     * @param gameView window in which it has to be displayed.
+     * @param gameView        window in which it has to be displayed.
      * @param gamePlayManager GamePlayManager to manage the game actions.
      */
     public Wall(GameView gameView, GamePlayManager gamePlayManager) {
         super(gameView, gamePlayManager);
 
+        blockImage = new ObjectBlockImages().wall(5);
+
         size = 3;
         rotation = 0;
-        width = 16;
-        height = 0;
+        width = generateWidthFromBlockImage() * size;
+        height = generateHeightFromBlockImage() * size;
+        hitBoxOffsets(15, 3, -33, -6);
 
         position.updateCoordinates(GameView.WIDTH - 400, 300);
     }
@@ -41,7 +43,7 @@ public class Wall extends CollidingGameObject {
 
     @Override
     public void addToCanvas() {
-        gameView.addBlockImageToCanvas(new ObjectBlockImages().wall(5), position.getX(), position.getY(), size, rotation);
+        gameView.addBlockImageToCanvas(blockImage, position.getX(), position.getY(), size, rotation);
     }
 
     @Override

@@ -2,8 +2,8 @@ package thd.gameobjects.movable;
 
 import thd.game.managers.GamePlayManager;
 import thd.game.utilities.GameView;
+import thd.gameobjects.base.CharacterBlockImages;
 import thd.gameobjects.base.CollidingGameObject;
-import thd.gameobjects.base.GameObject;
 import thd.gameobjects.base.Position;
 
 
@@ -20,16 +20,19 @@ public class EnemyGunner extends CollidingGameObject {
     /**
      * Creates Enemy Gunner with gameView window of presence.
      *
-     * @param gameView window in which it has to be displayed.
-     * @param gamePlayManager  GamePlayManager to manage the game actions.
+     * @param gameView        window in which it has to be displayed.
+     * @param gamePlayManager GamePlayManager to manage the game actions.
      */
     public EnemyGunner(GameView gameView, GamePlayManager gamePlayManager) {
         super(gameView, gamePlayManager);
 
+        blockImage = CharacterBlockImages.Enemy.Mortar.NORMAL;
+
         size = 3;
         rotation = 0;
-        width = 0;
-        height = 0;
+        width = generateWidthFromBlockImage() * size;
+        height = generateHeightFromBlockImage() * size;
+        hitBoxOffsets(21, 3, -24, -6);
 
         speedInPixel = 3;
 
@@ -45,7 +48,8 @@ public class EnemyGunner extends CollidingGameObject {
 
     @Override
     public void addToCanvas() {
-        gameView.addImageToCanvas("main_character/main_downleft_1.png", position.getX(), position.getY(), size, rotation);
+        gameView.addBlockImageToCanvas(blockImage
+                , position.getX(), position.getY(), size, rotation);
     }
 
     @Override
