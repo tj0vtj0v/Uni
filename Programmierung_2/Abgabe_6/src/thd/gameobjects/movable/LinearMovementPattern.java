@@ -28,14 +28,14 @@ class LinearMovementPattern extends MovementPattern {
 
 
         return switch (direction) {
-            case up -> new Position(oldX, oldY - saveDistance);
-            case down -> new Position(oldX, oldY + saveDistance);
-            case left -> new Position(oldX - saveDistance, oldY);
-            case right -> new Position(oldX + saveDistance, oldY);
-            case upLeft -> new Position(oldX - saveDistance, oldY - saveDistance);
-            case upRight -> new Position(oldX + saveDistance, oldY - saveDistance);
-            case downLeft -> new Position(oldX - saveDistance, oldY + saveDistance);
-            case downRight -> new Position(oldX + saveDistance, oldY + saveDistance);
+            case UP -> new Position(oldX, oldY - saveDistance);
+            case DOWN -> new Position(oldX, oldY + saveDistance);
+            case LEFT -> new Position(oldX - saveDistance, oldY);
+            case RIGHT -> new Position(oldX + saveDistance, oldY);
+            case UP_LEFT -> new Position(oldX - saveDistance, oldY - saveDistance);
+            case UP_RIGHT -> new Position(oldX + saveDistance, oldY - saveDistance);
+            case DOWN_LEFT -> new Position(oldX - saveDistance, oldY + saveDistance);
+            case DOWN_RIGHT -> new Position(oldX + saveDistance, oldY + saveDistance);
         };
     }
 }

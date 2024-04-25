@@ -7,33 +7,33 @@ public enum Direction {
     /**
      * Represents the direction 'left'.
      */
-    left,
+    LEFT,
     /**
      * Represents the direction 'right'.
      */
-    right,
+    RIGHT,
     /**
      * Represents the direction 'up'.
      */
-    up,
+    UP,
     /**
      * Represents the direction 'down'.
      */
-    down,
+    DOWN,
     /**
      * Represents the diagonal direction 'right' and 'up'.
      */
-    upRight,
+    UP_RIGHT,
     /**
      * Represents the diagonal direction 'left' and 'up'.
      */
-    upLeft,
+    UP_LEFT,
     /**
      * Represents the diagonal direction 'right' and 'down'.
      */
-    downRight,
+    DOWN_RIGHT,
     /**
      * Represents the diagonal direction 'left' and 'down'.
      */
-    downLeft
+    DOWN_LEFT
 }

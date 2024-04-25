@@ -23,31 +23,31 @@ class RandomMovementPattern extends MovementPattern {
         int distance = random.nextInt(150, 720);
 
         switch (Direction.values()[random.nextInt(Direction.values().length)]) {
-            case left:
+            case LEFT:
                 targetPosition.left(distance);
                 break;
-            case right:
+            case RIGHT:
                 targetPosition.right(distance);
                 break;
-            case up:
+            case UP:
                 targetPosition.up(distance);
                 break;
-            case down:
+            case DOWN:
                 targetPosition.down(distance);
                 break;
-            case upLeft:
+            case UP_LEFT:
                 targetPosition.left(distance);
                 targetPosition.up(distance);
                 break;
-            case upRight:
+            case UP_RIGHT:
                 targetPosition.right(distance);
                 targetPosition.up(distance);
                 break;
-            case downRight:
+            case DOWN_RIGHT:
                 targetPosition.right(distance);
                 targetPosition.down(distance);
                 break;
-            case downLeft:
+            case DOWN_LEFT:
                 targetPosition.left(distance);
                 targetPosition.down(distance);
                 break;

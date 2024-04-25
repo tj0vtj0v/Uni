@@ -72,7 +72,7 @@ public class MainCharacterImpl extends CollidingGameObject implements MainCharac
     @Override
     public void shoot() {
         if (gameView.timer(shotDurationInMilliseconds, this)) {
-            gamePlayManager.spawnGameObject(new Bullet(gameView, gamePlayManager, new Position(position.getX() + 7, position.getY() + 36), Direction.down));
+            gamePlayManager.spawnGameObject(new Bullet(gameView, gamePlayManager, new Position(position.getX() + 7, position.getY() + 36), Direction.DOWN));
         }
     }
 

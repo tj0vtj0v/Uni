@@ -31,7 +31,7 @@ public class Moped extends CollidingGameObject {
 
         speedInPixel = 2;
 
-        LinearMovementPattern movementPattern = new LinearMovementPattern(Direction.left, new Position(GameView.WIDTH, GameView.HEIGHT / 8f));
+        LinearMovementPattern movementPattern = new LinearMovementPattern(Direction.LEFT, new Position(GameView.WIDTH, GameView.HEIGHT / 8f));
         position.updateCoordinates(movementPattern.startPosition());
         targetPosition.updateCoordinates(movementPattern.nextTargetPosition());
     }

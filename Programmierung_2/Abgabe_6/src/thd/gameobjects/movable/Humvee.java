@@ -30,7 +30,7 @@ public class Humvee extends CollidingGameObject {
 
         speedInPixel = 5;
 
-        LinearMovementPattern movementPattern = new LinearMovementPattern(Direction.right, new Position(0, GameView.HEIGHT / 2));
+        LinearMovementPattern movementPattern = new LinearMovementPattern(Direction.RIGHT, new Position(0, GameView.HEIGHT / 2));
         position.updateCoordinates(movementPattern.startPosition());
         targetPosition.updateCoordinates(movementPattern.nextTargetPosition());
     }

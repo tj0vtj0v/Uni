@@ -43,7 +43,7 @@ public class Bullet extends CollidingGameObject {
      * @param gamePlayManager GamePlayManager to manage the game actions.
      */
     public Bullet(GameView gameView, GamePlayManager gamePlayManager) {
-        this(gameView, gamePlayManager, new Position(0, 100), Direction.down);
+        this(gameView, gamePlayManager, new Position(0, 100), Direction.DOWN);
     }
 
     @Override
