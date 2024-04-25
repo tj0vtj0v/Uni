@@ -33,14 +33,16 @@ public class EnemyMortar extends CollidingGameObject {
         rotation = 0;
         width = generateWidthFromBlockImage() * size;
         height = generateHeightFromBlockImage() * size;
-        hitBoxOffsets(3, 3, -6, -6);
+        hitBoxOffsets(3, 3, -6, -18);
 
         position.updateCoordinates(GameView.WIDTH - 200, 200);
     }
 
     @Override
     public void reactToCollisionWith(CollidingGameObject other) {
-
+        if (other instanceof Bullet) {
+            gamePlayManager.destroyGameObject(this);
+        }
     }
 
     @Override

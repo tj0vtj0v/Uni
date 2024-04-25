@@ -13,6 +13,7 @@ import thd.gameobjects.base.*;
  * BlockImage
  */
 public class Moped extends CollidingGameObject {
+    private int hitTolerance = 3;
 
 
     /**
@@ -30,7 +31,7 @@ public class Moped extends CollidingGameObject {
         rotation = 0;
         width = generateWidthFromBlockImage() * size;
         height = generateHeightFromBlockImage() * size;
-        hitBoxOffsets(3, 24, -6, -33);
+        hitBoxOffsets(3, 15, -6, -42);
 
         speedInPixel = 1;
 
@@ -41,7 +42,13 @@ public class Moped extends CollidingGameObject {
 
     @Override
     public void reactToCollisionWith(CollidingGameObject other) {
+        if (other instanceof Bullet) {
+            hitTolerance--;
 
+            if (hitTolerance <= 0) {
+                gamePlayManager.destroyGameObject(this);
+            }
+        }
     }
 
     @Override

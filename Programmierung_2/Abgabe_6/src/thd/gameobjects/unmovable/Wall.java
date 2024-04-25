@@ -31,7 +31,7 @@ public class Wall extends CollidingGameObject {
         rotation = 0;
         width = generateWidthFromBlockImage() * size;
         height = generateHeightFromBlockImage() * size;
-        hitBoxOffsets(15, 3, -33, -6);
+        hitBoxOffsets(15, 3, -33, -18);
 
         position.updateCoordinates(GameView.WIDTH - 400, 300);
     }

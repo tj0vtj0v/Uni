@@ -16,12 +16,14 @@ import thd.gameobjects.movable.Grenade;
  * BlockImage
  */
 public class ShootingBox extends CollidingGameObject {
+    private int hitTolerance = 2;
 
     /**
      * Creates ShootingBox with gameView window of presence.
      *
      * @param gameView        window in which it has to be displayed.
      * @param gamePlayManager GamePlayManager to manage the game actions.
+     * @param hitTolerance
      */
     public ShootingBox(GameView gameView, GamePlayManager gamePlayManager) {
         super(gameView, gamePlayManager);
@@ -32,14 +34,20 @@ public class ShootingBox extends CollidingGameObject {
         rotation = 0;
         width = generateWidthFromBlockImage() * size;
         height = generateHeightFromBlockImage() * size;
-        hitBoxOffsets(3, 3, -6, -6);
+        hitBoxOffsets(3, 3, -6, -18);
 
         position.updateCoordinates(50, 100);
     }
 
     @Override
     public void reactToCollisionWith(CollidingGameObject other) {
+        if (other instanceof Bullet) {
+            hitTolerance--;
 
+            if (hitTolerance <= 0) {
+                gamePlayManager.destroyGameObject(this);
+            }
+        }
     }
 
     @Override

@@ -4,7 +4,10 @@ import thd.game.managers.GamePlayManager;
 import thd.game.utilities.GameView;
 import thd.gameobjects.base.CharacterBlockImages;
 import thd.gameobjects.base.CollidingGameObject;
+import thd.gameobjects.base.GameObject;
 import thd.gameobjects.base.Position;
+
+import java.util.List;
 
 
 /**
@@ -32,7 +35,7 @@ public class EnemyGunner extends CollidingGameObject {
         rotation = 0;
         width = generateWidthFromBlockImage() * size;
         height = generateHeightFromBlockImage() * size;
-        hitBoxOffsets(21, 3, -24, -6);
+        hitBoxOffsets(21, 3, -24, -18);
 
         speedInPixel = 3;
 
@@ -43,7 +46,9 @@ public class EnemyGunner extends CollidingGameObject {
 
     @Override
     public void reactToCollisionWith(CollidingGameObject other) {
-
+        if (other instanceof Bullet) {
+            gamePlayManager.destroyGameObject(this);
+        }
     }
 
     @Override

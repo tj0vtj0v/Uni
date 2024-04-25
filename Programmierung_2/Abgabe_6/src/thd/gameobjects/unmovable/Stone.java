@@ -31,7 +31,7 @@ public class Stone extends CollidingGameObject {
         rotation = 0;
         width = generateWidthFromBlockImage() * size;
         height = generateHeightFromBlockImage() * size;
-        hitBoxOffsets(3, 6, -6, -6);
+        hitBoxOffsets(3, 6, -6, -18);
 
         position.updateCoordinates(100, 500);
     }

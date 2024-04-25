@@ -52,7 +52,7 @@ public class Bullet extends CollidingGameObject {
 
     @Override
     public void reactToCollisionWith(CollidingGameObject other) {
-
+        gamePlayManager.destroyGameObject(this);
     }
 
     @Override

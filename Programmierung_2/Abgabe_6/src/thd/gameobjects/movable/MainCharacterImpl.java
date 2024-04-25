@@ -31,7 +31,7 @@ public class MainCharacterImpl extends CollidingGameObject implements MainCharac
         rotation = 0;
         width = generateWidthFromBlockImage() * size;
         height = generateHeightFromBlockImage() * size;
-        hitBoxOffsets(6, 6, -12, -12);
+        hitBoxOffsets(6, 6, -12, -24);
 
         speedInPixel = 2;
 

@@ -31,7 +31,7 @@ public class Tree extends CollidingGameObject {
         rotation = 0;
         width = generateWidthFromBlockImage() * size;
         height = generateHeightFromBlockImage() * size;
-        hitBoxOffsets(18, 72, -36, -72);
+        hitBoxOffsets(18, 63, -36, -75);
 
         position.updateCoordinates(400, 400);
     }

@@ -10,7 +10,7 @@ class CollisionManager {
 
     private final List<CollidingGameObject> collidingGameObjects;
 
-    protected CollisionManager() {
+    CollisionManager() {
         collidingGameObjects = new LinkedList<>();
     }
 
