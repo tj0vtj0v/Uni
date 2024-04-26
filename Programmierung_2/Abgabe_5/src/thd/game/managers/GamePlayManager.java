@@ -2,7 +2,8 @@ package thd.game.managers;
 
 import thd.game.utilities.GameView;
 import thd.gameobjects.base.GameObject;
-import thd.gameobjects.movable.Square;
+import thd.gameobjects.movable.*;
+import thd.gameobjects.unmovable.*;
 
 /**
  * Manages the whole plot of the game.
@@ -21,7 +22,39 @@ public class GamePlayManager extends UserControlledGameObjectPool{
 
         this.gameObjectManager = new GameObjectManager();
         currentNumberOfVisibleSquares = 0;
+
+        temporaryGameObjectAdder();
     }
+
+    private void temporaryGameObjectAdder() {
+
+        scoreBoard = new ScoreBoard(gameView, this);
+
+        humvee = new Humvee(gameView, this);
+        moped = new Moped(gameView, this);
+        shootingBox = new ShootingBox(gameView, this);
+
+        stone = new Stone(gameView, this);
+        tree = new Tree(gameView, this);
+        wall = new Wall(gameView, this);
+
+        mainCharacter = new MainCharacterUnluckyLuke(gameView, this);
+
+        enemyGunner = new EnemyGunner(gameView, this);
+        enemyMortar = new EnemyMortar(gameView, this);
+
+        spawnGameObject(humvee);
+        spawnGameObject(moped);
+        spawnGameObject(shootingBox);
+        spawnGameObject(enemyGunner);
+        spawnGameObject(enemyMortar);
+        spawnGameObject(mainCharacter);
+        spawnGameObject(stone);
+        spawnGameObject(tree);
+        spawnGameObject(wall);
+        spawnGameObject(scoreBoard);
+    }
+
 
     /**
      * Spawns Object onto {@link GameView} canvas.
