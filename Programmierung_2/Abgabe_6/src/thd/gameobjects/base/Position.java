@@ -156,15 +156,19 @@ public class Position {
      *
      * @param otherPosition Another position.
      * @param speedInPixel  Speed of movement in a single frame.
+     * @return the old Position of the Object for collision management.
      */
-    public void moveToPosition(Position otherPosition, double speedInPixel) {
+    public Position moveToPosition(Position otherPosition, double speedInPixel) {
         double distance = distance(otherPosition);
+        Position oldPosition = new Position(this);
         if (distance <= speedInPixel) {
             updateCoordinates(otherPosition);
         } else {
             right((otherPosition.x - x) / distance * speedInPixel);
             down((otherPosition.y - y) / distance * speedInPixel);
         }
+
+        return oldPosition;
     }
 
 
@@ -183,7 +187,7 @@ public class Position {
      *
      * @param otherPosition Another position.
      * @return True if this position has the same x- and y-coordinates as the other position,
-     * when both are rounded to <code>int</code>.
+     * when both are rounded to {@code int}.
      */
     public boolean similarTo(Position otherPosition) {
         return Math.round(x) == Math.round(otherPosition.x)

@@ -8,18 +8,18 @@ import java.awt.event.KeyEvent;
 
 class UserControlledGameObjectPool {
     protected final GameView gameView;
-    protected Humvee humvee;
-    protected Moped moped;
-    protected ScoreBoard scoreBoard;
-    protected ShootingBox shootingBox;
-    protected Tree tree;
-    protected Wall wall;
-    protected Stone stone;
-    protected MainCharacterImpl mainCharacter;
-    protected EnemyGunner enemyGunner;
-    protected EnemyMortar enemyMortar;
+    Humvee humvee;
+    Moped moped;
+    ScoreBoard scoreBoard;
+    ShootingBox shootingBox;
+    Tree tree;
+    Wall wall;
+    Stone stone;
+    MainCharacterImpl mainCharacter;
+    EnemyGunner enemyGunner;
+    EnemyMortar enemyMortar;
 
-    protected UserControlledGameObjectPool(GameView gameView) {
+    UserControlledGameObjectPool(GameView gameView) {
         this.gameView = gameView;
     }
 
@@ -31,16 +31,21 @@ class UserControlledGameObjectPool {
     }
 
     private void processKeyCode(int keyCode) {
-        if (keyCode == KeyEvent.VK_A) {
-            mainCharacter.left();
-        } else if (keyCode == KeyEvent.VK_D) {
-            mainCharacter.right();
-        } else if (keyCode == KeyEvent.VK_W) {
-            mainCharacter.up();
-        } else if (keyCode == KeyEvent.VK_S) {
-            mainCharacter.down();
-        } else if (keyCode == KeyEvent.VK_SPACE) {
-            mainCharacter.shoot();
+        switch (keyCode) {
+            case KeyEvent.VK_A:
+                mainCharacter.left();
+                break;
+            case KeyEvent.VK_D:
+                mainCharacter.right();
+                break;
+            case KeyEvent.VK_W:
+                mainCharacter.up();
+                break;
+            case KeyEvent.VK_S:
+                mainCharacter.down();
+                break;
+            case KeyEvent.VK_SPACE:
+                mainCharacter.shoot();
         }
     }
 }

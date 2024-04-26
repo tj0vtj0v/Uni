@@ -31,12 +31,16 @@ public abstract class CollidingGameObject extends GameObject {
      * detection.
      *
      * @param other The other game object.
-     * @return <code>true</code> if the there was a collision.
+     * @return {@code true} if the there was a collision.
      */
     public final boolean collidesWith(CollidingGameObject other) {
         updateHitBox();
         other.updateHitBox();
         return hitBoxRectangle.intersects(other.hitBoxRectangle);
+    }
+
+    protected boolean pathIsBlocked() {
+        return false;
     }
 
     private void updateHitBox() {

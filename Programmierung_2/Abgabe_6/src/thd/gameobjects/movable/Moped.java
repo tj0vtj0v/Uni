@@ -31,7 +31,7 @@ public class Moped extends CollidingGameObject {
         rotation = 0;
         width = generateWidthFromBlockImage() * size;
         height = generateHeightFromBlockImage() * size;
-        hitBoxOffsets(3, 15, -6, -42);
+        hitBoxOffsets(3, 27, -6, -45);
 
         speedInPixel = 1;
 

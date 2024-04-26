@@ -13,6 +13,8 @@ import thd.gameobjects.base.*;
  * png textured
  */
 public class Bullet extends CollidingGameObject {
+    final GameObject creator;
+
     /**
      * Crates a new Bullet.
      *
@@ -20,9 +22,11 @@ public class Bullet extends CollidingGameObject {
      * @param gamePlayManager GamePlayManager to manage the game actions.
      * @param originPosition  Position from which to start movement.
      * @param direction       Direction in which the bullet should travel.
+     * @param creator         Instance which shoots this Bullet.
      */
-    public Bullet(GameView gameView, GamePlayManager gamePlayManager, Position originPosition, Direction direction) {
+    public Bullet(GameView gameView, GamePlayManager gamePlayManager, Position originPosition, Direction direction, GameObject creator) {
         super(gameView, gamePlayManager);
+        this.creator = creator;
 
         blockImage = ObjectBlockImages.BULLET;
 
@@ -32,27 +36,18 @@ public class Bullet extends CollidingGameObject {
         height = generateHeightFromBlockImage() * size;
         hitBoxOffsets(1, 1, -2, -2);
 
-        speedInPixel = 10
-        ;
+        speedInPixel = 2;
 
         LinearMovementPattern movementPattern = new LinearMovementPattern(direction, originPosition);
         position.updateCoordinates(movementPattern.startPosition());
         targetPosition.updateCoordinates(movementPattern.nextTargetPosition());
     }
 
-    /**
-     * Crates a new Bullet.
-     *
-     * @param gameView        GameView to show the bullet on.
-     * @param gamePlayManager GamePlayManager to manage the game actions.
-     */
-    public Bullet(GameView gameView, GamePlayManager gamePlayManager) {
-        this(gameView, gamePlayManager, new Position(0, 100), Direction.DOWN);
-    }
-
     @Override
     public void reactToCollisionWith(CollidingGameObject other) {
-        gamePlayManager.destroyGameObject(this);
+        if (other != creator) {
+            gamePlayManager.destroyGameObject(this);
+        }
     }
 
     @Override
@@ -67,7 +62,7 @@ public class Bullet extends CollidingGameObject {
 
     @Override
     public void updateStatus() {
-        if (0 > position.getY() || position.getY() > GameView.HEIGHT || 0 > position.getX() || position.getX() > GameView.WIDTH) {
+        if (position.getY() < 0 || position.getY() > GameView.HEIGHT || position.getX() < 0 || position.getX() > GameView.WIDTH) {
             gamePlayManager.destroyGameObject(this);
         }
     }

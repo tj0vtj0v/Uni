@@ -2,10 +2,7 @@ package thd.gameobjects.movable;
 
 import thd.game.managers.GamePlayManager;
 import thd.game.utilities.GameView;
-import thd.gameobjects.base.CharacterBlockImages;
-import thd.gameobjects.base.CollidingGameObject;
-import thd.gameobjects.base.GameObject;
-import thd.gameobjects.base.Position;
+import thd.gameobjects.base.*;
 
 import java.util.List;
 
@@ -17,7 +14,7 @@ import java.util.List;
  * destructible by 1 {@link Grenade} or 1 {@link Bullet}
  * png textured
  */
-public class EnemyGunner extends CollidingGameObject {
+public class EnemyGunner extends CollidingPathGameObject {
     private final RandomMovementPattern movementPattern;
 
     /**
@@ -25,9 +22,10 @@ public class EnemyGunner extends CollidingGameObject {
      *
      * @param gameView        window in which it has to be displayed.
      * @param gamePlayManager GamePlayManager to manage the game actions.
+     * @param collidingGameObjectsForPathDecision List of Objects that block the movement.
      */
-    public EnemyGunner(GameView gameView, GamePlayManager gamePlayManager) {
-        super(gameView, gamePlayManager);
+    public EnemyGunner(GameView gameView, GamePlayManager gamePlayManager, List<CollidingGameObject> collidingGameObjectsForPathDecision) {
+        super(gameView, gamePlayManager, collidingGameObjectsForPathDecision);
 
         blockImage = CharacterBlockImages.Enemy.Mortar.NORMAL;
 
@@ -37,7 +35,7 @@ public class EnemyGunner extends CollidingGameObject {
         height = generateHeightFromBlockImage() * size;
         hitBoxOffsets(21, 3, -24, -18);
 
-        speedInPixel = 3;
+        speedInPixel = 1;
 
         movementPattern = new RandomMovementPattern();
         position.updateCoordinates(new Position(0, GameView.HEIGHT / 3d));
@@ -59,10 +57,13 @@ public class EnemyGunner extends CollidingGameObject {
 
     @Override
     public void updatePosition() {
-        if (position.similarTo(targetPosition)) {
+        Position oldPosition = position.moveToPosition(targetPosition, speedInPixel);
+        if (pathIsBlocked()) {
+            position.updateCoordinates(oldPosition);
+        }
+        if (gameView.timer(4000, this)) {
             targetPosition.updateCoordinates(movementPattern.nextTargetPosition(getPosition()));
         }
-        position.moveToPosition(targetPosition, speedInPixel);
     }
 
     @Override
