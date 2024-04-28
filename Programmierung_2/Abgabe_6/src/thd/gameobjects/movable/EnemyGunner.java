@@ -20,8 +20,8 @@ public class EnemyGunner extends MovingCharacter {
     /**
      * Creates Enemy Gunner with gameView window of presence.
      *
-     * @param gameView        window in which it has to be displayed.
-     * @param gamePlayManager GamePlayManager to manage the game actions.
+     * @param gameView                            window in which it has to be displayed.
+     * @param gamePlayManager                     GamePlayManager to manage the game actions.
      * @param collidingGameObjectsForPathDecision List of Objects that block the movement.
      */
     public EnemyGunner(GameView gameView, GamePlayManager gamePlayManager, List<CollidingGameObject> collidingGameObjectsForPathDecision) {
@@ -40,22 +40,19 @@ public class EnemyGunner extends MovingCharacter {
         movementPattern = new RandomMovementPattern();
         position.updateCoordinates(new Position(0, GameView.HEIGHT / 3d));
         targetPosition.updateCoordinates(movementPattern.nextTargetPosition(getPosition()));
-
-        shoot();
     }
 
     @Override
     public void reactToCollisionWith(CollidingGameObject other) {
         if (other instanceof Bullet) {
             gamePlayManager.destroyGameObject(this);
-            gamePlayManager.addScorePoints(-500);
+            gamePlayManager.addScorePoints(-1);
         }
     }
 
     @Override
     public void addToCanvas() {
-        gameView.addBlockImageToCanvas(blockImage
-                , position.getX(), position.getY(), size, rotation);
+        gameView.addBlockImageToCanvas(blockImage, position.getX(), position.getY(), size, rotation);
     }
 
     @Override

@@ -34,10 +34,10 @@ public class ScoreBoard extends GameObject {
     @Override
     public void addToCanvas() {
         gameView.addRectangleToCanvas(0, GameView.HEIGHT - height, GameView.WIDTH, height, 0, true, Color.BLACK);
-        gameView.addTextToCanvas("SCORE %06d".formatted(gamePlayManager.getScorePoints()), 0, localYZero + (height - size) / 2, size, true, new Color(81, 66, 245), rotation);
-        gameView.addTextToCanvas("MEN %d".formatted(gamePlayManager.getRemainingMen()), GameView.WIDTH / 3f, localYZero + (height - size) / 2, size, true, new Color(148, 209, 90), rotation);
-        gameView.addTextToCanvas("GRENADES %d".formatted(gamePlayManager.getAvaliableGrenades()), GameView.WIDTH / 1.8, localYZero + (height - size) / 2, size, true, new Color(200, 200, 200), rotation);
-        gameView.addTextToCanvas("HI %06d".formatted(gamePlayManager.getHighScorePoints()), GameView.WIDTH / 1.3, localYZero + (height - size) / 2, size, true, new Color(255, 238, 96), rotation);
+        gameView.addTextToCanvas("SCORE %06d".formatted(gamePlayManager.getPoints()), 0, localYZero + (height - size) / 2, size, true, new Color(81, 66, 245), rotation);
+        gameView.addTextToCanvas("MEN %d".formatted(gamePlayManager.getLives()), GameView.WIDTH / 3f, localYZero + (height - size) / 2, size, true, new Color(148, 209, 90), rotation);
+        gameView.addTextToCanvas("GRENADES %d".formatted(gamePlayManager.getAvailableGrenades()), GameView.WIDTH / 1.8, localYZero + (height - size) / 2, size, true, new Color(200, 200, 200), rotation);
+        gameView.addTextToCanvas("HI %06d".formatted(gamePlayManager.getHighScore()), GameView.WIDTH / 1.3, localYZero + (height - size) / 2, size, true, new Color(255, 238, 96), rotation);
     }
 
 }

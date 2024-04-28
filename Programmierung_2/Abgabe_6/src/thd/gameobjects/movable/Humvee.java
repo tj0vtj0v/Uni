@@ -13,7 +13,7 @@ import thd.gameobjects.base.*;
  * BlockImage
  */
 public class Humvee extends CollidingGameObject {
-    private int hitTolerance = 5;
+    private int hitTolerance;
 
     /**
      * Creates Humvee with gameView window of presence.
@@ -25,6 +25,7 @@ public class Humvee extends CollidingGameObject {
         super(gameView, gamePlayManager);
 
         blockImage = ObjectBlockImages.HUMVEE;
+        hitTolerance = 5;
 
         size = 3;
         rotation = 0;
@@ -46,6 +47,7 @@ public class Humvee extends CollidingGameObject {
 
             if (hitTolerance <= 0) {
                 gamePlayManager.destroyGameObject(this);
+                gamePlayManager.addScorePoints(-1);
             }
         }
     }
@@ -62,6 +64,6 @@ public class Humvee extends CollidingGameObject {
 
     @Override
     public String toString() {
-        return "Humvee: %s".formatted(position);
+        return "Humvee: %s with %d hits left till destruction".formatted(position, hitTolerance);
     }
 }

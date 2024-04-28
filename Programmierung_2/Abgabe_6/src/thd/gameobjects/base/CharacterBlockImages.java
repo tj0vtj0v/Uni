@@ -3,11 +3,11 @@ package thd.gameobjects.base;
 /**
  * Class with all Blockimages stored inside.
  */
-public class CharacterBlockImages {
+public final class CharacterBlockImages {
     /**
      * Static Subclass for the main character.
      */
-    public static class Main {
+    public static final class Main {
         /**
          * String with the 1st frame of the main character running down.
          */
@@ -38,11 +38,11 @@ public class CharacterBlockImages {
     /**
      * Static Subclass for the enemy character.
      */
-    public static class Enemy {
+    public static final class Enemy {
         /**
          * Static Subclass for the enemy with a mortar.
          */
-        public static class Mortar {
+        public static final class Mortar {
             /**
              * String with the normal frame of the enemy with a mortar.
              */

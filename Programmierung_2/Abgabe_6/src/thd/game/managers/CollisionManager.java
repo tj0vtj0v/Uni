@@ -38,13 +38,13 @@ class CollisionManager {
         }
     }
 
-    protected void addToCollisionManagement(GameObject toAdd) {
+    void addToCollisionManagement(GameObject toAdd) {
         if (toAdd instanceof CollidingGameObject collidingGameObject) {
             collidingGameObjects.add(collidingGameObject);
         }
     }
 
-    protected void removeFromCollisionManagement(GameObject toRemove) {
+    void removeFromCollisionManagement(GameObject toRemove) {
         if (toRemove instanceof CollidingGameObject collidingGameObject) {
             collidingGameObjects.remove(collidingGameObject);
         }

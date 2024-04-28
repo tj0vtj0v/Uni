@@ -7,16 +7,35 @@ import thd.gameobjects.movable.Bullet;
 import java.util.List;
 
 
+/**
+ * Creates an active moving character.
+ */
 public class MovingCharacter extends CollidingGameObject {
-    protected final List<CollidingGameObject> collidingGameObjectsForPathDecision;
-    private final int shotDurationInMilliseconds = 300;
+    private final List<CollidingGameObject> collidingGameObjectsForPathDecision;
+    private final int shotDurationInMilliseconds;
 
+    /**
+     * Creates an instance of a moving Character as the main character or an enemy.
+     *
+     * @param gameView                            gameView where the Object is displayed in.
+     * @param gamePlayManager                     manager for the in-game logic.
+     * @param collidingGameObjectsForPathDecision list of object which are path blockers.
+     */
     public MovingCharacter(GameView gameView, GamePlayManager gamePlayManager, List<CollidingGameObject> collidingGameObjectsForPathDecision) {
         super(gameView, gamePlayManager);
-
         this.collidingGameObjectsForPathDecision = collidingGameObjectsForPathDecision;
+        shotDurationInMilliseconds = 300;
+
+        width = 0;
+        height = 0;
+        hitBoxOffsets(0, 0, 0, 0);
+
+        shoot();
     }
 
+    /**
+     * Creates a Bullet-Object flying down.
+     */
     public void shoot() {
         if (gameView.timer(shotDurationInMilliseconds, this)) {
             gamePlayManager.spawnGameObject(new Bullet(gameView, gamePlayManager, new Position(position.getX() + 7, position.getY() + 36), Direction.DOWN, this));

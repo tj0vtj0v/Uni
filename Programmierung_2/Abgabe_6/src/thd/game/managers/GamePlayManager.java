@@ -16,13 +16,14 @@ import java.util.List;
  * Manages the whole plot of the game.
  */
 public class GamePlayManager extends UserControlledGameObjectPool {
+    private static final int LIVES = 3;
     private final GameObjectManager gameObjectManager;
     private final List<CollidingGameObject> collidingGameObjectsForPathDecision;
 
-    private int remainingMen = 3;
-    private int avaliableGrenades = 5;
-    private int score = 0;
-    private int highScore = 0;
+    protected int lives;
+    private int availableGrenades;
+    protected int points;
+    private int highScore;
 
     /**
      * Creates an instance of the GamePlayManager.
@@ -32,8 +33,11 @@ public class GamePlayManager extends UserControlledGameObjectPool {
     protected GamePlayManager(GameView gameView) {
         super(gameView);
         gameObjectManager = new GameObjectManager();
-
         collidingGameObjectsForPathDecision = new ArrayList<>();
+        lives = LIVES;
+        availableGrenades = 5;
+        points = 0;
+        highScore = 0;
 
         scoreBoard = new ScoreBoard(gameView, this);
 
@@ -68,37 +72,77 @@ public class GamePlayManager extends UserControlledGameObjectPool {
         spawnGameObject(scoreBoard);
     }
 
-    public void reduceRemainingMen() throws NoRemainingMenException {
-        remainingMen--;
-        mainCharacter = new MainCharacterImpl(gameView, this, collidingGameObjectsForPathDecision);
+    /**
+     * Reduces remaining lives of the main character and raises an error if there are no lives left.
+     *
+     * @throws NoRemainingMenException no men left results in game over.
+     */
+    public void reduceLive() throws NoRemainingMenException {
+        lives--;
 
-        if (remainingMen <= 0) {
+        if (lives <= 0) {
             throw new NoRemainingMenException();
         }
     }
 
+    /**
+     * Adds points to the current Score and updates highScore if necessary.
+     *
+     * @param points amount of points to be added to the score.
+     */
     public void addScorePoints(int points) {
-        score += points;
+        if (points <= 0) {
+            throw new IllegalArgumentException("The number has to be greater than 0!");
+        }
+
+        this.points += points;
         highScore = Math.max(points, highScore);
     }
 
-    public int getScorePoints() {
-        return score;
+    /**
+     * Getter for the points collected in this game.
+     *
+     * @return amount of scored points.
+     */
+    public int getPoints() {
+        return points;
     }
 
-    public int getHighScorePoints() {
+    /**
+     * Getter of the Highscore in this run of the game.
+     *
+     * @return highScore.
+     */
+    public int getHighScore() {
         return highScore;
     }
 
-    public int getAvaliableGrenades() {
-        return avaliableGrenades;
+    /**
+     * Getter of the remaining grenades to the main character.
+     *
+     * @return remaining grenades.
+     */
+    public int getAvailableGrenades() {
+        return availableGrenades;
     }
 
-    public int getRemainingMen() {
-        return remainingMen;
+    /**
+     * Getter of the remaining lives of the main character.
+     *
+     * @return remaining lives.
+     */
+    public int getLives() {
+        return lives;
     }
 
+
+    /**
+     * Method that initiates the gameOver sequence #TODO.
+     *
+     * @param success determines if the game war cleared or failed.
+     */
     public void gameOver(boolean success) {
+        System.exit(0);
     }
 
     /**

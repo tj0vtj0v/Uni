@@ -5,7 +5,8 @@ import thd.game.managers.GameViewManager;
 /**
  * Trigger for the game.
  */
-public class StartGame {
+public final class StartGame {
+
     /**
      * Main method for execution at call.
      *

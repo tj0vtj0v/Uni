@@ -38,16 +38,13 @@ public class MainCharacterImpl extends MovingCharacter implements MainCharacter 
         speedInPixel = 4;
 
         position.updateCoordinates(new Position(GameView.WIDTH / 2d - width / 2d, GameView.HEIGHT / 3d * 2));
-
-        shoot();
     }
 
     @Override
     public void reactToCollisionWith(CollidingGameObject other) {
         if (other instanceof Bullet && ((Bullet) other).creator != this) {
-
             try {
-                gamePlayManager.reduceRemainingMen();
+                gamePlayManager.reduceLive();
             } catch (NoRemainingMenException e) {
                 gamePlayManager.gameOver(false);
             }

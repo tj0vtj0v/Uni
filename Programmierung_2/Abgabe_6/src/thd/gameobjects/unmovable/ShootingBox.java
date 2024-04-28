@@ -16,7 +16,7 @@ import thd.gameobjects.movable.Grenade;
  * BlockImage
  */
 public class ShootingBox extends CollidingGameObject {
-    private int hitTolerance = 2;
+    private int hitTolerance;
 
     /**
      * Creates ShootingBox with gameView window of presence.
@@ -28,6 +28,7 @@ public class ShootingBox extends CollidingGameObject {
         super(gameView, gamePlayManager);
 
         blockImage = ObjectBlockImages.SHOOTING_BOX_LEFT;
+        hitTolerance = 2;
 
         size = 3;
         rotation = 0;
@@ -45,6 +46,7 @@ public class ShootingBox extends CollidingGameObject {
 
             if (hitTolerance <= 0) {
                 gamePlayManager.destroyGameObject(this);
+                gamePlayManager.addScorePoints(-1);
             }
         }
     }
@@ -56,6 +58,6 @@ public class ShootingBox extends CollidingGameObject {
 
     @Override
     public String toString() {
-        return "ShootingBox: %s".formatted(position);
+        return "ShootingBox: %s with %d hits left till destruction".formatted(position, hitTolerance);
     }
 }

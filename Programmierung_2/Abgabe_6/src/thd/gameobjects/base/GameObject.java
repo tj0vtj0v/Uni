@@ -3,6 +3,8 @@ package thd.gameobjects.base;
 import thd.game.managers.GamePlayManager;
 import thd.game.utilities.GameView;
 
+import java.util.Objects;
+
 /**
  * Represents an object in the game.
  */
@@ -24,12 +26,25 @@ public abstract class GameObject {
      * @param gameView        GameView to show the game object on.
      * @param gamePlayManager GamePlayManager to manage the game actions.
      */
-    public GameObject(GameView gameView, GamePlayManager gamePlayManager) {
+    protected GameObject(GameView gameView, GamePlayManager gamePlayManager) {
         this.gameView = gameView;
         this.gamePlayManager = gamePlayManager;
 
         position = new Position();
         targetPosition = new Position();
+    }
+
+    protected int generateWidthFromBlockImage() {
+        int maximumLineLength = 0;
+        for (String line : blockImage.split("\n")) {
+            maximumLineLength = Math.max(maximumLineLength, line.length());
+        }
+
+        return maximumLineLength;
+    }
+
+    protected int generateHeightFromBlockImage() {
+        return blockImage.split("\n").length;
     }
 
     /**
@@ -76,16 +91,19 @@ public abstract class GameObject {
         return height;
     }
 
-    protected int generateWidthFromBlockImage() {
-        int maximumLineLength = 0;
-        for (String line : blockImage.split("\n")) {
-            maximumLineLength = Math.max(maximumLineLength, line.length());
+    @Override
+    public boolean equals(Object o) {
+        if (o == this) {
+            return true;
         }
-
-        return maximumLineLength;
+        if (o == null || o.getClass() != getClass()) {
+            return false;
+        }
+        return Objects.equals(toString(), o.toString());
     }
 
-    protected int generateHeightFromBlockImage() {
-        return blockImage.split("\n").length;
+    @Override
+    public int hashCode() {
+        return Objects.hash(gameView, gamePlayManager, position, targetPosition, speedInPixel, rotation, size, width, height);
     }
 }

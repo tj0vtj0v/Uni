@@ -15,11 +15,6 @@ public abstract class MovementPattern {
         currentIndex = -1;
     }
 
-    protected Position startPosition(Position... referencePositions) {
-        return new Position();
-    }
-
-    protected Position nextTargetPosition(Position... referencePositions) {
-        return new Position();
-    }
+    protected abstract Position startPosition(Position... referencePositions);
+    protected abstract Position nextTargetPosition(Position... referencePositions);
 }

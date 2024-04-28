@@ -13,7 +13,7 @@ import thd.gameobjects.base.*;
  * BlockImage
  */
 public class Moped extends CollidingGameObject {
-    private int hitTolerance = 3;
+    private int hitTolerance;
 
 
     /**
@@ -26,6 +26,7 @@ public class Moped extends CollidingGameObject {
         super(gameView, gamePlayManager);
 
         blockImage = ObjectBlockImages.MOPED;
+        hitTolerance = 3;
 
         size = 3;
         rotation = 0;
@@ -47,6 +48,7 @@ public class Moped extends CollidingGameObject {
 
             if (hitTolerance <= 0) {
                 gamePlayManager.destroyGameObject(this);
+                gamePlayManager.addScorePoints(-1);
             }
         }
     }
@@ -63,6 +65,6 @@ public class Moped extends CollidingGameObject {
 
     @Override
     public String toString() {
-        return "Moped: %s".formatted(position);
+        return "Moped: %s with %d hits left till destruction".formatted(position, hitTolerance);
     }
 }

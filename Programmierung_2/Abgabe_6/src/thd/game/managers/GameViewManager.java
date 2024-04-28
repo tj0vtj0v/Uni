@@ -11,7 +11,6 @@ import java.awt.*;
 public class GameViewManager extends GameView {
     private GameManager gameManager;
 
-
     /**
      * Adjustment of the GameView Window according to my Data.
      */

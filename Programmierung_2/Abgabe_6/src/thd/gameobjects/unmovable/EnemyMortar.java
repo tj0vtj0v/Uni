@@ -42,6 +42,7 @@ public class EnemyMortar extends CollidingGameObject {
     public void reactToCollisionWith(CollidingGameObject other) {
         if (other instanceof Bullet) {
             gamePlayManager.destroyGameObject(this);
+            gamePlayManager.addScorePoints(-1);
         }
     }
 
