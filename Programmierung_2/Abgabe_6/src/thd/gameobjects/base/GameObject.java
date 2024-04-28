@@ -102,6 +102,7 @@ public abstract class GameObject {
         GameObject other = (GameObject) o;
         return position.equals(other.position)
                 && targetPosition.equals(other.targetPosition)
+                && blockImage.equals(other.blockImage)
                 && Double.compare(speedInPixel, other.speedInPixel) == 0
                 && Double.compare(rotation, other.rotation) == 0
                 && Double.compare(size, other.size) == 0
@@ -111,6 +112,6 @@ public abstract class GameObject {
 
     @Override
     public int hashCode() {
-        return Objects.hash(gameView, gamePlayManager, position, targetPosition, speedInPixel, rotation, size, width, height);
+        return Objects.hash(position, targetPosition, blockImage, speedInPixel, rotation, size, width, height);
     }
 }
