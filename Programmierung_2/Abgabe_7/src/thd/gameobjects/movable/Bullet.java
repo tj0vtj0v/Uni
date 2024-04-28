@@ -29,6 +29,7 @@ public class Bullet extends CollidingGameObject {
         this.creator = creator;
 
         blockImage = ObjectBlockImages.BULLET;
+        distanceToBackground = (char) (creator.getDistanceToBackground() + 1);
 
         size = 3;
         rotation = 0;

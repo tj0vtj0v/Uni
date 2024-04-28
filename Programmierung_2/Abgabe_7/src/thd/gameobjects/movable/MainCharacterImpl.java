@@ -28,6 +28,7 @@ public class MainCharacterImpl extends MovingCharacter implements MainCharacter 
         super(gameView, gamePlayManager, collidingGameObjectsForPathDecision);
 
         blockImage = CharacterBlockImages.Main.DOWN_1;
+        distanceToBackground = 200;
 
         size = 3;
         rotation = 0;

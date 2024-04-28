@@ -28,6 +28,7 @@ public class EnemyGunner extends MovingCharacter {
         super(gameView, gamePlayManager, collidingGameObjectsForPathDecision);
 
         blockImage = CharacterBlockImages.Enemy.Mortar.NORMAL;
+        distanceToBackground = 100;
 
         size = 3;
         rotation = 0;

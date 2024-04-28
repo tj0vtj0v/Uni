@@ -25,6 +25,8 @@ public class ScoreBoard extends GameObject {
     public ScoreBoard(GameView gameView, GamePlayManager gamePlayManager) {
         super(gameView, gamePlayManager);
 
+        distanceToBackground = 255;
+
         height = 80;
         size = 40;
 

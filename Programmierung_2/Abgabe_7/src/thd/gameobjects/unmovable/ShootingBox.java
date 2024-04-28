@@ -28,6 +28,7 @@ public class ShootingBox extends CollidingGameObject {
         super(gameView, gamePlayManager);
 
         blockImage = ObjectBlockImages.SHOOTING_BOX_LEFT;
+        distanceToBackground = 200;
         hitTolerance = 2;
 
         size = 3;

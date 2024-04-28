@@ -26,6 +26,7 @@ public class Stone extends CollidingGameObject {
         super(gameView, gamePlayManager);
 
         blockImage = ObjectBlockImages.STONE;
+        distanceToBackground = 200;
 
         size = 3;
         rotation = 0;

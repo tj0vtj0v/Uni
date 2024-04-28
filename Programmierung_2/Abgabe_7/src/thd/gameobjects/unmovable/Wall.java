@@ -26,6 +26,7 @@ public class Wall extends CollidingGameObject {
         super(gameView, gamePlayManager);
 
         blockImage = new ObjectBlockImages().wall(5);
+        distanceToBackground = 100;
 
         size = 3;
         rotation = 0;

@@ -28,6 +28,7 @@ public class EnemyMortar extends CollidingGameObject {
         super(gameView, gamePlayManager);
 
         blockImage = CharacterBlockImages.Enemy.Mortar.LOADING;
+        distanceToBackground = 100;
 
         size = 3;
         rotation = 0;

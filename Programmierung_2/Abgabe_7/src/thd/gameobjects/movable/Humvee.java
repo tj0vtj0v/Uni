@@ -25,6 +25,7 @@ public class Humvee extends CollidingGameObject {
         super(gameView, gamePlayManager);
 
         blockImage = ObjectBlockImages.HUMVEE;
+        distanceToBackground = 200;
         hitTolerance = 5;
 
         size = 3;

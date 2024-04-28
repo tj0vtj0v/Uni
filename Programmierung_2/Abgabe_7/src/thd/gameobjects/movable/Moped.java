@@ -26,6 +26,7 @@ public class Moped extends CollidingGameObject {
         super(gameView, gamePlayManager);
 
         blockImage = ObjectBlockImages.MOPED;
+        distanceToBackground = 200;
         hitTolerance = 3;
 
         size = 3;

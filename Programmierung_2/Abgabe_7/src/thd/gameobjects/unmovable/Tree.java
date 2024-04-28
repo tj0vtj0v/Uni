@@ -26,6 +26,7 @@ public class Tree extends CollidingGameObject {
         super(gameView, gamePlayManager);
 
         blockImage = ObjectBlockImages.TREE;
+        distanceToBackground = 100;
 
         size = 3;
         rotation = 0;

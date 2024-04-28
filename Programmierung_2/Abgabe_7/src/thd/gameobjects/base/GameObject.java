@@ -14,6 +14,7 @@ public abstract class GameObject {
     protected final Position position;
     protected final Position targetPosition;
     protected String blockImage;
+    protected char distanceToBackground;
     protected double speedInPixel;
     protected double rotation;
     protected double size;
@@ -91,6 +92,15 @@ public abstract class GameObject {
         return height;
     }
 
+    /**
+     * Returns the distance to the background of the game object.
+     *
+     * @return distance to the background of game object
+     */
+    public char getDistanceToBackground() {
+        return distanceToBackground;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (o == this) {
@@ -102,6 +112,8 @@ public abstract class GameObject {
         GameObject other = (GameObject) o;
         return position.equals(other.position)
                 && targetPosition.equals(other.targetPosition)
+                && blockImage.equals(other.blockImage)
+                && Character.compare(distanceToBackground, other.distanceToBackground) == 0
                 && Double.compare(speedInPixel, other.speedInPixel) == 0
                 && Double.compare(rotation, other.rotation) == 0
                 && Double.compare(size, other.size) == 0
@@ -111,6 +123,6 @@ public abstract class GameObject {
 
     @Override
     public int hashCode() {
-        return Objects.hash(gameView, gamePlayManager, position, targetPosition, speedInPixel, rotation, size, width, height);
+        return Objects.hash(position, targetPosition, blockImage, distanceToBackground, speedInPixel, rotation, size, width, height);
     }
 }
