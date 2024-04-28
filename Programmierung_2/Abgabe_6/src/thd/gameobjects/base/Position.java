@@ -2,6 +2,8 @@ package thd.gameobjects.base;
 
 import thd.game.utilities.GameView;
 
+import java.util.Objects;
+
 /**
  * Datatype for Position-handling in the {@link GameView}.
  *
@@ -156,19 +158,15 @@ public class Position {
      *
      * @param otherPosition Another position.
      * @param speedInPixel  Speed of movement in a single frame.
-     * @return the old Position of the Object for collision management.
      */
-    public Position moveToPosition(Position otherPosition, double speedInPixel) {
+    public void moveToPosition(Position otherPosition, double speedInPixel) {
         double distance = distance(otherPosition);
-        Position oldPosition = new Position(this);
         if (distance <= speedInPixel) {
             updateCoordinates(otherPosition);
         } else {
             right((otherPosition.x - x) / distance * speedInPixel);
             down((otherPosition.y - y) / distance * speedInPixel);
         }
-
-        return oldPosition;
     }
 
 
@@ -192,6 +190,24 @@ public class Position {
     public boolean similarTo(Position otherPosition) {
         return Math.round(x) == Math.round(otherPosition.x)
                 && Math.round(y) == Math.round(otherPosition.y);
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (o == this) {
+            return true;
+        }
+        if (o == null || getClass() != o.getClass()) {
+            return false;
+        }
+        Position position = (Position) o;
+        return Double.compare(x, position.x) == 0
+                && Double.compare(y, position.y) == 0;
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(x, y);
     }
 
     @Override

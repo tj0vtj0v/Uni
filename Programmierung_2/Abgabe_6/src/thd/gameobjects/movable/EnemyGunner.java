@@ -57,7 +57,9 @@ public class EnemyGunner extends MovingCharacter {
 
     @Override
     public void updatePosition() {
-        Position oldPosition = position.moveToPosition(targetPosition, speedInPixel);
+        Position oldPosition = getPosition();
+        position.moveToPosition(targetPosition, speedInPixel);
+
         if (pathIsBlocked()) {
             position.updateCoordinates(oldPosition);
         }

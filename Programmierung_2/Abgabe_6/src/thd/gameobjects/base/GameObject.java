@@ -26,7 +26,7 @@ public abstract class GameObject {
      * @param gameView        GameView to show the game object on.
      * @param gamePlayManager GamePlayManager to manage the game actions.
      */
-    protected GameObject(GameView gameView, GamePlayManager gamePlayManager) {
+    public GameObject(GameView gameView, GamePlayManager gamePlayManager) {
         this.gameView = gameView;
         this.gamePlayManager = gamePlayManager;
 
@@ -99,7 +99,14 @@ public abstract class GameObject {
         if (o == null || o.getClass() != getClass()) {
             return false;
         }
-        return Objects.equals(toString(), o.toString());
+        GameObject other = (GameObject) o;
+        return position.equals(other.position)
+                && targetPosition.equals(other.targetPosition)
+                && Double.compare(speedInPixel, other.speedInPixel) == 0
+                && Double.compare(rotation, other.rotation) == 0
+                && Double.compare(size, other.size) == 0
+                && Double.compare(width, other.width) == 0
+                && Double.compare(height, other.height) == 0;
     }
 
     @Override
