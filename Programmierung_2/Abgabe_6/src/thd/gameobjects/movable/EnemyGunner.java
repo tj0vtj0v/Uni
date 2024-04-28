@@ -14,7 +14,7 @@ import java.util.List;
  * destructible by 1 {@link Grenade} or 1 {@link Bullet}
  * png textured
  */
-public class EnemyGunner extends CollidingPathGameObject {
+public class EnemyGunner extends MovingCharacter {
     private final RandomMovementPattern movementPattern;
 
     /**
@@ -40,12 +40,15 @@ public class EnemyGunner extends CollidingPathGameObject {
         movementPattern = new RandomMovementPattern();
         position.updateCoordinates(new Position(0, GameView.HEIGHT / 3d));
         targetPosition.updateCoordinates(movementPattern.nextTargetPosition(getPosition()));
+
+        shoot();
     }
 
     @Override
     public void reactToCollisionWith(CollidingGameObject other) {
         if (other instanceof Bullet) {
             gamePlayManager.destroyGameObject(this);
+            gamePlayManager.addScorePoints(-500);
         }
     }
 
@@ -63,6 +66,7 @@ public class EnemyGunner extends CollidingPathGameObject {
         }
         if (gameView.timer(4000, this)) {
             targetPosition.updateCoordinates(movementPattern.nextTargetPosition(getPosition()));
+            shoot();
         }
     }
 

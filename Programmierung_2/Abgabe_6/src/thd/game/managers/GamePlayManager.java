@@ -15,9 +15,14 @@ import java.util.List;
 /**
  * Manages the whole plot of the game.
  */
-public class GamePlayManager extends UserControlledGameObjectPool{
+public class GamePlayManager extends UserControlledGameObjectPool {
     private final GameObjectManager gameObjectManager;
     private final List<CollidingGameObject> collidingGameObjectsForPathDecision;
+
+    private int remainingMen = 3;
+    private int avaliableGrenades = 5;
+    private int score = 0;
+    private int highScore = 0;
 
     /**
      * Creates an instance of the GamePlayManager.
@@ -61,6 +66,39 @@ public class GamePlayManager extends UserControlledGameObjectPool{
         spawnGameObject(tree);
         spawnGameObject(wall);
         spawnGameObject(scoreBoard);
+    }
+
+    public void reduceRemainingMen() throws NoRemainingMenException {
+        remainingMen--;
+        mainCharacter = new MainCharacterImpl(gameView, this, collidingGameObjectsForPathDecision);
+
+        if (remainingMen <= 0) {
+            throw new NoRemainingMenException();
+        }
+    }
+
+    public void addScorePoints(int points) {
+        score += points;
+        highScore = Math.max(points, highScore);
+    }
+
+    public int getScorePoints() {
+        return score;
+    }
+
+    public int getHighScorePoints() {
+        return highScore;
+    }
+
+    public int getAvaliableGrenades() {
+        return avaliableGrenades;
+    }
+
+    public int getRemainingMen() {
+        return remainingMen;
+    }
+
+    public void gameOver(boolean success) {
     }
 
     /**

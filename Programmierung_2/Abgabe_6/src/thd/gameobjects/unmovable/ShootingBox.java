@@ -23,7 +23,6 @@ public class ShootingBox extends CollidingGameObject {
      *
      * @param gameView        window in which it has to be displayed.
      * @param gamePlayManager GamePlayManager to manage the game actions.
-     * @param hitTolerance
      */
     public ShootingBox(GameView gameView, GamePlayManager gamePlayManager) {
         super(gameView, gamePlayManager);

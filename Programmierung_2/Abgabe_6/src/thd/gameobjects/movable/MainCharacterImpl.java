@@ -1,6 +1,7 @@
 package thd.gameobjects.movable;
 
 import thd.game.managers.GamePlayManager;
+import thd.game.managers.NoRemainingMenException;
 import thd.game.utilities.GameView;
 import thd.gameobjects.base.*;
 
@@ -14,9 +15,7 @@ import java.util.List;
  * destructible by 1 {@link Grenade} or 1 {@link Bullet}
  * BlockImage
  */
-public class MainCharacterImpl extends CollidingPathGameObject implements MainCharacter {
-    private final int shotDurationInMilliseconds = 300;
-    private boolean alive = true;
+public class MainCharacterImpl extends MovingCharacter implements MainCharacter {
 
     /**
      * Creates Enemy Gunner with gameView window of presence.
@@ -46,8 +45,12 @@ public class MainCharacterImpl extends CollidingPathGameObject implements MainCh
     @Override
     public void reactToCollisionWith(CollidingGameObject other) {
         if (other instanceof Bullet && ((Bullet) other).creator != this) {
-            gamePlayManager.destroyGameObject(this);
-            gamePlayManager.spawnGameObject(new MainCharacterImpl(gameView, gamePlayManager, collidingGameObjectsForPathDecision));
+
+            try {
+                gamePlayManager.reduceRemainingMen();
+            } catch (NoRemainingMenException e) {
+                gamePlayManager.gameOver(false);
+            }
         }
     }
 
@@ -92,13 +95,6 @@ public class MainCharacterImpl extends CollidingPathGameObject implements MainCh
     }
 
     @Override
-    public void shoot() {
-        if (gameView.timer(shotDurationInMilliseconds, this)) {
-            gamePlayManager.spawnGameObject(new Bullet(gameView, gamePlayManager, new Position(position.getX() + 7, position.getY() + 36), Direction.DOWN, this));
-        }
-    }
-
-    @Override
     public void addToCanvas() {
         gameView.addBlockImageToCanvas(blockImage, position.getX(), position.getY(), size, rotation);
     }
@@ -110,6 +106,6 @@ public class MainCharacterImpl extends CollidingPathGameObject implements MainCh
 
     @Override
     public String toString() {
-        return "MainCharacter: %s, shoots every %d seconds".formatted(position, shotDurationInMilliseconds);
+        return "MainCharacter: %s".formatted(position);
     }
 }
