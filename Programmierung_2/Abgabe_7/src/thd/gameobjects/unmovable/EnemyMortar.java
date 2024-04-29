@@ -15,6 +15,7 @@ import thd.gameobjects.movable.Grenade;
  * BlockImage
  */
 public class EnemyMortar extends CollidingGameObject {
+    private String mortarBlockImage;
 
     /**
      * Creates EnemyMortar with gameView window of presence.
@@ -25,7 +26,13 @@ public class EnemyMortar extends CollidingGameObject {
     public EnemyMortar(GameView gameView, GamePlayManager gamePlayManager, Direction location, Position position) {
         super(gameView, gamePlayManager, location, position);
 
-        blockImage = CharacterBlockImages.Enemy.Mortar.LOADING;
+        if (location == Direction.RIGHT) {
+            blockImage = CharacterBlockImages.Enemy.Mortar.LOADING;
+            mortarBlockImage = ObjectBlockImages.MORTAR;
+        } else {
+            blockImage = mirrorBlockImage(CharacterBlockImages.Enemy.Mortar.LOADING);
+            mortarBlockImage = mirrorBlockImage(ObjectBlockImages.MORTAR);
+        }
         distanceToBackground = 100;
 
         size = 3;
@@ -49,17 +56,18 @@ public class EnemyMortar extends CollidingGameObject {
 
     @Override
     public void updateStatus() {
-        if (gameView.timer(3500, this)) {
+        if (gameView.timer(320, this)) {
             shoot();
-        } else if (gameView.timer(4000, this)) {
+        } else if (gameView.timer(400, this)) {
             shoot();
         }
     }
 
     @Override
     public void addToCanvas() {
+        double mortarXOffset = location == Direction.RIGHT ? position.getX() - 18 : position.getX() + 27;
         gameView.addBlockImageToCanvas(blockImage, position.getX(), position.getY(), size, rotation);
-        gameView.addBlockImageToCanvas(ObjectBlockImages.MORTAR, position.getX() - 18, position.getY() + 21, size, rotation);
+        gameView.addBlockImageToCanvas(mortarBlockImage, mortarXOffset, position.getY() + 21, size, rotation);
     }
 
     @Override

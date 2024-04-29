@@ -30,7 +30,13 @@ public class ParabolicMovementPattern extends MovementPattern {
 
     @Override
     protected Position startPosition(Position... referencePositions) {
-        return new Position(startPosition);
+        if (direction == Direction.LEFT) {
+            startPosition.left(27);
+            return new Position(startPosition);
+        } else {
+            startPosition.right(54);
+            return new Position(startPosition);
+        }
     }
 
     @Override
@@ -41,7 +47,7 @@ public class ParabolicMovementPattern extends MovementPattern {
 
         Position targetPosition = new Position(referencePositions[0]);
 
-        targetPosition.up(trajectory - 2* steps++);
+        targetPosition.up(trajectory - 2 * steps++);
 
         if (direction.equals(Direction.RIGHT)) {
             targetPosition.right(trajectory);

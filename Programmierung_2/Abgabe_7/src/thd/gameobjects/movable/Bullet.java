@@ -4,6 +4,7 @@ package thd.gameobjects.movable;
 import thd.game.managers.GamePlayManager;
 import thd.game.utilities.GameView;
 import thd.gameobjects.base.*;
+import thd.gameobjects.unmovable.Explosion;
 
 /**
  * Representation of the in-game-object 'Bullet'.
@@ -46,7 +47,7 @@ public class Bullet extends CollidingGameObject {
 
     @Override
     public void reactToCollisionWith(CollidingGameObject other) {
-        if (other != creator) {
+        if (other != creator && !(other instanceof Explosion)) {
             gamePlayManager.destroyGameObject(this);
         }
     }
