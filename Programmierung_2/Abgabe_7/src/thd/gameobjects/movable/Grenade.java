@@ -1,8 +1,13 @@
 package thd.gameobjects.movable;
 
+import thd.game.managers.ExplosionCountdownExpiredException;
 import thd.game.managers.GamePlayManager;
 import thd.game.utilities.GameView;
+import thd.gameobjects.base.Direction;
 import thd.gameobjects.base.GameObject;
+import thd.gameobjects.base.ObjectBlockImages;
+import thd.gameobjects.base.Position;
+import thd.gameobjects.unmovable.Explosion;
 
 /**
  * Representation of the in-game-object 'Bullet'.
@@ -12,16 +17,47 @@ import thd.gameobjects.base.GameObject;
  * BlockImage
  */
 public class Grenade extends GameObject {
+    private final ParabolicMovementPattern movementPattern;
+
     /**
      * Crates a new Grenade.
      *
-     * @param gameView GameView to show the grenade on.
+     * @param gameView        GameView to show the grenade on.
      * @param gamePlayManager GamePlayManager to manage the game actions.
      */
-    public Grenade(GameView gameView, GamePlayManager gamePlayManager) {
+    public Grenade(GameView gameView, GamePlayManager gamePlayManager, Direction originLocation, Position position, GameObject creator) {
         super(gameView, gamePlayManager);
+
+        blockImage = ObjectBlockImages.MORTAR_GRENADE;
+        distanceToBackground = (char) (creator.getDistanceToBackground() + 1);
+
+        size = 3;
+        rotation = 0;
+        width = generateWidthFromBlockImage() * size;
+        height = generateHeightFromBlockImage() * size;
+
+        speedInPixel = 5;
+
+        movementPattern = new ParabolicMovementPattern(originLocation, position);
+        this.position.updateCoordinates(movementPattern.startPosition());
+        targetPosition.updateCoordinates(movementPattern.nextTargetPosition(getPosition()));
     }
 
     @Override
-    public void addToCanvas() {}
+    public void updatePosition() {
+        position.moveToPosition(targetPosition, speedInPixel);
+        if (position.equals(targetPosition)) {
+            try {
+                targetPosition.updateCoordinates(movementPattern.nextTargetPosition(getPosition()));
+            } catch (ExplosionCountdownExpiredException e) {
+                gamePlayManager.destroyGameObject(this);
+                gamePlayManager.spawnGameObject(new Explosion(gameView, gamePlayManager, Direction.DOWN, position));
+            }
+        }
+    }
+
+    @Override
+    public void addToCanvas() {
+        gameView.addBlockImageToCanvas(blockImage, position.getX(), position.getY(), size, rotation);
+    }
 }

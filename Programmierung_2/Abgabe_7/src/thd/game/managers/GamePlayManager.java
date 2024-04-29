@@ -3,11 +3,6 @@ package thd.game.managers;
 import thd.game.utilities.GameView;
 import thd.gameobjects.base.CollidingGameObject;
 import thd.gameobjects.base.GameObject;
-import thd.gameobjects.movable.EnemyGunner;
-import thd.gameobjects.movable.Humvee;
-import thd.gameobjects.movable.MainCharacterImpl;
-import thd.gameobjects.movable.Moped;
-import thd.gameobjects.unmovable.*;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -18,7 +13,7 @@ import java.util.List;
 public class GamePlayManager extends UserControlledGameObjectPool {
     private static final int LIVES = 3;
     private final GameObjectManager gameObjectManager;
-    private final List<CollidingGameObject> collidingGameObjectsForPathDecision;
+    protected final List<CollidingGameObject> collidingGameObjectsForPathDecision;
 
     protected int lives;
     private int availableGrenades;
@@ -38,38 +33,6 @@ public class GamePlayManager extends UserControlledGameObjectPool {
         availableGrenades = 5;
         points = 0;
         highScore = 0;
-
-        scoreBoard = new ScoreBoard(gameView, this);
-
-        humvee = new Humvee(gameView, this);
-        moped = new Moped(gameView, this);
-        shootingBox = new ShootingBox(gameView, this);
-
-        stone = new Stone(gameView, this);
-        tree = new Tree(gameView, this);
-        wall = new Wall(gameView, this);
-
-        enemyMortar = new EnemyMortar(gameView, this);
-
-        collidingGameObjectsForPathDecision.add(shootingBox);
-        collidingGameObjectsForPathDecision.add(stone);
-        collidingGameObjectsForPathDecision.add(tree);
-        collidingGameObjectsForPathDecision.add(wall);
-
-        mainCharacter = new MainCharacterImpl(gameView, this, collidingGameObjectsForPathDecision);
-
-        enemyGunner = new EnemyGunner(gameView, this, collidingGameObjectsForPathDecision);
-
-        spawnGameObject(humvee);
-        spawnGameObject(moped);
-        spawnGameObject(shootingBox);
-        spawnGameObject(enemyGunner);
-        spawnGameObject(enemyMortar);
-        spawnGameObject(mainCharacter);
-        spawnGameObject(stone);
-        spawnGameObject(tree);
-        spawnGameObject(wall);
-        spawnGameObject(scoreBoard);
     }
 
     /**
@@ -152,6 +115,16 @@ public class GamePlayManager extends UserControlledGameObjectPool {
      */
     public void spawnGameObject(GameObject gameObject) {
         gameObjectManager.add(gameObject);
+    }
+
+    /**
+     * Spawns Object onto {@link GameView} canvas.
+     *
+     * @param collidingGameObject CollidingGameObject to create.
+     */
+    public void spawnPathBlockingGameObject(CollidingGameObject collidingGameObject) {
+        spawnGameObject(collidingGameObject);
+        collidingGameObjectsForPathDecision.add(collidingGameObject);
     }
 
     /**

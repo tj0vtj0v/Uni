@@ -8,16 +8,8 @@ import java.awt.event.KeyEvent;
 
 class UserControlledGameObjectPool {
     protected final GameView gameView;
-    Humvee humvee;
-    Moped moped;
     ScoreBoard scoreBoard;
-    ShootingBox shootingBox;
-    Tree tree;
-    Wall wall;
-    Stone stone;
     MainCharacterImpl mainCharacter;
-    EnemyGunner enemyGunner;
-    EnemyMortar enemyMortar;
 
     UserControlledGameObjectPool(GameView gameView) {
         this.gameView = gameView;

@@ -21,8 +21,8 @@ public class MovingCharacter extends CollidingGameObject {
      * @param gamePlayManager                     manager for the in-game logic.
      * @param collidingGameObjectsForPathDecision list of object which are path blockers.
      */
-    public MovingCharacter(GameView gameView, GamePlayManager gamePlayManager, List<CollidingGameObject> collidingGameObjectsForPathDecision) {
-        super(gameView, gamePlayManager);
+    public MovingCharacter(GameView gameView, GamePlayManager gamePlayManager, Direction direction, Position position, List<CollidingGameObject> collidingGameObjectsForPathDecision) {
+        super(gameView, gamePlayManager, direction, position);
         this.collidingGameObjectsForPathDecision = collidingGameObjectsForPathDecision;
         shotDurationInMilliseconds = 300;
 
@@ -38,7 +38,7 @@ public class MovingCharacter extends CollidingGameObject {
      */
     public void shoot() {
         if (gameView.timer(shotDurationInMilliseconds, this)) {
-            gamePlayManager.spawnGameObject(new Bullet(gameView, gamePlayManager, new Position(position.getX() + 7, position.getY() + 36), Direction.DOWN, this));
+            gamePlayManager.spawnGameObject(new Bullet(gameView, gamePlayManager, Direction.DOWN, new Position(position.getX() + 7, position.getY() + 36), this));
         }
     }
 

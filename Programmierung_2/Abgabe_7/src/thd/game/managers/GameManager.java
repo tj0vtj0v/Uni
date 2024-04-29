@@ -3,7 +3,7 @@ package thd.game.managers;
 import thd.game.utilities.GameView;
 
 
-class GameManager extends GamePlayManager {
+class GameManager extends GameWorldManager {
     GameManager(GameView gameView) {
         super(gameView);
     }

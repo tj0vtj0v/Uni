@@ -3,9 +3,7 @@ package thd.gameobjects.unmovable;
 
 import thd.game.managers.GamePlayManager;
 import thd.game.utilities.GameView;
-import thd.gameobjects.base.CharacterBlockImages;
-import thd.gameobjects.base.CollidingGameObject;
-import thd.gameobjects.base.ObjectBlockImages;
+import thd.gameobjects.base.*;
 import thd.gameobjects.movable.Bullet;
 import thd.gameobjects.movable.Grenade;
 
@@ -24,8 +22,9 @@ public class EnemyMortar extends CollidingGameObject {
      * @param gameView        window in which it has to be displayed.
      * @param gamePlayManager GamePlayManager to manage the game actions.
      */
-    public EnemyMortar(GameView gameView, GamePlayManager gamePlayManager) {
-        super(gameView, gamePlayManager);
+    public EnemyMortar(GameView gameView, GamePlayManager gamePlayManager, Direction location, Position position) {
+        super(gameView, gamePlayManager, location, position);
+        System.out.println(location);
 
         blockImage = CharacterBlockImages.Enemy.Mortar.LOADING;
         distanceToBackground = 100;
@@ -35,8 +34,10 @@ public class EnemyMortar extends CollidingGameObject {
         width = generateWidthFromBlockImage() * size;
         height = generateHeightFromBlockImage() * size;
         hitBoxOffsets(3, 3, -6, -18);
+    }
 
-        position.updateCoordinates(GameView.WIDTH - 200, 200);
+    private void shoot() {
+        gamePlayManager.spawnGameObject(new Grenade(gameView, gamePlayManager, location, getPosition(), this));
     }
 
     @Override
@@ -44,6 +45,15 @@ public class EnemyMortar extends CollidingGameObject {
         if (other instanceof Bullet) {
             gamePlayManager.destroyGameObject(this);
             gamePlayManager.addScorePoints(-1);
+        }
+    }
+
+    @Override
+    public void updateStatus() {
+        if (gameView.timer(3500, this)) {
+            shoot();
+        } else if (gameView.timer(4000, this)) {
+            shoot();
         }
     }
 

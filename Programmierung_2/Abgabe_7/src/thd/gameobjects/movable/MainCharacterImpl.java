@@ -24,8 +24,8 @@ public class MainCharacterImpl extends MovingCharacter implements MainCharacter 
      * @param gamePlayManager                     GamePlayManager to manage the game actions.
      * @param collidingGameObjectsForPathDecision List of Objects that block the movement.
      */
-    public MainCharacterImpl(GameView gameView, GamePlayManager gamePlayManager, List<CollidingGameObject> collidingGameObjectsForPathDecision) {
-        super(gameView, gamePlayManager, collidingGameObjectsForPathDecision);
+    public MainCharacterImpl(GameView gameView, GamePlayManager gamePlayManager, Direction direction, Position position, List<CollidingGameObject> collidingGameObjectsForPathDecision) {
+        super(gameView, gamePlayManager, direction, position, collidingGameObjectsForPathDecision);
 
         blockImage = CharacterBlockImages.Main.DOWN_1;
         distanceToBackground = 200;
@@ -37,8 +37,6 @@ public class MainCharacterImpl extends MovingCharacter implements MainCharacter 
         hitBoxOffsets(6, 6, -12, -24);
 
         speedInPixel = 4;
-
-        position.updateCoordinates(new Position(GameView.WIDTH / 2d - width / 2d, GameView.HEIGHT / 3d * 2));
     }
 
     @Override

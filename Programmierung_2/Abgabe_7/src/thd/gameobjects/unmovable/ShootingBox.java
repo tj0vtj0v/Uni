@@ -3,7 +3,9 @@ package thd.gameobjects.unmovable;
 import thd.game.managers.GamePlayManager;
 import thd.game.utilities.GameView;
 import thd.gameobjects.base.CollidingGameObject;
+import thd.gameobjects.base.Direction;
 import thd.gameobjects.base.ObjectBlockImages;
+import thd.gameobjects.base.Position;
 import thd.gameobjects.movable.Bullet;
 import thd.gameobjects.movable.Grenade;
 
@@ -24,8 +26,8 @@ public class ShootingBox extends CollidingGameObject {
      * @param gameView        window in which it has to be displayed.
      * @param gamePlayManager GamePlayManager to manage the game actions.
      */
-    public ShootingBox(GameView gameView, GamePlayManager gamePlayManager) {
-        super(gameView, gamePlayManager);
+    public ShootingBox(GameView gameView, GamePlayManager gamePlayManager, Direction direction, Position position) {
+        super(gameView, gamePlayManager, direction, position);
 
         blockImage = ObjectBlockImages.SHOOTING_BOX_LEFT;
         distanceToBackground = 200;
@@ -36,8 +38,6 @@ public class ShootingBox extends CollidingGameObject {
         width = generateWidthFromBlockImage() * size;
         height = generateHeightFromBlockImage() * size;
         hitBoxOffsets(3, 3, -6, -18);
-
-        position.updateCoordinates(50, 100);
     }
 
     @Override

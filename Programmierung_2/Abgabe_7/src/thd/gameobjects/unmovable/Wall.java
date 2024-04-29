@@ -3,7 +3,9 @@ package thd.gameobjects.unmovable;
 import thd.game.managers.GamePlayManager;
 import thd.game.utilities.GameView;
 import thd.gameobjects.base.CollidingGameObject;
+import thd.gameobjects.base.Direction;
 import thd.gameobjects.base.ObjectBlockImages;
+import thd.gameobjects.base.Position;
 import thd.gameobjects.movable.Bullet;
 
 /**
@@ -22,8 +24,8 @@ public class Wall extends CollidingGameObject {
      * @param gameView        window in which it has to be displayed.
      * @param gamePlayManager GamePlayManager to manage the game actions.
      */
-    public Wall(GameView gameView, GamePlayManager gamePlayManager) {
-        super(gameView, gamePlayManager);
+    public Wall(GameView gameView, GamePlayManager gamePlayManager, Direction direction, Position position) {
+        super(gameView, gamePlayManager, direction, position);
 
         blockImage = new ObjectBlockImages().wall(5);
         distanceToBackground = 100;
@@ -33,8 +35,6 @@ public class Wall extends CollidingGameObject {
         width = generateWidthFromBlockImage() * size;
         height = generateHeightFromBlockImage() * size;
         hitBoxOffsets(15, 3, -33, -18);
-
-        position.updateCoordinates(GameView.WIDTH - 400, 300);
     }
 
     @Override

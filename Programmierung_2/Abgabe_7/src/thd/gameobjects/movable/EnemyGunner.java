@@ -24,8 +24,8 @@ public class EnemyGunner extends MovingCharacter {
      * @param gamePlayManager                     GamePlayManager to manage the game actions.
      * @param collidingGameObjectsForPathDecision List of Objects that block the movement.
      */
-    public EnemyGunner(GameView gameView, GamePlayManager gamePlayManager, List<CollidingGameObject> collidingGameObjectsForPathDecision) {
-        super(gameView, gamePlayManager, collidingGameObjectsForPathDecision);
+    public EnemyGunner(GameView gameView, GamePlayManager gamePlayManager, Direction direction, Position position, List<CollidingGameObject> collidingGameObjectsForPathDecision) {
+        super(gameView, gamePlayManager, direction, position, collidingGameObjectsForPathDecision);
 
         blockImage = CharacterBlockImages.Enemy.Mortar.NORMAL;
         distanceToBackground = 100;
@@ -39,7 +39,7 @@ public class EnemyGunner extends MovingCharacter {
         speedInPixel = 1;
 
         movementPattern = new RandomMovementPattern();
-        position.updateCoordinates(new Position(0, GameView.HEIGHT / 3d));
+        this.position.updateCoordinates(position);
         targetPosition.updateCoordinates(movementPattern.nextTargetPosition(getPosition()));
     }
 
