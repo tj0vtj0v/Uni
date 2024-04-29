@@ -24,10 +24,14 @@ public class Tree extends CollidingGameObject {
      * @param gameView        window in which it has to be displayed.
      * @param gamePlayManager GamePlayManager to manage the game actions.
      */
-    public Tree(GameView gameView, GamePlayManager gamePlayManager, Direction direction, Position position) {
-        super(gameView, gamePlayManager, direction, position);
+    public Tree(GameView gameView, GamePlayManager gamePlayManager, Direction location, Position position) {
+        super(gameView, gamePlayManager, location, position);
 
-        blockImage = ObjectBlockImages.TREE;
+        if (this.location == Direction.RIGHT) {
+            blockImage = ObjectBlockImages.TREE;
+        } else {
+            blockImage = mirrorBlockImage(ObjectBlockImages.TREE);
+        }
         distanceToBackground = 100;
 
         size = 3;

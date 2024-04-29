@@ -24,8 +24,8 @@ public class Stone extends CollidingGameObject {
      * @param gameView        window in which it has to be displayed.
      * @param gamePlayManager GamePlayManager to manage the game actions.
      */
-    public Stone(GameView gameView, GamePlayManager gamePlayManager, Direction direction, Position position) {
-        super(gameView, gamePlayManager, direction, position);
+    public Stone(GameView gameView, GamePlayManager gamePlayManager, Direction location, Position position) {
+        super(gameView, gamePlayManager, location, position);
 
         blockImage = ObjectBlockImages.STONE;
         distanceToBackground = 200;

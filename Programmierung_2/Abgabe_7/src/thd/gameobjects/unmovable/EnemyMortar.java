@@ -24,7 +24,6 @@ public class EnemyMortar extends CollidingGameObject {
      */
     public EnemyMortar(GameView gameView, GamePlayManager gamePlayManager, Direction location, Position position) {
         super(gameView, gamePlayManager, location, position);
-        System.out.println(location);
 
         blockImage = CharacterBlockImages.Enemy.Mortar.LOADING;
         distanceToBackground = 100;

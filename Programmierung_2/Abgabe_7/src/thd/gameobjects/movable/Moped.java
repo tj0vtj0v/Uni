@@ -22,10 +22,14 @@ public class Moped extends CollidingGameObject {
      * @param gameView        window in which it has to be displayed.
      * @param gamePlayManager GamePlayManager to manage the game actions.
      */
-    public Moped(GameView gameView, GamePlayManager gamePlayManager, Direction direction, Position position) {
-        super(gameView, gamePlayManager, direction, position);
+    public Moped(GameView gameView, GamePlayManager gamePlayManager, Direction location, Position position) {
+        super(gameView, gamePlayManager, location, position);
 
-        blockImage = ObjectBlockImages.MOPED;
+        if (this.location == Direction.RIGHT) {
+            blockImage = ObjectBlockImages.MOPED;
+        } else {
+            blockImage = mirrorBlockImage(ObjectBlockImages.MOPED);
+        }
         distanceToBackground = 200;
         hitTolerance = 3;
 
@@ -37,7 +41,7 @@ public class Moped extends CollidingGameObject {
 
         speedInPixel = 1;
 
-        LinearMovementPattern movementPattern = new LinearMovementPattern(direction, position);
+        LinearMovementPattern movementPattern = new LinearMovementPattern(this.location.opposite(), position);
         this.position.updateCoordinates(movementPattern.startPosition());
         targetPosition.updateCoordinates(movementPattern.nextTargetPosition());
     }

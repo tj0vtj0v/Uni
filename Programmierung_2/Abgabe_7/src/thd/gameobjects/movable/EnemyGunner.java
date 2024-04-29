@@ -24,8 +24,8 @@ public class EnemyGunner extends MovingCharacter {
      * @param gamePlayManager                     GamePlayManager to manage the game actions.
      * @param collidingGameObjectsForPathDecision List of Objects that block the movement.
      */
-    public EnemyGunner(GameView gameView, GamePlayManager gamePlayManager, Direction direction, Position position, List<CollidingGameObject> collidingGameObjectsForPathDecision) {
-        super(gameView, gamePlayManager, direction, position, collidingGameObjectsForPathDecision);
+    public EnemyGunner(GameView gameView, GamePlayManager gamePlayManager, Direction location, Position position, List<CollidingGameObject> collidingGameObjectsForPathDecision) {
+        super(gameView, gamePlayManager, location, position, collidingGameObjectsForPathDecision);
 
         blockImage = CharacterBlockImages.Enemy.Mortar.NORMAL;
         distanceToBackground = 100;

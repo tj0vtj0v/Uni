@@ -17,10 +17,10 @@ public class ParabolicMovementPattern extends MovementPattern {
     private final int maximumNumberOfSteps;
     private int steps;
 
-    ParabolicMovementPattern(Direction originLocation, Position startPosition) {
+    ParabolicMovementPattern(Direction direction, Position startPosition) {
         super();
 
-        this.direction = originLocation;
+        this.direction = direction;
         this.startPosition = startPosition;
 
         trajectory = random.nextInt(20, 30);
@@ -43,7 +43,7 @@ public class ParabolicMovementPattern extends MovementPattern {
 
         targetPosition.up(trajectory - 2* steps++);
 
-        if (direction.equals(Direction.LEFT)) {
+        if (direction.equals(Direction.RIGHT)) {
             targetPosition.right(trajectory);
         } else {
             targetPosition.left(trajectory);

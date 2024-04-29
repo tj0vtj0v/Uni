@@ -6,40 +6,42 @@ import thd.gameobjects.base.CollidingGameObject;
 import thd.gameobjects.base.Direction;
 import thd.gameobjects.base.ObjectBlockImages;
 import thd.gameobjects.base.Position;
-import thd.gameobjects.movable.Bullet;
+import thd.gameobjects.movable.MainCharacterImpl;
+
 
 /**
- * Representation of the in-game-object 'Wall'.
+ * Representation of the in-game-object 'AmmoBox'.
  * <p>
  * unmoving
- * indestructible
- * blocks {@link Bullet}
+ * collectable
  * BlockImage
  */
-public class Wall extends CollidingGameObject {
-
+public class AmmoBox extends CollidingGameObject {
     /**
-     * Creates Wall with gameView window of presence.
+     * Creates Ammo box with gameView window of presence.
      *
      * @param gameView        window in which it has to be displayed.
      * @param gamePlayManager GamePlayManager to manage the game actions.
      */
-    public Wall(GameView gameView, GamePlayManager gamePlayManager, Direction location, Position position, int segments) {
+    public AmmoBox(GameView gameView, GamePlayManager gamePlayManager, Direction location, Position position) {
         super(gameView, gamePlayManager, location, position);
 
-        blockImage = new ObjectBlockImages().wall(segments);
-        distanceToBackground = 100;
+        blockImage = ObjectBlockImages.AMMOBOX;
+        distanceToBackground = 200;
 
         size = 3;
         rotation = 0;
         width = generateWidthFromBlockImage() * size;
         height = generateHeightFromBlockImage() * size;
-        hitBoxOffsets(15, 3, -33, -18);
+        hitBoxOffsets(0, 0, 0, 0);
     }
 
     @Override
     public void reactToCollisionWith(CollidingGameObject other) {
-
+        if (other instanceof MainCharacterImpl) {
+            gamePlayManager.destroyGameObject(this);
+            gamePlayManager.addGrenades(3);
+        }
     }
 
     @Override
@@ -49,6 +51,6 @@ public class Wall extends CollidingGameObject {
 
     @Override
     public String toString() {
-        return "Wall: %s".formatted(position);
+        return "AmmoBox: %s".formatted(position);
     }
 }

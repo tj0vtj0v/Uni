@@ -21,10 +21,14 @@ public class Humvee extends CollidingGameObject {
      * @param gameView        window in which it has to be displayed.
      * @param gamePlayManager GamePlayManager to manage the game actions.
      */
-    public Humvee(GameView gameView, GamePlayManager gamePlayManager, Direction direction, Position position) {
-        super(gameView, gamePlayManager, direction, position);
+    public Humvee(GameView gameView, GamePlayManager gamePlayManager, Direction location, Position position) {
+        super(gameView, gamePlayManager, location, position);
 
-        blockImage = ObjectBlockImages.HUMVEE;
+        if (this.location == Direction.LEFT) {
+            blockImage = ObjectBlockImages.HUMVEE;
+        } else {
+            blockImage = mirrorBlockImage(ObjectBlockImages.HUMVEE);
+        }
         distanceToBackground = 200;
         hitTolerance = 5;
 
@@ -36,7 +40,7 @@ public class Humvee extends CollidingGameObject {
 
         speedInPixel = 1;
 
-        LinearMovementPattern movementPattern = new LinearMovementPattern(direction, position);
+        LinearMovementPattern movementPattern = new LinearMovementPattern(this.location.opposite(), position);
         this.position.updateCoordinates(movementPattern.startPosition());
         targetPosition.updateCoordinates(movementPattern.nextTargetPosition());
     }

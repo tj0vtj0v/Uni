@@ -21,11 +21,11 @@ public class Bullet extends CollidingGameObject {
      * @param gameView        GameView to show the bullet on.
      * @param gamePlayManager GamePlayManager to manage the game actions.
      * @param position  Position from which to start movement.
-     * @param direction       Direction in which the bullet should travel.
+     * @param originLocation       Direction in which the bullet should travel.
      * @param creator         Instance which shoots this Bullet.
      */
-    public Bullet(GameView gameView, GamePlayManager gamePlayManager, Direction direction, Position position, GameObject creator) {
-        super(gameView, gamePlayManager, direction, position);
+    public Bullet(GameView gameView, GamePlayManager gamePlayManager, Direction originLocation, Position position, GameObject creator) {
+        super(gameView, gamePlayManager, originLocation, position);
         this.creator = creator;
 
         blockImage = ObjectBlockImages.BULLET;
@@ -39,7 +39,7 @@ public class Bullet extends CollidingGameObject {
 
         speedInPixel = 2;
 
-        LinearMovementPattern movementPattern = new LinearMovementPattern(direction, position);
+        LinearMovementPattern movementPattern = new LinearMovementPattern(originLocation, position);
         this.position.updateCoordinates(movementPattern.startPosition());
         targetPosition.updateCoordinates(movementPattern.nextTargetPosition());
     }

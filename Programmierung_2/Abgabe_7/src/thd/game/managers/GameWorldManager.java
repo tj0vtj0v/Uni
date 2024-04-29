@@ -19,11 +19,11 @@ class GameWorldManager extends GamePlayManager {
         super(gameView);
         // Capital characters represent right (mostly the original rotation) and non-capitals represent left.
         world = """
-                  T     A   \s
-                       S   T\s
-                   T    T   \s
-                    m     M \s
-                      T     \s
+                  T      B  \s
+                fs     S   T\s
+                   T    T  F\s
+                r   a  9   M\s
+                 b    T    R\s
                    T   I    \s
                             \s
                 """;
@@ -37,7 +37,7 @@ class GameWorldManager extends GamePlayManager {
 
     private void spawnGameObjectsFromWorldString() {
         String[] lines = world.split("\n"); // ("\\R");
-        int scale = GameView.WIDTH / lines[0].length();
+        int scale = GameView.WIDTH / (lines[0].length() - 1);
         char tile;
         Position position;
         Direction located;
@@ -57,12 +57,32 @@ class GameWorldManager extends GamePlayManager {
                     case 'M':
                         spawnGameObject(new EnemyMortar(gameView, this, located, position));
                         break;
+                    case 'G':
+                        spawnGameObject(new EnemyGunner(gameView, this, located, position, collidingGameObjectsForPathDecision));
+                        break;
+                    case 'H':
+                        spawnGameObject(new Humvee(gameView, this, located, position));
+                        break;
+                    case 'F':
+                        spawnGameObject(new Moped(gameView, this, located, position));
+                        break;
+                    case 'B':
+                        spawnPathBlockingGameObject(new ShootingBox(gameView, this, located, position));
+                        break;
                     case 'T':
                         spawnPathBlockingGameObject(new Tree(gameView, this, located, position));
                         break;
                     case 'S':
                         spawnPathBlockingGameObject(new Stone(gameView, this, located, position));
                         break;
+                    case 'R':
+                        spawnPathBlockingGameObject(new Rock(gameView, this, located, position));
+                        break;
+                    case 'A':
+                        spawnGameObject(new AmmoBox(gameView, this, located, position));
+                        break;
+                    case '0', '1', '2', '3', '4', '5', '6', '7', '8', '9':
+                        spawnPathBlockingGameObject(new Wall(gameView, this, located, position, tile - 47));
                 }
             }
         }

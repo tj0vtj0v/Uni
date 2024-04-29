@@ -38,7 +38,7 @@ public class Grenade extends GameObject {
 
         speedInPixel = 5;
 
-        movementPattern = new ParabolicMovementPattern(originLocation, position);
+        movementPattern = new ParabolicMovementPattern(originLocation.opposite(), position);
         this.position.updateCoordinates(movementPattern.startPosition());
         targetPosition.updateCoordinates(movementPattern.nextTargetPosition(getPosition()));
     }

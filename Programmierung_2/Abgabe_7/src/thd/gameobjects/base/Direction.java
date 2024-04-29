@@ -1,5 +1,7 @@
 package thd.gameobjects.base;
 
+import java.util.Arrays;
+
 /**
  * This Enum-Class contains all movement directions of the Characters.
  */
@@ -8,14 +10,6 @@ public enum Direction {
      * Represents the direction 'left'.
      */
     LEFT,
-    /**
-     * Represents the direction 'right'.
-     */
-    RIGHT,
-    /**
-     * Represents the direction 'up'.
-     */
-    UP,
     /**
      * Represents the direction 'down'.
      */
@@ -35,5 +29,17 @@ public enum Direction {
     /**
      * Represents the diagonal direction 'left' and 'down'.
      */
-    DOWN_LEFT
+    DOWN_LEFT,
+    /**
+     * Represents the direction 'up'.
+     */
+    UP,
+    /**
+     * Represents the direction 'right'.
+     */
+    RIGHT;
+
+    public Direction opposite() {
+        return Direction.values()[Direction.values().length - this.ordinal() - 1];
+    }
 }

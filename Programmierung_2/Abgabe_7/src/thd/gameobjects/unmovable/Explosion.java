@@ -29,6 +29,10 @@ public class Explosion extends CollidingGameObject {
 
     @Override
     public void addToCanvas() {
-        gameView.addBlockImageToCanvas(blockImage, position.getX(), position.getY(), size, rotation);
+        if (gameView.timer(8000, this)) {
+            gamePlayManager.destroyGameObject(this);
+        } else {
+            gameView.addBlockImageToCanvas(blockImage, position.getX(), position.getY(), size, rotation);
+        }
     }
 }

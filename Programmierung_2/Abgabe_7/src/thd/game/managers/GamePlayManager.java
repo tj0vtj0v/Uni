@@ -62,6 +62,14 @@ public class GamePlayManager extends UserControlledGameObjectPool {
         highScore = Math.max(points, highScore);
     }
 
+    public void addGrenades(int amount) {
+        if (amount <= 0) {
+            throw new IllegalArgumentException("The number has to be greater than 0!");
+        }
+
+        this.availableGrenades += amount;
+    }
+
     /**
      * Getter for the points collected in this game.
      *

@@ -101,6 +101,16 @@ public abstract class GameObject {
         return distanceToBackground;
     }
 
+    protected String mirrorBlockImage(String originalBlockImage) {
+        StringBuilder mirroredBlockimage = new StringBuilder();
+
+        for (String originalLine : originalBlockImage.split("\n")) {
+            mirroredBlockimage.append(new StringBuilder(originalLine).reverse().append("\n"));
+        }
+
+        return mirroredBlockimage.toString();
+    }
+
     @Override
     public boolean equals(Object o) {
         if (o == this) {
