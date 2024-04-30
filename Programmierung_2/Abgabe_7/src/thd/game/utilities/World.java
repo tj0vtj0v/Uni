@@ -89,7 +89,7 @@ public final class World {
                                                                             \s
                                                                             \s
                                                                             \s
-                                                                            \s
+                                                             a*             \s
                                                                             \s
                                                                             \s
                                                                             \s

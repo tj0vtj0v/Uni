@@ -104,7 +104,7 @@ public abstract class GameObject {
     /**
      * Returns the distance to the background of the game object.
      *
-     * @return distance to the background of game object
+     * @return distance to the background of game object.
      */
     public char getDistanceToBackground() {
         return distanceToBackground;
@@ -132,7 +132,7 @@ public abstract class GameObject {
         return position.equals(other.position)
                 && targetPosition.equals(other.targetPosition)
                 && blockImage.equals(other.blockImage)
-                && Character.compare(distanceToBackground, other.distanceToBackground) == 0
+                && distanceToBackground == other.distanceToBackground
                 && Double.compare(speedInPixel, other.speedInPixel) == 0
                 && Double.compare(rotation, other.rotation) == 0
                 && Double.compare(size, other.size) == 0

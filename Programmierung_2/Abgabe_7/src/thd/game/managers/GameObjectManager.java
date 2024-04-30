@@ -29,7 +29,7 @@ class GameObjectManager extends CollisionManager {
             gameObject.addToCanvas();
         }
 
-        manageCollisions(true);
+        manageCollisions(false); //TODO
     }
 
     private void updateLists() {
@@ -50,9 +50,9 @@ class GameObjectManager extends CollisionManager {
     }
 
     private void addToGameObjects() {
-        for (GameObject gameObject : gameObjectsToBeAdded) {
-            sortIntoGameObjects(gameObject);
-            addToCollisionManagement(gameObject);
+        for (GameObject toAdd : gameObjectsToBeAdded) {
+            sortIntoGameObjects(toAdd);
+            addToCollisionManagement(toAdd);
         }
         gameObjectsToBeAdded.clear();
     }
