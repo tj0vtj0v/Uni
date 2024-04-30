@@ -2,12 +2,9 @@ package thd.gameobjects.unmovable;
 
 import thd.game.managers.GamePlayManager;
 import thd.game.utilities.GameView;
-import thd.gameobjects.base.CollidingGameObject;
-import thd.gameobjects.base.Direction;
-import thd.gameobjects.base.ObjectBlockImages;
-import thd.gameobjects.base.Position;
+import thd.gameobjects.base.*;
 
-public class Explosion extends CollidingGameObject {
+public class Explosion extends CollidingGameObject implements ShiftableGameObject {
     public Explosion(GameView gameView, GamePlayManager gamePlayManager, Direction location, Position position) {
         super(gameView, gamePlayManager, location, position);
 

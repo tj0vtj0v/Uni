@@ -3,10 +3,7 @@ package thd.gameobjects.movable;
 import thd.game.managers.ExplosionCountdownExpiredException;
 import thd.game.managers.GamePlayManager;
 import thd.game.utilities.GameView;
-import thd.gameobjects.base.Direction;
-import thd.gameobjects.base.GameObject;
-import thd.gameobjects.base.ObjectBlockImages;
-import thd.gameobjects.base.Position;
+import thd.gameobjects.base.*;
 import thd.gameobjects.unmovable.Explosion;
 
 /**
@@ -16,7 +13,7 @@ import thd.gameobjects.unmovable.Explosion;
  * indestructible
  * BlockImage
  */
-public class Grenade extends GameObject {
+public class Grenade extends GameObject implements ShiftableGameObject {
     private final ParabolicMovementPattern movementPattern;
 
     /**

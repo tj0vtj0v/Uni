@@ -13,7 +13,7 @@ import thd.gameobjects.unmovable.Explosion;
  * indestructible
  * png textured
  */
-public class Bullet extends CollidingGameObject {
+public class Bullet extends CollidingGameObject implements ShiftableGameObject {
     final GameObject creator;
 
     /**

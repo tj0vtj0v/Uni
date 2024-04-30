@@ -10,7 +10,7 @@ import java.util.List;
 /**
  * Manages the whole plot of the game.
  */
-public class GamePlayManager extends UserControlledGameObjectPool {
+public class GamePlayManager extends WorldShiftManager {
     private static final int LIVES = 3;
     private final GameObjectManager gameObjectManager;
     protected final List<CollidingGameObject> collidingGameObjectsForPathDecision;
@@ -106,12 +106,9 @@ public class GamePlayManager extends UserControlledGameObjectPool {
         System.exit(0);
     }
 
-    /**
-     * Spawns Object onto {@link GameView} canvas.
-     *
-     * @param gameObject GameObject to create.
-     */
+    @Override
     public void spawnGameObject(GameObject gameObject) {
+        super.spawnGameObject(gameObject);
         gameObjectManager.add(gameObject);
     }
 
@@ -131,11 +128,13 @@ public class GamePlayManager extends UserControlledGameObjectPool {
      * @param gameObject GameObject to destroy.
      */
     public void destroyGameObject(GameObject gameObject) {
+        super.destroyGameObject(gameObject);
         gameObjectManager.remove(gameObject);
         collidingGameObjectsForPathDecision.remove(gameObject);
     }
 
     protected void destroyAllGameObjects() {
+        super.destroyAllGameObjects();
         gameObjectManager.removeAll();
     }
 

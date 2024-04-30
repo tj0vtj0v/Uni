@@ -2,10 +2,7 @@ package thd.gameobjects.unmovable;
 
 import thd.game.managers.GamePlayManager;
 import thd.game.utilities.GameView;
-import thd.gameobjects.base.CollidingGameObject;
-import thd.gameobjects.base.Direction;
-import thd.gameobjects.base.ObjectBlockImages;
-import thd.gameobjects.base.Position;
+import thd.gameobjects.base.*;
 import thd.gameobjects.movable.Bullet;
 
 /**
@@ -16,7 +13,7 @@ import thd.gameobjects.movable.Bullet;
  * blocks {@link Bullet}
  * BlockImage
  */
-public class Rock extends CollidingGameObject {
+public class Rock extends CollidingGameObject implements ShiftableGameObject {
 
     /**
      * Creates Rock with gameView window of presence.

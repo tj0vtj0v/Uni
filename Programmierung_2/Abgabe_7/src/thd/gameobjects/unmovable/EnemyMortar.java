@@ -14,7 +14,7 @@ import thd.gameobjects.movable.Grenade;
  * destructible by 1 {@link Grenade} or 1 {@link Bullet}
  * BlockImage
  */
-public class EnemyMortar extends CollidingGameObject {
+public class EnemyMortar extends CollidingGameObject implements ShiftableGameObject {
     private String mortarBlockImage;
 
     /**

@@ -91,9 +91,24 @@ public class MainCharacterImpl extends MovingCharacter implements MainCharacter 
      * Moves the character its speed in pixels up.
      */
     public void up() {
-        position.up(speedInPixel);
-        if (pathIsBlocked()) {
-            position.down(speedInPixel);
+        if (position.getY() > GameView.HEIGHT / 2f) {
+            position.up(speedInPixel);
+            if (pathIsBlocked()) {
+                position.down(speedInPixel);
+            }
+        } else if (position.getY() > GameView.HEIGHT / 3f) {
+            position.up(speedInPixel / 2);
+            gamePlayManager.moveWorldUp(speedInPixel / 2);
+
+            if (pathIsBlocked()) {
+                position.down(speedInPixel);
+                gamePlayManager.moveWorldDown(speedInPixel);
+            }
+        } else {
+            gamePlayManager.moveWorldUp(speedInPixel);
+            if (pathIsBlocked()) {
+                gamePlayManager.moveWorldDown(speedInPixel);
+            }
         }
     }
 

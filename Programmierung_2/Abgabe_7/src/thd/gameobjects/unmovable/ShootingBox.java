@@ -2,10 +2,7 @@ package thd.gameobjects.unmovable;
 
 import thd.game.managers.GamePlayManager;
 import thd.game.utilities.GameView;
-import thd.gameobjects.base.CollidingGameObject;
-import thd.gameobjects.base.Direction;
-import thd.gameobjects.base.ObjectBlockImages;
-import thd.gameobjects.base.Position;
+import thd.gameobjects.base.*;
 import thd.gameobjects.movable.Bullet;
 import thd.gameobjects.movable.Grenade;
 
@@ -17,7 +14,7 @@ import thd.gameobjects.movable.Grenade;
  * destructible by 1 {@link Grenade} or 2 {@link Bullet}
  * BlockImage
  */
-public class ShootingBox extends CollidingGameObject {
+public class ShootingBox extends CollidingGameObject implements ShiftableGameObject {
     private int hitTolerance;
 
     /**

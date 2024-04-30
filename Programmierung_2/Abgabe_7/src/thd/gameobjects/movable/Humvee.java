@@ -12,7 +12,7 @@ import thd.gameobjects.base.*;
  * destructible by 1 {@link Grenade} or 5 {@link Bullet}
  * BlockImage
  */
-public class Humvee extends CollidingGameObject {
+public class Humvee extends CollidingGameObject implements ShiftableGameObject {
     private int hitTolerance;
 
     /**

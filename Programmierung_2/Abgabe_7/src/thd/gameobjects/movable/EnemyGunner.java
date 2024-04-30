@@ -14,7 +14,7 @@ import java.util.List;
  * destructible by 1 {@link Grenade} or 1 {@link Bullet}
  * png textured
  */
-public class EnemyGunner extends MovingCharacter {
+public class EnemyGunner extends MovingCharacter implements ShiftableGameObject {
     private final RandomMovementPattern movementPattern;
 
     /**
