@@ -39,7 +39,13 @@ public final class CharacterBlockImages {
      * Static Subclass for the enemy character.
      */
     public static final class Enemy {
+        /**
+         * Static Subclass for the enemy with a gun.
+         */
         public static final class Gunner {
+            /**
+             * String with the 1st frame of the enemy gunner running down.
+             */
             public static final String DOWN_1 = Main.DOWN_1.replace('5', '2');
         }
         /**

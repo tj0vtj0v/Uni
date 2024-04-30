@@ -6,6 +6,7 @@ import thd.game.utilities.GameView;
 import thd.gameobjects.base.*;
 import thd.gameobjects.movable.Bullet;
 import thd.gameobjects.movable.Grenade;
+import thd.gameobjects.movable.MainCharacterImpl;
 
 /**
  * Representation of the in-game-object 'EnemyMortar'.
@@ -14,14 +15,16 @@ import thd.gameobjects.movable.Grenade;
  * destructible by 1 {@link Grenade} or 1 {@link Bullet}
  * BlockImage
  */
-public class EnemyMortar extends CollidingGameObject implements ShiftableGameObject {
-    private String mortarBlockImage;
+public class EnemyMortar extends CollidingGameObject implements ShiftableGameObject, ActivatableGameObject {
+    private final String mortarBlockImage;
 
     /**
      * Creates EnemyMortar with gameView window of presence.
      *
      * @param gameView        window in which it has to be displayed.
      * @param gamePlayManager GamePlayManager to manage the game actions.
+     * @param location        Stores positional information.
+     * @param position        Position where to be located.
      */
     public EnemyMortar(GameView gameView, GamePlayManager gamePlayManager, Direction location, Position position) {
         super(gameView, gamePlayManager, location, position);
@@ -44,6 +47,13 @@ public class EnemyMortar extends CollidingGameObject implements ShiftableGameObj
 
     private void shoot() {
         gamePlayManager.spawnGameObject(new Grenade(gameView, gamePlayManager, location, getPosition(), this));
+    }
+
+    @Override
+    public boolean tryToActivate(Object info) {
+        MainCharacterImpl infoObject = (MainCharacterImpl) info;
+
+        return (infoObject).getPosition().verticalDistance(this.position) <= GameView.HEIGHT;
     }
 
     @Override

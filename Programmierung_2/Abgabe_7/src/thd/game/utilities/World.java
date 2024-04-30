@@ -1,6 +1,12 @@
 package thd.game.utilities;
 
-public class World {
+/**
+ * StorageClass for saving of the Levels;
+ */
+public final class World {
+    /**
+     * Representation of all Elements, mainly for easy Copy n' pasting.
+     */
     public static final String CALIBRATION = """
             aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\s
             a *M** G** H******* F***** B*** T*** S** R****** A* 0** I**    aa\s
@@ -13,13 +19,16 @@ public class World {
             aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
             """;
 
+    /**
+     * Representation of the frist Level as WorldString.
+     */
     public static final String LEVEL_1 = """
             ----------------------------------------------------------------\s
                                                                             \s
-                                                                                                                       H*******\s
-            h*******                                                                                                   ********\s
-            ********                                                                                                   ********\s
-            ********                                                                                                   ********\s
+                                                                    H*******\s
+            h*******                                                ********\s
+            ********                                                ********\s
+            ********                                                ********\s
             ********                                                        \s
                                                                    H******* \s
                                                                    ******** \s
@@ -40,12 +49,12 @@ public class World {
                                                                             \s
                                                                             \s
                                                                             \s
-                                                                            \s
-                                T***                                        \s
-                                ****                                        \s
-                                ****                                        \s
-                                ****             T***                       \s
-                                ****             ****                       \s
+            T***                                                            \s
+            ****                T***                                        \s
+            ****                ****                                        \s
+            ****                ****                                        \s
+            ****                ****             T***                       \s
+            ****                ****             ****                       \s
             *m**                ****             ****                   *M**\s
             ****                                 ****                   ****\s
             ****                                 ****     T***          ****\s

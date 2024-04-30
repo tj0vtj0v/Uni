@@ -16,7 +16,7 @@ import java.util.Random;
  * destructible by 1 {@link Grenade} or 1 {@link Bullet}
  * png textured
  */
-public class EnemyGunner extends MovingCharacter implements ShiftableGameObject {
+public class EnemyGunner extends MovingCharacter implements ShiftableGameObject, ActivatableGameObject {
     private final RandomMovementPattern movementPattern;
 
     /**
@@ -24,6 +24,8 @@ public class EnemyGunner extends MovingCharacter implements ShiftableGameObject 
      *
      * @param gameView                            window in which it has to be displayed.
      * @param gamePlayManager                     GamePlayManager to manage the game actions.
+     * @param location                            Stores positional information.
+     * @param position                            Position from which to start movement.
      * @param collidingGameObjectsForPathDecision List of Objects that block the movement.
      */
     public EnemyGunner(GameView gameView, GamePlayManager gamePlayManager, Direction location, Position position, List<CollidingGameObject> collidingGameObjectsForPathDecision) {
@@ -43,6 +45,13 @@ public class EnemyGunner extends MovingCharacter implements ShiftableGameObject 
         movementPattern = new RandomMovementPattern();
         this.position.updateCoordinates(position);
         targetPosition.updateCoordinates(movementPattern.nextTargetPosition(getPosition()));
+    }
+
+    @Override
+    public boolean tryToActivate(Object info) {
+        MainCharacterImpl infoObject = (MainCharacterImpl) info;
+
+        return (infoObject).getPosition().verticalDistance(this.position) <= GameView.HEIGHT;
     }
 
     @Override

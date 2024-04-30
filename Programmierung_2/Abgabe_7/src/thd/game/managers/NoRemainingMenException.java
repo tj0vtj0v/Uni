@@ -5,9 +5,9 @@ package thd.game.managers;
  */
 public class NoRemainingMenException extends Exception{
     /**
-     * Creates a instance of the exception.
+     * Creates an instance of the exception.
      */
-    NoRemainingMenException(){
-        super("No men left");
+    NoRemainingMenException(String message){
+        super(message);
     }
 }

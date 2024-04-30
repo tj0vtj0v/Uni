@@ -13,17 +13,19 @@ import thd.gameobjects.movable.MainCharacterImpl;
  * collectable
  * BlockImage
  */
-public class AmmoBox extends CollidingGameObject implements ShiftableGameObject {
+public class AmmoBox extends CollidingGameObject implements ShiftableGameObject, ActivatableGameObject {
     /**
      * Creates Ammo box with gameView window of presence.
      *
      * @param gameView        window in which it has to be displayed.
      * @param gamePlayManager GamePlayManager to manage the game actions.
+     * @param location        Stores positional information.
+     * @param position        Position where to be located.
      */
     public AmmoBox(GameView gameView, GamePlayManager gamePlayManager, Direction location, Position position) {
         super(gameView, gamePlayManager, location, position);
 
-        blockImage = ObjectBlockImages.AMMOBOX;
+        blockImage = ObjectBlockImages.AMMO_BOX;
         distanceToBackground = 200;
 
         size = 3;
@@ -31,6 +33,13 @@ public class AmmoBox extends CollidingGameObject implements ShiftableGameObject 
         width = generateWidthFromBlockImage() * size;
         height = generateHeightFromBlockImage() * size;
         hitBoxOffsets(0, 0, 0, 0);
+    }
+
+    @Override
+    public boolean tryToActivate(Object info) {
+        MainCharacterImpl infoObject = (MainCharacterImpl) info;
+
+        return (infoObject).getPosition().verticalDistance(this.position) <= GameView.HEIGHT;
     }
 
     @Override

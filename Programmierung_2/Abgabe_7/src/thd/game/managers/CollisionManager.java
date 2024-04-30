@@ -17,9 +17,9 @@ class CollisionManager {
     /**
      * Manages collisions between any game objects in the list. If a collision is detected, the method
      * {@link CollidingGameObject#reactToCollisionWith(CollidingGameObject)} is called for both game objects.
-     * If <code>showHitBoxes</code> is true, all hitboxes of game objects in the list are shown as red rectangles.
+     * If {@code showHitBoxes} is true, all hit-boxes of game objects in the list are shown as red rectangles.
      *
-     * @param showHitBoxes If true, hitboxes of colliding game objects in the list are shown.
+     * @param showHitBoxes If true, hit-boxes of colliding game objects in the list are shown.
      */
     protected void manageCollisions(boolean showHitBoxes) {
         int sublistIndex = 0;

@@ -13,7 +13,7 @@ import thd.gameobjects.unmovable.Explosion;
  * destructible by 1 {@link Grenade} or 3 {@link Bullet}
  * BlockImage
  */
-public class Moped extends CollidingGameObject implements ShiftableGameObject {
+public class Moped extends CollidingGameObject implements ShiftableGameObject, ActivatableGameObject {
     private int hitTolerance;
 
 
@@ -22,6 +22,8 @@ public class Moped extends CollidingGameObject implements ShiftableGameObject {
      *
      * @param gameView        window in which it has to be displayed.
      * @param gamePlayManager GamePlayManager to manage the game actions.
+     * @param location        Stores positional information.
+     * @param position        Position from which to start movement.
      */
     public Moped(GameView gameView, GamePlayManager gamePlayManager, Direction location, Position position) {
         super(gameView, gamePlayManager, location, position);
@@ -45,6 +47,13 @@ public class Moped extends CollidingGameObject implements ShiftableGameObject {
         LinearMovementPattern movementPattern = new LinearMovementPattern(this.location.opposite(), position);
         this.position.updateCoordinates(movementPattern.startPosition());
         targetPosition.updateCoordinates(movementPattern.nextTargetPosition());
+    }
+
+    @Override
+    public boolean tryToActivate(Object info) {
+        MainCharacterImpl infoObject = (MainCharacterImpl) info;
+
+        return (infoObject).getPosition().verticalDistance(this.position) <= GameView.HEIGHT;
     }
 
     @Override

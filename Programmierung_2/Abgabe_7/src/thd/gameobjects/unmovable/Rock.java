@@ -4,6 +4,7 @@ import thd.game.managers.GamePlayManager;
 import thd.game.utilities.GameView;
 import thd.gameobjects.base.*;
 import thd.gameobjects.movable.Bullet;
+import thd.gameobjects.movable.MainCharacterImpl;
 
 /**
  * Representation of the in-game-object 'Rock'.
@@ -13,13 +14,15 @@ import thd.gameobjects.movable.Bullet;
  * blocks {@link Bullet}
  * BlockImage
  */
-public class Rock extends CollidingGameObject implements ShiftableGameObject {
+public class Rock extends CollidingGameObject implements ShiftableGameObject, ActivatableGameObject {
 
     /**
      * Creates Rock with gameView window of presence.
      *
      * @param gameView        window in which it has to be displayed.
      * @param gamePlayManager GamePlayManager to manage the game actions.
+     * @param location        Stores positional information.
+     * @param position        Position where to be located.
      */
     public Rock(GameView gameView, GamePlayManager gamePlayManager, Direction location, Position position) {
         super(gameView, gamePlayManager, location, position);
@@ -36,6 +39,13 @@ public class Rock extends CollidingGameObject implements ShiftableGameObject {
         width = generateWidthFromBlockImage() * size;
         height = generateHeightFromBlockImage() * size;
         hitBoxOffsets(3, 6, -6, -18);
+    }
+
+    @Override
+    public boolean tryToActivate(Object info) {
+        MainCharacterImpl infoObject = (MainCharacterImpl) info;
+
+        return (infoObject).getPosition().verticalDistance(this.position) <= GameView.HEIGHT;
     }
 
     @Override

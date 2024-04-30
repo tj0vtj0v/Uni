@@ -24,9 +24,9 @@ public final class ObjectBlockImages {
             """;
 
     /**
-     * Blockimage of an ammobox.
+     * Blockimage of an ammo-box.
      */
-    public static final String AMMOBOX = """
+    public static final String AMMO_BOX = """
                   333333
                 33663322
               3366332222

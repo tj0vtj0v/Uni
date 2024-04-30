@@ -2,10 +2,7 @@ package thd.game.managers;
 
 import thd.game.utilities.GameView;
 import thd.gameobjects.base.CollidingGameObject;
-import thd.gameobjects.base.Direction;
 import thd.gameobjects.base.GameObject;
-import thd.gameobjects.base.Position;
-import thd.gameobjects.movable.MainCharacterImpl;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -45,7 +42,7 @@ public class GamePlayManager extends WorldShiftManager {
         lives--;
 
         if (lives <= 0) {
-            throw new NoRemainingMenException();
+            throw new NoRemainingMenException("No men left");
         }
     }
 

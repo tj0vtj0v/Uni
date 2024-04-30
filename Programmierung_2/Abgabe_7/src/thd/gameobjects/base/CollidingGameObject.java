@@ -85,4 +85,9 @@ public abstract class CollidingGameObject extends GameObject {
             gameView.addRectangleToCanvas(hitBoxRectangle.x, hitBoxRectangle.y, hitBoxRectangle.width, hitBoxRectangle.height, 1, false, Color.RED);
         }
     }
+
+    @Override
+    public void addToCanvas() {
+        gameView.addBlockImageToCanvas(blockImage, position.getX(), position.getY(), size, rotation);
+    }
 }

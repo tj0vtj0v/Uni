@@ -27,7 +27,7 @@ public abstract class GameObject {
      * @param gameView        GameView to show the game object on.
      * @param gamePlayManager GamePlayManager to manage the game actions.
      */
-    public GameObject(GameView gameView, GamePlayManager gamePlayManager) {
+    protected GameObject(GameView gameView, GamePlayManager gamePlayManager) {
         this.gameView = gameView;
         this.gamePlayManager = gamePlayManager;
 
@@ -57,9 +57,7 @@ public abstract class GameObject {
     /**
      * Draws the game object to the canvas.
      */
-    public void addToCanvas() {
-        gameView.addBlockImageToCanvas(blockImage, position.getX(), position.getY(), size, rotation);
-    }
+    public abstract void addToCanvas();
 
     /**
      * Changes the status of an Object.
@@ -76,6 +74,11 @@ public abstract class GameObject {
         return position;
     }
 
+    /**
+     * Returns the current targetPosition of the object.
+     *
+     * @return targetPosition of the game object.
+     */
     public Position getTargetPosition() {
         return targetPosition;
     }

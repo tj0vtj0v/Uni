@@ -21,6 +21,9 @@ public class Grenade extends GameObject implements ShiftableGameObject {
      *
      * @param gameView        GameView to show the grenade on.
      * @param gamePlayManager GamePlayManager to manage the game actions.
+     * @param originLocation  Direction in which the bullet should travel.
+     * @param position        Position from which to start movement.
+     * @param creator         Instance which shoots this Bullet.
      */
     public Grenade(GameView gameView, GamePlayManager gamePlayManager, Direction originLocation, Position position, GameObject creator) {
         super(gameView, gamePlayManager);
@@ -51,5 +54,10 @@ public class Grenade extends GameObject implements ShiftableGameObject {
                 gamePlayManager.spawnGameObject(new Explosion(gameView, gamePlayManager, Direction.DOWN, position));
             }
         }
+    }
+
+    @Override
+    public void addToCanvas() {
+        gameView.addBlockImageToCanvas(blockImage, position.getX(), position.getY(), size, rotation);
     }
 }

@@ -5,6 +5,7 @@ import thd.game.utilities.GameView;
 import thd.gameobjects.base.*;
 import thd.gameobjects.movable.Bullet;
 import thd.gameobjects.movable.Grenade;
+import thd.gameobjects.movable.MainCharacterImpl;
 
 
 /**
@@ -14,7 +15,7 @@ import thd.gameobjects.movable.Grenade;
  * destructible by 1 {@link Grenade} or 2 {@link Bullet}
  * BlockImage
  */
-public class ShootingBox extends CollidingGameObject implements ShiftableGameObject {
+public class ShootingBox extends CollidingGameObject implements ShiftableGameObject, ActivatableGameObject {
     private int hitTolerance;
 
     /**
@@ -22,6 +23,8 @@ public class ShootingBox extends CollidingGameObject implements ShiftableGameObj
      *
      * @param gameView        window in which it has to be displayed.
      * @param gamePlayManager GamePlayManager to manage the game actions.
+     * @param location        Stores positional information.
+     * @param position        Position where to be located.
      */
     public ShootingBox(GameView gameView, GamePlayManager gamePlayManager, Direction location, Position position) {
         super(gameView, gamePlayManager, location, position);
@@ -39,6 +42,13 @@ public class ShootingBox extends CollidingGameObject implements ShiftableGameObj
         width = generateWidthFromBlockImage() * size;
         height = generateHeightFromBlockImage() * size;
         hitBoxOffsets(6, 6, -12, -24);
+    }
+
+    @Override
+    public boolean tryToActivate(Object info) {
+        MainCharacterImpl infoObject = (MainCharacterImpl) info;
+
+        return (infoObject).getPosition().verticalDistance(this.position) <= GameView.HEIGHT;
     }
 
     @Override

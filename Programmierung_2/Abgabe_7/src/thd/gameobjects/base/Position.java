@@ -169,7 +169,6 @@ public class Position {
         }
     }
 
-
     /**
      * Calculation of distance to any other given Position.
      *
@@ -178,6 +177,16 @@ public class Position {
      */
     public double distance(Position otherPosition) {
         return Math.sqrt(Math.pow(x - otherPosition.getX(), 2) + Math.pow(y - otherPosition.getY(), 2));
+    }
+
+    /**
+     * Calculation of distance to any other given Position only considering the vertical Axis.
+     *
+     * @param otherPosition Position to calculate distance from.
+     * @return distance to the otherPosition only considering the vertical Axis.
+     */
+    public double verticalDistance(Position otherPosition) {
+        return Math.abs(y - otherPosition.getY());
     }
 
     /**

@@ -21,8 +21,8 @@ public class Bullet extends CollidingGameObject implements ShiftableGameObject {
      *
      * @param gameView        GameView to show the bullet on.
      * @param gamePlayManager GamePlayManager to manage the game actions.
-     * @param position  Position from which to start movement.
-     * @param originLocation       Direction in which the bullet should travel.
+     * @param position        Position from which to start movement.
+     * @param originLocation  Direction in which the bullet should travel.
      * @param creator         Instance which shoots this Bullet.
      */
     public Bullet(GameView gameView, GamePlayManager gamePlayManager, Direction originLocation, Position position, GameObject creator) {

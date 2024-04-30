@@ -5,11 +5,9 @@ import thd.gameobjects.base.Direction;
 import thd.gameobjects.base.MovementPattern;
 import thd.gameobjects.base.Position;
 
-import java.util.Random;
-
-import static java.lang.Math.abs;
-import static java.lang.Math.max;
-
+/**
+ * Movement pattern of any flying Grenade.
+ */
 public class ParabolicMovementPattern extends MovementPattern {
     private final Direction direction;
     private final Position startPosition;
@@ -32,17 +30,17 @@ public class ParabolicMovementPattern extends MovementPattern {
     protected Position startPosition(Position... referencePositions) {
         if (direction == Direction.LEFT) {
             startPosition.left(27);
-            return new Position(startPosition);
         } else {
             startPosition.right(54);
-            return new Position(startPosition);
         }
+
+        return new Position(startPosition);
     }
 
     @Override
     protected Position nextTargetPosition(Position... referencePositions) {
         if (steps >= maximumNumberOfSteps) {
-            throw new ExplosionCountdownExpiredException();
+            throw new ExplosionCountdownExpiredException("Grenade is exploded.");
         }
 
         Position targetPosition = new Position(referencePositions[0]);

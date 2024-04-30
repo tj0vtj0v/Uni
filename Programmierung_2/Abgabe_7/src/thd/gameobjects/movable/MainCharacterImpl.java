@@ -27,6 +27,8 @@ public class MainCharacterImpl extends MovingCharacter implements MainCharacter 
      *
      * @param gameView                            window in which it has to be displayed.
      * @param gamePlayManager                     GamePlayManager to manage the game actions.
+     * @param direction                           Stores positional information.
+     * @param position                            Position from which to start movement.
      * @param collidingGameObjectsForPathDecision List of Objects that block the movement.
      */
     public MainCharacterImpl(GameView gameView, GamePlayManager gamePlayManager, Direction direction, Position position, List<CollidingGameObject> collidingGameObjectsForPathDecision) {
@@ -138,6 +140,6 @@ public class MainCharacterImpl extends MovingCharacter implements MainCharacter 
 
     @Override
     public String toString() {
-        return "MainCharacter: %s with %d available Grenades".formatted(position, availableGrenades);
+        return "MainCharacter: %s is %b invincible with %d available Grenades".formatted(position, invincible, availableGrenades);
     }
 }

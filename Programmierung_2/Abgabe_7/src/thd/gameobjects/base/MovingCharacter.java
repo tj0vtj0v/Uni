@@ -21,10 +21,12 @@ public class MovingCharacter extends CollidingGameObject {
      *
      * @param gameView                            gameView where the Object is displayed in.
      * @param gamePlayManager                     manager for the in-game logic.
+     * @param location                            Stores positional information.
+     * @param position                            Position from which to start movement.
      * @param collidingGameObjectsForPathDecision list of object which are path blockers.
      */
-    public MovingCharacter(GameView gameView, GamePlayManager gamePlayManager, Direction direction, Position position, List<CollidingGameObject> collidingGameObjectsForPathDecision) {
-        super(gameView, gamePlayManager, direction, position);
+    public MovingCharacter(GameView gameView, GamePlayManager gamePlayManager, Direction location, Position position, List<CollidingGameObject> collidingGameObjectsForPathDecision) {
+        super(gameView, gamePlayManager, location, position);
         this.collidingGameObjectsForPathDecision = collidingGameObjectsForPathDecision;
         shotDurationInMilliseconds = 300;
         shotsBurst = 0;
@@ -41,7 +43,7 @@ public class MovingCharacter extends CollidingGameObject {
      */
     public void shoot() {
         if (gameView.timer(shotDurationInMilliseconds, this)) {
-            if (gameView.timer(1500, this) || shotsBurst < SHOTS_IN_BURST){
+            if (gameView.timer(1500, this) || shotsBurst < SHOTS_IN_BURST) {
                 gamePlayManager.spawnGameObject(new Bullet(gameView, gamePlayManager, Direction.DOWN, new Position(position.getX() + 7, position.getY() + 36), this));
 
                 if (shotsBurst >= SHOTS_IN_BURST) {
