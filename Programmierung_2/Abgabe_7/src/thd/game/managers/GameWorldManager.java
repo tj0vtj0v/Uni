@@ -1,14 +1,18 @@
 package thd.game.managers;
 
 import thd.game.utilities.GameView;
+import thd.game.utilities.World;
 import thd.gameobjects.base.Direction;
-import thd.gameobjects.base.GameObject;
 import thd.gameobjects.base.Position;
 import thd.gameobjects.unmovable.*;
 import thd.gameobjects.movable.*;
 
+import static java.lang.Math.max;
+
 class GameWorldManager extends GamePlayManager {
+    private static final int VISIBLE_COLUMNS = 32;
     private final String world;
+    private int worldOffsetLines;
 
     /**
      * Creates an instance of the GamePlayManager.
@@ -17,16 +21,8 @@ class GameWorldManager extends GamePlayManager {
      */
     GameWorldManager(GameView gameView) {
         super(gameView);
-        // Capital characters represent right (mostly the original rotation) and non-capitals represent left.
-        world = """
-                  T      B  \s
-                fs     S   T\s
-                m  T g  T  F\s
-                r   a  3   M\s
-                 b    T    R\s
-                   T   I    \s
-                            \s
-                """;
+        world = World.LEVEL_1;
+        worldOffsetLines = max(world.split("\n").length - VISIBLE_COLUMNS, 0);
 
         scoreBoard = new ScoreBoard(gameView, this);
 
@@ -42,12 +38,12 @@ class GameWorldManager extends GamePlayManager {
         Position position;
         Direction located;
 
-        for (int lineIndex = 0; lineIndex < lines.length; lineIndex++) {
+        for (int lineIndex = worldOffsetLines; lineIndex < lines.length; lineIndex++) {
             for (int tileIndex = 0; tileIndex < lines[lineIndex].length(); tileIndex++) {
                 tile = lines[lineIndex].charAt(tileIndex);
 
                 located = Character.isUpperCase(tile) ? Direction.RIGHT : Direction.LEFT;
-                position = new Position(tileIndex * scale, lineIndex * scale);
+                position = new Position(tileIndex * scale, (lineIndex - worldOffsetLines) * scale);
 
                 switch (Character.toUpperCase(tile)) {
                     case 'I':

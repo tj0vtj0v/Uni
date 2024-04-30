@@ -11,6 +11,8 @@ import java.util.List;
  * Creates an active moving character.
  */
 public class MovingCharacter extends CollidingGameObject {
+    private static final int SHOTS_IN_BURST = 3;
+    private int shotsBurst;
     private final List<CollidingGameObject> collidingGameObjectsForPathDecision;
     private final int shotDurationInMilliseconds;
 
@@ -25,6 +27,7 @@ public class MovingCharacter extends CollidingGameObject {
         super(gameView, gamePlayManager, direction, position);
         this.collidingGameObjectsForPathDecision = collidingGameObjectsForPathDecision;
         shotDurationInMilliseconds = 300;
+        shotsBurst = 0;
 
         width = 0;
         height = 0;
@@ -38,7 +41,15 @@ public class MovingCharacter extends CollidingGameObject {
      */
     public void shoot() {
         if (gameView.timer(shotDurationInMilliseconds, this)) {
-            gamePlayManager.spawnGameObject(new Bullet(gameView, gamePlayManager, Direction.DOWN, new Position(position.getX() + 7, position.getY() + 36), this));
+            if (gameView.timer(1500, this) || shotsBurst < SHOTS_IN_BURST){
+                gamePlayManager.spawnGameObject(new Bullet(gameView, gamePlayManager, Direction.DOWN, new Position(position.getX() + 7, position.getY() + 36), this));
+
+                if (shotsBurst >= SHOTS_IN_BURST) {
+                    shotsBurst = 1;
+                } else {
+                    shotsBurst++;
+                }
+            }
         }
     }
 

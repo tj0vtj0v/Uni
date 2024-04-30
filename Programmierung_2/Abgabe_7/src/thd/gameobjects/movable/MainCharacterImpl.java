@@ -7,6 +7,7 @@ import thd.gameobjects.base.*;
 import thd.gameobjects.unmovable.AmmoBox;
 
 import java.util.List;
+import java.util.Random;
 
 
 /**
@@ -53,7 +54,7 @@ public class MainCharacterImpl extends MovingCharacter implements MainCharacter 
         }
 
         if (other instanceof AmmoBox) {
-            availableGrenades += 3;
+            availableGrenades += new Random().nextInt(3, 6);
         }
     }
 
