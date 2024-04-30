@@ -52,11 +52,6 @@ public class EnemyGunner extends MovingCharacter {
     }
 
     @Override
-    public void addToCanvas() {
-        gameView.addBlockImageToCanvas(blockImage, position.getX(), position.getY(), size, rotation);
-    }
-
-    @Override
     public void updatePosition() {
         Position oldPosition = getPosition();
         position.moveToPosition(targetPosition, speedInPixel);

@@ -16,7 +16,6 @@ public class GamePlayManager extends UserControlledGameObjectPool {
     protected final List<CollidingGameObject> collidingGameObjectsForPathDecision;
 
     protected int lives;
-    private int availableGrenades;
     protected int points;
     private int highScore;
 
@@ -30,7 +29,6 @@ public class GamePlayManager extends UserControlledGameObjectPool {
         gameObjectManager = new GameObjectManager();
         collidingGameObjectsForPathDecision = new ArrayList<>();
         lives = LIVES;
-        availableGrenades = 5;
         points = 0;
         highScore = 0;
     }
@@ -62,14 +60,6 @@ public class GamePlayManager extends UserControlledGameObjectPool {
         highScore = Math.max(points, highScore);
     }
 
-    public void addGrenades(int amount) {
-        if (amount <= 0) {
-            throw new IllegalArgumentException("The number has to be greater than 0!");
-        }
-
-        this.availableGrenades += amount;
-    }
-
     /**
      * Getter for the points collected in this game.
      *
@@ -94,7 +84,7 @@ public class GamePlayManager extends UserControlledGameObjectPool {
      * @return remaining grenades.
      */
     public int getAvailableGrenades() {
-        return availableGrenades;
+        return mainCharacter.getAvailableGrenades();
     }
 
     /**

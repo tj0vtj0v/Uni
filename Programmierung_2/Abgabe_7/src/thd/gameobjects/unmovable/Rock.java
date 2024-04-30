@@ -46,11 +46,6 @@ public class Rock extends CollidingGameObject {
     }
 
     @Override
-    public void addToCanvas() {
-        gameView.addBlockImageToCanvas(blockImage, position.getX(), position.getY(), size, rotation);
-    }
-
-    @Override
     public String toString() {
         return "Stone: %s".formatted(position);
     }

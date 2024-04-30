@@ -53,11 +53,6 @@ public class Bullet extends CollidingGameObject {
     }
 
     @Override
-    public void addToCanvas() {
-        gameView.addBlockImageToCanvas(blockImage, position.getX(), position.getY(), size, rotation);
-    }
-
-    @Override
     public void updatePosition() {
         position.moveToPosition(targetPosition, speedInPixel);
     }

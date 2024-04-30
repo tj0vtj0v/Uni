@@ -4,6 +4,7 @@ import thd.game.managers.GamePlayManager;
 import thd.game.managers.NoRemainingMenException;
 import thd.game.utilities.GameView;
 import thd.gameobjects.base.*;
+import thd.gameobjects.unmovable.AmmoBox;
 
 import java.util.List;
 
@@ -16,6 +17,7 @@ import java.util.List;
  * BlockImage
  */
 public class MainCharacterImpl extends MovingCharacter implements MainCharacter {
+    private int availableGrenades;
 
     /**
      * Creates Enemy Gunner with gameView window of presence.
@@ -26,6 +28,7 @@ public class MainCharacterImpl extends MovingCharacter implements MainCharacter 
      */
     public MainCharacterImpl(GameView gameView, GamePlayManager gamePlayManager, Direction direction, Position position, List<CollidingGameObject> collidingGameObjectsForPathDecision) {
         super(gameView, gamePlayManager, direction, position, collidingGameObjectsForPathDecision);
+        availableGrenades = 5;
 
         blockImage = CharacterBlockImages.Main.DOWN_1;
         distanceToBackground = 200;
@@ -48,6 +51,19 @@ public class MainCharacterImpl extends MovingCharacter implements MainCharacter 
                 gamePlayManager.gameOver(false);
             }
         }
+
+        if (other instanceof AmmoBox) {
+            availableGrenades += 3;
+        }
+    }
+
+    /**
+     * Communicates the number of remaining Grenades.
+     *
+     * @return amount of Grenades.
+     */
+    public int getAvailableGrenades() {
+        return availableGrenades;
     }
 
     /**
@@ -91,17 +107,12 @@ public class MainCharacterImpl extends MovingCharacter implements MainCharacter 
     }
 
     @Override
-    public void addToCanvas() {
-        gameView.addBlockImageToCanvas(blockImage, position.getX(), position.getY(), size, rotation);
-    }
-
-    @Override
     public void updateStatus() {
         super.updateStatus();
     }
 
     @Override
     public String toString() {
-        return "MainCharacter: %s".formatted(position);
+        return "MainCharacter: %s with %d available Grenades".formatted(position, availableGrenades);
     }
 }

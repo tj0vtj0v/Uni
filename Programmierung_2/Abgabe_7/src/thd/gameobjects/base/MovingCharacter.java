@@ -55,8 +55,4 @@ public class MovingCharacter extends CollidingGameObject {
     @Override
     public void reactToCollisionWith(CollidingGameObject other) {
     }
-
-    @Override
-    public void addToCanvas() {
-    }
 }

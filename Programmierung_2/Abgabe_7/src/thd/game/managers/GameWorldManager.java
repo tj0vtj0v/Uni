@@ -21,8 +21,8 @@ class GameWorldManager extends GamePlayManager {
         world = """
                   T      B  \s
                 fs     S   T\s
-                m  T    T  F\s
-                r   a  9   M\s
+                m  T g  T  F\s
+                r   a  3   M\s
                  b    T    R\s
                    T   I    \s
                             \s

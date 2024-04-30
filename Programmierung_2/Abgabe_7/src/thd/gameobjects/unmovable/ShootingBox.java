@@ -57,11 +57,6 @@ public class ShootingBox extends CollidingGameObject {
     }
 
     @Override
-    public void addToCanvas() {
-        gameView.addBlockImageToCanvas(blockImage, position.getX(), position.getY(), size, rotation);
-    }
-
-    @Override
     public String toString() {
         return "ShootingBox: %s with %d hits left till destruction".formatted(position, hitTolerance);
     }

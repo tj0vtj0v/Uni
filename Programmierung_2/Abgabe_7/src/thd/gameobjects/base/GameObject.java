@@ -57,7 +57,9 @@ public abstract class GameObject {
     /**
      * Draws the game object to the canvas.
      */
-    public abstract void addToCanvas();
+    public void addToCanvas() {
+        gameView.addBlockImageToCanvas(blockImage, position.getX(), position.getY(), size, rotation);
+    }
 
     /**
      * Changes the status of an Object.

@@ -55,9 +55,4 @@ public class Grenade extends GameObject {
             }
         }
     }
-
-    @Override
-    public void addToCanvas() {
-        gameView.addBlockImageToCanvas(blockImage, position.getX(), position.getY(), size, rotation);
-    }
 }

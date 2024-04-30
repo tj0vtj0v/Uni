@@ -56,9 +56,9 @@ public class EnemyMortar extends CollidingGameObject {
 
     @Override
     public void updateStatus() {
-        if (gameView.timer(320, this)) {
+        if (gameView.timer(3200, this)) {
             shoot();
-        } else if (gameView.timer(400, this)) {
+        } else if (gameView.timer(4000, this)) {
             shoot();
         }
     }

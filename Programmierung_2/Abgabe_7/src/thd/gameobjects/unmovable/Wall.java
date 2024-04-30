@@ -39,12 +39,6 @@ public class Wall extends CollidingGameObject {
 
     @Override
     public void reactToCollisionWith(CollidingGameObject other) {
-
-    }
-
-    @Override
-    public void addToCanvas() {
-        gameView.addBlockImageToCanvas(blockImage, position.getX(), position.getY(), size, rotation);
     }
 
     @Override

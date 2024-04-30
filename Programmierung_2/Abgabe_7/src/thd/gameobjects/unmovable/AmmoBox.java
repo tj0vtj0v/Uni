@@ -40,13 +40,7 @@ public class AmmoBox extends CollidingGameObject {
     public void reactToCollisionWith(CollidingGameObject other) {
         if (other instanceof MainCharacterImpl) {
             gamePlayManager.destroyGameObject(this);
-            gamePlayManager.addGrenades(3);
         }
-    }
-
-    @Override
-    public void addToCanvas() {
-        gameView.addBlockImageToCanvas(blockImage, position.getX(), position.getY(), size, rotation);
     }
 
     @Override

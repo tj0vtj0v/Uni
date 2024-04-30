@@ -47,11 +47,6 @@ public class Tree extends CollidingGameObject {
     }
 
     @Override
-    public void addToCanvas() {
-        gameView.addBlockImageToCanvas(blockImage, position.getX(), position.getY(), size, rotation);
-    }
-
-    @Override
     public String toString() {
         return "Tree: %s".formatted(position);
     }
