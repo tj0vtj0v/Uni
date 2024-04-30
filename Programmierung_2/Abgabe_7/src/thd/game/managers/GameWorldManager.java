@@ -12,7 +12,7 @@ import static java.lang.Math.max;
 class GameWorldManager extends GamePlayManager {
     private static final int VISIBLE_COLUMNS = 32;
     private final String world;
-    private int worldOffsetLines;
+    private final int worldOffsetLines;
 
     /**
      * Creates an instance of the GamePlayManager.
@@ -38,7 +38,7 @@ class GameWorldManager extends GamePlayManager {
         Position position;
         Direction located;
 
-        for (int lineIndex = worldOffsetLines; lineIndex < lines.length; lineIndex++) {
+        for (int lineIndex = 0; lineIndex < lines.length; lineIndex++) {
             for (int tileIndex = 0; tileIndex < lines[lineIndex].length(); tileIndex++) {
                 tile = lines[lineIndex].charAt(tileIndex);
 

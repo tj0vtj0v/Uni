@@ -21,7 +21,7 @@ public class ParabolicMovementPattern extends MovementPattern {
         super();
 
         this.direction = direction;
-        this.startPosition = startPosition;
+        this.startPosition = new Position(startPosition);
 
         trajectory = random.nextInt(20, 30);
         maximumNumberOfSteps = random.nextInt(20, 40);

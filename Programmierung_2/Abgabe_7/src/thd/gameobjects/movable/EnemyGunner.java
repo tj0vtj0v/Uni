@@ -3,8 +3,10 @@ package thd.gameobjects.movable;
 import thd.game.managers.GamePlayManager;
 import thd.game.utilities.GameView;
 import thd.gameobjects.base.*;
+import thd.gameobjects.unmovable.Explosion;
 
 import java.util.List;
+import java.util.Random;
 
 
 /**
@@ -27,14 +29,14 @@ public class EnemyGunner extends MovingCharacter implements ShiftableGameObject 
     public EnemyGunner(GameView gameView, GamePlayManager gamePlayManager, Direction location, Position position, List<CollidingGameObject> collidingGameObjectsForPathDecision) {
         super(gameView, gamePlayManager, location, position, collidingGameObjectsForPathDecision);
 
-        blockImage = CharacterBlockImages.Enemy.Mortar.NORMAL;
+        blockImage = CharacterBlockImages.Enemy.Gunner.DOWN_1;
         distanceToBackground = 100;
 
         size = 3;
         rotation = 0;
         width = generateWidthFromBlockImage() * size;
         height = generateHeightFromBlockImage() * size;
-        hitBoxOffsets(21, 3, -24, -18);
+        hitBoxOffsets(6, 6, -12, -24);
 
         speedInPixel = 1;
 
@@ -45,7 +47,7 @@ public class EnemyGunner extends MovingCharacter implements ShiftableGameObject 
 
     @Override
     public void reactToCollisionWith(CollidingGameObject other) {
-        if (other instanceof Bullet) {
+        if (other instanceof Bullet && ((Bullet) other).creator != this || other instanceof Explosion) {
             gamePlayManager.destroyGameObject(this);
             gamePlayManager.addScorePoints(-1);
         }
@@ -53,16 +55,17 @@ public class EnemyGunner extends MovingCharacter implements ShiftableGameObject 
 
     @Override
     public void updatePosition() {
-        Position oldPosition = getPosition();
+        Position oldPosition = new Position(getPosition());
         position.moveToPosition(targetPosition, speedInPixel);
 
         if (pathIsBlocked()) {
             position.updateCoordinates(oldPosition);
         }
-        if (gameView.timer(4000, this)) {
+        if (gameView.timer(new Random().nextInt(2500, 5000), this)) {
             targetPosition.updateCoordinates(movementPattern.nextTargetPosition(getPosition()));
-            shoot();
         }
+
+        shoot();
     }
 
     @Override

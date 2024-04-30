@@ -73,7 +73,11 @@ public abstract class GameObject {
      * @return position of the game object.
      */
     public Position getPosition() {
-        return new Position(position);
+        return position;
+    }
+
+    public Position getTargetPosition() {
+        return targetPosition;
     }
 
     /**

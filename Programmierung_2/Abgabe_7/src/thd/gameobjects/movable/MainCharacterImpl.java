@@ -5,6 +5,7 @@ import thd.game.managers.NoRemainingMenException;
 import thd.game.utilities.GameView;
 import thd.gameobjects.base.*;
 import thd.gameobjects.unmovable.AmmoBox;
+import thd.gameobjects.unmovable.Explosion;
 
 import java.util.List;
 import java.util.Random;
@@ -19,6 +20,7 @@ import java.util.Random;
  */
 public class MainCharacterImpl extends MovingCharacter implements MainCharacter {
     private int availableGrenades;
+    private boolean invincible;
 
     /**
      * Creates Enemy Gunner with gameView window of presence.
@@ -30,6 +32,7 @@ public class MainCharacterImpl extends MovingCharacter implements MainCharacter 
     public MainCharacterImpl(GameView gameView, GamePlayManager gamePlayManager, Direction direction, Position position, List<CollidingGameObject> collidingGameObjectsForPathDecision) {
         super(gameView, gamePlayManager, direction, position, collidingGameObjectsForPathDecision);
         availableGrenades = 5;
+        invincible = true;
 
         blockImage = CharacterBlockImages.Main.DOWN_1;
         distanceToBackground = 200;
@@ -40,17 +43,21 @@ public class MainCharacterImpl extends MovingCharacter implements MainCharacter 
         height = generateHeightFromBlockImage() * size;
         hitBoxOffsets(6, 6, -12, -24);
 
-        speedInPixel = 4;
+        speedInPixel = 2;
     }
 
     @Override
     public void reactToCollisionWith(CollidingGameObject other) {
-        if (other instanceof Bullet && ((Bullet) other).creator != this) {
+        if (other instanceof Bullet && ((Bullet) other).creator != this || other instanceof Explosion) {
             try {
-                gamePlayManager.reduceLive();
+                if (!invincible) {
+                    gamePlayManager.reduceLive();
+                    invincible = true;
+                }
             } catch (NoRemainingMenException e) {
                 gamePlayManager.gameOver(false);
             }
+
         }
 
         if (other instanceof AmmoBox) {
@@ -98,16 +105,16 @@ public class MainCharacterImpl extends MovingCharacter implements MainCharacter 
             }
         } else if (position.getY() > GameView.HEIGHT / 3f) {
             position.up(speedInPixel / 2);
-            gamePlayManager.moveWorldUp(speedInPixel / 2);
+            gamePlayManager.moveWorldDown(speedInPixel / 2);
 
             if (pathIsBlocked()) {
-                position.down(speedInPixel);
-                gamePlayManager.moveWorldDown(speedInPixel);
+                position.down(speedInPixel / 2);
+                gamePlayManager.moveWorldUp(speedInPixel / 2);
             }
         } else {
-            gamePlayManager.moveWorldUp(speedInPixel);
+            gamePlayManager.moveWorldDown(speedInPixel);
             if (pathIsBlocked()) {
-                gamePlayManager.moveWorldDown(speedInPixel);
+                gamePlayManager.moveWorldUp(speedInPixel);
             }
         }
     }
@@ -124,7 +131,9 @@ public class MainCharacterImpl extends MovingCharacter implements MainCharacter 
 
     @Override
     public void updateStatus() {
-        super.updateStatus();
+        if (invincible && gameView.timer(2000, this)) {
+            invincible = false;
+        }
     }
 
     @Override

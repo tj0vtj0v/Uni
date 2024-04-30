@@ -20,7 +20,7 @@ class RandomMovementPattern extends MovementPattern {
     @Override
     protected Position nextTargetPosition(Position... referencePositions) {
         Position targetPosition = new Position(referencePositions[0]);
-        int distance = random.nextInt(150, 720);
+        int distance = random.nextInt(150, 500);
 
         switch (Direction.values()[random.nextInt(Direction.values().length)]) {
             case LEFT:
@@ -53,7 +53,7 @@ class RandomMovementPattern extends MovementPattern {
                 break;
         }
 
-        if (targetPosition.getX() > 0 && targetPosition.getY() > 0 && targetPosition.getY() < GameView.HEIGHT && targetPosition.getX() < GameView.WIDTH) {
+        if (targetPosition.getX() > 0 && targetPosition.getX() < GameView.WIDTH) {
             return targetPosition;
         } else {
             return nextTargetPosition(referencePositions);

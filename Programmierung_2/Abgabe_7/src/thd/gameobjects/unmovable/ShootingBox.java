@@ -38,18 +38,20 @@ public class ShootingBox extends CollidingGameObject implements ShiftableGameObj
         rotation = 0;
         width = generateWidthFromBlockImage() * size;
         height = generateHeightFromBlockImage() * size;
-        hitBoxOffsets(3, 3, -6, -18);
+        hitBoxOffsets(6, 6, -12, -24);
     }
 
     @Override
     public void reactToCollisionWith(CollidingGameObject other) {
         if (other instanceof Bullet) {
             hitTolerance--;
+        } else if (other instanceof Explosion) {
+            hitTolerance = 0;
+        }
 
-            if (hitTolerance <= 0) {
-                gamePlayManager.destroyGameObject(this);
-                gamePlayManager.addScorePoints(-1);
-            }
+        if (hitTolerance <= 0) {
+            gamePlayManager.destroyGameObject(this);
+            gamePlayManager.addScorePoints(-1);
         }
     }
 

@@ -25,11 +25,9 @@ public class Explosion extends CollidingGameObject implements ShiftableGameObjec
     }
 
     @Override
-    public void addToCanvas() {
+    public void updateStatus() {
         if (gameView.timer(8000, this)) {
             gamePlayManager.destroyGameObject(this);
-        } else {
-            gameView.addBlockImageToCanvas(blockImage, position.getX(), position.getY(), size, rotation);
         }
     }
 }

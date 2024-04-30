@@ -3,6 +3,7 @@ package thd.gameobjects.movable;
 import thd.game.managers.GamePlayManager;
 import thd.game.utilities.GameView;
 import thd.gameobjects.base.*;
+import thd.gameobjects.unmovable.Explosion;
 
 
 /**
@@ -50,11 +51,13 @@ public class Moped extends CollidingGameObject implements ShiftableGameObject {
     public void reactToCollisionWith(CollidingGameObject other) {
         if (other instanceof Bullet) {
             hitTolerance--;
+        } else if (other instanceof Explosion) {
+            hitTolerance = 0;
+        }
 
-            if (hitTolerance <= 0) {
-                gamePlayManager.destroyGameObject(this);
-                gamePlayManager.addScorePoints(-1);
-            }
+        if (hitTolerance <= 0) {
+            gamePlayManager.destroyGameObject(this);
+            gamePlayManager.addScorePoints(-1);
         }
     }
 

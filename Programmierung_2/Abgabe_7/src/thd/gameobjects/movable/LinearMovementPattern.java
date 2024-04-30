@@ -12,7 +12,7 @@ class LinearMovementPattern extends MovementPattern {
     LinearMovementPattern(Direction direction, Position startPosition) {
         super();
         this.direction = direction;
-        this.startPosition = startPosition;
+        this.startPosition = new Position(startPosition);
     }
 
     @Override

@@ -39,6 +39,9 @@ public final class CharacterBlockImages {
      * Static Subclass for the enemy character.
      */
     public static final class Enemy {
+        public static final class Gunner {
+            public static final String DOWN_1 = Main.DOWN_1.replace('5', '2');
+        }
         /**
          * Static Subclass for the enemy with a mortar.
          */

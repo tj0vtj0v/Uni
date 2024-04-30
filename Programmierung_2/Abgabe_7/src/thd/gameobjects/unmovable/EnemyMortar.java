@@ -48,7 +48,7 @@ public class EnemyMortar extends CollidingGameObject implements ShiftableGameObj
 
     @Override
     public void reactToCollisionWith(CollidingGameObject other) {
-        if (other instanceof Bullet) {
+        if (other instanceof Bullet || other instanceof Explosion) {
             gamePlayManager.destroyGameObject(this);
             gamePlayManager.addScorePoints(-1);
         }
@@ -56,7 +56,7 @@ public class EnemyMortar extends CollidingGameObject implements ShiftableGameObj
 
     @Override
     public void updateStatus() {
-        if (gameView.timer(3200, this)) {
+        if (gameView.timer(3300, this)) {
             shoot();
         } else if (gameView.timer(4000, this)) {
             shoot();

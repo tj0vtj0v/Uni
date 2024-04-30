@@ -37,6 +37,8 @@ public class AmmoBox extends CollidingGameObject implements ShiftableGameObject 
     public void reactToCollisionWith(CollidingGameObject other) {
         if (other instanceof MainCharacterImpl) {
             gamePlayManager.destroyGameObject(this);
+        } else if (other instanceof Explosion) {
+            gamePlayManager.destroyGameObject(this);
         }
     }
 
