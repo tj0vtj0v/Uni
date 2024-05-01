@@ -98,7 +98,7 @@ public class GamePlayManager extends WorldShiftManager {
 
 
     /**
-     * Method that initiates the gameOver sequence #TODO.
+     * Method that initiates the gameOver sequence TODO.
      *
      * @param success determines if the game war cleared or failed.
      */

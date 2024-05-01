@@ -18,19 +18,13 @@ class GameWorldManager extends GamePlayManager {
     private final String world;
     private final int worldOffsetLines;
     private final int worldOffsetColumns;
-    private final Dummie dummie; // TODO same as below
 
     protected GameWorldManager(GameView gameView) {
         super(gameView);
-        world = "" + World.LEVEL_1 + "";
+        world = World.LEVEL_1;
         worldOffsetLines = max(world.split("\n").length - VISIBLE_COLUMNS, 0);
         worldOffsetColumns = 10;
         activatableGameObjects = new LinkedList<>();
-
-        // TODO look below
-        dummie = new Dummie(gameView, this);
-        dummie.addToCanvas();
-        // end of shit
 
         spawnGameObjectsFromWorldString();
         spawnGameObjects();
@@ -42,7 +36,7 @@ class GameWorldManager extends GamePlayManager {
     }
 
     private void spawnGameObjectsFromWorldString() {
-        String[] lines = world.split("\\R");
+        String[] lines = world.split("\n");
         int scale = GameView.WIDTH / (lines[0].length() - worldOffsetColumns - 1);
         char tile;
         Position position;
@@ -50,23 +44,10 @@ class GameWorldManager extends GamePlayManager {
 
         for (int lineIndex = 0; lineIndex < lines.length; lineIndex++) {
             for (int tileIndex = 0; tileIndex < lines[lineIndex].length(); tileIndex++) {
-                // Start of Wichtel BrainFart TODO: REMOVE AS FAST AS POSSIBLE
-                double x = (tileIndex - worldOffsetColumns) * scale;
-                double y = (lineIndex - worldOffsetLines) * scale;
-                position = new Position(x, y);
-                char character = lines[lineIndex].charAt(tileIndex);
-                if (character == 'A') {
-                    dummie.getPosition().updateCoordinates(position);
-                } else if (character == 'B') {
-                    dummie.getPosition().updateCoordinates(x, y);
-                }
-                // End of Wichtel BrainFart
-
-
                 tile = lines[lineIndex].charAt(tileIndex);
 
                 located = Character.isUpperCase(tile) ? Direction.RIGHT : Direction.LEFT;
-                // position = new Position((tileIndex - worldOffsetCollumns) * scale, (lineIndex - worldOffsetLines) * scale);
+                position = new Position((tileIndex - worldOffsetColumns) * scale, (lineIndex - worldOffsetLines) * scale);
 
 
                 switch (Character.toUpperCase(tile)) {
