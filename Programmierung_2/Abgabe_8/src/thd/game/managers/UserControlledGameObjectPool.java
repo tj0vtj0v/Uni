@@ -1,5 +1,6 @@
 package thd.game.managers;
 
+import thd.game.level.Level;
 import thd.game.utilities.GameView;
 import thd.gameobjects.movable.*;
 import thd.gameobjects.unmovable.*;
@@ -8,6 +9,7 @@ import java.awt.event.KeyEvent;
 
 class UserControlledGameObjectPool {
     protected final GameView gameView;
+    protected Level level;
     ScoreBoard scoreBoard;
     MainCharacterImpl mainCharacter;
 

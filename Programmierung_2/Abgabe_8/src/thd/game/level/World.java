@@ -1,4 +1,4 @@
-package thd.game.utilities;
+package thd.game.level;
 
 /**
  * StorageClass for saving of the Levels.

@@ -1,7 +1,6 @@
 package thd.game.managers;
 
 import thd.game.utilities.GameView;
-import thd.game.utilities.World;
 import thd.gameobjects.base.*;
 import thd.gameobjects.unmovable.*;
 import thd.gameobjects.movable.*;
@@ -10,20 +9,13 @@ import java.util.LinkedList;
 import java.util.List;
 import java.util.ListIterator;
 
-import static java.lang.Math.max;
+import static thd.game.level.Level.*;
 
 class GameWorldManager extends GamePlayManager {
-    private static final int VISIBLE_COLUMNS = 32;
     private final List<GameObject> activatableGameObjects;
-    private final String world;
-    private final int worldOffsetLines;
-    private final int worldOffsetColumns;
 
     protected GameWorldManager(GameView gameView) {
         super(gameView);
-        world = World.LEVEL_1;
-        worldOffsetLines = max(world.split("\n").length - VISIBLE_COLUMNS, 0);
-        worldOffsetColumns = 10;
         activatableGameObjects = new LinkedList<>();
 
         spawnGameObjectsFromWorldString();
@@ -36,7 +28,7 @@ class GameWorldManager extends GamePlayManager {
     }
 
     private void spawnGameObjectsFromWorldString() {
-        String[] lines = world.split("\n");
+        String[] lines = worldString.split("\n");
         int scale = GameView.WIDTH / (lines[0].length() - worldOffsetColumns - 1);
         char tile;
         Position position;
