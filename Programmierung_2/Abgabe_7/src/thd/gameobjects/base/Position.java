@@ -18,7 +18,7 @@ import java.util.Objects;
  *
  * @see GameView
  */
-public class Position {
+public class Position implements Comparable<Position> {
 
     private double x;
     private double y;
@@ -176,7 +176,7 @@ public class Position {
      * @return distance to the otherPosition.
      */
     public double distance(Position otherPosition) {
-        return Math.sqrt(Math.pow(x - otherPosition.getX(), 2) + Math.pow(y - otherPosition.getY(), 2));
+        return Math.sqrt(Math.pow(x - otherPosition.x, 2) + Math.pow(y - otherPosition.y, 2));
     }
 
     /**
@@ -186,7 +186,17 @@ public class Position {
      * @return distance to the otherPosition only considering the vertical Axis.
      */
     public double verticalDistance(Position otherPosition) {
-        return Math.abs(y - otherPosition.getY());
+        return y - otherPosition.y;
+    }
+
+    /**
+     * Calculation of distance to any other given Position only considering the horizontal Axis.
+     *
+     * @param otherPosition Position to calculate distance from.
+     * @return distance to the otherPosition only considering the horizontal Axis.
+     */
+    public double horizontalDistance(Position otherPosition) {
+        return x - otherPosition.x;
     }
 
     /**
@@ -199,6 +209,11 @@ public class Position {
     public boolean similarTo(Position otherPosition) {
         return Math.round(x) == Math.round(otherPosition.x)
                 && Math.round(y) == Math.round(otherPosition.y);
+    }
+
+    @Override
+    public int compareTo(Position o) {
+        return Double.compare(distance(new Position()), o.distance(new Position()));
     }
 
     @Override

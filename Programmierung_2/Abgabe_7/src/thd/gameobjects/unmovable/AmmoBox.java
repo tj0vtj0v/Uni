@@ -39,7 +39,7 @@ public class AmmoBox extends CollidingGameObject implements ShiftableGameObject,
     public boolean tryToActivate(GameObject info) {
         MainCharacterImpl infoObject = (MainCharacterImpl) info;
 
-        return (infoObject).getPosition().verticalDistance(this.position) <= GameView.HEIGHT;
+        return (infoObject).getPosition().verticalDistance(this.position) <= GameView.HEIGHT * .5; //TODO
     }
 
     @Override

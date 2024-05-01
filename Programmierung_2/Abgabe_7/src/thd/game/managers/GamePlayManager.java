@@ -106,6 +106,9 @@ public class GamePlayManager extends WorldShiftManager {
         System.exit(0);
     }
 
+    private void gamePlayManagement() {
+    }
+
     @Override
     public void spawnGameObject(GameObject gameObject) {
         super.spawnGameObject(gameObject);
@@ -122,23 +125,17 @@ public class GamePlayManager extends WorldShiftManager {
         collidingGameObjectsForPathDecision.add(collidingGameObject);
     }
 
-    /**
-     * Removes Object from {@link GameView} canvas.
-     *
-     * @param gameObject GameObject to destroy.
-     */
+    @Override
     public void destroyGameObject(GameObject gameObject) {
         super.destroyGameObject(gameObject);
         gameObjectManager.remove(gameObject);
         collidingGameObjectsForPathDecision.remove(gameObject);
     }
 
+    @Override
     protected void destroyAllGameObjects() {
         super.destroyAllGameObjects();
         gameObjectManager.removeAll();
-    }
-
-    private void gamePlayManagement() {
     }
 
     @Override

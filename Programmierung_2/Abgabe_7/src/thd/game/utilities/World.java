@@ -25,7 +25,7 @@ public final class World {
     public static final String LEVEL_1 = """
             ----------------------------------------------------------------\s
                                                                             \s
-                                                                    H*******\s
+               aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa       H*******\s
             h*******                                                ********\s
             ********                                                ********\s
             ********                                                ********\s
