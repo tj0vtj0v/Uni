@@ -5,10 +5,7 @@ import thd.gameobjects.base.Direction;
 import thd.gameobjects.base.MovementPattern;
 import thd.gameobjects.base.Position;
 
-/**
- * Movement pattern of any flying Grenade.
- */
-public class ParabolicMovementPattern extends MovementPattern {
+class ParabolicMovementPattern extends MovementPattern {
     private final Direction direction;
     private final Position startPosition;
     private final int trajectory;

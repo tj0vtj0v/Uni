@@ -20,7 +20,7 @@ public class Explosion extends CollidingGameObject implements ShiftableGameObjec
         super(gameView, gamePlayManager, location, position);
 
         blockImage = ObjectBlockImages.EXPLOSION;
-        distanceToBackground = 255;
+        distanceToBackground = 10;
 
         size = 3;
         rotation = 0;

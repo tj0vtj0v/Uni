@@ -83,7 +83,7 @@ public class GamePlayManager extends WorldShiftManager {
      *
      * @return remaining grenades.
      */
-    public int getAvailableGrenades() {
+    public int availableGrenades() {
         return mainCharacter.getAvailableGrenades();
     }
 

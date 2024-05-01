@@ -30,10 +30,10 @@ public class EnemyMortar extends CollidingGameObject implements ShiftableGameObj
         super(gameView, gamePlayManager, location, position);
 
         if (location == Direction.RIGHT) {
-            blockImage = CharacterBlockImages.Enemy.Mortar.LOADING;
+            blockImage = EnemyMortarBlockImages.LOADING;
             mortarBlockImage = ObjectBlockImages.MORTAR;
         } else {
-            blockImage = mirrorBlockImage(CharacterBlockImages.Enemy.Mortar.LOADING);
+            blockImage = mirrorBlockImage(EnemyMortarBlockImages.LOADING);
             mortarBlockImage = mirrorBlockImage(ObjectBlockImages.MORTAR);
         }
         distanceToBackground = 100;

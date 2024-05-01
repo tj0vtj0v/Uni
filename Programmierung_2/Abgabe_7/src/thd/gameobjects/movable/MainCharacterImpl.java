@@ -36,7 +36,7 @@ public class MainCharacterImpl extends MovingCharacter implements MainCharacter 
         availableGrenades = 5;
         invincible = true;
 
-        blockImage = CharacterBlockImages.Main.DOWN_1;
+        blockImage = MainCharacterBlockImages.DOWN_1;
         distanceToBackground = 200;
 
         size = 3;

@@ -16,12 +16,6 @@ public abstract class CollidingGameObject extends GameObject {
     private double hitBoxOffsetWidth;
     private double hitBoxOffsetHeight;
 
-    /**
-     * Crates a new game object that is able to collide.
-     *
-     * @param gameView        Window to show the game object on.
-     * @param gamePlayManager Controls the game play.
-     */
     protected CollidingGameObject(GameView gameView, GamePlayManager gamePlayManager, Direction location, Position position) {
         super(gameView, gamePlayManager);
         hitBoxRectangle = new Rectangle(0, 0, 0, 0);

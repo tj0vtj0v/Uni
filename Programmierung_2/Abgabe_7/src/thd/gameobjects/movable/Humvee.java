@@ -32,7 +32,7 @@ public class Humvee extends CollidingGameObject implements ShiftableGameObject, 
         } else {
             blockImage = mirrorBlockImage(ObjectBlockImages.HUMVEE);
         }
-        distanceToBackground = 200;
+        distanceToBackground = 100;
         hitTolerance = 5;
 
         size = 3;

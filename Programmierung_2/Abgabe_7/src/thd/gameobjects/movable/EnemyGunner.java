@@ -31,8 +31,8 @@ public class EnemyGunner extends MovingCharacter implements ShiftableGameObject,
     public EnemyGunner(GameView gameView, GamePlayManager gamePlayManager, Direction location, Position position, List<CollidingGameObject> collidingGameObjectsForPathDecision) {
         super(gameView, gamePlayManager, location, position, collidingGameObjectsForPathDecision);
 
-        blockImage = CharacterBlockImages.Enemy.Gunner.DOWN_1;
-        distanceToBackground = 100;
+        blockImage = EnemyGunnerBlockImages.DOWN_1;
+        distanceToBackground = 20;
 
         size = 3;
         rotation = 0;

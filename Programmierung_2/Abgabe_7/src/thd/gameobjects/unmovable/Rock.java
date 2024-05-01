@@ -32,7 +32,7 @@ public class Rock extends CollidingGameObject implements ShiftableGameObject, Ac
         } else {
             blockImage = mirrorBlockImage(ObjectBlockImages.RIGHT_SIDE_ROCK);
         }
-        distanceToBackground = 200;
+        distanceToBackground = 100;
 
         size = 4;
         rotation = 0;
