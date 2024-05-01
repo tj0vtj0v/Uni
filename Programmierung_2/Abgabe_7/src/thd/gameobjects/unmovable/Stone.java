@@ -14,7 +14,7 @@ import thd.gameobjects.movable.MainCharacterImpl;
  * blocks {@link Bullet}
  * BlockImage
  */
-public class Stone extends CollidingGameObject implements ShiftableGameObject, ActivatableGameObject {
+public class Stone extends CollidingGameObject implements ShiftableGameObject, ActivatableGameObject<GameObject> {
 
     /**
      * Creates Stone with gameView window of presence.
@@ -38,7 +38,7 @@ public class Stone extends CollidingGameObject implements ShiftableGameObject, A
     }
 
     @Override
-    public boolean tryToActivate(Object info) {
+    public boolean tryToActivate(GameObject info) {
         MainCharacterImpl infoObject = (MainCharacterImpl) info;
 
         return (infoObject).getPosition().verticalDistance(this.position) <= GameView.HEIGHT;

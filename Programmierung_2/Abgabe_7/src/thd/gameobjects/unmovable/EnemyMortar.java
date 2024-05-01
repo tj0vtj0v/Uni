@@ -15,7 +15,7 @@ import thd.gameobjects.movable.MainCharacterImpl;
  * destructible by 1 {@link Grenade} or 1 {@link Bullet}
  * BlockImage
  */
-public class EnemyMortar extends CollidingGameObject implements ShiftableGameObject, ActivatableGameObject {
+public class EnemyMortar extends CollidingGameObject implements ShiftableGameObject, ActivatableGameObject<GameObject> {
     private final String mortarBlockImage;
 
     /**
@@ -50,7 +50,7 @@ public class EnemyMortar extends CollidingGameObject implements ShiftableGameObj
     }
 
     @Override
-    public boolean tryToActivate(Object info) {
+    public boolean tryToActivate(GameObject info) {
         MainCharacterImpl infoObject = (MainCharacterImpl) info;
 
         return (infoObject).getPosition().verticalDistance(this.position) <= GameView.HEIGHT;

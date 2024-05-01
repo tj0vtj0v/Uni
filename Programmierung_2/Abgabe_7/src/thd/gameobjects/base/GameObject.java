@@ -27,7 +27,7 @@ public abstract class GameObject {
      * @param gameView        GameView to show the game object on.
      * @param gamePlayManager GamePlayManager to manage the game actions.
      */
-    protected GameObject(GameView gameView, GamePlayManager gamePlayManager) {
+    public GameObject(GameView gameView, GamePlayManager gamePlayManager) {
         this.gameView = gameView;
         this.gamePlayManager = gamePlayManager;
 

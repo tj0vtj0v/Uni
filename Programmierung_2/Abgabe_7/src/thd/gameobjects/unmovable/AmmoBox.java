@@ -13,7 +13,7 @@ import thd.gameobjects.movable.MainCharacterImpl;
  * collectable
  * BlockImage
  */
-public class AmmoBox extends CollidingGameObject implements ShiftableGameObject, ActivatableGameObject {
+public class AmmoBox extends CollidingGameObject implements ShiftableGameObject, ActivatableGameObject<GameObject> {
     /**
      * Creates Ammo box with gameView window of presence.
      *
@@ -36,7 +36,7 @@ public class AmmoBox extends CollidingGameObject implements ShiftableGameObject,
     }
 
     @Override
-    public boolean tryToActivate(Object info) {
+    public boolean tryToActivate(GameObject info) {
         MainCharacterImpl infoObject = (MainCharacterImpl) info;
 
         return (infoObject).getPosition().verticalDistance(this.position) <= GameView.HEIGHT;

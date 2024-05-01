@@ -14,7 +14,7 @@ import thd.gameobjects.movable.MainCharacterImpl;
  * blocks {@link Bullet}
  * BlockImage
  */
-public class Wall extends CollidingGameObject implements ShiftableGameObject, ActivatableGameObject {
+public class Wall extends CollidingGameObject implements ShiftableGameObject, ActivatableGameObject<GameObject> {
 
     /**
      * Creates Wall with gameView window of presence.
@@ -39,7 +39,7 @@ public class Wall extends CollidingGameObject implements ShiftableGameObject, Ac
     }
 
     @Override
-    public boolean tryToActivate(Object info) {
+    public boolean tryToActivate(GameObject info) {
         MainCharacterImpl infoObject = (MainCharacterImpl) info;
 
         return (infoObject).getPosition().verticalDistance(this.position) <= GameView.HEIGHT;

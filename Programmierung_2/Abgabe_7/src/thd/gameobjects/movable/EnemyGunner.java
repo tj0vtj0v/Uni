@@ -16,7 +16,7 @@ import java.util.Random;
  * destructible by 1 {@link Grenade} or 1 {@link Bullet}
  * png textured
  */
-public class EnemyGunner extends MovingCharacter implements ShiftableGameObject, ActivatableGameObject {
+public class EnemyGunner extends MovingCharacter implements ShiftableGameObject, ActivatableGameObject<GameObject> {
     private final RandomMovementPattern movementPattern;
 
     /**
@@ -48,7 +48,7 @@ public class EnemyGunner extends MovingCharacter implements ShiftableGameObject,
     }
 
     @Override
-    public boolean tryToActivate(Object info) {
+    public boolean tryToActivate(GameObject info) {
         MainCharacterImpl infoObject = (MainCharacterImpl) info;
 
         return (infoObject).getPosition().verticalDistance(this.position) <= GameView.HEIGHT;

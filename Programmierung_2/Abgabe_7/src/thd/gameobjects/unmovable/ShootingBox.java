@@ -15,7 +15,7 @@ import thd.gameobjects.movable.MainCharacterImpl;
  * destructible by 1 {@link Grenade} or 2 {@link Bullet}
  * BlockImage
  */
-public class ShootingBox extends CollidingGameObject implements ShiftableGameObject, ActivatableGameObject {
+public class ShootingBox extends CollidingGameObject implements ShiftableGameObject, ActivatableGameObject<GameObject> {
     private int hitTolerance;
 
     /**
@@ -45,7 +45,7 @@ public class ShootingBox extends CollidingGameObject implements ShiftableGameObj
     }
 
     @Override
-    public boolean tryToActivate(Object info) {
+    public boolean tryToActivate(GameObject info) {
         MainCharacterImpl infoObject = (MainCharacterImpl) info;
 
         return (infoObject).getPosition().verticalDistance(this.position) <= GameView.HEIGHT;

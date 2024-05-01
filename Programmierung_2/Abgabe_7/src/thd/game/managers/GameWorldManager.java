@@ -14,7 +14,7 @@ import static java.lang.Math.max;
 
 class GameWorldManager extends GamePlayManager {
     private static final int VISIBLE_COLUMNS = 32;
-    private final List<ActivatableGameObject> activatableGameObjects;
+    private final List<GameObject> activatableGameObjects;
     private final String world;
     private final int worldOffsetLines;
 
@@ -89,35 +89,69 @@ class GameWorldManager extends GamePlayManager {
         }
     }
 
-    private void addActivatableGameObject(ActivatableGameObject activatableGameObject) {
-        activatableGameObjects.add(activatableGameObject);
-        addToShiftableGameObjectsIfShiftable((GameObject) activatableGameObject);
+    private void addActivatableGameObject(GameObject gameObject) {
+        activatableGameObjects.add(gameObject);
+        addToShiftableGameObjectsIfShiftable(gameObject);
     }
 
     private void activateGameObjects() {
-        ListIterator<ActivatableGameObject> iterator = activatableGameObjects.listIterator();
+        ListIterator<GameObject> iterator = activatableGameObjects.listIterator();
 
         while (iterator.hasNext()) {
-            ActivatableGameObject activatableGameObject = iterator.next();
+            GameObject gameObject = iterator.next();
 
-            if (activatableGameObject.tryToActivate(mainCharacter)) {
-
-                if (instanceOfPathCollisionObject(activatableGameObject)) {
-                    spawnPathBlockingGameObject((CollidingGameObject) activatableGameObject);
-                } else {
-                    spawnGameObject((GameObject) activatableGameObject);
+            if (gameObject instanceof EnemyMortar enemyMortar) {
+                if (enemyMortar.tryToActivate(mainCharacter)) {
+                    spawnGameObject(enemyMortar);
+                    iterator.remove();
                 }
-
-                iterator.remove();
+            } else if (gameObject instanceof EnemyGunner enemyGunner) {
+                if (enemyGunner.tryToActivate(mainCharacter)) {
+                    spawnGameObject(enemyGunner);
+                    iterator.remove();
+                }
+            } else if (gameObject instanceof Humvee humvee) {
+                if (humvee.tryToActivate(mainCharacter)) {
+                    spawnGameObject(humvee);
+                    iterator.remove();
+                }
+            } else if (gameObject instanceof Moped moped) {
+                if (moped.tryToActivate(mainCharacter)) {
+                    spawnGameObject(moped);
+                    iterator.remove();
+                }
+            } else if (gameObject instanceof ShootingBox shootingBox) {
+                if (shootingBox.tryToActivate(mainCharacter)) {
+                    spawnGameObject(shootingBox);
+                    iterator.remove();
+                }
+            } else if (gameObject instanceof Tree tree) {
+                if (tree.tryToActivate(mainCharacter)) {
+                    spawnPathBlockingGameObject(tree);
+                    iterator.remove();
+                }
+            } else if (gameObject instanceof Stone stone) {
+                if (stone.tryToActivate(mainCharacter)) {
+                    spawnPathBlockingGameObject(stone);
+                    iterator.remove();
+                }
+            } else if (gameObject instanceof Rock rock) {
+                if (rock.tryToActivate(mainCharacter)) {
+                    spawnPathBlockingGameObject(rock);
+                    iterator.remove();
+                }
+            } else if (gameObject instanceof AmmoBox ammoBox) {
+                if (ammoBox.tryToActivate(mainCharacter)) {
+                    spawnGameObject(ammoBox);
+                    iterator.remove();
+                }
+            } else if (gameObject instanceof Wall wall) {
+                if (wall.tryToActivate(mainCharacter)) {
+                    spawnPathBlockingGameObject(wall);
+                    iterator.remove();
+                }
             }
         }
-    }
-
-    private boolean instanceOfPathCollisionObject(ActivatableGameObject activatableGameObject) {
-        return activatableGameObject instanceof Tree
-                || activatableGameObject instanceof Stone
-                || activatableGameObject instanceof Rock
-                || activatableGameObject instanceof Wall;
     }
 
     @Override

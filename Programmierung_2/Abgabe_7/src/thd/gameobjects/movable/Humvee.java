@@ -13,7 +13,7 @@ import thd.gameobjects.unmovable.Explosion;
  * destructible by 1 {@link Grenade} or 5 {@link Bullet}
  * BlockImage
  */
-public class Humvee extends CollidingGameObject implements ShiftableGameObject, ActivatableGameObject {
+public class Humvee extends CollidingGameObject implements ShiftableGameObject, ActivatableGameObject<GameObject> {
     private int hitTolerance;
 
     /**
@@ -49,7 +49,7 @@ public class Humvee extends CollidingGameObject implements ShiftableGameObject, 
     }
 
     @Override
-    public boolean tryToActivate(Object info) {
+    public boolean tryToActivate(GameObject info) {
         MainCharacterImpl infoObject = (MainCharacterImpl) info;
 
         return (infoObject).getPosition().verticalDistance(this.position) <= GameView.HEIGHT;
