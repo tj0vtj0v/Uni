@@ -1,0 +1,16 @@
+{
+  "answers": [
+    {
+      "intent": "John",
+      "answer": "Doe"
+    },
+    {
+      "intent": "Anna",
+      "answer": "Smith"
+    },
+    {
+      "intent": "Peter",
+      "answer": "Jones"
+    }
+  ]
+}
