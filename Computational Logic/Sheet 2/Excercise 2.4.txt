@@ -4,4 +4,3 @@ car(b, 5).
 car(c, 2).
 license(i;j;l;m;o).
 
-#TODO

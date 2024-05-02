@@ -1,5 +1,6 @@
 package thd.game.managers;
 
+import thd.game.level.Level;
 import thd.game.utilities.GameView;
 import thd.gameobjects.base.*;
 import thd.gameobjects.unmovable.*;
@@ -17,9 +18,14 @@ class GameWorldManager extends GamePlayManager {
     protected GameWorldManager(GameView gameView) {
         super(gameView);
         activatableGameObjects = new LinkedList<>();
+    }
 
-        spawnGameObjectsFromWorldString();
+    protected void initializeLevel() {
+        activatableGameObjects.clear();
+        destroyAllGameObjects();
         spawnGameObjects();
+        spawnGameObjectsFromWorldString();
+        clearListsForPathDecisionsInGameObjects();
     }
 
     private void spawnGameObjects() {
@@ -79,6 +85,11 @@ class GameWorldManager extends GamePlayManager {
                 }
             }
         }
+    }
+
+    private void clearListsForPathDecisionsInGameObjects() {
+        collidingGameObjectsForPathDecision.clear();
+        // TODO MainCharacterImpl list update
     }
 
     private void addActivatableGameObject(GameObject gameObject) {

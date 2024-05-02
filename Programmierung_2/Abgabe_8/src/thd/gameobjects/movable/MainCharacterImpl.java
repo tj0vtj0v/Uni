@@ -45,7 +45,7 @@ public class MainCharacterImpl extends MovingCharacter implements MainCharacter 
         height = generateHeightFromBlockImage() * size;
         hitBoxOffsets(6, 6, -12, -24);
 
-        speedInPixel = 5;
+        speedInPixel = gamePlayManager.getLevel().mainCharacterMovementSpeed;
     }
 
     @Override

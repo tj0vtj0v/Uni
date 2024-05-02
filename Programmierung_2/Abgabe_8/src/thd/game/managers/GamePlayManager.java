@@ -1,5 +1,6 @@
 package thd.game.managers;
 
+import thd.game.level.Level;
 import thd.game.utilities.GameView;
 import thd.gameobjects.base.CollidingGameObject;
 import thd.gameobjects.base.GameObject;
@@ -94,6 +95,10 @@ public class GamePlayManager extends WorldShiftManager {
      */
     public int getLives() {
         return lives;
+    }
+
+    public Level getLevel() {
+        return level;
     }
 
 
