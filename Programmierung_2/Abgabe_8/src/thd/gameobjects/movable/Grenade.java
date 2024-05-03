@@ -56,6 +56,7 @@ public class Grenade extends GameObject implements ShiftableGameObject {
                 targetPosition.updateCoordinates(movementPattern.nextTargetPosition(getPosition()));
             } catch (ExplosionCountdownExpiredException e) {
                 gamePlayManager.spawnGameObject(new Explosion(gameView, gamePlayManager, Direction.DOWN, position));
+                gamePlayManager.destroyGameObject(this);
                 currentState = State.EXPLODED;
             }
         }
@@ -65,9 +66,7 @@ public class Grenade extends GameObject implements ShiftableGameObject {
     public void updateStatus() {
         switch (currentState) {
             case FLYING:
-                break;
             case EXPLODED:
-                gamePlayManager.destroyGameObject(this);
         }
     }
 
