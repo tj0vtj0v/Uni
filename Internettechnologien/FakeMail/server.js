@@ -4,7 +4,7 @@ app.use(express.static('public'))
 
 'use strict'
 const send = require('./request')
-send('+491757262786', '+4915141229119', 'Gib mir geld!');
+send('+490000000000', '+490000000000', 'Hallo Papa, deswegen sollte man SMS nicht trauen,\nLG Tjorven');
 
 // Wir laden contents aus dem public Ordner
 app.use('/css', express.static(__dirname + '/public/css'))
