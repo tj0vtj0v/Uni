@@ -23,7 +23,7 @@ public class GameViewManager extends GameView {
         changeBackgroundColor(Color.GRAY);
 
         addBlockimageColors();
-        gameManager.initializeLevel();
+        gameManager.initializeGame();
     }
 
 

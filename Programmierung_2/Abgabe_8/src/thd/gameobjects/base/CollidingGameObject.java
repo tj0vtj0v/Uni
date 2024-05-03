@@ -9,19 +9,19 @@ import java.awt.*;
  * Game objects that are able to collide with other game objects.
  */
 public abstract class CollidingGameObject extends GameObject {
-    protected Direction location;
+    protected Direction direction;
     private final Rectangle hitBoxRectangle;
     private double hitBoxOffsetX;
     private double hitBoxOffsetY;
     private double hitBoxOffsetWidth;
     private double hitBoxOffsetHeight;
 
-    protected CollidingGameObject(GameView gameView, GamePlayManager gamePlayManager, Direction location, Position position) {
+    protected CollidingGameObject(GameView gameView, GamePlayManager gamePlayManager, Direction facing, Position position) {
         super(gameView, gamePlayManager);
         hitBoxRectangle = new Rectangle(0, 0, 0, 0);
 
         this.position.updateCoordinates(position);
-        this.location = location;
+        this.direction = facing;
     }
 
     /**

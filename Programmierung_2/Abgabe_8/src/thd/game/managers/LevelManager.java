@@ -3,31 +3,31 @@ package thd.game.managers;
 import thd.game.level.*;
 import thd.game.utilities.GameView;
 
-import java.util.ArrayList;
 import java.util.List;
-import java.util.ListIterator;
 
-public class LevelManager extends GameWorldManager {
-    private final ListIterator<Level> levelIterator;
+class LevelManager extends GameWorldManager {
+    private List<Level> levels;
 
-    LevelManager(GameView gameView) {
+    protected LevelManager(GameView gameView) {
         super(gameView);
+    }
 
-        List<Level> levels = new ArrayList<>(List.of(new Level1(), new Level2(), new Level3()));
-        levelIterator = levels.listIterator();
-        switchToNextLevel();
+    protected void initializeGame() {
+        levels = List.of(new Level1(), new Level2(), new Level3());
+        level = levels.get(0);
+        lives = LIVES;
+        points = 0;
     }
 
     protected boolean hasNextLevel() {
-        return levelIterator.hasNext();
+        return levels.size() > levels.indexOf(level) + 1;
     }
 
     protected void switchToNextLevel() {
         if (hasNextLevel()) {
-            level = levelIterator.next();
-            System.out.println(level);
+            level = levels.get(levels.indexOf(level) + 1);
         } else {
-            throw new NoMoreLevelsAvaliableException("There are no more Levels left.");
+            throw new NoMoreLevelsAvailableException("There are no more Levels left.");
         }
     }
 

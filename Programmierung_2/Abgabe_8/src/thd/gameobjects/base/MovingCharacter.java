@@ -11,8 +11,6 @@ import java.util.List;
  * Creates an active moving character.
  */
 public class MovingCharacter extends CollidingGameObject {
-    private static final int SHOTS_IN_BURST = 3;
-    private int shotsBurst;
     private final List<CollidingGameObject> collidingGameObjectsForPathDecision;
     private final int shotDurationInMilliseconds;
 
@@ -21,15 +19,14 @@ public class MovingCharacter extends CollidingGameObject {
      *
      * @param gameView                            gameView where the Object is displayed in.
      * @param gamePlayManager                     manager for the in-game logic.
-     * @param location                            Stores positional information.
+     * @param facing                              Stores information about movement direction.
      * @param position                            Position from which to start movement.
      * @param collidingGameObjectsForPathDecision list of object which are path blockers.
      */
-    public MovingCharacter(GameView gameView, GamePlayManager gamePlayManager, Direction location, Position position, List<CollidingGameObject> collidingGameObjectsForPathDecision) {
-        super(gameView, gamePlayManager, location, position);
+    public MovingCharacter(GameView gameView, GamePlayManager gamePlayManager, Direction facing, Position position, List<CollidingGameObject> collidingGameObjectsForPathDecision) {
+        super(gameView, gamePlayManager, facing, position);
         this.collidingGameObjectsForPathDecision = collidingGameObjectsForPathDecision;
         shotDurationInMilliseconds = 300;
-        shotsBurst = 0;
 
         width = 0;
         height = 0;
@@ -43,15 +40,7 @@ public class MovingCharacter extends CollidingGameObject {
      */
     public void shoot() {
         if (gameView.timer(shotDurationInMilliseconds, this)) {
-            if (gameView.timer(1500, this) || shotsBurst < SHOTS_IN_BURST) {
-                gamePlayManager.spawnGameObject(new Bullet(gameView, gamePlayManager, Direction.DOWN, new Position(position.getX() + 7, position.getY() + 36), this));
-
-                if (shotsBurst >= SHOTS_IN_BURST) {
-                    shotsBurst = 1;
-                } else {
-                    shotsBurst++;
-                }
-            }
+            gamePlayManager.spawnGameObject(new Bullet(gameView, gamePlayManager, Direction.DOWN, new Position(position.getX() + 7, position.getY() + 36), this));
         }
     }
 

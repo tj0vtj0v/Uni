@@ -27,7 +27,7 @@ public class Humvee extends CollidingGameObject implements ShiftableGameObject, 
     public Humvee(GameView gameView, GamePlayManager gamePlayManager, Direction location, Position position) {
         super(gameView, gamePlayManager, location, position);
 
-        if (this.location == Direction.LEFT) {
+        if (this.direction == Direction.LEFT) {
             blockImage = ObjectBlockImages.HUMVEE;
         } else {
             blockImage = mirrorBlockImage(ObjectBlockImages.HUMVEE);
@@ -41,9 +41,9 @@ public class Humvee extends CollidingGameObject implements ShiftableGameObject, 
         height = generateHeightFromBlockImage() * size;
         hitBoxOffsets(0, 3, -12, -18);
 
-        speedInPixel = 1;
+        speedInPixel = 5;
 
-        LinearMovementPattern movementPattern = new LinearMovementPattern(this.location.opposite(), position);
+        LinearMovementPattern movementPattern = new LinearMovementPattern(this.direction.opposite(), position);
         this.position.updateCoordinates(movementPattern.startPosition());
         targetPosition.updateCoordinates(movementPattern.nextTargetPosition());
     }
@@ -52,7 +52,7 @@ public class Humvee extends CollidingGameObject implements ShiftableGameObject, 
     public boolean tryToActivate(GameObject info) {
         MainCharacterImpl infoObject = (MainCharacterImpl) info;
 
-        return (infoObject).getPosition().verticalDistance(this.position) <= GameView.HEIGHT;
+        return (infoObject).getPosition().verticalDistance(this.position) <= GameView.HEIGHT / 2f;
     }
 
     @Override
