@@ -1,0 +1,6 @@
+student(a;b;c;d;e).
+enrolled(a, z; b, z; d, z).
+
+enrolled(S) :- enrolled(S, X).
+
+#show enrolled/1.

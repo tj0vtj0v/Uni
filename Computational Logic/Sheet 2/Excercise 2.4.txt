@@ -9,3 +9,5 @@ seat(P, C) :- driver(P, C).
 
 {seat(P, C) : person(P)} = N :- car(C, N).
 {seat(P, C) : car(C, N)} = 1 :- person(P).
+
+#show seat/2.

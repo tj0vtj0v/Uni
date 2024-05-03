@@ -1,0 +1,5 @@
+age(a, 1; b, 2; d, 3; c, 3).
+
+older(P1, P2) :- age(P1, A), age(P2, B), A > B.
+
+#show older/2.

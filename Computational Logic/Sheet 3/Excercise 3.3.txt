@@ -1,0 +1,5 @@
+lives_in(a, x; b, y; c, z; d, x; e, x; f, y).
+
+same_city(P1, P2) :- lives_in(P1, C), lives_in(P2, C), P1 != P2.
+
+#show same_city/2.
