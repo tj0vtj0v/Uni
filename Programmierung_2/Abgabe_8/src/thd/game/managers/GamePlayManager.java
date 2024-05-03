@@ -12,12 +12,12 @@ import java.util.List;
  * Manages the whole plot of the game.
  */
 public class GamePlayManager extends WorldShiftManager {
-    private static final int LIVES = 3;
+    static final int LIVES = 3;
     private final GameObjectManager gameObjectManager;
-    protected final List<CollidingGameObject> collidingGameObjectsForPathDecision;
+    final List<CollidingGameObject> collidingGameObjectsForPathDecision;
 
-    protected int lives;
-    protected int points;
+    int lives;
+    int points;
     private int highScore;
 
     /**
@@ -97,7 +97,12 @@ public class GamePlayManager extends WorldShiftManager {
         return lives;
     }
 
-    public Level getLevel() {
+    /**
+     * Current level for character influence.
+     *
+     * @return current Level.
+     */
+    public Level currentLevel() {
         return level;
     }
 

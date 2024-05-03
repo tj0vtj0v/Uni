@@ -31,7 +31,7 @@ class GameWorldManager extends GamePlayManager {
     }
 
     private void spawnGameObjectsFromWorldString() {
-        String[] lines = level.worldString.split("\n");
+        String[] lines = level.world.split("\n");
         int scale = GameView.WIDTH / (lines[0].length() - level.worldOffsetColumns - 1);
         char tile;
         Position position;

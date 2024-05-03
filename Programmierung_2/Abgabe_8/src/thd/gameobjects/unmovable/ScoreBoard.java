@@ -41,5 +41,4 @@ public class ScoreBoard extends GameObject {
         gameView.addTextToCanvas("GRENADES %d".formatted(gamePlayManager.availableGrenades()), GameView.WIDTH / 1.8, localYZero + (height - size) / 2, size, true, new Color(200, 200, 200), rotation);
         gameView.addTextToCanvas("HI %06d".formatted(gamePlayManager.getHighScore()), GameView.WIDTH / 1.3, localYZero + (height - size) / 2, size, true, new Color(255, 238, 96), rotation);
     }
-
 }

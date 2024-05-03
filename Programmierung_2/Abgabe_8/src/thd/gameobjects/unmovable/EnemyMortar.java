@@ -46,7 +46,7 @@ public class EnemyMortar extends CollidingGameObject implements ShiftableGameObj
     }
 
     private void shoot() {
-        gamePlayManager.spawnGameObject(new Grenade(gameView, gamePlayManager, location, getPosition(), this));
+        gamePlayManager.spawnGameObject(new Grenade(gameView, gamePlayManager, direction, getPosition(), this));
     }
 
     @Override
@@ -75,7 +75,7 @@ public class EnemyMortar extends CollidingGameObject implements ShiftableGameObj
 
     @Override
     public void addToCanvas() {
-        double mortarXOffset = location == Direction.RIGHT ? position.getX() - 18 : position.getX() + 27;
+        double mortarXOffset = direction == Direction.RIGHT ? position.getX() - 18 : position.getX() + 27;
         gameView.addBlockImageToCanvas(blockImage, position.getX(), position.getY(), size, rotation);
         gameView.addBlockImageToCanvas(mortarBlockImage, mortarXOffset, position.getY() + 21, size, rotation);
     }

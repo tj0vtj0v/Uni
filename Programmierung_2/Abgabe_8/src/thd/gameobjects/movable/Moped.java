@@ -28,7 +28,7 @@ public class Moped extends CollidingGameObject implements ShiftableGameObject, A
     public Moped(GameView gameView, GamePlayManager gamePlayManager, Direction location, Position position) {
         super(gameView, gamePlayManager, location, position);
 
-        if (this.location == Direction.RIGHT) {
+        if (this.direction == Direction.RIGHT) {
             blockImage = ObjectBlockImages.MOPED;
         } else {
             blockImage = mirrorBlockImage(ObjectBlockImages.MOPED);
@@ -42,9 +42,9 @@ public class Moped extends CollidingGameObject implements ShiftableGameObject, A
         height = generateHeightFromBlockImage() * size;
         hitBoxOffsets(3, 27, -6, -45);
 
-        speedInPixel = 1;
+        speedInPixel = 5;
 
-        LinearMovementPattern movementPattern = new LinearMovementPattern(this.location.opposite(), position);
+        LinearMovementPattern movementPattern = new LinearMovementPattern(this.direction.opposite(), position);
         this.position.updateCoordinates(movementPattern.startPosition());
         targetPosition.updateCoordinates(movementPattern.nextTargetPosition());
     }
@@ -53,7 +53,7 @@ public class Moped extends CollidingGameObject implements ShiftableGameObject, A
     public boolean tryToActivate(GameObject info) {
         MainCharacterImpl infoObject = (MainCharacterImpl) info;
 
-        return (infoObject).getPosition().verticalDistance(this.position) <= GameView.HEIGHT;
+        return (infoObject).getPosition().verticalDistance(this.position) <= GameView.HEIGHT / 2f;
     }
 
     @Override

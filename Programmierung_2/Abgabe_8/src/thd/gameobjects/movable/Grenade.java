@@ -16,6 +16,10 @@ import thd.gameobjects.unmovable.Explosion;
 public class Grenade extends GameObject implements ShiftableGameObject {
     private final ParabolicMovementPattern movementPattern;
 
+    private enum State {FLYING, EXPLODED}
+
+    private State currentState;
+
     /**
      * Crates a new Grenade.
      *
@@ -36,8 +40,9 @@ public class Grenade extends GameObject implements ShiftableGameObject {
         width = generateWidthFromBlockImage() * size;
         height = generateHeightFromBlockImage() * size;
 
-        speedInPixel = 5;
+        speedInPixel = 8;
 
+        currentState = State.FLYING;
         movementPattern = new ParabolicMovementPattern(originLocation.opposite(), position);
         this.position.updateCoordinates(movementPattern.startPosition());
         targetPosition.updateCoordinates(movementPattern.nextTargetPosition(getPosition()));
@@ -50,9 +55,19 @@ public class Grenade extends GameObject implements ShiftableGameObject {
             try {
                 targetPosition.updateCoordinates(movementPattern.nextTargetPosition(getPosition()));
             } catch (ExplosionCountdownExpiredException e) {
-                gamePlayManager.destroyGameObject(this);
                 gamePlayManager.spawnGameObject(new Explosion(gameView, gamePlayManager, Direction.DOWN, position));
+                currentState = State.EXPLODED;
             }
+        }
+    }
+
+    @Override
+    public void updateStatus() {
+        switch (currentState) {
+            case FLYING:
+                break;
+            case EXPLODED:
+                gamePlayManager.destroyGameObject(this);
         }
     }
 

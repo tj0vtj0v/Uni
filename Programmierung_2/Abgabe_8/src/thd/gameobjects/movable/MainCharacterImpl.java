@@ -20,7 +20,7 @@ import java.util.Random;
  */
 public class MainCharacterImpl extends MovingCharacter implements MainCharacter {
     private int availableGrenades;
-    private boolean invincible;
+    private boolean dead;
 
     /**
      * Creates Enemy Gunner with gameView window of presence.
@@ -34,7 +34,7 @@ public class MainCharacterImpl extends MovingCharacter implements MainCharacter 
     public MainCharacterImpl(GameView gameView, GamePlayManager gamePlayManager, Direction direction, Position position, List<CollidingGameObject> collidingGameObjectsForPathDecision) {
         super(gameView, gamePlayManager, direction, position, collidingGameObjectsForPathDecision);
         availableGrenades = 5;
-        invincible = true;
+        dead = false;
 
         blockImage = MainCharacterBlockImages.DOWN_1;
         distanceToBackground = 200;
@@ -45,16 +45,16 @@ public class MainCharacterImpl extends MovingCharacter implements MainCharacter 
         height = generateHeightFromBlockImage() * size;
         hitBoxOffsets(6, 6, -12, -24);
 
-        speedInPixel = gamePlayManager.getLevel().mainCharacterMovementSpeed;
+        speedInPixel = gamePlayManager.currentLevel().mainCharacterMovementSpeed;
     }
 
     @Override
     public void reactToCollisionWith(CollidingGameObject other) {
         if (other instanceof Bullet && ((Bullet) other).creator != this || other instanceof Explosion) {
             try {
-                if (!invincible) {
+                if (!dead) {
                     gamePlayManager.reduceLive();
-                    invincible = true;
+                    dead = true;
                 }
             } catch (NoRemainingMenException e) {
                 gamePlayManager.gameOver(false);
@@ -131,15 +131,23 @@ public class MainCharacterImpl extends MovingCharacter implements MainCharacter 
         }
     }
 
+    /**
+     * Getter to communicate Status of the MainCharacter.
+     *
+     * @return true if dead.
+     */
+    public boolean isDead() {
+        return dead;
+    }
+
     @Override
-    public void updateStatus() {
-        if (invincible && gameView.timer(2000, this)) {
-            invincible = false;
-        }
+    protected boolean pathIsBlocked() {
+        boolean outOfGameView = position.getX() + 1 < 0 || position.getX() - 1 > GameView.WIDTH - width || position.getY() - 1 > GameView.HEIGHT - height - 80;
+        return outOfGameView || super.pathIsBlocked() || dead;
     }
 
     @Override
     public String toString() {
-        return "MainCharacter: %s is %b invincible with %d available Grenades".formatted(position, invincible, availableGrenades);
+        return "MainCharacter: %s is %b invincible with %d available Grenades".formatted(position, dead, availableGrenades);
     }
 }
