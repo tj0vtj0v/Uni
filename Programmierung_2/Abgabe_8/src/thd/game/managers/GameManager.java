@@ -9,6 +9,14 @@ class GameManager extends LevelManager {
     }
 
     private void gameManagement() {
+        if (endOfLevel()) {
+            switchToNextLevel();
+            initializeLevel();
+        }
+    }
+
+    private boolean endOfLevel() {
+        return gameView.timer(3000, this);
     }
 
     @Override

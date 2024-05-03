@@ -1,6 +1,5 @@
 package thd.game.managers;
 
-import thd.game.level.Level;
 import thd.game.utilities.GameView;
 import thd.gameobjects.base.*;
 import thd.gameobjects.unmovable.*;
@@ -9,8 +8,6 @@ import thd.gameobjects.movable.*;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.ListIterator;
-
-import static thd.game.level.Level.*;
 
 class GameWorldManager extends GamePlayManager {
     private final List<GameObject> activatableGameObjects;
@@ -34,8 +31,8 @@ class GameWorldManager extends GamePlayManager {
     }
 
     private void spawnGameObjectsFromWorldString() {
-        String[] lines = worldString.split("\n");
-        int scale = GameView.WIDTH / (lines[0].length() - worldOffsetColumns - 1);
+        String[] lines = level.worldString.split("\n");
+        int scale = GameView.WIDTH / (lines[0].length() - level.worldOffsetColumns - 1);
         char tile;
         Position position;
         Direction located;
@@ -45,7 +42,7 @@ class GameWorldManager extends GamePlayManager {
                 tile = lines[lineIndex].charAt(tileIndex);
 
                 located = Character.isUpperCase(tile) ? Direction.RIGHT : Direction.LEFT;
-                position = new Position((tileIndex - worldOffsetColumns) * scale, (lineIndex - worldOffsetLines) * scale);
+                position = new Position((tileIndex - level.worldOffsetColumns) * scale, (lineIndex - level.worldOffsetLines) * scale);
 
 
                 switch (Character.toUpperCase(tile)) {
@@ -89,7 +86,6 @@ class GameWorldManager extends GamePlayManager {
 
     private void clearListsForPathDecisionsInGameObjects() {
         collidingGameObjectsForPathDecision.clear();
-        // TODO MainCharacterImpl list update
     }
 
     private void addActivatableGameObject(GameObject gameObject) {
