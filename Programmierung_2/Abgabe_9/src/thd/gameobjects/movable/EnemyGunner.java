@@ -42,8 +42,8 @@ public class EnemyGunner extends MovingCharacter implements ShiftableGameObject,
 
         speedInPixel = 1;
 
-        movementPattern = new RandomMovementPattern();
-        this.position.updateCoordinates(position);
+        movementPattern = new RandomMovementPattern(location, position);
+        this.position.updateCoordinates(movementPattern.startPosition());
         targetPosition.updateCoordinates(movementPattern.nextTargetPosition(getPosition()));
     }
 

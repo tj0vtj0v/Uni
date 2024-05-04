@@ -66,6 +66,7 @@ public class EnemyMortar extends CollidingGameObject implements ShiftableGameObj
 
     @Override
     public void updateStatus() {
+        super.updateStatus();
         if (gameView.timer(3300, this)) {
             shoot();
         } else if (gameView.timer(4000, this)) {

@@ -6,15 +6,20 @@ import thd.gameobjects.base.MovementPattern;
 import thd.gameobjects.base.Position;
 
 class RandomMovementPattern extends MovementPattern {
+    private final Direction launchSide;
+    private final Position startPosition;
 
-
-    RandomMovementPattern() {
+    RandomMovementPattern(Direction launchSide, Position startPosition) {
         super();
+        this.launchSide = launchSide;
+        this.startPosition = new Position(startPosition);
     }
 
     @Override
     protected Position startPosition(Position... referencePositions) {
-        return new Position(GameView.WIDTH / 2d, GameView.HEIGHT / 2d);
+        if (launchSide == Direction.LEFT) {
+            
+        }
     }
 
     @Override

@@ -63,6 +63,9 @@ public abstract class GameObject {
      * Changes the status of an Object.
      */
     public void updateStatus() {
+        if (position.getY() > GameView.HEIGHT) {
+            gamePlayManager.destroyGameObject(this);
+        }
     }
 
     /**

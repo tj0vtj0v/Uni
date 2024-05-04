@@ -37,6 +37,7 @@ public class Explosion extends CollidingGameObject implements ShiftableGameObjec
 
     @Override
     public void updateStatus() {
+        super.updateStatus();
         if (gameView.timer(8000, this)) {
             gamePlayManager.destroyGameObject(this);
         }
