@@ -8,6 +8,8 @@ import thd.gameobjects.base.*;
  * Explosion dealing damage after Grenade has flown long enough.
  */
 public class Explosion extends CollidingGameObject implements ShiftableGameObject {
+    private ExplosionState explosionState;
+
     /**
      * Creates Explosion.
      *
@@ -18,17 +20,23 @@ public class Explosion extends CollidingGameObject implements ShiftableGameObjec
      */
     public Explosion(GameView gameView, GamePlayManager gamePlayManager, Direction location, Position position) {
         super(gameView, gamePlayManager, location, position);
+        explosionState = ExplosionState.EXPLOSION_1;
+        blockImage = explosionState.display;
 
-        blockImage = ObjectBlockImages.EXPLOSION;
         distanceToBackground = 10;
 
         size = 3;
         rotation = 0;
         width = generateWidthFromBlockImage() * size;
         height = generateHeightFromBlockImage() * size;
-        hitBoxOffsets(-3, -3, 6, 6);
+        hitBoxOffsets(3, 3, -6, -6);
 
         speedInPixel = 0;
+    }
+
+    private void switchToNextState() {
+        int nextState = (explosionState.ordinal() + 1) % ExplosionState.values().length;
+        explosionState = ExplosionState.values()[nextState];
     }
 
     @Override
@@ -38,8 +46,43 @@ public class Explosion extends CollidingGameObject implements ShiftableGameObjec
     @Override
     public void updateStatus() {
         super.updateStatus();
-        if (gameView.timer(8000, this)) {
-            gamePlayManager.destroyGameObject(this);
+        if (gameView.timer(50, this)) {
+            switchToNextState();
+
+            if (explosionState == ExplosionState.EXPLOSION_1) {
+                gamePlayManager.destroyGameObject(this);
+                return;
+            }
+
+            position.up(explosionState.upShift * size);
+            position.left(explosionState.leftShift * size);
+
+            blockImage = explosionState.display;
+            width = generateWidthFromBlockImage() * size;
+            height = generateHeightFromBlockImage() * size;
+            hitBoxOffsets(3, 3, -6, -6);
+        }
+        blockImage = explosionState.display;
+    }
+
+    private enum ExplosionState {
+        EXPLOSION_1(thd.gameobjects.blockImages.Explosion.EXPLOSION_1, 0, 0),
+        EXPLOSION_2(thd.gameobjects.blockImages.Explosion.EXPLOSION_2, 3, 2),
+        EXPLOSION_3(thd.gameobjects.blockImages.Explosion.EXPLOSION_3, 4, 0),
+        EXPLOSION_4(thd.gameobjects.blockImages.Explosion.EXPLOSION_4, 1, 2),
+        EXPLOSION_7(thd.gameobjects.blockImages.Explosion.EXPLOSION_4, 0, 0),
+        EXPLOSION_8(thd.gameobjects.blockImages.Explosion.EXPLOSION_3, -1, -2),
+        EXPLOSION_9(thd.gameobjects.blockImages.Explosion.EXPLOSION_2, -4, 0),
+        EXPLOSION_10(thd.gameobjects.blockImages.Explosion.EXPLOSION_1, -3, -2);
+
+        private final String display;
+        private final int upShift;
+        private final int leftShift;
+
+        ExplosionState(String display, int upShift, int leftShift) {
+            this.display = display;
+            this.upShift = upShift;
+            this.leftShift = leftShift;
         }
     }
 }

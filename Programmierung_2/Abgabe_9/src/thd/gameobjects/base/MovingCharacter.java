@@ -13,6 +13,7 @@ import java.util.List;
 public class MovingCharacter extends CollidingGameObject {
     private final List<CollidingGameObject> collidingGameObjectsForPathDecision;
     private final int shotDurationInMilliseconds;
+    protected boolean dead;
 
     /**
      * Creates an instance of a moving Character as the main character or an enemy.
@@ -27,6 +28,7 @@ public class MovingCharacter extends CollidingGameObject {
         super(gameView, gamePlayManager, facing, position);
         this.collidingGameObjectsForPathDecision = collidingGameObjectsForPathDecision;
         shotDurationInMilliseconds = 300;
+        dead = false;
 
         width = 0;
         height = 0;
@@ -39,7 +41,7 @@ public class MovingCharacter extends CollidingGameObject {
      * Creates a Bullet-Object flying down.
      */
     public void shoot() {
-        if (gameView.timer(shotDurationInMilliseconds, this)) {
+        if (!dead && gameView.timer(shotDurationInMilliseconds, this)) {
             gamePlayManager.spawnGameObject(new Bullet(gameView, gamePlayManager, Direction.DOWN, new Position(position.getX() + 7, position.getY() + 36), this));
         }
     }

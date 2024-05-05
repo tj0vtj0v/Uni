@@ -4,6 +4,7 @@ package thd.gameobjects.movable;
 import thd.game.managers.GamePlayManager;
 import thd.game.utilities.GameView;
 import thd.gameobjects.base.*;
+import thd.gameobjects.blockImages.Objects;
 import thd.gameobjects.unmovable.Explosion;
 
 /**
@@ -29,7 +30,7 @@ public class Bullet extends CollidingGameObject implements ShiftableGameObject {
         super(gameView, gamePlayManager, originLocation, position);
         this.creator = creator;
 
-        blockImage = ObjectBlockImages.BULLET;
+        blockImage = Objects.BULLET;
         distanceToBackground = (char) (creator.getDistanceToBackground() + 1);
 
         size = 3;

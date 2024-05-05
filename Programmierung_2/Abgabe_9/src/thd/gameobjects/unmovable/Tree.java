@@ -3,6 +3,7 @@ package thd.gameobjects.unmovable;
 import thd.game.managers.GamePlayManager;
 import thd.game.utilities.GameView;
 import thd.gameobjects.base.*;
+import thd.gameobjects.blockImages.Objects;
 import thd.gameobjects.movable.Bullet;
 import thd.gameobjects.movable.MainCharacterImpl;
 
@@ -28,9 +29,9 @@ public class Tree extends CollidingGameObject implements ShiftableGameObject, Ac
         super(gameView, gamePlayManager, location, position);
 
         if (this.direction == Direction.RIGHT) {
-            blockImage = ObjectBlockImages.TREE;
+            blockImage = Objects.TREE;
         } else {
-            blockImage = mirrorBlockImage(ObjectBlockImages.TREE);
+            blockImage = mirrorBlockImage(Objects.TREE);
         }
         distanceToBackground = 100;
 

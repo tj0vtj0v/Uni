@@ -3,6 +3,7 @@ package thd.gameobjects.movable;
 import thd.game.managers.GamePlayManager;
 import thd.game.utilities.GameView;
 import thd.gameobjects.base.*;
+import thd.gameobjects.unmovable.DeadEnemy;
 import thd.gameobjects.unmovable.Explosion;
 
 import java.util.List;
@@ -31,7 +32,7 @@ public class EnemyGunner extends MovingCharacter implements ShiftableGameObject,
     public EnemyGunner(GameView gameView, GamePlayManager gamePlayManager, Direction location, Position position, List<CollidingGameObject> collidingGameObjectsForPathDecision) {
         super(gameView, gamePlayManager, location, position, collidingGameObjectsForPathDecision);
 
-        blockImage = EnemyGunnerBlockImages.DOWN_1;
+        blockImage = thd.gameobjects.blockImages.EnemyGunner.DOWN_1;
         distanceToBackground = 20;
 
         size = 3;
@@ -42,8 +43,8 @@ public class EnemyGunner extends MovingCharacter implements ShiftableGameObject,
 
         speedInPixel = 1;
 
-        movementPattern = new RandomMovementPattern(location, position);
-        this.position.updateCoordinates(movementPattern.startPosition());
+        movementPattern = new RandomMovementPattern(location);
+        this.position.updateCoordinates(movementPattern.startPosition(getPosition()));
         targetPosition.updateCoordinates(movementPattern.nextTargetPosition(getPosition()));
     }
 
@@ -57,8 +58,17 @@ public class EnemyGunner extends MovingCharacter implements ShiftableGameObject,
     @Override
     public void reactToCollisionWith(CollidingGameObject other) {
         if (other instanceof Bullet && ((Bullet) other).creator != this || other instanceof Explosion) {
-            gamePlayManager.destroyGameObject(this);
             gamePlayManager.addScorePoints(-1);
+            gamePlayManager.destroyGameObject(this);
+            gamePlayManager.spawnGameObject(new DeadEnemy(gameView, gamePlayManager, position));
+        }
+    }
+
+    @Override
+    public void updateStatus() {
+        super.updateStatus();
+        if (gameView.timer(new Random(System.currentTimeMillis()).nextInt(1000, 1500), this)) {
+            shoot();
         }
     }
 
@@ -70,11 +80,9 @@ public class EnemyGunner extends MovingCharacter implements ShiftableGameObject,
         if (pathIsBlocked()) {
             position.updateCoordinates(oldPosition);
         }
-        if (gameView.timer(new Random().nextInt(2500, 5000), this)) {
+        if (gameView.timer(new Random(System.currentTimeMillis()).nextInt(2500, 5000), this)) {
             targetPosition.updateCoordinates(movementPattern.nextTargetPosition(getPosition()));
         }
-
-        shoot();
     }
 
     @Override

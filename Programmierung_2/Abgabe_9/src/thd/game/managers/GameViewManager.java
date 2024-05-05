@@ -37,6 +37,7 @@ public class GameViewManager extends GameView {
         setColorForBlockImage('6', new Color(0, 0, 0)); // Black
         setColorForBlockImage('7', new Color(64, 64, 64)); // Grey
         setColorForBlockImage('8', new Color(255, 255, 255)); // White
+        setColorForBlockImage('9', new Color(189, 48, 48));
     }
 
 

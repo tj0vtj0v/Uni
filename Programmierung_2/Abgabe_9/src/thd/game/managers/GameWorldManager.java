@@ -26,8 +26,8 @@ class GameWorldManager extends GamePlayManager {
     }
 
     private void spawnGameObjects() {
-        scoreBoard = new ScoreBoard(gameView, this);
-        spawnGameObject(scoreBoard);
+        spawnGameObject(new ScoreBoard(gameView, this));
+        spawnGameObject(new Jimmy(gameView, this));
     }
 
     private void spawnGameObjectsFromWorldString() {

@@ -3,6 +3,7 @@ package thd.gameobjects.unmovable;
 import thd.game.managers.GamePlayManager;
 import thd.game.utilities.GameView;
 import thd.gameobjects.base.*;
+import thd.gameobjects.blockImages.Objects;
 import thd.gameobjects.movable.Bullet;
 import thd.gameobjects.movable.MainCharacterImpl;
 
@@ -27,7 +28,7 @@ public class Stone extends CollidingGameObject implements ShiftableGameObject, A
     public Stone(GameView gameView, GamePlayManager gamePlayManager, Direction location, Position position) {
         super(gameView, gamePlayManager, location, position);
 
-        blockImage = ObjectBlockImages.STONE;
+        blockImage = Objects.STONE;
         distanceToBackground = 200;
 
         size = 3;

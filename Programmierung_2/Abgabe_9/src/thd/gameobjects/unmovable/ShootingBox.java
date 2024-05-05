@@ -3,6 +3,7 @@ package thd.gameobjects.unmovable;
 import thd.game.managers.GamePlayManager;
 import thd.game.utilities.GameView;
 import thd.gameobjects.base.*;
+import thd.gameobjects.blockImages.Objects;
 import thd.gameobjects.movable.Bullet;
 import thd.gameobjects.movable.Grenade;
 import thd.gameobjects.movable.MainCharacterImpl;
@@ -30,9 +31,9 @@ public class ShootingBox extends CollidingGameObject implements ShiftableGameObj
         super(gameView, gamePlayManager, location, position);
 
         if (this.direction == Direction.LEFT) {
-            blockImage = ObjectBlockImages.SHOOTING_BOX_LEFT;
+            blockImage = Objects.SHOOTING_BOX_LEFT;
         } else {
-            blockImage = mirrorBlockImage(ObjectBlockImages.SHOOTING_BOX_LEFT);
+            blockImage = mirrorBlockImage(Objects.SHOOTING_BOX_LEFT);
         }
         distanceToBackground = 200;
         hitTolerance = 2;

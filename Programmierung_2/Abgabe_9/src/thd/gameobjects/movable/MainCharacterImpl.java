@@ -4,6 +4,7 @@ import thd.game.managers.GamePlayManager;
 import thd.game.managers.NoRemainingMenException;
 import thd.game.utilities.GameView;
 import thd.gameobjects.base.*;
+import thd.gameobjects.blockImages.MainCharacter;
 import thd.gameobjects.unmovable.AmmoBox;
 import thd.gameobjects.unmovable.Explosion;
 
@@ -18,9 +19,8 @@ import java.util.Random;
  * destructible by 1 {@link Grenade} or 1 {@link Bullet}
  * BlockImage
  */
-public class MainCharacterImpl extends MovingCharacter implements MainCharacter {
+public class MainCharacterImpl extends MovingCharacter implements thd.gameobjects.base.MainCharacter {
     private int availableGrenades;
-    private boolean dead;
 
     /**
      * Creates Enemy Gunner with gameView window of presence.
@@ -34,9 +34,8 @@ public class MainCharacterImpl extends MovingCharacter implements MainCharacter 
     public MainCharacterImpl(GameView gameView, GamePlayManager gamePlayManager, Direction direction, Position position, List<CollidingGameObject> collidingGameObjectsForPathDecision) {
         super(gameView, gamePlayManager, direction, position, collidingGameObjectsForPathDecision);
         availableGrenades = 5;
-        dead = false;
 
-        blockImage = MainCharacterBlockImages.DOWN_1;
+        blockImage = MainCharacter.DOWN_1;
         distanceToBackground = 200;
 
         size = 3;
@@ -63,7 +62,7 @@ public class MainCharacterImpl extends MovingCharacter implements MainCharacter 
         }
 
         if (other instanceof AmmoBox) {
-            availableGrenades += new Random().nextInt(3, 6);
+            availableGrenades += new Random(System.currentTimeMillis()).nextInt(3, 6);
         }
     }
 
@@ -138,6 +137,18 @@ public class MainCharacterImpl extends MovingCharacter implements MainCharacter 
      */
     public boolean isDead() {
         return dead;
+    }
+
+    @Override
+    public void updateStatus() {
+        super.updateStatus();
+        if (dead) {
+            blockImage = MainCharacter.DEAD;
+
+            width = 0;
+            height = 0;
+            hitBoxOffsets(0, 0, 0, 0);
+        }
     }
 
     @Override

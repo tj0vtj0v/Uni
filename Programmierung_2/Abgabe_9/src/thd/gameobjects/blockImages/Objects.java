@@ -1,9 +1,9 @@
-package thd.gameobjects.base;
+package thd.gameobjects.blockImages;
 
 /**
  * Class with all Blockimages stored inside.
  */
-public final class ObjectBlockImages {
+public final class Objects {
 
     /**
      * Blockimage of a stone.

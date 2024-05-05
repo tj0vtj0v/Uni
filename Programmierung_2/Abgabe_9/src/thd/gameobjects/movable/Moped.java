@@ -3,6 +3,7 @@ package thd.gameobjects.movable;
 import thd.game.managers.GamePlayManager;
 import thd.game.utilities.GameView;
 import thd.gameobjects.base.*;
+import thd.gameobjects.blockImages.Objects;
 import thd.gameobjects.unmovable.Explosion;
 
 
@@ -29,9 +30,9 @@ public class Moped extends CollidingGameObject implements ShiftableGameObject, A
         super(gameView, gamePlayManager, location, position);
 
         if (this.direction == Direction.RIGHT) {
-            blockImage = ObjectBlockImages.MOPED;
+            blockImage = Objects.MOPED;
         } else {
-            blockImage = mirrorBlockImage(ObjectBlockImages.MOPED);
+            blockImage = mirrorBlockImage(Objects.MOPED);
         }
         distanceToBackground = 100;
         hitTolerance = 3;

@@ -11,7 +11,7 @@ public abstract class MovementPattern {
 
 
     protected MovementPattern() {
-        random = new Random();
+        random = new Random(System.currentTimeMillis());
         currentIndex = -1;
     }
 

@@ -1,9 +1,9 @@
-package thd.gameobjects.base;
+package thd.gameobjects.blockImages;
 
 /**
- * Class with all MainCharacterBlockImages stored inside.
+ * Class with all MainCharacter stored inside.
  */
-public final class MainCharacterBlockImages {
+public final class MainCharacter {
     /**
      * String with the 1st frame running down.
      */
@@ -28,5 +28,24 @@ public final class MainCharacterBlockImages {
              5555  5555 \s
              5555  5555 \s
              6666  6666 \s
+            """;
+    
+    public static final String DEAD = """
+             11    555555    11
+             11  5555555555  11
+            55     555555     55
+            555    666666    555
+              5555555555555555
+                555885555555
+                 5588555555
+                 5555885555
+                 5555668855
+                 6655555566
+                 5555  555555
+                 5555    555555
+                 5555   55555
+                 5555  66555
+                 5566    66
+                 66
             """;
 }

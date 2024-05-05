@@ -4,6 +4,7 @@ import thd.game.managers.ExplosionCountdownExpiredException;
 import thd.game.managers.GamePlayManager;
 import thd.game.utilities.GameView;
 import thd.gameobjects.base.*;
+import thd.gameobjects.blockImages.Objects;
 import thd.gameobjects.unmovable.Explosion;
 
 /**
@@ -28,7 +29,7 @@ public class Grenade extends GameObject implements ShiftableGameObject {
     public Grenade(GameView gameView, GamePlayManager gamePlayManager, Direction originLocation, Position position, GameObject creator) {
         super(gameView, gamePlayManager);
 
-        blockImage = ObjectBlockImages.MORTAR_GRENADE;
+        blockImage = Objects.MORTAR_GRENADE;
         distanceToBackground = (char) (creator.getDistanceToBackground() + 1);
 
         size = 3;
