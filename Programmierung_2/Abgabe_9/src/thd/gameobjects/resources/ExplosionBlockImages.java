@@ -1,4 +1,4 @@
-package thd.gameobjects.blockImages;
+package thd.gameobjects.resources;
 
 public final class ExplosionBlockImages {
     public static final String EXPLOSION_1 = """

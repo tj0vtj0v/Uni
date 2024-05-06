@@ -4,7 +4,7 @@ import thd.game.managers.ExplosionCountdownExpiredException;
 import thd.game.managers.GamePlayManager;
 import thd.game.utilities.GameView;
 import thd.gameobjects.base.*;
-import thd.gameobjects.blockImages.ObjectBlockImages;
+import thd.gameobjects.resources.ObjectBlockImages;
 import thd.gameobjects.unmovable.Explosion;
 
 /**

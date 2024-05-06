@@ -3,7 +3,7 @@ package thd.gameobjects.movable;
 import thd.game.managers.GamePlayManager;
 import thd.game.utilities.GameView;
 import thd.gameobjects.base.*;
-import thd.gameobjects.blockImages.ObjectBlockImages;
+import thd.gameobjects.resources.ObjectBlockImages;
 import thd.gameobjects.unmovable.Explosion;
 
 
@@ -54,7 +54,7 @@ public class Moped extends CollidingGameObject implements ShiftableGameObject, A
     public boolean tryToActivate(GameObject info) {
         MainCharacterImpl infoObject = (MainCharacterImpl) info;
 
-        return (infoObject).getPosition().verticalDistance(this.position) <= GameView.HEIGHT / 2f;
+        return (infoObject).getPosition().verticalDistance(this.position) <= GameView.HEIGHT * .5;
     }
 
     @Override

@@ -4,7 +4,7 @@ import thd.game.managers.GamePlayManager;
 import thd.game.managers.NoRemainingMenException;
 import thd.game.utilities.GameView;
 import thd.gameobjects.base.*;
-import thd.gameobjects.blockImages.MainCharacterBlockImages;
+import thd.gameobjects.resources.MainCharacterBlockImages;
 import thd.gameobjects.unmovable.AmmoBox;
 import thd.gameobjects.unmovable.Explosion;
 
@@ -75,10 +75,6 @@ public class MainCharacterImpl extends MovingCharacter implements thd.gameobject
      */
     public int getAvailableGrenades() {
         return availableGrenades;
-    }
-
-    public Direction getDirection() {
-        return direction;
     }
 
     /**

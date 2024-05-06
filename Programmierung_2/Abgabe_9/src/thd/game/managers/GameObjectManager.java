@@ -8,7 +8,18 @@ import java.util.*;
 
 class GameObjectManager extends CollisionManager {
 
-    private final SortedGameObjectsList gameObjects;
+    private static class CompareByLowerEdge implements Comparator<GameObject> {
+        @Override
+        public int compare(GameObject o1, GameObject o2) {
+            return Double.compare(applySortingRule(o1), applySortingRule(o2));
+        }
+
+        private double applySortingRule(GameObject gameObject) {
+            return (gameObject.getPosition().getY() + gameObject.getHeight()) * gameObject.getDistanceToBackground();
+        }
+    }
+
+    private final List<GameObject> gameObjects;
     private final List<GameObject> gameObjectsToBeAdded;
     private final List<GameObject> gameObjectsToBeRemoved;
     private static final int MAXIMUM_NUMBER_OF_GAME_OBJECTS = 500;
@@ -36,7 +47,7 @@ class GameObjectManager extends CollisionManager {
     private void updateLists() {
         removeFromGameObjects();
         addToGameObjects();
-        gameObjects.sort();
+        gameObjects.sort(new CompareByLowerEdge());
 
         if (gameObjects.size() > MAXIMUM_NUMBER_OF_GAME_OBJECTS) {
             throw new TooManyGameObjectsException("You have %d GameObjects, the limit is %d!".formatted(gameObjects.size(), MAXIMUM_NUMBER_OF_GAME_OBJECTS));

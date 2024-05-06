@@ -1,4 +1,4 @@
-package thd.gameobjects.blockImages;
+package thd.gameobjects.resources;
 
 public final class DeadEnemyBlockImages {
     public static final String DEAD_ENEMY = """

@@ -3,7 +3,7 @@ package thd.gameobjects.unmovable;
 import thd.game.managers.GamePlayManager;
 import thd.game.utilities.GameView;
 import thd.gameobjects.base.*;
-import thd.gameobjects.blockImages.ObjectBlockImages;
+import thd.gameobjects.resources.ObjectBlockImages;
 import thd.gameobjects.movable.MainCharacterImpl;
 
 
@@ -40,7 +40,7 @@ public class AmmoBox extends CollidingGameObject implements ShiftableGameObject,
     public boolean tryToActivate(GameObject info) {
         MainCharacterImpl infoObject = (MainCharacterImpl) info;
 
-        return (infoObject).getPosition().verticalDistance(this.position) <= GameView.HEIGHT * .5; //TODO
+        return (infoObject).getPosition().verticalDistance(this.position) <= GameView.HEIGHT;
     }
 
     @Override

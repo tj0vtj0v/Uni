@@ -3,13 +3,13 @@ package thd.gameobjects.unmovable;
 import thd.game.managers.GamePlayManager;
 import thd.game.utilities.GameView;
 import thd.gameobjects.base.*;
-import thd.gameobjects.blockImages.ExplosionBlockImages;
+import thd.gameobjects.resources.ExplosionBlockImages;
 
 /**
  * ExplosionBlockImages dealing damage after Grenade has flown long enough.
  */
 public class Explosion extends CollidingGameObject implements ShiftableGameObject {
-    private ExplosionState explosionState;
+    State currentState;
 
     /**
      * Creates ExplosionBlockImages.
@@ -21,8 +21,8 @@ public class Explosion extends CollidingGameObject implements ShiftableGameObjec
      */
     public Explosion(GameView gameView, GamePlayManager gamePlayManager, Direction location, Position position) {
         super(gameView, gamePlayManager, location, position);
-        explosionState = ExplosionState.EXPLOSION_1;
-        blockImage = explosionState.display;
+        currentState = State.EXPLOSION_1;
+        blockImage = currentState.display;
 
         distanceToBackground = 50;
 
@@ -30,14 +30,14 @@ public class Explosion extends CollidingGameObject implements ShiftableGameObjec
         rotation = 0;
         width = generateWidthFromBlockImage() * size;
         height = generateHeightFromBlockImage() * size;
-        hitBoxOffsets(3, 3, -6, -6);
+        hitBoxOffsets(-3, -3, 6, 6);
 
         speedInPixel = 0;
     }
 
     private void switchToNextState() {
-        int nextState = (explosionState.ordinal() + 1) % ExplosionState.values().length;
-        explosionState = ExplosionState.values()[nextState];
+        int nextState = (currentState.ordinal() + 1) % State.values().length;
+        currentState = State.values()[nextState];
     }
 
     @Override
@@ -50,23 +50,23 @@ public class Explosion extends CollidingGameObject implements ShiftableGameObjec
         if (gameView.timer(50, this)) {
             switchToNextState();
 
-            if (explosionState == ExplosionState.EXPLOSION_1) {
+            if (currentState == State.EXPLOSION_1) {
                 gamePlayManager.destroyGameObject(this);
                 return;
             }
 
-            position.up(explosionState.upShift * size);
-            position.left(explosionState.leftShift * size);
+            position.up(currentState.upShift * size);
+            position.left(currentState.leftShift * size);
 
-            blockImage = explosionState.display;
+            blockImage = currentState.display;
             width = generateWidthFromBlockImage() * size;
             height = generateHeightFromBlockImage() * size;
-            hitBoxOffsets(3, 3, -6, -6);
+            hitBoxOffsets(-3, -3, 6, 6);
         }
-        blockImage = explosionState.display;
+        blockImage = currentState.display;
     }
 
-    private enum ExplosionState {
+    private enum State {
         EXPLOSION_1(ExplosionBlockImages.EXPLOSION_1, 0, 0),
         EXPLOSION_2(ExplosionBlockImages.EXPLOSION_2, 3, 2),
         EXPLOSION_3(ExplosionBlockImages.EXPLOSION_3, 4, 0),
@@ -80,7 +80,7 @@ public class Explosion extends CollidingGameObject implements ShiftableGameObjec
         private final int upShift;
         private final int leftShift;
 
-        ExplosionState(String display, int upShift, int leftShift) {
+        State(String display, int upShift, int leftShift) {
             this.display = display;
             this.upShift = upShift;
             this.leftShift = leftShift;

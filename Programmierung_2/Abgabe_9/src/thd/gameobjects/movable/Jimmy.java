@@ -8,12 +8,9 @@ import thd.gameobjects.base.GameObject;
 public class Jimmy extends GameObject {
 
     private enum State {RUNNING, JUMPING, HOVERING}
-
-    private int up;
     private State currentState;
     private RunningState runningState;
     private JumpingState jumpingState;
-    private String blockImage;
 
     public Jimmy(GameView gameView, GamePlayManager gamePlayManager) {
         super(gameView, gamePlayManager);
@@ -48,7 +45,7 @@ public class Jimmy extends GameObject {
         jumpingState = JumpingState.values()[nextState];
     }
 
-    private void resetStatus() {
+    private void resetStates() {
         runningState = RunningState.RUNNING_1;
         jumpingState = JumpingState.JUMPING_1;
     }
@@ -81,7 +78,7 @@ public class Jimmy extends GameObject {
         if (position.getX() > GameView.WIDTH) {
             resetPosition();
             switchToNextState();
-            resetStatus();
+            resetStates();
         }
     }
 
@@ -112,7 +109,7 @@ public class Jimmy extends GameObject {
         JUMPING_5(JimmyBlockImages.JUMPING, 0),
         JUMPING_6(JimmyBlockImages.JUMPING, -30),
         JUMPING_7(JimmyBlockImages.JUMPING, -50),
-        JUMPING_8(JimmyBlockImages.JUMPING, 0);
+        JUMPING_8(JimmyBlockImages.STANDARD, 0);
 
         private final String display;
         private final int up;

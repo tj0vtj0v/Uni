@@ -3,17 +3,17 @@ package thd.gameobjects.unmovable;
 import thd.game.managers.GamePlayManager;
 import thd.game.utilities.GameView;
 import thd.gameobjects.base.*;
-import thd.gameobjects.blockImages.DeadEnemyBlockImages;
+import thd.gameobjects.resources.DeadEnemyBlockImages;
 
 public class DeadEnemy extends GameObject implements ShiftableGameObject {
     private static final int TARGET_ANIMATION_REPETITIONS = 4;
     private int animationRepetitions;
-    private DeadState deadState;
+    State currentState;
 
     public DeadEnemy(GameView gameView, GamePlayManager gamePlayManager, Position position) {
         super(gameView, gamePlayManager);
-        deadState = DeadState.DEAD_1;
-        blockImage = deadState.display;
+        currentState = State.DEAD_1;
+        blockImage = currentState.display;
         animationRepetitions = 0;
 
         distanceToBackground = 100;
@@ -29,8 +29,8 @@ public class DeadEnemy extends GameObject implements ShiftableGameObject {
     }
 
     private void switchToNextState() {
-        int nextState = (deadState.ordinal() + 1) % DeadState.values().length;
-        deadState = DeadState.values()[nextState];
+        int nextState = (currentState.ordinal() + 1) % State.values().length;
+        currentState = State.values()[nextState];
     }
 
     @Override
@@ -44,7 +44,7 @@ public class DeadEnemy extends GameObject implements ShiftableGameObject {
         if (gameView.timer(50, this)) {
             switchToNextState();
 
-            if (deadState == DeadState.DEAD_14) {
+            if (currentState == State.DEAD_14) {
                 animationRepetitions += 1;
 
                 if (animationRepetitions >= TARGET_ANIMATION_REPETITIONS) {
@@ -52,15 +52,15 @@ public class DeadEnemy extends GameObject implements ShiftableGameObject {
                 }
             }
 
-            blockImage = deadState.display;
+            blockImage = currentState.display;
 
-            if (deadState.ordinal() % 2 == 1) {
+            if (currentState.ordinal() % 2 == 1) {
                 blockImage = mirrorBlockImage(blockImage);
             }
         }
     }
 
-    private enum DeadState {
+    private enum State {
         DEAD_1(DeadEnemyBlockImages.DEAD_ENEMY),
         DEAD_2(" "),
         DEAD_3(DeadEnemyBlockImages.DEAD_ENEMY),
@@ -78,7 +78,7 @@ public class DeadEnemy extends GameObject implements ShiftableGameObject {
 
         private final String display;
 
-        DeadState(String display) {
+        State(String display) {
             this.display = display;
         }
     }

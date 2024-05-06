@@ -3,7 +3,7 @@ package thd.gameobjects.movable;
 import thd.game.managers.GamePlayManager;
 import thd.game.utilities.GameView;
 import thd.gameobjects.base.*;
-import thd.gameobjects.blockImages.EnemyGunnerBlockImages;
+import thd.gameobjects.resources.EnemyGunnerBlockImages;
 import thd.gameobjects.unmovable.DeadEnemy;
 import thd.gameobjects.unmovable.Explosion;
 

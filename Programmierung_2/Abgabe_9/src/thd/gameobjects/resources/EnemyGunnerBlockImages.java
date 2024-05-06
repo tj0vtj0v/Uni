@@ -1,4 +1,4 @@
-package thd.gameobjects.blockImages;
+package thd.gameobjects.resources;
 
 /**
  * Class with all EnemyGunnerBlockImages stored inside.
