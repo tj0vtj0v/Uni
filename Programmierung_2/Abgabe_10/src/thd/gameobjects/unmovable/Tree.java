@@ -39,7 +39,7 @@ public class Tree extends CollidingGameObject implements ShiftableGameObject, Ac
         rotation = 0;
         width = generateWidthFromBlockImage() * size;
         height = generateHeightFromBlockImage() * size;
-        hitBoxOffsets(18, 63, -36, -75);
+        hitBoxOffsets(18, 63, -36, -90);
     }
 
     @Override

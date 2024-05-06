@@ -84,6 +84,10 @@ public class GamePlayManager extends WorldShiftManager {
         return mainCharacter.getAvailableGrenades();
     }
 
+    public double mainCharacterYCoordinate() {
+        return mainCharacter.getPosition().getY();
+    }
+
     /**
      * Getter of the remaining lives of the main character.
      *

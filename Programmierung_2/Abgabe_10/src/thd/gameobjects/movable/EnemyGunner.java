@@ -42,7 +42,7 @@ public class EnemyGunner extends MovingCharacter implements ShiftableGameObject,
         height = generateHeightFromBlockImage() * size;
         hitBoxOffsets(6, 6, -12, -24);
 
-        speedInPixel = 1;
+        speedInPixel = 2;
 
         movementPattern = new RandomMovementPattern(location);
         this.position.updateCoordinates(movementPattern.startPosition(getPosition()));
@@ -81,7 +81,7 @@ public class EnemyGunner extends MovingCharacter implements ShiftableGameObject,
         if (pathIsBlocked()) {
             position.updateCoordinates(oldPosition);
         }
-        if (gameView.timer(new Random(System.currentTimeMillis()).nextInt(2500, 5000), this)) {
+        if (gameView.timer(new Random(System.currentTimeMillis()).nextInt(1500, 3000), this)) {
             targetPosition.updateCoordinates(movementPattern.nextTargetPosition(getPosition()));
             direction = movementPattern.getDirection();
         }

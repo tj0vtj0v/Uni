@@ -13,6 +13,6 @@ public class Level2 extends Level {
         world = World.LEVEL_2;
         worldOffsetLines = Math.max(world.split("\n").length - VISIBLE_COLUMNS, 0);
         worldOffsetColumns = 10;
-        mainCharacterMovementSpeed = 4;
+        mainCharacterMovementSpeed = 2;
     }
 }

@@ -46,6 +46,14 @@ public class ShootingBox extends CollidingGameObject implements ShiftableGameObj
     }
 
     @Override
+    public void updateStatus() {
+        super.updateStatus();
+        if (gamePlayManager.mainCharacterYCoordinate() < position.getY()) {
+            gamePlayManager.destroyGameObject(this);
+        }
+    }
+
+    @Override
     public boolean tryToActivate(GameObject info) {
         MainCharacterImpl infoObject = (MainCharacterImpl) info;
 
