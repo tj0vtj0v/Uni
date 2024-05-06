@@ -16,7 +16,6 @@ import thd.gameobjects.unmovable.Explosion;
  */
 public class Grenade extends GameObject implements ShiftableGameObject {
     private final ParabolicMovementPattern movementPattern;
-    private State currentState;
 
     /**
      * Crates a new Grenade.
@@ -61,6 +60,4 @@ public class Grenade extends GameObject implements ShiftableGameObject {
     public void addToCanvas() {
         gameView.addBlockImageToCanvas(instanceBlockImage, position.getX(), position.getY(), size, rotation);
     }
-
-    private enum State{A, B}
 }

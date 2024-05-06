@@ -53,10 +53,6 @@ public class GamePlayManager extends WorldShiftManager {
      * @param points amount of points to be added to the score.
      */
     public void addScorePoints(int points) {
-        // if (points <= 0) {
-        //     throw new IllegalArgumentException("The number has to be greater than 0!");
-        // }
-
         this.points += points;
         highScore = Math.max(points, highScore);
     }

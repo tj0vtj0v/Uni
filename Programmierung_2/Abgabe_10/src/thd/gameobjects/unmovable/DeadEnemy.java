@@ -9,7 +9,7 @@ import thd.gameobjects.resources.DeadEnemyBlockImages;
  * Represents a dead Enemy.
  */
 public class DeadEnemy extends GameObject implements ShiftableGameObject {
-    private static final int TARGET_ANIMATION_REPETITIONS = 4;
+    private static final int TARGET_ANIMATION_REPETITIONS = 3;
     private int animationRepetitions;
     private State currentState;
 
