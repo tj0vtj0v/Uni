@@ -4,7 +4,7 @@ import thd.game.managers.GamePlayManager;
 import thd.game.managers.NoRemainingMenException;
 import thd.game.utilities.GameView;
 import thd.gameobjects.base.*;
-import thd.gameobjects.blockImages.MainCharacter;
+import thd.gameobjects.blockImages.MainCharacterBlockImages;
 import thd.gameobjects.unmovable.AmmoBox;
 import thd.gameobjects.unmovable.Explosion;
 
@@ -13,7 +13,7 @@ import java.util.Random;
 
 
 /**
- * Representation of the in-game-object 'MainCharacter'.
+ * Representation of the in-game-object 'MainCharacterBlockImages'.
  * <p>
  * active linear movement
  * destructible by 1 {@link Grenade} or 1 {@link Bullet}
@@ -21,6 +21,7 @@ import java.util.Random;
  */
 public class MainCharacterImpl extends MovingCharacter implements thd.gameobjects.base.MainCharacter {
     private int availableGrenades;
+    private boolean dead;
 
     /**
      * Creates Enemy Gunner with gameView window of presence.
@@ -29,13 +30,14 @@ public class MainCharacterImpl extends MovingCharacter implements thd.gameobject
      * @param gamePlayManager                     GamePlayManager to manage the game actions.
      * @param direction                           Stores positional information.
      * @param position                            Position from which to start movement.
-     * @param collidingGameObjectsForPathDecision List of Objects that block the movement.
+     * @param collidingGameObjectsForPathDecision List of ObjectBlockImages that block the movement.
      */
     public MainCharacterImpl(GameView gameView, GamePlayManager gamePlayManager, Direction direction, Position position, List<CollidingGameObject> collidingGameObjectsForPathDecision) {
         super(gameView, gamePlayManager, direction, position, collidingGameObjectsForPathDecision);
         availableGrenades = 5;
+        dead = false;
 
-        blockImage = MainCharacter.DOWN_1;
+        blockImage = MainCharacterBlockImages.DOWN_1;
         distanceToBackground = 200;
 
         size = 3;
@@ -75,6 +77,10 @@ public class MainCharacterImpl extends MovingCharacter implements thd.gameobject
         return availableGrenades;
     }
 
+    public Direction getDirection() {
+        return direction;
+    }
+
     /**
      * Moves the character its speed in pixels to the left.
      */
@@ -99,24 +105,16 @@ public class MainCharacterImpl extends MovingCharacter implements thd.gameobject
      * Moves the character its speed in pixels up.
      */
     public void up() {
+        if (pathIsBlocked()) {
+            return;
+        }
         if (position.getY() > GameView.HEIGHT / 2f) {
             position.up(speedInPixel);
-            if (pathIsBlocked()) {
-                position.down(speedInPixel);
-            }
         } else if (position.getY() > GameView.HEIGHT / 3f) {
             position.up(speedInPixel / 2);
             gamePlayManager.moveWorldDown(speedInPixel / 2);
-
-            if (pathIsBlocked()) {
-                position.down(speedInPixel / 2);
-                gamePlayManager.moveWorldUp(speedInPixel / 2);
-            }
         } else {
             gamePlayManager.moveWorldDown(speedInPixel);
-            if (pathIsBlocked()) {
-                gamePlayManager.moveWorldUp(speedInPixel);
-            }
         }
     }
 
@@ -131,7 +129,7 @@ public class MainCharacterImpl extends MovingCharacter implements thd.gameobject
     }
 
     /**
-     * Getter to communicate Status of the MainCharacter.
+     * Getter to communicate Status of the MainCharacterBlockImages.
      *
      * @return true if dead.
      */
@@ -143,12 +141,14 @@ public class MainCharacterImpl extends MovingCharacter implements thd.gameobject
     public void updateStatus() {
         super.updateStatus();
         if (dead) {
-            blockImage = MainCharacter.DEAD;
+            blockImage = MainCharacterBlockImages.DEAD;
 
             width = 0;
             height = 0;
             hitBoxOffsets(0, 0, 0, 0);
         }
+
+        direction = null;
     }
 
     @Override
@@ -159,6 +159,12 @@ public class MainCharacterImpl extends MovingCharacter implements thd.gameobject
 
     @Override
     public String toString() {
-        return "MainCharacter: %s is %b invincible with %d available Grenades".formatted(position, dead, availableGrenades);
+        return "MainCharacterBlockImages: %s is %b dead with %d available Grenades".formatted(position, dead, availableGrenades);
+    }
+
+    private enum MovementState {
+        DIRECTION_1,
+        DIRECTION_2,
+        DIRECTION_3;
     }
 }

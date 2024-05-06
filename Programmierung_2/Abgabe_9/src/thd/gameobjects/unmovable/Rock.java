@@ -3,7 +3,7 @@ package thd.gameobjects.unmovable;
 import thd.game.managers.GamePlayManager;
 import thd.game.utilities.GameView;
 import thd.gameobjects.base.*;
-import thd.gameobjects.blockImages.Objects;
+import thd.gameobjects.blockImages.ObjectBlockImages;
 import thd.gameobjects.movable.Bullet;
 import thd.gameobjects.movable.MainCharacterImpl;
 
@@ -29,9 +29,9 @@ public class Rock extends CollidingGameObject implements ShiftableGameObject, Ac
         super(gameView, gamePlayManager, location, position);
 
         if (location == Direction.RIGHT) {
-            blockImage = Objects.RIGHT_SIDE_ROCK;
+            blockImage = ObjectBlockImages.RIGHT_SIDE_ROCK;
         } else {
-            blockImage = mirrorBlockImage(Objects.RIGHT_SIDE_ROCK);
+            blockImage = mirrorBlockImage(ObjectBlockImages.RIGHT_SIDE_ROCK);
         }
         distanceToBackground = 100;
 

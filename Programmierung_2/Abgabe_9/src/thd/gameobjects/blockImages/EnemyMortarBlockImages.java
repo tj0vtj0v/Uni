@@ -1,9 +1,9 @@
 package thd.gameobjects.blockImages;
 
 /**
- * Class with all EnemyMortar stored inside.
+ * Class with all EnemyMortarBlockImages stored inside.
  */
-public final class EnemyMortar {
+public final class EnemyMortarBlockImages {
     /**
      * String with the normal frame of the enemy with a mortar.
      */

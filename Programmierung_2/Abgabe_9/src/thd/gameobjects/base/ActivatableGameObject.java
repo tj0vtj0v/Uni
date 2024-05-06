@@ -1,9 +1,9 @@
 package thd.gameobjects.base;
 
 /**
- * Interface for all Objects that appear according to methodReturn.
+ * Interface for all ObjectBlockImages that appear according to methodReturn.
  *
- * @param <T> MainCharacter Datatype to check for activation.
+ * @param <T> MainCharacterBlockImages Datatype to check for activation.
  */
 public interface ActivatableGameObject<T> {
     /**

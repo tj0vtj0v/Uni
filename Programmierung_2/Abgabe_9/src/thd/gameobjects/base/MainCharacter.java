@@ -2,7 +2,7 @@ package thd.gameobjects.base;
 
 
 /**
- * Interface for the MainCharacter.
+ * Interface for the MainCharacterBlockImages.
  */
 public interface MainCharacter {
     /**

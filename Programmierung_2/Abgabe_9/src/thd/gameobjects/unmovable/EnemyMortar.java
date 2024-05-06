@@ -4,7 +4,8 @@ package thd.gameobjects.unmovable;
 import thd.game.managers.GamePlayManager;
 import thd.game.utilities.GameView;
 import thd.gameobjects.base.*;
-import thd.gameobjects.blockImages.Objects;
+import thd.gameobjects.blockImages.EnemyMortarBlockImages;
+import thd.gameobjects.blockImages.ObjectBlockImages;
 import thd.gameobjects.movable.Bullet;
 import thd.gameobjects.movable.Grenade;
 import thd.gameobjects.movable.MainCharacterImpl;
@@ -12,7 +13,7 @@ import thd.gameobjects.movable.MainCharacterImpl;
 import java.util.Random;
 
 /**
- * Representation of the in-game-object 'EnemyMortar'.
+ * Representation of the in-game-object 'EnemyMortarBlockImages'.
  * <p>
  * unmoving
  * destructible by 1 {@link Grenade} or 1 {@link Bullet}
@@ -24,7 +25,7 @@ public class EnemyMortar extends CollidingGameObject implements ShiftableGameObj
     private ShootingState shootingState;
 
     /**
-     * Creates EnemyMortar with gameView window of presence.
+     * Creates EnemyMortarBlockImages with gameView window of presence.
      *
      * @param gameView        window in which it has to be displayed.
      * @param gamePlayManager GamePlayManager to manage the game actions.
@@ -37,11 +38,11 @@ public class EnemyMortar extends CollidingGameObject implements ShiftableGameObj
 
         if (location == Direction.RIGHT) {
             blockImage = shootingState.display;
-            mortarBlockImage = Objects.MORTAR;
+            mortarBlockImage = ObjectBlockImages.MORTAR;
             mortarXOffset = -33;
         } else {
             blockImage = mirrorBlockImage(shootingState.display);
-            mortarBlockImage = mirrorBlockImage(Objects.MORTAR);
+            mortarBlockImage = mirrorBlockImage(ObjectBlockImages.MORTAR);
             mortarXOffset = 27;
         }
         distanceToBackground = 100;
@@ -87,12 +88,14 @@ public class EnemyMortar extends CollidingGameObject implements ShiftableGameObj
             if (direction == Direction.RIGHT) {
                 position.left(shootingState.leftShiftIfRight * size);
                 mortarXOffset += shootingState.leftShiftIfRight * size;
+                hitBoxOffsets(18, 3, -6, -6);
             }
         } else if (shootingState == ShootingState.LOADING && gameView.timer(1000, this)) {
             switchToNextState();
             if (direction == Direction.RIGHT) {
                 position.left(shootingState.leftShiftIfRight * size);
                 mortarXOffset += shootingState.leftShiftIfRight * size;
+                hitBoxOffsets(3, 3, -6, -6);
             }
         } else if (shootingState == ShootingState.SHOOTING && gameView.timer(1000, this)) {
             shoot();
@@ -124,9 +127,9 @@ public class EnemyMortar extends CollidingGameObject implements ShiftableGameObj
     }
 
     private enum ShootingState {
-        WAITING(thd.gameobjects.blockImages.EnemyMortar.NORMAL, 0),
-        LOADING(thd.gameobjects.blockImages.EnemyMortar.LOADING, 5),
-        SHOOTING(thd.gameobjects.blockImages.EnemyMortar.NORMAL, -5);
+        WAITING(EnemyMortarBlockImages.NORMAL, 0),
+        LOADING(EnemyMortarBlockImages.LOADING, 5),
+        SHOOTING(EnemyMortarBlockImages.NORMAL, -5);
 
         private final String display;
         private final int leftShiftIfRight;

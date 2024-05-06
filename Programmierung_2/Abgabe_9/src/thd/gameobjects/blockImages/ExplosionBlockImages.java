@@ -1,6 +1,6 @@
 package thd.gameobjects.blockImages;
 
-public final class Explosion {
+public final class ExplosionBlockImages {
     public static final String EXPLOSION_1 = """
                 33    33
               33333333 -

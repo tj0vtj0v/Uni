@@ -3,6 +3,7 @@ package thd.gameobjects.unmovable;
 import thd.game.managers.GamePlayManager;
 import thd.game.utilities.GameView;
 import thd.gameobjects.base.*;
+import thd.gameobjects.blockImages.DeadEnemyBlockImages;
 
 public class DeadEnemy extends GameObject implements ShiftableGameObject {
     private static final int TARGET_ANIMATION_REPETITIONS = 4;
@@ -60,20 +61,20 @@ public class DeadEnemy extends GameObject implements ShiftableGameObject {
     }
 
     private enum DeadState {
-        DEAD_1(thd.gameobjects.blockImages.DeadEnemy.DEAD_ENEMY),
+        DEAD_1(DeadEnemyBlockImages.DEAD_ENEMY),
         DEAD_2(" "),
-        DEAD_3(thd.gameobjects.blockImages.DeadEnemy.DEAD_ENEMY),
+        DEAD_3(DeadEnemyBlockImages.DEAD_ENEMY),
         DEAD_4(" "),
-        DEAD_5(thd.gameobjects.blockImages.DeadEnemy.DEAD_ENEMY),
+        DEAD_5(DeadEnemyBlockImages.DEAD_ENEMY),
         DEAD_6(" "),
-        DEAD_7(thd.gameobjects.blockImages.DeadEnemy.DEAD_ENEMY),
-        DEAD_8(thd.gameobjects.blockImages.DeadEnemy.DEAD_ENEMY),
+        DEAD_7(DeadEnemyBlockImages.DEAD_ENEMY),
+        DEAD_8(DeadEnemyBlockImages.DEAD_ENEMY),
         DEAD_9(" "),
-        DEAD_010(thd.gameobjects.blockImages.DeadEnemy.DEAD_ENEMY),
+        DEAD_010(DeadEnemyBlockImages.DEAD_ENEMY),
         DEAD_11(" "),
-        DEAD_12(thd.gameobjects.blockImages.DeadEnemy.DEAD_ENEMY),
+        DEAD_12(DeadEnemyBlockImages.DEAD_ENEMY),
         DEAD_13(" "),
-        DEAD_14(thd.gameobjects.blockImages.DeadEnemy.DEAD_ENEMY);
+        DEAD_14(DeadEnemyBlockImages.DEAD_ENEMY);
 
         private final String display;
 

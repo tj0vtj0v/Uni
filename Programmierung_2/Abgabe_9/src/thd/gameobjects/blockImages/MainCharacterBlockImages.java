@@ -1,9 +1,9 @@
 package thd.gameobjects.blockImages;
 
 /**
- * Class with all MainCharacter stored inside.
+ * Class with all MainCharacterBlockImages stored inside.
  */
-public final class MainCharacter {
+public final class MainCharacterBlockImages {
     /**
      * String with the 1st frame running down.
      */

@@ -3,6 +3,7 @@ package thd.gameobjects.movable;
 import thd.game.managers.GamePlayManager;
 import thd.game.utilities.GameView;
 import thd.gameobjects.base.*;
+import thd.gameobjects.blockImages.EnemyGunnerBlockImages;
 import thd.gameobjects.unmovable.DeadEnemy;
 import thd.gameobjects.unmovable.Explosion;
 
@@ -27,12 +28,12 @@ public class EnemyGunner extends MovingCharacter implements ShiftableGameObject,
      * @param gamePlayManager                     GamePlayManager to manage the game actions.
      * @param location                            Stores positional information.
      * @param position                            Position from which to start movement.
-     * @param collidingGameObjectsForPathDecision List of Objects that block the movement.
+     * @param collidingGameObjectsForPathDecision List of ObjectBlockImages that block the movement.
      */
     public EnemyGunner(GameView gameView, GamePlayManager gamePlayManager, Direction location, Position position, List<CollidingGameObject> collidingGameObjectsForPathDecision) {
         super(gameView, gamePlayManager, location, position, collidingGameObjectsForPathDecision);
 
-        blockImage = thd.gameobjects.blockImages.EnemyGunner.DOWN_1;
+        blockImage = EnemyGunnerBlockImages.DOWN_1;
         distanceToBackground = 20;
 
         size = 3;
@@ -87,6 +88,6 @@ public class EnemyGunner extends MovingCharacter implements ShiftableGameObject,
 
     @Override
     public String toString() {
-        return "EnemyGunner: %s with movementPattern: %s".formatted(position, movementPattern);
+        return "EnemyGunnerBlockImages: %s with movementPattern: %s".formatted(position, movementPattern);
     }
 }

@@ -3,15 +3,16 @@ package thd.gameobjects.unmovable;
 import thd.game.managers.GamePlayManager;
 import thd.game.utilities.GameView;
 import thd.gameobjects.base.*;
+import thd.gameobjects.blockImages.ExplosionBlockImages;
 
 /**
- * Explosion dealing damage after Grenade has flown long enough.
+ * ExplosionBlockImages dealing damage after Grenade has flown long enough.
  */
 public class Explosion extends CollidingGameObject implements ShiftableGameObject {
     private ExplosionState explosionState;
 
     /**
-     * Creates Explosion.
+     * Creates ExplosionBlockImages.
      *
      * @param gameView        window in which it has to be displayed.
      * @param gamePlayManager GamePlayManager to manage the game actions.
@@ -66,14 +67,14 @@ public class Explosion extends CollidingGameObject implements ShiftableGameObjec
     }
 
     private enum ExplosionState {
-        EXPLOSION_1(thd.gameobjects.blockImages.Explosion.EXPLOSION_1, 0, 0),
-        EXPLOSION_2(thd.gameobjects.blockImages.Explosion.EXPLOSION_2, 3, 2),
-        EXPLOSION_3(thd.gameobjects.blockImages.Explosion.EXPLOSION_3, 4, 0),
-        EXPLOSION_4(thd.gameobjects.blockImages.Explosion.EXPLOSION_4, 1, 2),
-        EXPLOSION_7(thd.gameobjects.blockImages.Explosion.EXPLOSION_4, 0, 0),
-        EXPLOSION_8(thd.gameobjects.blockImages.Explosion.EXPLOSION_3, -1, -2),
-        EXPLOSION_9(thd.gameobjects.blockImages.Explosion.EXPLOSION_2, -4, 0),
-        EXPLOSION_10(thd.gameobjects.blockImages.Explosion.EXPLOSION_1, -3, -2);
+        EXPLOSION_1(ExplosionBlockImages.EXPLOSION_1, 0, 0),
+        EXPLOSION_2(ExplosionBlockImages.EXPLOSION_2, 3, 2),
+        EXPLOSION_3(ExplosionBlockImages.EXPLOSION_3, 4, 0),
+        EXPLOSION_4(ExplosionBlockImages.EXPLOSION_4, 1, 2),
+        EXPLOSION_7(ExplosionBlockImages.EXPLOSION_4, 0, 0),
+        EXPLOSION_8(ExplosionBlockImages.EXPLOSION_3, -1, -2),
+        EXPLOSION_9(ExplosionBlockImages.EXPLOSION_2, -4, 0),
+        EXPLOSION_10(ExplosionBlockImages.EXPLOSION_1, -3, -2);
 
         private final String display;
         private final int upShift;

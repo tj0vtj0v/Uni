@@ -1,6 +1,6 @@
 package thd.gameobjects.blockImages;
 
-public final class DeadEnemy {
+public final class DeadEnemyBlockImages {
     public static final String DEAD_ENEMY = """
                       11          -
                 222   11          -

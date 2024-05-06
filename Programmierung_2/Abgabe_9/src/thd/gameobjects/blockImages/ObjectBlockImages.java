@@ -3,7 +3,7 @@ package thd.gameobjects.blockImages;
 /**
  * Class with all Blockimages stored inside.
  */
-public final class Objects {
+public final class ObjectBlockImages {
 
     /**
      * Blockimage of a stone.

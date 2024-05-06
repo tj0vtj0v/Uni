@@ -14,7 +14,7 @@ public class Level {
      */
     public int number;
     /**
-     * Represents the World with its Objects in it.
+     * Represents the World with its ObjectBlockImages in it.
      */
     public String world;
     /**

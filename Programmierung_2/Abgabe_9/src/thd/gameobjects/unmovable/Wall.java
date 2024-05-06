@@ -3,7 +3,7 @@ package thd.gameobjects.unmovable;
 import thd.game.managers.GamePlayManager;
 import thd.game.utilities.GameView;
 import thd.gameobjects.base.*;
-import thd.gameobjects.blockImages.Objects;
+import thd.gameobjects.blockImages.ObjectBlockImages;
 import thd.gameobjects.movable.Bullet;
 import thd.gameobjects.movable.MainCharacterImpl;
 
@@ -29,7 +29,7 @@ public class Wall extends CollidingGameObject implements ShiftableGameObject, Ac
     public Wall(GameView gameView, GamePlayManager gamePlayManager, Direction location, Position position, int segments) {
         super(gameView, gamePlayManager, location, position);
 
-        blockImage = new Objects().wall(segments);
+        blockImage = new ObjectBlockImages().wall(segments);
         distanceToBackground = 100;
 
         size = 3;

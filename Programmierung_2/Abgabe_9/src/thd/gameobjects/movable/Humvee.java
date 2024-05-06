@@ -3,7 +3,7 @@ package thd.gameobjects.movable;
 import thd.game.managers.GamePlayManager;
 import thd.game.utilities.GameView;
 import thd.gameobjects.base.*;
-import thd.gameobjects.blockImages.Objects;
+import thd.gameobjects.blockImages.ObjectBlockImages;
 import thd.gameobjects.unmovable.Explosion;
 
 
@@ -29,9 +29,9 @@ public class Humvee extends CollidingGameObject implements ShiftableGameObject, 
         super(gameView, gamePlayManager, location, position);
 
         if (this.direction == Direction.LEFT) {
-            blockImage = Objects.HUMVEE;
+            blockImage = ObjectBlockImages.HUMVEE;
         } else {
-            blockImage = mirrorBlockImage(Objects.HUMVEE);
+            blockImage = mirrorBlockImage(ObjectBlockImages.HUMVEE);
         }
         distanceToBackground = 100;
         hitTolerance = 5;
