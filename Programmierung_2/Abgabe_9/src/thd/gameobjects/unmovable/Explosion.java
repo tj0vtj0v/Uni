@@ -24,7 +24,7 @@ public class Explosion extends CollidingGameObject implements ShiftableGameObjec
         explosionState = ExplosionState.EXPLOSION_1;
         blockImage = explosionState.display;
 
-        distanceToBackground = 10;
+        distanceToBackground = 50;
 
         size = 3;
         rotation = 0;

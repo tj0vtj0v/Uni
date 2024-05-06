@@ -55,7 +55,7 @@ public class EnemyMortar extends CollidingGameObject implements ShiftableGameObj
     }
 
     private void shoot() {
-        gamePlayManager.spawnGameObject(new Grenade(gameView, gamePlayManager, direction, getPosition(), this));
+        gamePlayManager.spawnGameObject(new Grenade(gameView, gamePlayManager, direction, getPosition()));
     }
 
     private void switchToNextState() {

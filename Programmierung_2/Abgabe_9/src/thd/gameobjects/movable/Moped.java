@@ -34,7 +34,7 @@ public class Moped extends CollidingGameObject implements ShiftableGameObject, A
         } else {
             blockImage = mirrorBlockImage(ObjectBlockImages.MOPED);
         }
-        distanceToBackground = 100;
+        distanceToBackground = 200;
         hitTolerance = 3;
 
         size = 3;

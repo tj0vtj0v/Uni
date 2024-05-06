@@ -16,7 +16,7 @@ public class DeadEnemy extends GameObject implements ShiftableGameObject {
         blockImage = deadState.display;
         animationRepetitions = 0;
 
-        distanceToBackground = 255;
+        distanceToBackground = 100;
 
         size = 3;
         rotation = 0;

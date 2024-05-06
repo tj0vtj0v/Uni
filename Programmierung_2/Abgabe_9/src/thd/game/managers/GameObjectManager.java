@@ -1,13 +1,14 @@
 package thd.game.managers;
 
+import thd.game.utilities.SortedGameObjectsList;
 import thd.gameobjects.base.GameObject;
 
-import java.util.LinkedList;
-import java.util.List;
+import java.util.*;
 
 
 class GameObjectManager extends CollisionManager {
-    private final List<GameObject> gameObjects;
+
+    private final SortedGameObjectsList gameObjects;
     private final List<GameObject> gameObjectsToBeAdded;
     private final List<GameObject> gameObjectsToBeRemoved;
     private static final int MAXIMUM_NUMBER_OF_GAME_OBJECTS = 500;
@@ -15,7 +16,7 @@ class GameObjectManager extends CollisionManager {
     GameObjectManager() {
         super();
 
-        gameObjects = new LinkedList<>();
+        gameObjects = new SortedGameObjectsList();
         gameObjectsToBeAdded = new LinkedList<>();
         gameObjectsToBeRemoved = new LinkedList<>();
     }
@@ -35,6 +36,7 @@ class GameObjectManager extends CollisionManager {
     private void updateLists() {
         removeFromGameObjects();
         addToGameObjects();
+        gameObjects.sort();
 
         if (gameObjects.size() > MAXIMUM_NUMBER_OF_GAME_OBJECTS) {
             throw new TooManyGameObjectsException("You have %d GameObjects, the limit is %d!".formatted(gameObjects.size(), MAXIMUM_NUMBER_OF_GAME_OBJECTS));
@@ -51,21 +53,10 @@ class GameObjectManager extends CollisionManager {
 
     private void addToGameObjects() {
         for (GameObject toAdd : gameObjectsToBeAdded) {
-            sortIntoGameObjects(toAdd);
+            gameObjects.add(toAdd);
             addToCollisionManagement(toAdd);
         }
         gameObjectsToBeAdded.clear();
-    }
-
-    private void sortIntoGameObjects(GameObject toAdd) {
-        int indexToSortIn = 0;
-        for (GameObject gameObject : gameObjects) {
-            if (gameObject.getDistanceToBackground() >= toAdd.getDistanceToBackground()) {
-                break;
-            }
-            indexToSortIn++;
-        }
-        gameObjects.add(indexToSortIn, toAdd);
     }
 
     void add(GameObject gameObject) {

@@ -24,13 +24,12 @@ public class Grenade extends GameObject implements ShiftableGameObject {
      * @param gamePlayManager GamePlayManager to manage the game actions.
      * @param originLocation  Direction in which the bullet should travel.
      * @param position        Position from which to start movement.
-     * @param creator         Instance which shoots this Bullet.
      */
-    public Grenade(GameView gameView, GamePlayManager gamePlayManager, Direction originLocation, Position position, GameObject creator) {
+    public Grenade(GameView gameView, GamePlayManager gamePlayManager, Direction originLocation, Position position) {
         super(gameView, gamePlayManager);
 
         blockImage = ObjectBlockImages.MORTAR_GRENADE;
-        distanceToBackground = (char) (creator.getDistanceToBackground() + 1);
+        distanceToBackground = 250;
 
         size = 3;
         rotation = 0;

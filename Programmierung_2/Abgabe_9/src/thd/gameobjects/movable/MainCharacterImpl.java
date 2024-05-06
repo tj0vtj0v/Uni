@@ -38,7 +38,7 @@ public class MainCharacterImpl extends MovingCharacter implements thd.gameobject
         dead = false;
 
         blockImage = MainCharacterBlockImages.DOWN_1;
-        distanceToBackground = 200;
+        distanceToBackground = 100;
 
         size = 3;
         rotation = 0;
@@ -105,16 +105,24 @@ public class MainCharacterImpl extends MovingCharacter implements thd.gameobject
      * Moves the character its speed in pixels up.
      */
     public void up() {
-        if (pathIsBlocked()) {
-            return;
-        }
         if (position.getY() > GameView.HEIGHT / 2f) {
             position.up(speedInPixel);
+            if (pathIsBlocked()) {
+                position.down(speedInPixel);
+            }
         } else if (position.getY() > GameView.HEIGHT / 3f) {
             position.up(speedInPixel / 2);
             gamePlayManager.moveWorldDown(speedInPixel / 2);
+
+            if (pathIsBlocked()) {
+                position.down(speedInPixel / 2);
+                gamePlayManager.moveWorldUp(speedInPixel / 2);
+            }
         } else {
             gamePlayManager.moveWorldDown(speedInPixel);
+            if (pathIsBlocked()) {
+                gamePlayManager.moveWorldUp(speedInPixel);
+            }
         }
     }
 
@@ -160,11 +168,5 @@ public class MainCharacterImpl extends MovingCharacter implements thd.gameobject
     @Override
     public String toString() {
         return "MainCharacterBlockImages: %s is %b dead with %d available Grenades".formatted(position, dead, availableGrenades);
-    }
-
-    private enum MovementState {
-        DIRECTION_1,
-        DIRECTION_2,
-        DIRECTION_3;
     }
 }

@@ -30,6 +30,7 @@ public class ScoreBoard extends GameObject {
         height = 80;
         size = 40;
 
+        position.updateCoordinates(0, GameView.HEIGHT);
         localYZero = GameView.HEIGHT - height;
     }
 
