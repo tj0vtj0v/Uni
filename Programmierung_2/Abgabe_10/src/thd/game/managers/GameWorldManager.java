@@ -26,12 +26,15 @@ class GameWorldManager extends GamePlayManager {
     }
 
     private void spawnGameObjects() {
+        BackgroundPixels backgroundPixels = new BackgroundPixels(gameView, this);
+        addToShiftableGameObjectsIfShiftable(backgroundPixels);
+        spawnGameObject(backgroundPixels);
+
         spawnGameObject(new ScoreBoard(gameView, this));
     }
 
     private void spawnGameObjectsFromWorldString() {
         String[] lines = level.world.split("\n");
-        int scale = GameView.WIDTH / (lines[0].length() - level.worldOffsetColumns - 1);
         char tile;
         Position position;
         Direction located;
@@ -41,7 +44,7 @@ class GameWorldManager extends GamePlayManager {
                 tile = lines[lineIndex].charAt(tileIndex);
 
                 located = Character.isUpperCase(tile) ? Direction.RIGHT : Direction.LEFT;
-                position = new Position((tileIndex - level.worldOffsetColumns) * scale, (lineIndex - level.worldOffsetLines) * scale);
+                position = new Position((tileIndex - level.worldOffsetColumns) * level.worldScale, (lineIndex - level.worldOffsetLines) * level.worldScale);
 
 
                 switch (Character.toUpperCase(tile)) {
@@ -80,6 +83,15 @@ class GameWorldManager extends GamePlayManager {
                         addActivatableGameObject(new Wall(gameView, this, located, position, tile - 47));
                 }
             }
+
+            grantUniqueSeedsForAllRows();
+        }
+    }
+
+    private void grantUniqueSeedsForAllRows() {
+        try {
+            Thread.sleep(1);
+        } catch (InterruptedException ignored) {
         }
     }
 

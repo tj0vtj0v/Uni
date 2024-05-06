@@ -4,7 +4,7 @@ package thd.game.level;
  * Baseclass of all Levels.
  */
 public class Level {
-    static final int VISIBLE_COLUMNS = 32;
+    public static final int VISIBLE_COLUMNS = 32;
     /**
      * Represents the name of the Level.
      */
@@ -17,6 +17,7 @@ public class Level {
      * Represents the World with its ObjectBlockImages in it.
      */
     public String world;
+    public int worldScale;
     /**
      * Amount of downshift for every Map.
      */

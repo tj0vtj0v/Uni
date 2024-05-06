@@ -1,5 +1,7 @@
 package thd.game.level;
 
+import thd.game.utilities.GameView;
+
 /**
  * Representation of the first Level.
  */
@@ -13,6 +15,8 @@ public class Level1 extends Level {
         world = World.LEVEL_1;
         worldOffsetLines = Math.max(world.split("\n").length - VISIBLE_COLUMNS, 0);
         worldOffsetColumns = 10;
+        worldScale = GameView.WIDTH / (world.split("\n")[0].length() - worldOffsetColumns - 1);
+
         mainCharacterMovementSpeed = 2;
     }
 }
