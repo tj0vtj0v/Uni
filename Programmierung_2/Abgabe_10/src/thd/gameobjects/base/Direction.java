@@ -64,7 +64,7 @@ public enum Direction {
      * @param other direction to add.
      * @return combined direction.
      */
-    private Direction addDirection(Direction other) {
+    public Direction addDirection(Direction other) {
         if (this == other) {
             return this;
         } else if (this.opposite() == other) {
@@ -74,10 +74,7 @@ public enum Direction {
         }
 
         if (diagonal()) {
-            if (name().contains(other.opposite().name())) {
-                return Direction.valueOf(name().replace(other.opposite().name(), "").replace("_", ""));
-            }
-            return this;
+            return other;
         } else {
             return Direction.valueOf(vertical() ? name() + "_" + other.name() : other.name() + "_" + name());
         }

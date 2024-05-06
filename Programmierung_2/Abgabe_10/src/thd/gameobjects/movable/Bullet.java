@@ -5,6 +5,7 @@ import thd.game.managers.GamePlayManager;
 import thd.game.utilities.GameView;
 import thd.gameobjects.base.*;
 import thd.gameobjects.resources.ObjectBlockImages;
+import thd.gameobjects.unmovable.AmmoBox;
 import thd.gameobjects.unmovable.Explosion;
 
 /**
@@ -48,7 +49,7 @@ public class Bullet extends CollidingGameObject implements ShiftableGameObject {
 
     @Override
     public void reactToCollisionWith(CollidingGameObject other) {
-        if (other != creator && !(other instanceof Explosion)) {
+        if (other != creator && !(other instanceof Explosion) && !(other instanceof AmmoBox)) {
             gamePlayManager.destroyGameObject(this);
         }
     }

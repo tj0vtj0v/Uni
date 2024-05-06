@@ -84,6 +84,10 @@ public class MainCharacterImpl extends MovingCharacter implements MainCharacter 
         position.left(speedInPixel);
         if (pathIsBlocked()) {
             position.right(speedInPixel);
+        } else if (direction == null) {
+            direction = Direction.LEFT;
+        } else {
+            direction = direction.addDirection(Direction.LEFT);
         }
     }
 
@@ -94,6 +98,10 @@ public class MainCharacterImpl extends MovingCharacter implements MainCharacter 
         position.right(speedInPixel);
         if (pathIsBlocked()) {
             position.left(speedInPixel);
+        } else if (direction == null) {
+            direction = Direction.RIGHT;
+        } else {
+            direction = direction.addDirection(Direction.RIGHT);
         }
     }
 
@@ -105,6 +113,10 @@ public class MainCharacterImpl extends MovingCharacter implements MainCharacter 
             position.up(speedInPixel);
             if (pathIsBlocked()) {
                 position.down(speedInPixel);
+            } else if (direction == null) {
+                direction = Direction.UP;
+            } else {
+                direction = direction.addDirection(Direction.UP);
             }
         } else if (position.getY() > GameView.HEIGHT / 3f) {
             position.up(speedInPixel / 2);
@@ -113,11 +125,19 @@ public class MainCharacterImpl extends MovingCharacter implements MainCharacter 
             if (pathIsBlocked()) {
                 position.down(speedInPixel / 2);
                 gamePlayManager.moveWorldUp(speedInPixel / 2);
+            } else if (direction == null) {
+                direction = Direction.UP;
+            } else {
+                direction = direction.addDirection(Direction.UP);
             }
         } else {
             gamePlayManager.moveWorldDown(speedInPixel);
             if (pathIsBlocked()) {
                 gamePlayManager.moveWorldUp(speedInPixel);
+            } else if (direction == null) {
+                direction = Direction.UP;
+            } else {
+                direction = direction.addDirection(Direction.UP);
             }
         }
     }
@@ -129,6 +149,10 @@ public class MainCharacterImpl extends MovingCharacter implements MainCharacter 
         position.down(speedInPixel);
         if (pathIsBlocked()) {
             position.up(speedInPixel);
+        } else if (direction == null) {
+            direction = Direction.DOWN;
+        } else {
+            direction = direction.addDirection(Direction.DOWN);
         }
     }
 
@@ -141,6 +165,20 @@ public class MainCharacterImpl extends MovingCharacter implements MainCharacter 
         return dead;
     }
 
+    /**
+     * Re setter for the direction if a new directional keyInput comes.
+     */
+    public void ResetDirection() {
+        this.direction = null;
+    }
+
+    @Override
+    public void shoot() {
+        if (!dead) {
+            super.shoot();
+        }
+    }
+
     @Override
     public void updateStatus() {
         super.updateStatus();
@@ -151,8 +189,6 @@ public class MainCharacterImpl extends MovingCharacter implements MainCharacter 
             height = 0;
             hitBoxOffsets(0, 0, 0, 0);
         }
-
-        direction = null;
     }
 
     @Override

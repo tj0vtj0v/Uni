@@ -7,10 +7,16 @@ import thd.gameobjects.base.Position;
 
 class RandomMovementPattern extends MovementPattern {
     private final Direction launchSide;
+    private Direction direction;
 
     RandomMovementPattern(Direction launchSide) {
         super();
         this.launchSide = launchSide;
+        direction = Direction.DOWN;
+    }
+
+    public Direction getDirection() {
+        return direction;
     }
 
     @Override
@@ -26,8 +32,9 @@ class RandomMovementPattern extends MovementPattern {
     protected Position nextTargetPosition(Position... referencePositions) {
         Position targetPosition = new Position(referencePositions[0]);
         int distance = random.nextInt(150, 500);
+        direction = Direction.values()[random.nextInt(Direction.values().length)];
 
-        switch (Direction.values()[random.nextInt(Direction.values().length)]) {
+        switch (direction) {
             case LEFT:
                 targetPosition.left(distance);
                 break;

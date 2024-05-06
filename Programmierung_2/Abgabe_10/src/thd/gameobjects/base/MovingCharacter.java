@@ -39,8 +39,10 @@ public class MovingCharacter extends CollidingGameObject {
      * Creates a Bullet-Object flying down.
      */
     public void shoot() {
+        direction = direction == null ? Direction.DOWN : direction;
+
         if (gameView.timer(shotDurationInMilliseconds, this)) {
-            gamePlayManager.spawnGameObject(new Bullet(gameView, gamePlayManager, Direction.DOWN, new Position(position.getX() + 7, position.getY() + 36), this));
+            gamePlayManager.spawnGameObject(new Bullet(gameView, gamePlayManager, direction, new Position(position.getX() + 7, position.getY() + 36), this));
         }
     }
 

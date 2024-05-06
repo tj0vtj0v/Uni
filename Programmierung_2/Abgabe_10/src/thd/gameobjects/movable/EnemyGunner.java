@@ -83,6 +83,7 @@ public class EnemyGunner extends MovingCharacter implements ShiftableGameObject,
         }
         if (gameView.timer(new Random(System.currentTimeMillis()).nextInt(2500, 5000), this)) {
             targetPosition.updateCoordinates(movementPattern.nextTargetPosition(getPosition()));
+            direction = movementPattern.getDirection();
         }
     }
 
