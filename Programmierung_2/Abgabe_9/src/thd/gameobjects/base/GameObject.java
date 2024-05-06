@@ -13,7 +13,7 @@ public abstract class GameObject {
     protected final GamePlayManager gamePlayManager;
     protected final Position position;
     protected final Position targetPosition;
-    protected String blockImage;
+    protected String instanceBlockImage;
     protected char distanceToBackground;
     protected double speedInPixel;
     protected double rotation;
@@ -37,7 +37,7 @@ public abstract class GameObject {
 
     protected int generateWidthFromBlockImage() {
         int maximumLineLength = 0;
-        for (String line : blockImage.split("\n")) {
+        for (String line : instanceBlockImage.split("\n")) {
             maximumLineLength = Math.max(maximumLineLength, line.length());
         }
 
@@ -45,7 +45,7 @@ public abstract class GameObject {
     }
 
     protected int generateHeightFromBlockImage() {
-        return blockImage.split("\n").length;
+        return instanceBlockImage.split("\n").length;
     }
 
     /**
@@ -134,7 +134,7 @@ public abstract class GameObject {
         GameObject other = (GameObject) o;
         return position.equals(other.position)
                 && targetPosition.equals(other.targetPosition)
-                && blockImage.equals(other.blockImage)
+                && instanceBlockImage.equals(other.instanceBlockImage)
                 && distanceToBackground == other.distanceToBackground
                 && Double.compare(speedInPixel, other.speedInPixel) == 0
                 && Double.compare(rotation, other.rotation) == 0
@@ -145,6 +145,6 @@ public abstract class GameObject {
 
     @Override
     public int hashCode() {
-        return Objects.hash(position, targetPosition, blockImage, distanceToBackground, speedInPixel, rotation, size, width, height);
+        return Objects.hash(position, targetPosition, instanceBlockImage, distanceToBackground, speedInPixel, rotation, size, width, height);
     }
 }

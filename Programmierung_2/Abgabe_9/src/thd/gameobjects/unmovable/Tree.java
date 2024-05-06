@@ -29,9 +29,9 @@ public class Tree extends CollidingGameObject implements ShiftableGameObject, Ac
         super(gameView, gamePlayManager, location, position);
 
         if (this.direction == Direction.RIGHT) {
-            blockImage = ObjectBlockImages.TREE;
+            instanceBlockImage = ObjectBlockImages.TREE;
         } else {
-            blockImage = mirrorBlockImage(ObjectBlockImages.TREE);
+            instanceBlockImage = mirrorBlockImage(ObjectBlockImages.TREE);
         }
         distanceToBackground = 100;
 

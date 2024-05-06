@@ -37,7 +37,7 @@ public class MainCharacterImpl extends MovingCharacter implements thd.gameobject
         availableGrenades = 5;
         dead = false;
 
-        blockImage = MainCharacterBlockImages.DOWN_1;
+        instanceBlockImage = MainCharacterBlockImages.DOWN_1;
         distanceToBackground = 100;
 
         size = 3;
@@ -145,7 +145,7 @@ public class MainCharacterImpl extends MovingCharacter implements thd.gameobject
     public void updateStatus() {
         super.updateStatus();
         if (dead) {
-            blockImage = MainCharacterBlockImages.DEAD;
+            instanceBlockImage = MainCharacterBlockImages.DEAD;
 
             width = 0;
             height = 0;

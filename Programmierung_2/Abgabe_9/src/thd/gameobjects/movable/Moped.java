@@ -30,9 +30,9 @@ public class Moped extends CollidingGameObject implements ShiftableGameObject, A
         super(gameView, gamePlayManager, location, position);
 
         if (this.direction == Direction.RIGHT) {
-            blockImage = ObjectBlockImages.MOPED;
+            instanceBlockImage = ObjectBlockImages.MOPED;
         } else {
-            blockImage = mirrorBlockImage(ObjectBlockImages.MOPED);
+            instanceBlockImage = mirrorBlockImage(ObjectBlockImages.MOPED);
         }
         distanceToBackground = 200;
         hitTolerance = 3;

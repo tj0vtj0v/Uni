@@ -26,7 +26,7 @@ public class AmmoBox extends CollidingGameObject implements ShiftableGameObject,
     public AmmoBox(GameView gameView, GamePlayManager gamePlayManager, Direction location, Position position) {
         super(gameView, gamePlayManager, location, position);
 
-        blockImage = ObjectBlockImages.AMMO_BOX;
+        instanceBlockImage = ObjectBlockImages.AMMO_BOX;
         distanceToBackground = 100;
 
         size = 3;

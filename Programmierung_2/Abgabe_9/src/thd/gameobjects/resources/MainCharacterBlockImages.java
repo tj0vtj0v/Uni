@@ -30,6 +30,9 @@ public final class MainCharacterBlockImages {
              6666  6666-
             """;
 
+    /**
+     * String representing the dead mainCharacter.
+     */
     public static final String DEAD = """
              11    555555    11 -
              11  5555555555  11 -

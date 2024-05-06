@@ -29,7 +29,7 @@ public class Wall extends CollidingGameObject implements ShiftableGameObject, Ac
     public Wall(GameView gameView, GamePlayManager gamePlayManager, Direction location, Position position, int segments) {
         super(gameView, gamePlayManager, location, position);
 
-        blockImage = new ObjectBlockImages().wall(segments);
+        instanceBlockImage = new ObjectBlockImages().wall(segments);
         distanceToBackground = 100;
 
         size = 3;

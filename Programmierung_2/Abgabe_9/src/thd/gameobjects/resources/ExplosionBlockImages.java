@@ -1,6 +1,12 @@
 package thd.gameobjects.resources;
 
+/**
+ * Class with all ExplosionBlockimages stored inside.
+ */
 public final class ExplosionBlockImages {
+    /**
+     * String representing the 1. and last frame of the animation.
+     */
     public static final String EXPLOSION_1 = """
                 33    33
               33333333 -
@@ -10,6 +16,9 @@ public final class ExplosionBlockImages {
                   33   -
             """;
 
+    /**
+     * String representing the 2. and 2. last frame of the animation.
+     */
     public static final String EXPLOSION_2 = """
                     33       -
               33  333333  33 -
@@ -23,6 +32,9 @@ public final class ExplosionBlockImages {
                       3333   -
             """;
 
+    /**
+     * String representing the frame next to the middle-part of the animation.
+     */
     public static final String EXPLOSION_3 = """
                     33           -
                   333333  33     -
@@ -44,6 +56,9 @@ public final class ExplosionBlockImages {
                 33      33       -
             """;
 
+    /**
+     * String representing mid-frame of the animation.
+     */
     public static final String EXPLOSION_4 = """
                       333333       -
                 33    33  33  33   -

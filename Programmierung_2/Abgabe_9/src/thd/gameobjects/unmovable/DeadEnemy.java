@@ -5,15 +5,26 @@ import thd.game.utilities.GameView;
 import thd.gameobjects.base.*;
 import thd.gameobjects.resources.DeadEnemyBlockImages;
 
+/**
+ * Represents a dead Enemy.
+ */
 public class DeadEnemy extends GameObject implements ShiftableGameObject {
     private static final int TARGET_ANIMATION_REPETITIONS = 4;
     private int animationRepetitions;
-    State currentState;
+    private State currentState;
 
+
+    /**
+     * Creates a dead Enemy, mainly for animation and collision purposes.
+     *
+     * @param gameView        window in which it has to be displayed.
+     * @param gamePlayManager GamePlayManager to manage the game actions.
+     * @param position        Position where to be located.
+     */
     public DeadEnemy(GameView gameView, GamePlayManager gamePlayManager, Position position) {
         super(gameView, gamePlayManager);
         currentState = State.DEAD_1;
-        blockImage = currentState.display;
+        instanceBlockImage = currentState.display;
         animationRepetitions = 0;
 
         distanceToBackground = 100;
@@ -35,7 +46,7 @@ public class DeadEnemy extends GameObject implements ShiftableGameObject {
 
     @Override
     public void addToCanvas() {
-        gameView.addBlockImageToCanvas(blockImage, position.getX(), position.getY(), size, rotation);
+        gameView.addBlockImageToCanvas(instanceBlockImage, position.getX(), position.getY(), size, rotation);
     }
 
     @Override
@@ -52,10 +63,10 @@ public class DeadEnemy extends GameObject implements ShiftableGameObject {
                 }
             }
 
-            blockImage = currentState.display;
+            instanceBlockImage = currentState.display;
 
             if (currentState.ordinal() % 2 == 1) {
-                blockImage = mirrorBlockImage(blockImage);
+                instanceBlockImage = mirrorBlockImage(instanceBlockImage);
             }
         }
     }

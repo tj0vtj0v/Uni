@@ -31,9 +31,9 @@ public class ShootingBox extends CollidingGameObject implements ShiftableGameObj
         super(gameView, gamePlayManager, location, position);
 
         if (this.direction == Direction.LEFT) {
-            blockImage = ObjectBlockImages.SHOOTING_BOX_LEFT;
+            instanceBlockImage = ObjectBlockImages.SHOOTING_BOX_LEFT;
         } else {
-            blockImage = mirrorBlockImage(ObjectBlockImages.SHOOTING_BOX_LEFT);
+            instanceBlockImage = mirrorBlockImage(ObjectBlockImages.SHOOTING_BOX_LEFT);
         }
         distanceToBackground = 100;
         hitTolerance = 2;

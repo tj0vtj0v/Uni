@@ -1,6 +1,12 @@
 package thd.gameobjects.resources;
 
+/**
+ * Class with all DeadEnemyBlockImages stored inside.
+ */
 public final class DeadEnemyBlockImages {
+    /**
+     * String with the mainframe of the dead Enemy, just varies in means od mirroring.
+     */
     public static final String DEAD_ENEMY = """
                       11          -
                 222   11          -

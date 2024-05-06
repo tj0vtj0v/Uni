@@ -30,7 +30,7 @@ public class Bullet extends CollidingGameObject implements ShiftableGameObject {
         super(gameView, gamePlayManager, originLocation, position);
         this.creator = creator;
 
-        blockImage = ObjectBlockImages.BULLET;
+        instanceBlockImage = ObjectBlockImages.BULLET;
         distanceToBackground = 250;
 
         size = 3;

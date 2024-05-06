@@ -29,9 +29,9 @@ public class Rock extends CollidingGameObject implements ShiftableGameObject, Ac
         super(gameView, gamePlayManager, location, position);
 
         if (location == Direction.RIGHT) {
-            blockImage = ObjectBlockImages.RIGHT_SIDE_ROCK;
+            instanceBlockImage = ObjectBlockImages.RIGHT_SIDE_ROCK;
         } else {
-            blockImage = mirrorBlockImage(ObjectBlockImages.RIGHT_SIDE_ROCK);
+            instanceBlockImage = mirrorBlockImage(ObjectBlockImages.RIGHT_SIDE_ROCK);
         }
         distanceToBackground = 100;
 

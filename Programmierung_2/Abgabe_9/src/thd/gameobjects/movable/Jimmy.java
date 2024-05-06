@@ -9,6 +9,7 @@ public class Jimmy extends GameObject {
 
     private enum State {RUNNING, JUMPING, HOVERING}
     private State currentState;
+    private String blockImage;
     private RunningState runningState;
     private JumpingState jumpingState;
 

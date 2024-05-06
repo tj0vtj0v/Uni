@@ -9,7 +9,7 @@ import thd.gameobjects.resources.ExplosionBlockImages;
  * ExplosionBlockImages dealing damage after Grenade has flown long enough.
  */
 public class Explosion extends CollidingGameObject implements ShiftableGameObject {
-    State currentState;
+    private State currentState;
 
     /**
      * Creates ExplosionBlockImages.
@@ -22,7 +22,7 @@ public class Explosion extends CollidingGameObject implements ShiftableGameObjec
     public Explosion(GameView gameView, GamePlayManager gamePlayManager, Direction location, Position position) {
         super(gameView, gamePlayManager, location, position);
         currentState = State.EXPLOSION_1;
-        blockImage = currentState.display;
+        instanceBlockImage = currentState.display;
 
         distanceToBackground = 50;
 
@@ -58,12 +58,12 @@ public class Explosion extends CollidingGameObject implements ShiftableGameObjec
             position.up(currentState.upShift * size);
             position.left(currentState.leftShift * size);
 
-            blockImage = currentState.display;
+            instanceBlockImage = currentState.display;
             width = generateWidthFromBlockImage() * size;
             height = generateHeightFromBlockImage() * size;
             hitBoxOffsets(-3, -3, 6, 6);
         }
-        blockImage = currentState.display;
+        instanceBlockImage = currentState.display;
     }
 
     private enum State {

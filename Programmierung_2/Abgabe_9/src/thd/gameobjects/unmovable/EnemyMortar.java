@@ -22,7 +22,7 @@ import java.util.Random;
 public class EnemyMortar extends CollidingGameObject implements ShiftableGameObject, ActivatableGameObject<GameObject> {
     private final String mortarBlockImage;
     private double mortarXOffset;
-    State currentState;
+    private State currentState;
 
     /**
      * Creates EnemyMortarBlockImages with gameView window of presence.
@@ -37,11 +37,11 @@ public class EnemyMortar extends CollidingGameObject implements ShiftableGameObj
         currentState = State.WAITING;
 
         if (location == Direction.RIGHT) {
-            blockImage = currentState.display;
+            instanceBlockImage = currentState.display;
             mortarBlockImage = ObjectBlockImages.MORTAR;
             mortarXOffset = -33;
         } else {
-            blockImage = mirrorBlockImage(currentState.display);
+            instanceBlockImage = mirrorBlockImage(currentState.display);
             mortarBlockImage = mirrorBlockImage(ObjectBlockImages.MORTAR);
             mortarXOffset = 27;
         }
@@ -109,15 +109,15 @@ public class EnemyMortar extends CollidingGameObject implements ShiftableGameObj
 
 
         if (direction == Direction.RIGHT) {
-            blockImage = currentState.display;
+            instanceBlockImage = currentState.display;
         } else {
-            blockImage = mirrorBlockImage(currentState.display);
+            instanceBlockImage = mirrorBlockImage(currentState.display);
         }
     }
 
     @Override
     public void addToCanvas() {
-        gameView.addBlockImageToCanvas(blockImage, position.getX(), position.getY(), size, rotation);
+        gameView.addBlockImageToCanvas(instanceBlockImage, position.getX(), position.getY(), size, rotation);
         gameView.addBlockImageToCanvas(mortarBlockImage, position.getX() + mortarXOffset, position.getY() + 21, size, rotation);
     }
 
