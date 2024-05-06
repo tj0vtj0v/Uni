@@ -28,7 +28,7 @@ public class Grenade extends GameObject implements ShiftableGameObject {
     public Grenade(GameView gameView, GamePlayManager gamePlayManager, Direction originLocation, Position position) {
         super(gameView, gamePlayManager);
 
-        instanceBlockImage = ObjectBlockImages.MORTAR_GRENADE;
+        blockImage = ObjectBlockImages.MORTAR_GRENADE;
         distanceToBackground = 250;
 
         size = 3;
@@ -58,6 +58,6 @@ public class Grenade extends GameObject implements ShiftableGameObject {
 
     @Override
     public void addToCanvas() {
-        gameView.addBlockImageToCanvas(instanceBlockImage, position.getX(), position.getY(), size, rotation);
+        gameView.addBlockImageToCanvas(blockImage, position.getX(), position.getY(), size, rotation);
     }
 }

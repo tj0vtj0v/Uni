@@ -231,6 +231,23 @@ public final class ObjectBlockImages {
                   3377777        -
             """;
 
+    /**
+     * Blockimage of a ruined shooting-box standing on the left.
+     */
+    public static final String RUINED_SHOOTING_BOX_LEFT = """
+            1111                 -
+            117711  11           -
+            331177117711         -
+            3311777777771111  11 -
+            3311777777777777117711
+            3333117777771111111177
+            3333331111111177777711
+            3333331133111111331111
+              33333333111111333  -
+                333333111133     -
+                  3311111        -
+            """;
+
 
     /**
      * Blockimage of a side rock.

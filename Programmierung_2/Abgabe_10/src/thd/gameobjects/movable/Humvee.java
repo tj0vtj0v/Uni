@@ -29,9 +29,9 @@ public class Humvee extends CollidingGameObject implements ShiftableGameObject, 
         super(gameView, gamePlayManager, location, position);
 
         if (this.direction == Direction.LEFT) {
-            instanceBlockImage = ObjectBlockImages.HUMVEE;
+            blockImage = ObjectBlockImages.HUMVEE;
         } else {
-            instanceBlockImage = mirrorBlockImage(ObjectBlockImages.HUMVEE);
+            blockImage = mirrorBlockImage(ObjectBlockImages.HUMVEE);
         }
         distanceToBackground = 200;
         hitTolerance = 5;

@@ -28,7 +28,7 @@ public class Stone extends CollidingGameObject implements ShiftableGameObject, A
     public Stone(GameView gameView, GamePlayManager gamePlayManager, Direction location, Position position) {
         super(gameView, gamePlayManager, location, position);
 
-        instanceBlockImage = ObjectBlockImages.STONE;
+        blockImage = ObjectBlockImages.STONE;
         distanceToBackground = 100;
 
         size = 3;

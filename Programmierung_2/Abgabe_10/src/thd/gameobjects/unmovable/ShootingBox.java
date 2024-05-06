@@ -18,6 +18,7 @@ import thd.gameobjects.movable.MainCharacterImpl;
  */
 public class ShootingBox extends CollidingGameObject implements ShiftableGameObject, ActivatableGameObject<GameObject> {
     private int hitTolerance;
+    private State currentState;
 
     /**
      * Creates ShootingBox with gameView window of presence.
@@ -29,11 +30,12 @@ public class ShootingBox extends CollidingGameObject implements ShiftableGameObj
      */
     public ShootingBox(GameView gameView, GamePlayManager gamePlayManager, Direction location, Position position) {
         super(gameView, gamePlayManager, location, position);
+        currentState = State.NORMAL;
 
         if (this.direction == Direction.LEFT) {
-            instanceBlockImage = ObjectBlockImages.SHOOTING_BOX_LEFT;
+            blockImage = currentState.display;
         } else {
-            instanceBlockImage = mirrorBlockImage(ObjectBlockImages.SHOOTING_BOX_LEFT);
+            blockImage = mirrorBlockImage(currentState.display);
         }
         distanceToBackground = 100;
         hitTolerance = 2;
@@ -45,11 +47,32 @@ public class ShootingBox extends CollidingGameObject implements ShiftableGameObj
         hitBoxOffsets(6, 6, -12, -24);
     }
 
+    private void ruin() {
+        if (currentState == State.NORMAL) {
+            currentState = State.RUINED;
+
+            gamePlayManager.addScorePoints(-1);
+            gamePlayManager.spawnGameObject(new Explosion(gameView, gamePlayManager, direction, new Position(position.getX() + 12, position.getY() + 45)));
+
+            if (this.direction == Direction.LEFT) {
+                blockImage = currentState.display;
+            } else {
+                blockImage = mirrorBlockImage(currentState.display);
+            }
+
+            position.down(32);
+            distanceToBackground = 50;
+            width = 0;
+            height = 0;
+            hitBoxOffsets(0, 0, 0, 0);
+        }
+    }
+
     @Override
     public void updateStatus() {
         super.updateStatus();
         if (gamePlayManager.mainCharacterYCoordinate() < position.getY()) {
-            gamePlayManager.destroyGameObject(this);
+            ruin();
         }
     }
 
@@ -69,13 +92,23 @@ public class ShootingBox extends CollidingGameObject implements ShiftableGameObj
         }
 
         if (hitTolerance <= 0) {
-            gamePlayManager.destroyGameObject(this);
-            gamePlayManager.addScorePoints(-1);
+            ruin();
         }
     }
 
     @Override
     public String toString() {
         return "ShootingBox: %s with %d hits left till destruction".formatted(position, hitTolerance);
+    }
+
+    private enum State {
+        NORMAL(ObjectBlockImages.SHOOTING_BOX_LEFT),
+        RUINED(ObjectBlockImages.RUINED_SHOOTING_BOX_LEFT);
+
+        private final String display;
+
+        State(String display) {
+            this.display = display;
+        }
     }
 }

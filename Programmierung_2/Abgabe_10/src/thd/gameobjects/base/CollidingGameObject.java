@@ -82,6 +82,6 @@ public abstract class CollidingGameObject extends GameObject {
 
     @Override
     public void addToCanvas() {
-        gameView.addBlockImageToCanvas(instanceBlockImage, position.getX(), position.getY(), size, rotation);
+        gameView.addBlockImageToCanvas(blockImage, position.getX(), position.getY(), size, rotation);
     }
 }

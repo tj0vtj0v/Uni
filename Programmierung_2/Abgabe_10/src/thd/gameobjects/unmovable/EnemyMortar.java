@@ -37,11 +37,11 @@ public class EnemyMortar extends CollidingGameObject implements ShiftableGameObj
         currentState = State.WAITING;
 
         if (location == Direction.RIGHT) {
-            instanceBlockImage = currentState.display;
+            blockImage = currentState.display;
             mortarBlockImage = ObjectBlockImages.MORTAR;
             mortarXOffset = -33;
         } else {
-            instanceBlockImage = mirrorBlockImage(currentState.display);
+            blockImage = mirrorBlockImage(currentState.display);
             mortarBlockImage = mirrorBlockImage(ObjectBlockImages.MORTAR);
             mortarXOffset = 27;
         }
@@ -83,21 +83,21 @@ public class EnemyMortar extends CollidingGameObject implements ShiftableGameObj
     public void updateStatus() {
         super.updateStatus();
 
-        if (currentState == State.WAITING & gameView.timer(new Random(System.currentTimeMillis()).nextInt(500, 3500), this)) {
+        if (currentState == State.WAITING & (gameView.timer(new Random(System.currentTimeMillis()).nextInt(500, 2000), this))) {
             switchToNextState();
             if (direction == Direction.RIGHT) {
                 position.left(currentState.leftShiftIfRight * size);
                 mortarXOffset += currentState.leftShiftIfRight * size;
                 hitBoxOffsets(18, 3, -6, -6);
             }
-        } else if (currentState == State.LOADING && gameView.timer(1000, this)) {
+        } else if (currentState == State.LOADING && gameView.timer(800, this)) {
             switchToNextState();
             if (direction == Direction.RIGHT) {
                 position.left(currentState.leftShiftIfRight * size);
                 mortarXOffset += currentState.leftShiftIfRight * size;
                 hitBoxOffsets(3, 3, -6, -6);
             }
-        } else if (currentState == State.SHOOTING && gameView.timer(1000, this)) {
+        } else if (currentState == State.SHOOTING && gameView.timer(400, this)) {
             shoot();
 
             switchToNextState();
@@ -109,15 +109,15 @@ public class EnemyMortar extends CollidingGameObject implements ShiftableGameObj
 
 
         if (direction == Direction.RIGHT) {
-            instanceBlockImage = currentState.display;
+            blockImage = currentState.display;
         } else {
-            instanceBlockImage = mirrorBlockImage(currentState.display);
+            blockImage = mirrorBlockImage(currentState.display);
         }
     }
 
     @Override
     public void addToCanvas() {
-        gameView.addBlockImageToCanvas(instanceBlockImage, position.getX(), position.getY(), size, rotation);
+        gameView.addBlockImageToCanvas(blockImage, position.getX(), position.getY(), size, rotation);
         gameView.addBlockImageToCanvas(mortarBlockImage, position.getX() + mortarXOffset, position.getY() + 21, size, rotation);
     }
 

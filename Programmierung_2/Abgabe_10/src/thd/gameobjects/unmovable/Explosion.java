@@ -22,7 +22,7 @@ public class Explosion extends CollidingGameObject implements ShiftableGameObjec
     public Explosion(GameView gameView, GamePlayManager gamePlayManager, Direction location, Position position) {
         super(gameView, gamePlayManager, location, position);
         currentState = State.EXPLOSION_1;
-        instanceBlockImage = currentState.display;
+        blockImage = currentState.display;
 
         distanceToBackground = 50;
 
@@ -58,12 +58,12 @@ public class Explosion extends CollidingGameObject implements ShiftableGameObjec
             position.up(currentState.upShift * size);
             position.left(currentState.leftShift * size);
 
-            instanceBlockImage = currentState.display;
+            blockImage = currentState.display;
             width = generateWidthFromBlockImage() * size;
             height = generateHeightFromBlockImage() * size;
             hitBoxOffsets(-3, -3, 6, 6);
         }
-        instanceBlockImage = currentState.display;
+        blockImage = currentState.display;
     }
 
     private enum State {

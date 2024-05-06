@@ -37,7 +37,7 @@ public class MainCharacterImpl extends MovingCharacter implements MainCharacter 
         availableGrenades = 5;
         dead = false;
 
-        instanceBlockImage = MainCharacterBlockImages.DOWN_1;
+        blockImage = MainCharacterBlockImages.DOWN_1;
         distanceToBackground = 100;
 
         size = 3;
@@ -175,7 +175,7 @@ public class MainCharacterImpl extends MovingCharacter implements MainCharacter 
     public void updateStatus() {
         super.updateStatus();
         if (dead) {
-            instanceBlockImage = MainCharacterBlockImages.DEAD;
+            blockImage = MainCharacterBlockImages.DEAD;
 
             width = 0;
             height = 0;

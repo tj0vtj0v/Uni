@@ -24,7 +24,7 @@ public class DeadEnemy extends GameObject implements ShiftableGameObject {
     public DeadEnemy(GameView gameView, GamePlayManager gamePlayManager, Position position) {
         super(gameView, gamePlayManager);
         currentState = State.DEAD_1;
-        instanceBlockImage = currentState.display;
+        blockImage = currentState.display;
         animationRepetitions = 0;
 
         distanceToBackground = 100;
@@ -46,7 +46,7 @@ public class DeadEnemy extends GameObject implements ShiftableGameObject {
 
     @Override
     public void addToCanvas() {
-        gameView.addBlockImageToCanvas(instanceBlockImage, position.getX(), position.getY(), size, rotation);
+        gameView.addBlockImageToCanvas(blockImage, position.getX(), position.getY(), size, rotation);
     }
 
     @Override
@@ -63,10 +63,10 @@ public class DeadEnemy extends GameObject implements ShiftableGameObject {
                 }
             }
 
-            instanceBlockImage = currentState.display;
+            blockImage = currentState.display;
 
             if (currentState.ordinal() % 2 == 1) {
-                instanceBlockImage = mirrorBlockImage(instanceBlockImage);
+                blockImage = mirrorBlockImage(blockImage);
             }
         }
     }
