@@ -4,6 +4,7 @@ import thd.game.managers.GamePlayManager;
 import thd.game.utilities.GameView;
 import thd.gameobjects.base.*;
 import thd.gameobjects.resources.ObjectBlockImages;
+import thd.gameobjects.unmovable.DustExplosion;
 import thd.gameobjects.unmovable.Explosion;
 
 
@@ -34,7 +35,7 @@ public class Humvee extends CollidingGameObject implements ShiftableGameObject, 
             blockImage = mirrorBlockImage(ObjectBlockImages.HUMVEE);
         }
         distanceToBackground = 200;
-        hitTolerance = 5;
+        hitTolerance = 1;
 
         size = 3;
         rotation = 0;
@@ -67,6 +68,8 @@ public class Humvee extends CollidingGameObject implements ShiftableGameObject, 
         if (hitTolerance <= 0) {
             gamePlayManager.destroyGameObject(this);
             gamePlayManager.addScorePoints(-1);
+            gamePlayManager.spawnGameObject(new DustExplosion(gameView, gamePlayManager, direction, new Position(position.getX(), position.getY()+30)));
+            gamePlayManager.spawnGameObject(new DustExplosion(gameView, gamePlayManager, direction, new Position(position.getX()+75, position.getY()+30)));
         }
     }
 
