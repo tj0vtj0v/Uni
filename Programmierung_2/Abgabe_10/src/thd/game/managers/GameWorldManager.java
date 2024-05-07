@@ -90,7 +90,7 @@ class GameWorldManager extends GamePlayManager {
 
     private void grantUniqueSeedsForAllRows() {
         try {
-            Thread.sleep(1);
+            Thread.sleep(2);
         } catch (InterruptedException ignored) {
         }
     }

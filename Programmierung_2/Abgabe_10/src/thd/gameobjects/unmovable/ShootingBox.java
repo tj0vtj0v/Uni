@@ -54,7 +54,7 @@ public class ShootingBox extends CollidingGameObject implements ShiftableGameObj
             currentState = State.RUINED;
 
             gamePlayManager.addScorePoints(-1);
-            gamePlayManager.spawnGameObject(new Explosion(gameView, gamePlayManager, direction, new Position(position.getX() + 12, position.getY() + 45)));
+            gamePlayManager.spawnGameObject(new DustExplosion(gameView, gamePlayManager, direction, new Position(position.getX() + 12, position.getY() + 45)));
 
             if (this.direction == Direction.LEFT) {
                 blockImage = currentState.display;
