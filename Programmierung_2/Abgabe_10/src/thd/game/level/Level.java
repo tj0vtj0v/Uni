@@ -5,6 +5,7 @@ package thd.game.level;
  */
 public class Level {
     public static final int VISIBLE_COLUMNS = 32;
+    public static Difficulty difficulty = Difficulty.STANDARD;
     /**
      * Represents the name of the Level.
      */
