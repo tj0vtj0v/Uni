@@ -16,7 +16,7 @@ import thd.gameobjects.unmovable.Explosion;
  * png textured
  */
 public class Bullet extends CollidingGameObject implements ShiftableGameObject {
-    final GameObject creator;
+    public final GameObject creator;
 
     /**
      * Crates a new Bullet.

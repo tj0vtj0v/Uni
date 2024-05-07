@@ -51,7 +51,7 @@ public class MainCharacterImpl extends MovingCharacter implements MainCharacter 
 
     @Override
     public void reactToCollisionWith(CollidingGameObject other) {
-        if (other instanceof Bullet && ((Bullet) other).creator != this || other instanceof Explosion) {
+        if ((other instanceof Bullet && ((Bullet) other).creator != this) || other instanceof Explosion) {
             try {
                 if (!dead) {
                     gamePlayManager.reduceLive();

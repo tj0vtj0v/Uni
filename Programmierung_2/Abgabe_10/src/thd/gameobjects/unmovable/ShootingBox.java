@@ -8,6 +8,8 @@ import thd.gameobjects.movable.Bullet;
 import thd.gameobjects.movable.Grenade;
 import thd.gameobjects.movable.MainCharacterImpl;
 
+import java.util.Random;
+
 
 /**
  * Representation of the in-game-object 'ShootingBox'.
@@ -71,8 +73,12 @@ public class ShootingBox extends CollidingGameObject implements ShiftableGameObj
     @Override
     public void updateStatus() {
         super.updateStatus();
-        if (gamePlayManager.mainCharacterYCoordinate() < position.getY()) {
-            ruin();
+        if (currentState == State.NORMAL) {
+            if (gamePlayManager.mainCharacterYCoordinate() < position.getY()) {
+                ruin();
+            } else if (gameView.timer(new Random(System.currentTimeMillis()).nextInt(1000, 2000), this)) {
+                gamePlayManager.spawnGameObject(new Bullet(gameView, gamePlayManager, direction.opposite(), position, this));
+            }
         }
     }
 
@@ -85,7 +91,7 @@ public class ShootingBox extends CollidingGameObject implements ShiftableGameObj
 
     @Override
     public void reactToCollisionWith(CollidingGameObject other) {
-        if (other instanceof Bullet) {
+        if (other instanceof Bullet && ((Bullet) other).creator != this) {
             hitTolerance--;
         } else if (other instanceof Explosion) {
             hitTolerance = 0;
