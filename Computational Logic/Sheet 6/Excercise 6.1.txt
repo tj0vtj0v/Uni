@@ -1,0 +1,9 @@
+% person(prename, name, pet)
+person((a;b;c;d), (e;f;g;h), (i;j;k;l)).
+
+-person(c, _, i); -person(d, _, i).
+-person(_, f, j). -person(_, f, k).
+-person(d, _, l).
+-person(a, _, k). -person(a, g, _).
+-person(b, f, _).
+-person(_, h, i).
