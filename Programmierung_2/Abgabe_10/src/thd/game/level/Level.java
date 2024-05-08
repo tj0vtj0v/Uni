@@ -1,5 +1,7 @@
 package thd.game.level;
 
+import thd.game.utilities.GameView;
+
 /**
  * Baseclass of all Levels.
  */
@@ -39,5 +41,14 @@ public class Level {
     /**
      * MovementSpeed of MainCharacterImpl.
      */
-    public int mainCharacterMovementSpeed;
+    public int mainCharacterSpeedInPixel = 2;
+    public int bulletSpeedInPixel = 10;
+    public int grenadeSpeedInPixel = 8;
+    public int enemySpeedInPixel = 2;
+    public int humveeSpeedInPixel = 5;
+    public int enemyShotCooldown = 500;
+    public int humveeHitTolerance = 1;
+    public int mopedHitTolerance = 1;
+    public int vehicleLaunchDistance = GameView.HEIGHT/2;
+
 }

@@ -32,17 +32,18 @@ public class EnemyGunner extends MovingCharacter implements ShiftableGameObject,
      */
     public EnemyGunner(GameView gameView, GamePlayManager gamePlayManager, Direction location, Position position, List<CollidingGameObject> collidingGameObjectsForPathDecision) {
         super(gameView, gamePlayManager, location, position, collidingGameObjectsForPathDecision);
+        shotCooldownInMilliseconds = gamePlayManager.currentLevel().enemyShotCooldown;
 
         blockImage = EnemyGunnerBlockImages.DOWN_1;
-        distanceToBackground = 100;
+        distanceToBackground = GameObjectConstants.LAYER_2;
 
-        size = 3;
+        size = GameObjectConstants.BLOCKIMAGE_SIZE;
         rotation = 0;
         width = generateWidthFromBlockImage() * size;
         height = generateHeightFromBlockImage() * size;
-        hitBoxOffsets(6, 6, -12, -24);
+        hitBoxOffsets(GameObjectConstants.MOVING_CHARACTER_HIT_BOX_X_OFFSET, GameObjectConstants.MOVING_CHARACTER_HIT_BOX_Y_OFFSET, GameObjectConstants.MOVING_CHARACTER_HIT_BOX_WIDTH_OFFSET, GameObjectConstants.MOVING_CHARACTER_HIT_BOX_HEIGHT_OFFSET);
 
-        speedInPixel = 2;
+        speedInPixel = gamePlayManager.currentLevel().enemySpeedInPixel;
 
         movementPattern = new RandomMovementPattern(location);
         this.position.updateCoordinates(movementPattern.startPosition(getPosition()));
@@ -68,6 +69,8 @@ public class EnemyGunner extends MovingCharacter implements ShiftableGameObject,
     @Override
     public void updateStatus() {
         super.updateStatus();
+
+        // TODO implement better shoot mechanic
         if (gameView.timer(new Random(hashCode()).nextInt(1000, 1500), this)) {
             shoot();
         }
@@ -81,7 +84,7 @@ public class EnemyGunner extends MovingCharacter implements ShiftableGameObject,
         if (pathIsBlocked()) {
             position.updateCoordinates(oldPosition);
         }
-        if (gameView.timer(new Random(hashCode()).nextInt(1500, 3000), this)) {
+        if (gameView.timer(new Random(hashCode()).nextInt(GameObjectConstants.ENEMY_CHANGE_DIRECTION_INTERVALL_START_IN_MILLISECONDS, GameObjectConstants.ENEMY_CHANGE_DIRECTION_INTERVALL_END_IN_MILLISECONDS), this)) {
             targetPosition.updateCoordinates(movementPattern.nextTargetPosition(getPosition()));
             direction = movementPattern.getDirection();
         }

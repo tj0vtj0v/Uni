@@ -29,14 +29,14 @@ public class Grenade extends GameObject implements ShiftableGameObject {
         super(gameView, gamePlayManager);
 
         blockImage = ObjectBlockImages.MORTAR_GRENADE;
-        distanceToBackground = 250;
+        distanceToBackground = GameObjectConstants.LAYER_5;
 
-        size = 3;
+        size = GameObjectConstants.BLOCKIMAGE_SIZE;
         rotation = 0;
         width = generateWidthFromBlockImage() * size;
         height = generateHeightFromBlockImage() * size;
 
-        speedInPixel = 8;
+        speedInPixel = gamePlayManager.currentLevel().grenadeSpeedInPixel;
 
         movementPattern = new ParabolicMovementPattern(originLocation.opposite(), position);
         this.position.updateCoordinates(movementPattern.startPosition());

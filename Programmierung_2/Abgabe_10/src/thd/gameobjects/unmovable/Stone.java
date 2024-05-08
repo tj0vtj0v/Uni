@@ -31,7 +31,7 @@ public class Stone extends CollidingGameObject implements ShiftableGameObject, A
         blockImage = ObjectBlockImages.STONE;
         distanceToBackground = 100;
 
-        size = 3;
+        size = GameObjectConstants.BLOCKIMAGE_SIZE;
         rotation = 0;
         width = generateWidthFromBlockImage() * size;
         height = generateHeightFromBlockImage() * size;

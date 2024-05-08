@@ -29,7 +29,7 @@ public class AmmoBox extends CollidingGameObject implements ShiftableGameObject,
         blockImage = ObjectBlockImages.AMMO_BOX;
         distanceToBackground = 100;
 
-        size = 3;
+        size = GameObjectConstants.BLOCKIMAGE_SIZE;
         rotation = 0;
         width = generateWidthFromBlockImage() * size;
         height = generateHeightFromBlockImage() * size;

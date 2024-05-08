@@ -15,8 +15,7 @@ import thd.gameobjects.unmovable.Explosion;
  * destructible by 1 {@link Grenade} or 5 {@link Bullet}
  * BlockImage
  */
-public class Humvee extends CollidingGameObject implements ShiftableGameObject, ActivatableGameObject<GameObject> {
-    private int hitTolerance;
+public class Humvee extends Vehicle {
 
     /**
      * Creates Humvee with gameView window of presence.
@@ -34,50 +33,16 @@ public class Humvee extends CollidingGameObject implements ShiftableGameObject, 
         } else {
             blockImage = mirrorBlockImage(ObjectBlockImages.HUMVEE);
         }
-        distanceToBackground = 200;
-        hitTolerance = 5;
 
-        size = 3;
+        hitTolerance = gamePlayManager.currentLevel().humveeHitTolerance;
+
         rotation = 0;
         width = generateWidthFromBlockImage() * size;
         height = generateHeightFromBlockImage() * size;
-        hitBoxOffsets(0, 3, -12, -18);
+        hitBoxOffsets(GameObjectConstants.HUMVEE_HIT_BOX_X_OFFSET, GameObjectConstants.HUMVEE_HIT_BOX_Y_OFFSET, GameObjectConstants.HUMVEE_HIT_BOX_WIDTH_OFFSET, GameObjectConstants.HUMVEE_HIT_BOX_HEIGHT_OFFSET);
 
-        speedInPixel = 5;
-
-        LinearMovementPattern movementPattern = new LinearMovementPattern(this.direction.opposite(), position);
-        this.position.updateCoordinates(movementPattern.startPosition());
-        targetPosition.updateCoordinates(movementPattern.nextTargetPosition());
+        speedInPixel = gamePlayManager.currentLevel().humveeSpeedInPixel;
     }
-
-    @Override
-    public boolean tryToActivate(GameObject info) {
-        MainCharacterImpl infoObject = (MainCharacterImpl) info;
-
-        return (infoObject).getPosition().verticalDistance(this.position) <= GameView.HEIGHT * .5;
-    }
-
-    @Override
-    public void reactToCollisionWith(CollidingGameObject other) {
-        if (other instanceof Bullet) {
-            hitTolerance--;
-        } else if (other instanceof Explosion) {
-            hitTolerance = 0;
-        }
-
-        if (hitTolerance <= 0) {
-            gamePlayManager.destroyGameObject(this);
-            gamePlayManager.addScorePoints(-1);
-            gamePlayManager.spawnGameObject(new DustExplosion(gameView, gamePlayManager, direction, new Position(position.getX(), position.getY()+30)));
-            gamePlayManager.spawnGameObject(new DustExplosion(gameView, gamePlayManager, direction, new Position(position.getX()+75, position.getY()+30)));
-        }
-    }
-
-    @Override
-    public void updatePosition() {
-        position.moveToPosition(targetPosition, speedInPixel);
-    }
-
     @Override
     public String toString() {
         return "Humvee: %s with %d hits left till destruction".formatted(position, hitTolerance);

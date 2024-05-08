@@ -25,7 +25,7 @@ public class Overlay extends GameObject {
     public Overlay(GameView gameView, GamePlayManager gamePlayManager) {
         super(gameView, gamePlayManager);
         size = 40;
-        distanceToBackground = 20;
+        distanceToBackground = 255;
     }
 
     /**

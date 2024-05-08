@@ -40,13 +40,13 @@ public class MainCharacterImpl extends MovingCharacter implements MainCharacter 
         blockImage = MainCharacterBlockImages.DOWN_1;
         distanceToBackground = 100;
 
-        size = 3;
+        size = GameObjectConstants.BLOCKIMAGE_SIZE;
         rotation = 0;
         width = generateWidthFromBlockImage() * size;
         height = generateHeightFromBlockImage() * size;
         hitBoxOffsets(6, 6, -12, -24);
 
-        speedInPixel = gamePlayManager.currentLevel().mainCharacterMovementSpeed;
+        speedInPixel = gamePlayManager.currentLevel().mainCharacterSpeedInPixel;
     }
 
     @Override

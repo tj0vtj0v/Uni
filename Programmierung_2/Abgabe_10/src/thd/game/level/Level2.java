@@ -17,6 +17,6 @@ public class Level2 extends Level {
         worldOffsetColumns = 10;
         worldScale = GameView.WIDTH / (world.split("\n")[0].length() - worldOffsetColumns - 1);
 
-        mainCharacterMovementSpeed = 2;
+        mainCharacterSpeedInPixel = 2;
     }
 }

@@ -42,7 +42,7 @@ public class ShootingBox extends CollidingGameObject implements ShiftableGameObj
         distanceToBackground = 100;
         hitTolerance = 2;
 
-        size = 3;
+        size = GameObjectConstants.BLOCKIMAGE_SIZE;
         rotation = 0;
         width = generateWidthFromBlockImage() * size;
         height = generateHeightFromBlockImage() * size;

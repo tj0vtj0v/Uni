@@ -32,15 +32,15 @@ public class Bullet extends CollidingGameObject implements ShiftableGameObject {
         this.creator = creator;
 
         blockImage = ObjectBlockImages.BULLET;
-        distanceToBackground = 250;
+        distanceToBackground = GameObjectConstants.LAYER_5;
 
-        size = 3;
+        size = GameObjectConstants.BLOCKIMAGE_SIZE;
         rotation = 0;
         width = generateWidthFromBlockImage() * size;
         height = generateHeightFromBlockImage() * size;
         hitBoxOffsets(1, 1, -2, -2);
 
-        speedInPixel = 10;
+        speedInPixel = gamePlayManager.currentLevel().bulletSpeedInPixel;
 
         LinearMovementPattern movementPattern = new LinearMovementPattern(originLocation, position);
         this.position.updateCoordinates(movementPattern.startPosition());

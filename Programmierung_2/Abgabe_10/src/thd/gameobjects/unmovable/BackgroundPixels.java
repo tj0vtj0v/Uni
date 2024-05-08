@@ -4,6 +4,7 @@ import thd.game.level.Level;
 import thd.game.managers.GamePlayManager;
 import thd.game.utilities.GameView;
 import thd.gameobjects.base.GameObject;
+import thd.gameobjects.base.GameObjectConstants;
 import thd.gameobjects.base.ShiftableGameObject;
 
 import java.util.Random;
@@ -25,7 +26,7 @@ public class BackgroundPixels extends GameObject implements ShiftableGameObject 
 
         level = gamePlayManager.currentLevel();
 
-        size = 3;
+        size = GameObjectConstants.BLOCKIMAGE_SIZE;
         rotation = 0;
 
         gamePlayManager.currentLevel();
