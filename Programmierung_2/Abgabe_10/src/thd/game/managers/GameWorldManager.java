@@ -86,15 +86,6 @@ class GameWorldManager extends GamePlayManager {
                         addActivatableGameObject(new Wall(gameView, this, located, position, tile - 47));
                 }
             }
-
-            grantUniqueSeedsForAllRows();
-        }
-    }
-
-    private void grantUniqueSeedsForAllRows() {
-        try {
-            Thread.sleep(2);
-        } catch (InterruptedException ignored) {
         }
     }
 

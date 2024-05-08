@@ -8,9 +8,18 @@ import thd.gameobjects.base.ShiftableGameObject;
 
 import java.util.Random;
 
+/**
+ * Representation of the random Pixels in the background.
+ */
 public class BackgroundPixels extends GameObject implements ShiftableGameObject {
     private final Level level;
 
+    /**
+     * Creates and generates the random Pixel.
+     *
+     * @param gameView        window in which it has to be displayed.
+     * @param gamePlayManager GamePlayManager to manage the game actions.
+     */
     public BackgroundPixels(GameView gameView, GamePlayManager gamePlayManager) {
         super(gameView, gamePlayManager);
 
@@ -31,7 +40,7 @@ public class BackgroundPixels extends GameObject implements ShiftableGameObject 
 
     private String createBackgroundPattern(int length) {
         int blockImageWidth = level.world.split("\n")[0].length() - level.worldOffsetColumns;
-        Random random = new Random(System.currentTimeMillis());
+        Random random = new Random(hashCode());
 
         StringBuilder output = new StringBuilder();
 

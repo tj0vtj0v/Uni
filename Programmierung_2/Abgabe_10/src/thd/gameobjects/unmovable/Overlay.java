@@ -70,6 +70,12 @@ public class Overlay extends GameObject {
         messageShown = false;
     }
 
+
+    /**
+     * The overlay will toggle showing the current message.
+     *
+     * @param message Message to be shown.
+     */
     public void toggleMessage(String message) {
         if (isMessageShown()) {
             stopShowing();

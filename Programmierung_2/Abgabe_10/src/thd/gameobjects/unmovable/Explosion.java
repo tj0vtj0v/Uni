@@ -6,13 +6,13 @@ import thd.gameobjects.base.*;
 import thd.gameobjects.resources.ExplosionBlockImages;
 
 /**
- * ExplosionBlockImages dealing damage after Grenade has flown long enough.
+ * Explosion dealing damage after Grenade has flown long enough.
  */
 public class Explosion extends CollidingGameObject implements ShiftableGameObject {
     private State currentState;
 
     /**
-     * Creates ExplosionBlockImages.
+     * Creates Explosion.
      *
      * @param gameView        window in which it has to be displayed.
      * @param gamePlayManager GamePlayManager to manage the game actions.

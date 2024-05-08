@@ -15,7 +15,7 @@ class RandomMovementPattern extends MovementPattern {
         direction = Direction.DOWN;
     }
 
-    public Direction getDirection() {
+    Direction getDirection() {
         return direction;
     }
 

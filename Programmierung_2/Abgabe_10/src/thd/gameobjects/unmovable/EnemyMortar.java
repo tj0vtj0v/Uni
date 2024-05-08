@@ -67,7 +67,7 @@ public class EnemyMortar extends CollidingGameObject implements ShiftableGameObj
     public boolean tryToActivate(GameObject info) {
         MainCharacterImpl infoObject = (MainCharacterImpl) info;
 
-        return (infoObject).getPosition().verticalDistance(this.position) <= GameView.HEIGHT;
+        return (infoObject).getPosition().verticalDistance(this.position) <= GameView.HEIGHT * 2;
     }
 
     @Override
@@ -83,7 +83,7 @@ public class EnemyMortar extends CollidingGameObject implements ShiftableGameObj
     public void updateStatus() {
         super.updateStatus();
 
-        if (currentState == State.WAITING & (gameView.timer(new Random(System.currentTimeMillis()).nextInt(500, 2000), this))) {
+        if (currentState == State.WAITING & (gameView.timer(new Random(hashCode()).nextInt(500, 2000), this))) {
             switchToNextState();
             if (direction == Direction.RIGHT) {
                 position.left(currentState.leftShiftIfRight * size);

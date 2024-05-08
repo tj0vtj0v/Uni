@@ -16,7 +16,7 @@ import thd.gameobjects.unmovable.Explosion;
  * png textured
  */
 public class Bullet extends CollidingGameObject implements ShiftableGameObject {
-    public final GameObject creator;
+    private final GameObject creator;
 
     /**
      * Crates a new Bullet.
@@ -45,6 +45,15 @@ public class Bullet extends CollidingGameObject implements ShiftableGameObject {
         LinearMovementPattern movementPattern = new LinearMovementPattern(originLocation, position);
         this.position.updateCoordinates(movementPattern.startPosition());
         targetPosition.updateCoordinates(movementPattern.nextTargetPosition());
+    }
+
+    /**
+     * Creator is passed for reasonable collision detection.
+     *
+     * @return creator of the Bullet.
+     */
+    public GameObject getCreator() {
+        return creator;
     }
 
     @Override

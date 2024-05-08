@@ -58,7 +58,7 @@ public class EnemyGunner extends MovingCharacter implements ShiftableGameObject,
 
     @Override
     public void reactToCollisionWith(CollidingGameObject other) {
-        if (other instanceof Bullet && ((Bullet) other).creator != this || other instanceof Explosion) {
+        if (other instanceof Bullet && ((Bullet) other).getCreator() != this || other instanceof Explosion) {
             gamePlayManager.addScorePoints(-1);
             gamePlayManager.destroyGameObject(this);
             gamePlayManager.spawnGameObject(new DeadEnemy(gameView, gamePlayManager, position));
@@ -68,7 +68,7 @@ public class EnemyGunner extends MovingCharacter implements ShiftableGameObject,
     @Override
     public void updateStatus() {
         super.updateStatus();
-        if (gameView.timer(new Random(System.currentTimeMillis()).nextInt(1000, 1500), this)) {
+        if (gameView.timer(new Random(hashCode()).nextInt(1000, 1500), this)) {
             shoot();
         }
     }
@@ -81,7 +81,7 @@ public class EnemyGunner extends MovingCharacter implements ShiftableGameObject,
         if (pathIsBlocked()) {
             position.updateCoordinates(oldPosition);
         }
-        if (gameView.timer(new Random(System.currentTimeMillis()).nextInt(1500, 3000), this)) {
+        if (gameView.timer(new Random(hashCode()).nextInt(1500, 3000), this)) {
             targetPosition.updateCoordinates(movementPattern.nextTargetPosition(getPosition()));
             direction = movementPattern.getDirection();
         }

@@ -10,7 +10,7 @@ class GameManager extends LevelManager {
         super(gameView);
     }
 
-    public void startNewGame() {
+    void startNewGame() {
         Level.difficulty = Difficulty.EASY;
         initializeGame();
     }
@@ -59,7 +59,8 @@ class GameManager extends LevelManager {
     @Override
     protected void initializeLevel() {
         super.initializeLevel();
-        overlay.showMessage("Level %d\n%s".formatted(level.number, level.name), 2);
+
+        overlay.showMessage(level.name, 2);
     }
 
     @Override

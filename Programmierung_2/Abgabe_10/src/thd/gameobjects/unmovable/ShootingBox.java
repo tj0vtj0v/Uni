@@ -76,7 +76,7 @@ public class ShootingBox extends CollidingGameObject implements ShiftableGameObj
         if (currentState == State.NORMAL) {
             if (gamePlayManager.mainCharacterYCoordinate() < position.getY()) {
                 ruin();
-            } else if (gameView.timer(new Random(System.currentTimeMillis()).nextInt(1000, 2000), this)) {
+            } else if (gameView.timer(new Random(hashCode()).nextInt(1000, 2000), this)) {
                 gamePlayManager.spawnGameObject(new Bullet(gameView, gamePlayManager, direction.opposite(), position, this));
             }
         }
@@ -91,7 +91,7 @@ public class ShootingBox extends CollidingGameObject implements ShiftableGameObj
 
     @Override
     public void reactToCollisionWith(CollidingGameObject other) {
-        if (other instanceof Bullet && ((Bullet) other).creator != this) {
+        if (other instanceof Bullet && ((Bullet) other).getCreator() != this) {
             hitTolerance--;
         } else if (other instanceof Explosion) {
             hitTolerance = 0;

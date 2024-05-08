@@ -84,6 +84,11 @@ public class GamePlayManager extends WorldShiftManager {
         return mainCharacter.getAvailableGrenades();
     }
 
+    /**
+     * Method to access the current height of the mainCharacter.
+     *
+     * @return Height of the mainCharacter.
+     */
     public double mainCharacterYCoordinate() {
         return mainCharacter.getPosition().getY();
     }
