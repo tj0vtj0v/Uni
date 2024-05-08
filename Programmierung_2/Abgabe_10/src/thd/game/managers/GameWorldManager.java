@@ -31,6 +31,9 @@ class GameWorldManager extends GamePlayManager {
         spawnGameObject(backgroundPixels);
 
         spawnGameObject(new ScoreBoard(gameView, this));
+
+        overlay = new Overlay(gameView, this);
+        spawnGameObject(overlay);
     }
 
     private void spawnGameObjectsFromWorldString() {

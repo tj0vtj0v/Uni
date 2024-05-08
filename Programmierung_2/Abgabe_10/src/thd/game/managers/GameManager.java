@@ -17,12 +17,28 @@ class GameManager extends LevelManager {
 
     private void gameManagement() {
         if (endOfGame()) {
-            startNewGame();
+            if (!overlay.isMessageShown()) {
+                overlay.showMessage("Game Over");
+            } else if (gameView.timer(2000, this)) {
+                overlay.stopShowing();
+                startNewGame();
+            }
         } else if (endOfLevel()) {
-            switchToNextLevel();
-            initializeLevel();
-        } else if (mainCharacter.isDead() && gameView.timer(2000, this)) {
-            initializeLevel();
+            if (!overlay.isMessageShown()) {
+                overlay.showMessage("Great Job!");
+            } else if (gameView.timer(2000, this)) {
+                overlay.stopShowing();
+                switchToNextLevel();
+                initializeLevel();
+            }
+        } else if (mainCharacter.isDead()) {
+            if (gameView.timer(200, this)) {
+                overlay.toggleMessage("YOU DIED");
+            }
+            if (gameView.timer(2000, this)) {
+                overlay.stopShowing();
+                initializeLevel();
+            }
         }
     }
 
@@ -43,6 +59,7 @@ class GameManager extends LevelManager {
     @Override
     protected void initializeLevel() {
         super.initializeLevel();
+        overlay.showMessage("Level %d\n%s".formatted(level.number, level.name), 2);
     }
 
     @Override

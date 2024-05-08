@@ -70,6 +70,14 @@ public class Overlay extends GameObject {
         messageShown = false;
     }
 
+    public void toggleMessage(String message) {
+        if (isMessageShown()) {
+            stopShowing();
+        } else {
+            showMessage(message);
+        }
+    }
+
     private void centerMessage() {
         String[] lines = message.split("\\R");
         int longestLine = Arrays.stream(lines).mapToInt(String::length).max().orElse(1);

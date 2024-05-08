@@ -160,7 +160,7 @@ public class MainCharacterImpl extends MovingCharacter implements MainCharacter 
     /**
      * Re setter for the direction if a new directional keyInput comes.
      */
-    public void ResetDirection() {
+    public void resetDirection() {
         this.direction = null;
     }
 
