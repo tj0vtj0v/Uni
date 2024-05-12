@@ -7,10 +7,12 @@ import java.util.Random;
  */
 public abstract class MovementPattern implements GameConstants {
     protected final Random random;
+    protected final Position startPosition;
 
 
-    protected MovementPattern() {
-        random = new Random(System.currentTimeMillis());
+    protected MovementPattern(Position startPosition) {
+        random = new Random(System.currentTimeMillis() + startPosition.hashCode());
+        this.startPosition = startPosition;
     }
 
     protected abstract Position startPosition(Position... referencePositions);

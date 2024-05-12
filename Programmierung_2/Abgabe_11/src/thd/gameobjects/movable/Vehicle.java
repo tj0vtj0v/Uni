@@ -18,7 +18,7 @@ public abstract class Vehicle extends CollidingGameObject implements ShiftableGa
 
         size = BLOCK_IMAGE_SIZE;
 
-        LinearMovementPattern movementPattern = new LinearMovementPattern(this.direction.opposite(), position);
+        LinearDirectionMovementPattern movementPattern = new LinearDirectionMovementPattern(this.direction.opposite(), position);
         this.position.updateCoordinates(movementPattern.startPosition());
         targetPosition.updateCoordinates(movementPattern.nextTargetPosition());
     }

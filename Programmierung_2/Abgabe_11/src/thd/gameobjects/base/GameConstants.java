@@ -10,7 +10,7 @@ public interface GameConstants {
     /**
      * Represents a Constant in the Category Game.
      */
-    int LIVES = 3;
+    int LIVES = 999;
     /**
      * Represents a Constant in the Category Game.
      */

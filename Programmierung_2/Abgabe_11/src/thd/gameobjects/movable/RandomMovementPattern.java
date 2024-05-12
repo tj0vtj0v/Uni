@@ -11,7 +11,7 @@ class RandomMovementPattern extends MovementPattern {
     private Direction direction;
 
     RandomMovementPattern(Direction launchSide) {
-        super();
+        super(new Position());
         this.launchSide = launchSide;
         direction = null;
     }

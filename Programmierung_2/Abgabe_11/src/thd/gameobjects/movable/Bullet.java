@@ -42,7 +42,7 @@ public class Bullet extends CollidingGameObject implements ShiftableGameObject {
 
         speedInPixel = gamePlayManager.currentLevel().bulletSpeedInPixel;
 
-        LinearMovementPattern movementPattern = new LinearMovementPattern(originLocation, position);
+        LinearDirectionMovementPattern movementPattern = new LinearDirectionMovementPattern(originLocation, position);
         this.position.updateCoordinates(movementPattern.startPosition());
         targetPosition.updateCoordinates(movementPattern.nextTargetPosition());
     }

@@ -5,14 +5,12 @@ import thd.gameobjects.base.Direction;
 import thd.gameobjects.base.MovementPattern;
 import thd.gameobjects.base.Position;
 
-class LinearMovementPattern extends MovementPattern {
+class LinearDirectionMovementPattern extends MovementPattern {
     private final Direction direction;
-    private final Position startPosition;
 
-    LinearMovementPattern(Direction direction, Position startPosition) {
-        super();
+    LinearDirectionMovementPattern(Direction direction, Position startPosition) {
+        super(startPosition);
         this.direction = direction;
-        this.startPosition = new Position(startPosition);
     }
 
     @Override

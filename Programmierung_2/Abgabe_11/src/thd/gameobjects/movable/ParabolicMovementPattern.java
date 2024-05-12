@@ -7,16 +7,14 @@ import thd.gameobjects.base.Position;
 
 class ParabolicMovementPattern extends MovementPattern {
     private final Direction direction;
-    private final Position startPosition;
     private final int trajectory;
     private final int maximumNumberOfSteps;
     private int steps;
 
     ParabolicMovementPattern(Direction direction, Position startPosition) {
-        super();
+        super(startPosition);
 
         this.direction = direction;
-        this.startPosition = new Position(startPosition);
 
         trajectory = random.nextInt(PARABOLIC_RANDOM_TRAJECTORY_START, PARABOLIC_RANDOM_TRAJECTORY_END);
         maximumNumberOfSteps = random.nextInt(PARABOLIC_RANDOM_STEPS_START, PARABOLIC_RANDOM_STEPS_END);
