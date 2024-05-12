@@ -4,7 +4,6 @@ import thd.game.level.Level;
 import thd.game.utilities.GameView;
 import thd.gameobjects.base.CollidingGameObject;
 import thd.gameobjects.base.GameObject;
-import thd.gameobjects.base.GameConstants;
 import thd.gameobjects.base.Position;
 
 import java.util.ArrayList;

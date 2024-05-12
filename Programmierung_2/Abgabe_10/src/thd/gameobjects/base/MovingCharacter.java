@@ -32,8 +32,6 @@ public class MovingCharacter extends CollidingGameObject {
         width = 0;
         height = 0;
         hitBoxOffsets(0, 0, 0, 0);
-
-        shoot();
     }
 
     /**

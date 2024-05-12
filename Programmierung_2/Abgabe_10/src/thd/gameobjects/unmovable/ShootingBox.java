@@ -8,8 +8,6 @@ import thd.gameobjects.movable.Bullet;
 import thd.gameobjects.movable.Grenade;
 import thd.gameobjects.movable.MainCharacterImpl;
 
-import java.util.Random;
-
 
 /**
  * Representation of the in-game-object 'ShootingBox'.

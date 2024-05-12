@@ -3,7 +3,6 @@ package thd.game.managers;
 import thd.game.level.Difficulty;
 import thd.game.level.Level;
 import thd.game.utilities.GameView;
-import thd.gameobjects.base.GameConstants;
 
 
 class GameManager extends LevelManager {

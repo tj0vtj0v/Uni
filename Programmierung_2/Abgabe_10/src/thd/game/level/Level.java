@@ -41,15 +41,54 @@ public class Level implements GameConstants {
     /**
      * MovementSpeed of MainCharacterImpl.
      */
-    public int mainCharacterSpeedInPixel = DEFAULT_MAIN_CHARACTER_SPEED_IN_PIXEL;
-    public int mainCharacterShotCooldown = DEFAULT_SHOOT_COOLDOWN_IN_MILLISECONDS;
-    public int bulletSpeedInPixel = DEFAULT_BULLET_SPEED_IN_PIXEL;
-    public int grenadeSpeedInPixel = DEFAULT_GRENADE_SPEED_IN_PIXEL;
-    public int enemySpeedInPixel = DEFAULT_ENEMY_SPEED_IN_PIXEL;
-    public int vehicleSpeedInPixel = DEFAULT_VEHICLE_SPEED_IN_PIXEL;
-    public int enemyShotCooldown = DEFAULT_SHOOT_COOLDOWN_IN_MILLISECONDS;
-    public int humveeHitTolerance = DEFAULT_HUMVEE_HIT_TOLERANCE;
-    public int mopedHitTolerance = DEFAULT_MOPED_HIT_TOLERANCE;
-    public int vehicleSpawnDistance = DEFAULT_VEHICLE_SPAWN_DISTANCE;
+    public int mainCharacterSpeedInPixel;
+    /**
+     * Shot Cooldown of MainCharacterImpl.
+     */
+    public int mainCharacterShotCooldown;
+    /**
+     * MovementSpeed of all Bullets.
+     */
+    public int bulletSpeedInPixel;
+    /**
+     * MovementSpeed of all Grenades.
+     */
+    public int grenadeSpeedInPixel;
+    /**
+     * MovementSpeed of Enemy's.
+     */
+    public int enemySpeedInPixel;
+    /**
+     * Shot Cooldown of Enemy's.
+     */
+    public int enemyShotCooldown;
+    /**
+     * MovementSpeed of all Vehicles.
+     */
+    public int vehicleSpeedInPixel;
+    /**
+     * Hit tolerance of the humvee.
+     */
+    public int humveeHitTolerance;
+    /**
+     * Hit tolerance of the moped.
+     */
+    public int mopedHitTolerance;
+    /**
+     * distance to be activated for vehicles.
+     */
+    public int vehicleSpawnDistance;
 
+    Level() {
+        mainCharacterSpeedInPixel = DEFAULT_MAIN_CHARACTER_SPEED_IN_PIXEL;
+        mainCharacterShotCooldown = DEFAULT_SHOOT_COOLDOWN_IN_MILLISECONDS;
+        bulletSpeedInPixel = DEFAULT_BULLET_SPEED_IN_PIXEL;
+        grenadeSpeedInPixel = DEFAULT_GRENADE_SPEED_IN_PIXEL;
+        enemySpeedInPixel = DEFAULT_ENEMY_SPEED_IN_PIXEL;
+        vehicleSpeedInPixel = DEFAULT_VEHICLE_SPEED_IN_PIXEL;
+        enemyShotCooldown = DEFAULT_SHOOT_COOLDOWN_IN_MILLISECONDS;
+        humveeHitTolerance = DEFAULT_HUMVEE_HIT_TOLERANCE;
+        mopedHitTolerance = DEFAULT_MOPED_HIT_TOLERANCE;
+        vehicleSpawnDistance = DEFAULT_VEHICLE_SPAWN_DISTANCE;
+    }
 }

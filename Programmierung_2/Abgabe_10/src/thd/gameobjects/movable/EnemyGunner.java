@@ -6,9 +6,8 @@ import thd.gameobjects.base.*;
 import thd.gameobjects.resources.EnemyGunnerBlockImages;
 import thd.gameobjects.unmovable.DeadEnemy;
 
-import java.lang.constant.Constable;
 import java.util.List;
-import java.util.Random;
+
 
 
 /**
@@ -85,7 +84,6 @@ public class EnemyGunner extends MovingCharacter implements ShiftableGameObject,
     public void updateStatus() {
         super.updateStatus();
 
-        System.out.println(direction);
         if (hitPossible()) {
             shoot();
         }
