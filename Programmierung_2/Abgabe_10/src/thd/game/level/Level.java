@@ -1,11 +1,11 @@
 package thd.game.level;
 
-import thd.gameobjects.base.GameObjectConstants;
+import thd.gameobjects.base.GameConstants;
 
 /**
  * Baseclass of all Levels.
  */
-public class Level implements GameObjectConstants {
+public class Level implements GameConstants {
     /**
      * Constant Representing the Visible Lines on the gameView.
      */

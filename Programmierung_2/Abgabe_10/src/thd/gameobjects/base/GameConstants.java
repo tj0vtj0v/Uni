@@ -5,7 +5,15 @@ import thd.game.utilities.GameView;
 /**
  * Storage class for all constants in the game.
  */
-public interface GameObjectConstants {
+public interface GameConstants {
+    // Game
+    public static final int LIVES = 3;
+    public static final int MAXIMUM_NUMBER_OF_GAME_OBJECTS = 500;
+    public static final int GAME_OVER_DISPLAY_TIME = 2000;
+    public static final int LEVEL_OVER_DISPLAY_TIME = 2000;
+    public static final int DEATH_DISPLAY_TOGGLE_TIME = 200;
+    public static final int DEATH_RESET_DELAY = 3000;
+
     // Display
     public static final char BACKGROUND = 0;
     public static final char LAYER_1 = 50;
@@ -15,6 +23,9 @@ public interface GameObjectConstants {
     public static final char LAYER_5 = 250;
     public static final char FOREGROUND = 255;
     public static final int BLOCK_IMAGE_SIZE = 3;
+    public static final double BACKGROUND_DARK_PIXEL_PROBABILITY = 0.1;
+    public static final int SCOREBOARD_HEIGHT = 80;
+    public static final int SCOREBOARD_FONT_SIZE = 40;
 
     // Animation
     public static final int ANIMATION_SPEED = 50;
@@ -22,10 +33,6 @@ public interface GameObjectConstants {
     // MovingCharacter
     public static final int MOVING_CHARACTER_BULLET_X_OFFSET = BLOCK_IMAGE_SIZE * 2;
     public static final int MOVING_CHARACTER_BULLET_Y_OFFSET = BLOCK_IMAGE_SIZE * 12;
-    public static final int MOVING_CHARACTER_HIT_BOX_X_OFFSET = BLOCK_IMAGE_SIZE * 2;
-    public static final int MOVING_CHARACTER_HIT_BOX_Y_OFFSET = BLOCK_IMAGE_SIZE * 2;
-    public static final int MOVING_CHARACTER_HIT_BOX_WIDTH_OFFSET = BLOCK_IMAGE_SIZE * -4;
-    public static final int MOVING_CHARACTER_HIT_BOX_HEIGHT_OFFSET = BLOCK_IMAGE_SIZE * -8;
     public static final int ENEMY_CHANGE_DIRECTION_INTERVAL_START_IN_MILLISECONDS = 1500;
     public static final int ENEMY_CHANGE_DIRECTION_INTERVAL_END_IN_MILLISECONDS = 3000;
 
@@ -39,18 +46,15 @@ public interface GameObjectConstants {
     public static final int MORTAR_SHOOTING_TIME = 400;
     public static final int SHOOTING_BOX_START_SHOOTING_TIME = 500;
     public static final int SHOOTING_BOX_END_SHOOTING_TIME = 2000;
+    public static final int SHOOTING_BOX_EXPLOSION_X_OFFSET = BLOCK_IMAGE_SIZE * 4;
+    public static final int SHOOTING_BOX_EXPLOSION_Y_OFFSET = BLOCK_IMAGE_SIZE * 15;
+    public static final int SHOOTING_BOX_RUIN_Y_OFFSET = BLOCK_IMAGE_SIZE * 11;
+    public static final int SHOOTING_BOX_BULLET_X_OFFSET = BLOCK_IMAGE_SIZE * 10;
+    public static final int SHOOTING_BOX_BULLET_Y_OFFSET = BLOCK_IMAGE_SIZE * 10;
 
     // Vehicles
     public static final int VEHICLE_EXPLOSION_Y_OFFSET = BLOCK_IMAGE_SIZE * 10;
     public static final int VEHICLE_EXPLOSION_2_X_OFFSET = BLOCK_IMAGE_SIZE * 25;
-    public static final int HUMVEE_HIT_BOX_X_OFFSET = 0;
-    public static final int HUMVEE_HIT_BOX_Y_OFFSET = BLOCK_IMAGE_SIZE * 1;
-    public static final int HUMVEE_HIT_BOX_WIDTH_OFFSET = BLOCK_IMAGE_SIZE * -4;
-    public static final int HUMVEE_HIT_BOX_HEIGHT_OFFSET = BLOCK_IMAGE_SIZE * -6;
-    public static final int MOPED_HIT_BOX_X_OFFSET = BLOCK_IMAGE_SIZE * 1;
-    public static final int MOPED_HIT_BOX_Y_OFFSET = BLOCK_IMAGE_SIZE * 9;
-    public static final int MOPED_HIT_BOX_WIDTH_OFFSET = BLOCK_IMAGE_SIZE * -2;
-    public static final int MOPED_HIT_BOX_HEIGHT_OFFSET = BLOCK_IMAGE_SIZE * -15;
 
     // MovementPattern
     public static final int PARABOLIC_RANDOM_TRAJECTORY_START = 10;
@@ -59,6 +63,10 @@ public interface GameObjectConstants {
     public static final int PARABOLIC_RANDOM_STEPS_END = 30;
     public static final int PARABOLIC_SPAWN_LEFT_X_OFFSET = BLOCK_IMAGE_SIZE * -9;
     public static final int PARABOLIC_SPAWN_RIGHT_X_OFFSET = BLOCK_IMAGE_SIZE * 18;
+    public static final int RANDOM_GLOBAL_SPAWN_LEFT_OFFSET = -30;
+    public static final int RANDOM_GLOBAL_SPAWN_RIGHT_OFFSET = 20;
+    public static final int RANDOM_START_TARGET_DISTANCE = 150;
+    public static final int RANDOM_END_TARGET_DISTANCE = 500;
 
     // Default
     public static final int DEFAULT_SHOOT_COOLDOWN_IN_MILLISECONDS = 300;

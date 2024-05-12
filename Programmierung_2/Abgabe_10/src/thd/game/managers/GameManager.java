@@ -3,6 +3,7 @@ package thd.game.managers;
 import thd.game.level.Difficulty;
 import thd.game.level.Level;
 import thd.game.utilities.GameView;
+import thd.gameobjects.base.GameConstants;
 
 
 class GameManager extends LevelManager {
@@ -19,23 +20,23 @@ class GameManager extends LevelManager {
         if (endOfGame()) {
             if (!overlay.isMessageShown()) {
                 overlay.showMessage("Game Over");
-            } else if (gameView.timer(2000, this)) {
+            } else if (gameView.timer(GAME_OVER_DISPLAY_TIME, this)) {
                 overlay.stopShowing();
                 startNewGame();
             }
         } else if (endOfLevel()) {
             if (!overlay.isMessageShown()) {
                 overlay.showMessage("Great Job!");
-            } else if (gameView.timer(2000, this)) {
+            } else if (gameView.timer(LEVEL_OVER_DISPLAY_TIME, this)) {
                 overlay.stopShowing();
                 switchToNextLevel();
                 initializeLevel();
             }
         } else if (mainCharacter.isDead()) {
-            if (gameView.timer(200, this)) {
+            if (gameView.timer(DEATH_DISPLAY_TOGGLE_TIME, this)) {
                 overlay.toggleMessage("YOU DIED");
             }
-            if (gameView.timer(2000, this)) {
+            if (gameView.timer(DEATH_RESET_DELAY, this)) {
                 overlay.stopShowing();
                 initializeLevel();
             }

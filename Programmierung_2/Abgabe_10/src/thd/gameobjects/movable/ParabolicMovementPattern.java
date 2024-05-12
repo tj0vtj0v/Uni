@@ -2,7 +2,6 @@ package thd.gameobjects.movable;
 
 import thd.game.managers.ExplosionCountdownExpiredException;
 import thd.gameobjects.base.Direction;
-import thd.gameobjects.base.GameObjectConstants;
 import thd.gameobjects.base.MovementPattern;
 import thd.gameobjects.base.Position;
 
@@ -32,7 +31,7 @@ class ParabolicMovementPattern extends MovementPattern {
             startPosition.right(PARABOLIC_SPAWN_RIGHT_X_OFFSET);
         }
 
-        return new Position(startPosition);
+        return startPosition;
     }
 
     @Override

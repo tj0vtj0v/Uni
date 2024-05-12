@@ -1,12 +1,13 @@
 package thd.game.managers;
 
 import thd.gameobjects.base.CollidingGameObject;
+import thd.gameobjects.base.GameConstants;
 import thd.gameobjects.base.GameObject;
 
 import java.util.LinkedList;
 import java.util.List;
 
-class CollisionManager {
+class CollisionManager implements GameConstants {
 
     private final List<CollidingGameObject> collidingGameObjects;
 

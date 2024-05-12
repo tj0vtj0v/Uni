@@ -38,7 +38,7 @@ public class Moped extends Vehicle {
         rotation = 0;
         width = generateWidthFromBlockImage() * size;
         height = generateHeightFromBlockImage() * size;
-        hitBoxOffsets(MOPED_HIT_BOX_X_OFFSET, MOPED_HIT_BOX_Y_OFFSET, MOPED_HIT_BOX_WIDTH_OFFSET, MOPED_HIT_BOX_HEIGHT_OFFSET);
+        hitBoxOffsets(size, size * 9, size * -2, size * -15);
 
         speedInPixel = gamePlayManager.currentLevel().vehicleSpeedInPixel;
     }

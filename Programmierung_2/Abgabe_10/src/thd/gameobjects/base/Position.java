@@ -183,7 +183,7 @@ public class Position implements Comparable<Position> {
      * Calculation of distance to any other given Position only considering the vertical Axis.
      *
      * @param otherPosition Position to calculate distance from.
-     * @return distance to the otherPosition only considering the vertical Axis.
+     * @return distance to the otherPosition only considering the vertical Axis, negative if other position is greater.
      */
     public double verticalDistance(Position otherPosition) {
         return y - otherPosition.y;
@@ -193,7 +193,7 @@ public class Position implements Comparable<Position> {
      * Calculation of distance to any other given Position only considering the horizontal Axis.
      *
      * @param otherPosition Position to calculate distance from.
-     * @return distance to the otherPosition only considering the horizontal Axis.
+     * @return distance to the otherPosition only considering the horizontal Axis, negative if other position is greater.
      */
     public double horizontalDistance(Position otherPosition) {
         return x - otherPosition.x;

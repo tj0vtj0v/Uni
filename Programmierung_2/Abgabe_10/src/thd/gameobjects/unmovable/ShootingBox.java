@@ -47,13 +47,15 @@ public class ShootingBox extends CollidingGameObject implements ShiftableGameObj
         width = generateWidthFromBlockImage() * size;
         height = generateHeightFromBlockImage() * size;
         hitBoxOffsets(size * 2, size * 2, size * -4, size * -8);
+
+        random.setSeed(hashCode());
     }
 
     private void ruin() {
         currentState = State.RUINED;
 
         gamePlayManager.addScorePoints(-1);
-        gamePlayManager.spawnGameObject(new DustExplosion(gameView, gamePlayManager, direction, new Position(position.getX() + 12, position.getY() + 45)));
+        gamePlayManager.spawnGameObject(new DustExplosion(gameView, gamePlayManager, direction, new Position(position.getX() + SHOOTING_BOX_EXPLOSION_X_OFFSET, position.getY() + SHOOTING_BOX_EXPLOSION_Y_OFFSET)));
 
         if (this.direction == Direction.LEFT) {
             blockImage = currentState.display;
@@ -61,7 +63,7 @@ public class ShootingBox extends CollidingGameObject implements ShiftableGameObj
             blockImage = mirrorBlockImage(currentState.display);
         }
 
-        position.down(32);
+        position.down(SHOOTING_BOX_RUIN_Y_OFFSET);
         distanceToBackground = LAYER_1;
         width = 0;
         height = 0;
@@ -73,10 +75,11 @@ public class ShootingBox extends CollidingGameObject implements ShiftableGameObj
     public void updateStatus() {
         super.updateStatus();
         if (currentState == State.NORMAL) {
-            if (gamePlayManager.mainCharacterYCoordinate() < position.getY()) {
+            if (gamePlayManager.mainCharacterPosition().getY() < position.getY()) {
                 ruin();
-            } else if (gameView.timer(new Random(hashCode()).nextInt(SHOOTING_BOX_START_SHOOTING_TIME, SHOOTING_BOX_END_SHOOTING_TIME), this)) {
-                gamePlayManager.spawnGameObject(new Bullet(gameView, gamePlayManager, direction.opposite(), new Position(position.getX() + 30, position.getY() + 30), this));
+            } else if (gameView.timer(random.nextInt(SHOOTING_BOX_START_SHOOTING_TIME, SHOOTING_BOX_END_SHOOTING_TIME), this)) {
+                // TODO advance shoot direction and bullet types
+                gamePlayManager.spawnGameObject(new Bullet(gameView, gamePlayManager, direction.opposite(), new Position(position.getX() + SHOOTING_BOX_BULLET_X_OFFSET, position.getY() + SHOOTING_BOX_BULLET_Y_OFFSET), this));
             }
         }
     }

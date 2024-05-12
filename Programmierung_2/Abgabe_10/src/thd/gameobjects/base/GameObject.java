@@ -4,15 +4,17 @@ import thd.game.managers.GamePlayManager;
 import thd.game.utilities.GameView;
 
 import java.util.Objects;
+import java.util.Random;
 
 /**
  * Represents an object in the game.
  */
-public abstract class GameObject implements GameObjectConstants{
+public abstract class GameObject implements GameConstants {
     protected final GameView gameView;
     protected final GamePlayManager gamePlayManager;
     protected final Position position;
     protected final Position targetPosition;
+    protected final Random random;
     protected String blockImage;
     protected char distanceToBackground;
     protected double speedInPixel;
@@ -33,6 +35,8 @@ public abstract class GameObject implements GameObjectConstants{
 
         position = new Position();
         targetPosition = new Position();
+
+        random = new Random(System.currentTimeMillis());
     }
 
     protected int generateWidthFromBlockImage() {

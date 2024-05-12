@@ -52,6 +52,8 @@ public class EnemyMortar extends CollidingGameObject implements ShiftableGameObj
         width = generateWidthFromBlockImage() * size;
         height = generateHeightFromBlockImage() * size;
         hitBoxOffsets(size * 1, size * 1, size * -2, size * -2);
+
+        random.setSeed(hashCode());
     }
 
     private void shoot() {
@@ -83,7 +85,7 @@ public class EnemyMortar extends CollidingGameObject implements ShiftableGameObj
     public void updateStatus() {
         super.updateStatus();
 
-        if (currentState == State.WAITING & (gameView.timer(new Random(hashCode()).nextInt(MORTAR_START_WAITING_TIME, MORTAR_END_WAITING_TIME), this))) {
+        if (currentState == State.WAITING & (gameView.timer(random.nextInt(MORTAR_START_WAITING_TIME, MORTAR_END_WAITING_TIME), this))) {
             switchToNextState();
             if (direction == Direction.RIGHT) {
                 position.left(currentState.leftShiftIfRight * size);

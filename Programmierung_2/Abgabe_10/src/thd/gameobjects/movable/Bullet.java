@@ -38,7 +38,7 @@ public class Bullet extends CollidingGameObject implements ShiftableGameObject {
         rotation = 0;
         width = generateWidthFromBlockImage() * size;
         height = generateHeightFromBlockImage() * size;
-        hitBoxOffsets(1, 1, -2, -2);
+        hitBoxOffsets(size / 3, size / 3, size * -2 / 3, size * -2 / 3);
 
         speedInPixel = gamePlayManager.currentLevel().bulletSpeedInPixel;
 

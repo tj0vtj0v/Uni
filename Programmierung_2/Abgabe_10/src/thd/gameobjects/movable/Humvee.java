@@ -37,7 +37,7 @@ public class Humvee extends Vehicle {
         rotation = 0;
         width = generateWidthFromBlockImage() * size;
         height = generateHeightFromBlockImage() * size;
-        hitBoxOffsets(HUMVEE_HIT_BOX_X_OFFSET, HUMVEE_HIT_BOX_Y_OFFSET, HUMVEE_HIT_BOX_WIDTH_OFFSET, HUMVEE_HIT_BOX_HEIGHT_OFFSET);
+        hitBoxOffsets(0, size, size * -4, size * -6);
 
         speedInPixel = gamePlayManager.currentLevel().vehicleSpeedInPixel;
     }

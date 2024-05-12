@@ -13,7 +13,7 @@ class RandomMovementPattern extends MovementPattern {
     RandomMovementPattern(Direction launchSide) {
         super();
         this.launchSide = launchSide;
-        direction = Direction.DOWN;
+        direction = null;
     }
 
     Direction getDirection() {
@@ -23,16 +23,16 @@ class RandomMovementPattern extends MovementPattern {
     @Override
     protected Position startPosition(Position... referencePositions) {
         if (launchSide == Direction.LEFT) {
-            return new Position(random.nextInt(-50, -30), referencePositions[0].getY());
+            return new Position(RANDOM_GLOBAL_SPAWN_LEFT_OFFSET, referencePositions[0].getY());
         } else {
-            return new Position(GameView.WIDTH + random.nextInt(5, 25), referencePositions[0].getY());
+            return new Position(GameView.WIDTH + RANDOM_GLOBAL_SPAWN_RIGHT_OFFSET, referencePositions[0].getY());
         }
     }
 
     @Override
     protected Position nextTargetPosition(Position... referencePositions) {
         Position targetPosition = new Position(referencePositions[0]);
-        int distance = random.nextInt(150, 500);
+        int distance = random.nextInt(RANDOM_START_TARGET_DISTANCE, RANDOM_END_TARGET_DISTANCE);
         direction = Direction.values()[random.nextInt(Direction.values().length)];
 
         switch (direction) {

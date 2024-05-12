@@ -2,13 +2,14 @@ package thd.game.managers;
 
 import thd.game.level.Level;
 import thd.game.utilities.GameView;
+import thd.gameobjects.base.GameConstants;
 import thd.gameobjects.movable.*;
 import thd.gameobjects.unmovable.Overlay;
 
 import java.awt.event.KeyEvent;
 import java.util.Arrays;
 
-class UserControlledGameObjectPool {
+class UserControlledGameObjectPool implements GameConstants {
 
     protected final GameView gameView;
     protected Level level;

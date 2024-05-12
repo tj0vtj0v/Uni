@@ -185,7 +185,7 @@ public class MainCharacterImpl extends MovingCharacter implements MainCharacter 
 
     @Override
     protected boolean pathIsBlocked() {
-        boolean outOfGameView = position.getX() + 1 < 0 || position.getX() - 1 > GameView.WIDTH - width || position.getY() - 1 > GameView.HEIGHT - height - 80;
+        boolean outOfGameView = position.getX() + 1 < 0 || position.getX() - 1 > GameView.WIDTH - width || position.getY() - 1 > GameView.HEIGHT - height - SCOREBOARD_HEIGHT;
         return outOfGameView || super.pathIsBlocked() || dead;
     }
 

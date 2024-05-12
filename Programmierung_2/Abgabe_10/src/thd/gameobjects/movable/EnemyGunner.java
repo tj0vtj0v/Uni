@@ -20,6 +20,7 @@ import java.util.Random;
  */
 public class EnemyGunner extends MovingCharacter implements ShiftableGameObject, ActivatableGameObject<GameObject> {
     private final RandomMovementPattern movementPattern;
+    private int changeDirectionInterval;
 
     /**
      * Creates Enemy Gunner with gameView window of presence.
@@ -41,13 +42,27 @@ public class EnemyGunner extends MovingCharacter implements ShiftableGameObject,
         rotation = 0;
         width = generateWidthFromBlockImage() * size;
         height = generateHeightFromBlockImage() * size;
-        hitBoxOffsets(MOVING_CHARACTER_HIT_BOX_X_OFFSET, MOVING_CHARACTER_HIT_BOX_Y_OFFSET, MOVING_CHARACTER_HIT_BOX_WIDTH_OFFSET, MOVING_CHARACTER_HIT_BOX_HEIGHT_OFFSET);
+        hitBoxOffsets(size * 2, size * 2, size * -4, size * -8);
 
         speedInPixel = gamePlayManager.currentLevel().enemySpeedInPixel;
 
         movementPattern = new RandomMovementPattern(location);
         this.position.updateCoordinates(movementPattern.startPosition(getPosition()));
+        random.setSeed(hashCode());
         targetPosition.updateCoordinates(movementPattern.nextTargetPosition(getPosition()));
+
+        changeDirectionInterval = random.nextInt(ENEMY_CHANGE_DIRECTION_INTERVAL_START_IN_MILLISECONDS, ENEMY_CHANGE_DIRECTION_INTERVAL_END_IN_MILLISECONDS);
+    }
+
+    private boolean hitPossible() {
+        boolean hasVertical = direction.name().contains("UP") || direction.name().contains("DOWN");
+        boolean matchingUp = direction.name().contains("UP") && (position.getY() > gamePlayManager.mainCharacterPosition().getY());
+        boolean matchingDown = direction.name().contains("DOWN") && (position.getY() < gamePlayManager.mainCharacterPosition().getY());
+        boolean hasHorizontal = direction.name().contains("RIGHT") || direction.name().contains("LEFT");
+        boolean matchingRight = direction.name().contains("RIGHT") && (position.getX() < gamePlayManager.mainCharacterPosition().getX());
+        boolean matchingLeft = direction.name().contains("LEFT") && (position.getX() > gamePlayManager.mainCharacterPosition().getX());
+
+        return (!hasVertical || matchingUp || matchingDown) && (!hasHorizontal || matchingRight || matchingLeft);
     }
 
     @Override
@@ -70,8 +85,8 @@ public class EnemyGunner extends MovingCharacter implements ShiftableGameObject,
     public void updateStatus() {
         super.updateStatus();
 
-        // TODO implement better shoot mechanic
-        if (gameView.timer(new Random(hashCode()).nextInt(1000, 1500), this)) {
+        System.out.println(direction);
+        if (hitPossible()) {
             shoot();
         }
     }
@@ -84,9 +99,11 @@ public class EnemyGunner extends MovingCharacter implements ShiftableGameObject,
         if (pathIsBlocked()) {
             position.updateCoordinates(oldPosition);
         }
-        if (gameView.timer(new Random(hashCode()).nextInt(ENEMY_CHANGE_DIRECTION_INTERVAL_START_IN_MILLISECONDS, ENEMY_CHANGE_DIRECTION_INTERVAL_END_IN_MILLISECONDS), this)) {
+        if (gameView.timer(changeDirectionInterval, this)) {
             targetPosition.updateCoordinates(movementPattern.nextTargetPosition(getPosition()));
             direction = movementPattern.getDirection();
+
+            changeDirectionInterval = random.nextInt(ENEMY_CHANGE_DIRECTION_INTERVAL_START_IN_MILLISECONDS, ENEMY_CHANGE_DIRECTION_INTERVAL_END_IN_MILLISECONDS);
         }
     }
 

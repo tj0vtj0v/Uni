@@ -4,7 +4,6 @@ package thd.gameobjects.unmovable;
 import thd.game.managers.GamePlayManager;
 import thd.game.utilities.GameView;
 import thd.gameobjects.base.GameObject;
-import thd.gameobjects.base.GameObjectConstants;
 
 import java.awt.*;
 
@@ -28,8 +27,8 @@ public class ScoreBoard extends GameObject {
 
         distanceToBackground = FOREGROUND;
 
-        height = 80;
-        size = 40;
+        height = SCOREBOARD_HEIGHT;
+        size = SCOREBOARD_FONT_SIZE;
 
         position.updateCoordinates(0, GameView.HEIGHT);
         localYZero = GameView.HEIGHT - height;
@@ -55,7 +54,7 @@ public class ScoreBoard extends GameObject {
                 new Color(148, 209, 90),
                 rotation);
         gameView.addTextToCanvas(
-                "GRENADES %d".formatted(gamePlayManager.availableGrenades()),
+                "BOOMS %d".formatted(gamePlayManager.availableGrenades()),
                 GameView.WIDTH / 1.8,
                 localYZero + (height - size) / 2,
                 size,

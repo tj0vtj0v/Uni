@@ -4,6 +4,8 @@ import thd.game.level.Level;
 import thd.game.utilities.GameView;
 import thd.gameobjects.base.CollidingGameObject;
 import thd.gameobjects.base.GameObject;
+import thd.gameobjects.base.GameConstants;
+import thd.gameobjects.base.Position;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -12,7 +14,6 @@ import java.util.List;
  * Manages the whole plot of the game.
  */
 public class GamePlayManager extends WorldShiftManager {
-    static final int LIVES = 3;
     private final GameObjectManager gameObjectManager;
     final List<CollidingGameObject> collidingGameObjectsForPathDecision;
 
@@ -85,12 +86,12 @@ public class GamePlayManager extends WorldShiftManager {
     }
 
     /**
-     * Method to access the current height of the mainCharacter.
+     * Method to access the current position of the mainCharacter.
      *
-     * @return Height of the mainCharacter.
+     * @return Position of the mainCharacter.
      */
-    public double mainCharacterYCoordinate() {
-        return mainCharacter.getPosition().getY();
+    public Position mainCharacterPosition() {
+        return mainCharacter.getPosition();
     }
 
     /**
@@ -113,7 +114,7 @@ public class GamePlayManager extends WorldShiftManager {
 
 
     /**
-     * Method that initiates the gameOver sequence TODO.
+     * TODO Method that initiates the gameOver sequence.
      *
      * @param success determines if the game war cleared or failed.
      */

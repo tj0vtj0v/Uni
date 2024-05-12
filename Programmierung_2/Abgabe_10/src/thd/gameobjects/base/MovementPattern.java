@@ -5,7 +5,7 @@ import java.util.Random;
 /**
  * Base class for all Movement Patterns.
  */
-public abstract class MovementPattern implements GameObjectConstants{
+public abstract class MovementPattern implements GameConstants {
     protected final Random random;
 
 

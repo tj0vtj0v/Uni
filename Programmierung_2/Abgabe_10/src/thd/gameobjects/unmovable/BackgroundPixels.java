@@ -4,7 +4,6 @@ import thd.game.level.Level;
 import thd.game.managers.GamePlayManager;
 import thd.game.utilities.GameView;
 import thd.gameobjects.base.GameObject;
-import thd.gameobjects.base.GameObjectConstants;
 import thd.gameobjects.base.ShiftableGameObject;
 
 import java.util.Random;
@@ -47,7 +46,7 @@ public class BackgroundPixels extends GameObject implements ShiftableGameObject 
 
         for (int row = 0; row < (length * level.worldScale / size); row++) {
             for (int col = 0; col < (blockImageWidth * level.worldScale / size); col++) {
-                output.append(random.nextInt(10) == 0 ? "0" : "-");
+                output.append(random.nextInt((int) (1 / BACKGROUND_DARK_PIXEL_PROBABILITY)) == 0 ? "0" : "-");
             }
             output.append("\n");
         }
