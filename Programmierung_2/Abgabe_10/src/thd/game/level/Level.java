@@ -1,11 +1,11 @@
 package thd.game.level;
 
-import thd.game.utilities.GameView;
+import thd.gameobjects.base.GameObjectConstants;
 
 /**
  * Baseclass of all Levels.
  */
-public class Level {
+public class Level implements GameObjectConstants {
     /**
      * Constant Representing the Visible Lines on the gameView.
      */
@@ -41,14 +41,15 @@ public class Level {
     /**
      * MovementSpeed of MainCharacterImpl.
      */
-    public int mainCharacterSpeedInPixel = 2;
-    public int bulletSpeedInPixel = 10;
-    public int grenadeSpeedInPixel = 8;
-    public int enemySpeedInPixel = 2;
-    public int humveeSpeedInPixel = 5;
-    public int enemyShotCooldown = 500;
-    public int humveeHitTolerance = 1;
-    public int mopedHitTolerance = 1;
-    public int vehicleLaunchDistance = GameView.HEIGHT/2;
+    public int mainCharacterSpeedInPixel = DEFAULT_MAIN_CHARACTER_SPEED_IN_PIXEL;
+    public int mainCharacterShotCooldown = DEFAULT_SHOOT_COOLDOWN_IN_MILLISECONDS;
+    public int bulletSpeedInPixel = DEFAULT_BULLET_SPEED_IN_PIXEL;
+    public int grenadeSpeedInPixel = DEFAULT_GRENADE_SPEED_IN_PIXEL;
+    public int enemySpeedInPixel = DEFAULT_ENEMY_SPEED_IN_PIXEL;
+    public int vehicleSpeedInPixel = DEFAULT_VEHICLE_SPEED_IN_PIXEL;
+    public int enemyShotCooldown = DEFAULT_SHOOT_COOLDOWN_IN_MILLISECONDS;
+    public int humveeHitTolerance = DEFAULT_HUMVEE_HIT_TOLERANCE;
+    public int mopedHitTolerance = DEFAULT_MOPED_HIT_TOLERANCE;
+    public int vehicleSpawnDistance = DEFAULT_VEHICLE_SPAWN_DISTANCE;
 
 }

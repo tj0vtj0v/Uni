@@ -8,7 +8,7 @@ import java.util.Objects;
 /**
  * Represents an object in the game.
  */
-public abstract class GameObject {
+public abstract class GameObject implements GameObjectConstants{
     protected final GameView gameView;
     protected final GamePlayManager gamePlayManager;
     protected final Position position;
@@ -114,13 +114,13 @@ public abstract class GameObject {
     }
 
     protected String mirrorBlockImage(String originalBlockImage) {
-        StringBuilder mirroredBlockimage = new StringBuilder();
+        StringBuilder mirroredBlockImage = new StringBuilder();
 
         for (String originalLine : originalBlockImage.split("\n")) {
-            mirroredBlockimage.append(new StringBuilder(originalLine).reverse().append("\n"));
+            mirroredBlockImage.append(new StringBuilder(originalLine).reverse().append("\n"));
         }
 
-        return mirroredBlockimage.toString();
+        return mirroredBlockImage.toString();
     }
 
     @Override

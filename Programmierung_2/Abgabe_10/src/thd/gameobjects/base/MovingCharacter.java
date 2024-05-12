@@ -3,6 +3,8 @@ package thd.gameobjects.base;
 import thd.game.managers.GamePlayManager;
 import thd.game.utilities.GameView;
 import thd.gameobjects.movable.Bullet;
+import thd.gameobjects.movable.Vehicle;
+import thd.gameobjects.unmovable.Explosion;
 
 import java.util.List;
 
@@ -41,8 +43,12 @@ public class MovingCharacter extends CollidingGameObject {
         direction = direction == null ? Direction.DOWN : direction;
 
         if (gameView.timer(shotCooldownInMilliseconds, this)) {
-            gamePlayManager.spawnGameObject(new Bullet(gameView, gamePlayManager, direction, new Position(position.getX() + GameObjectConstants.MOVING_CHARACTER_BULLET_X_OFFSET, position.getY() + GameObjectConstants.MOVING_CHARACTER_BULLET_Y_OFFSET), this));
+            gamePlayManager.spawnGameObject(new Bullet(gameView, gamePlayManager, direction, new Position(position.getX() + MOVING_CHARACTER_BULLET_X_OFFSET, position.getY() + MOVING_CHARACTER_BULLET_Y_OFFSET), this));
         }
+    }
+
+    protected boolean fatallyHit(CollidingGameObject other) {
+        return other instanceof Bullet && ((Bullet) other).getCreator() != this || other instanceof Explosion || other instanceof Vehicle;
     }
 
     @Override

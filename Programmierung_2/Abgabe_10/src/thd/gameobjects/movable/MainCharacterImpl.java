@@ -6,7 +6,6 @@ import thd.game.utilities.GameView;
 import thd.gameobjects.base.*;
 import thd.gameobjects.resources.MainCharacterBlockImages;
 import thd.gameobjects.unmovable.AmmoBox;
-import thd.gameobjects.unmovable.Explosion;
 
 import java.util.List;
 import java.util.Random;
@@ -34,13 +33,14 @@ public class MainCharacterImpl extends MovingCharacter implements MainCharacter 
      */
     public MainCharacterImpl(GameView gameView, GamePlayManager gamePlayManager, Direction direction, Position position, List<CollidingGameObject> collidingGameObjectsForPathDecision) {
         super(gameView, gamePlayManager, direction, position, collidingGameObjectsForPathDecision);
+        shotCooldownInMilliseconds = gamePlayManager.currentLevel().mainCharacterShotCooldown;
         availableGrenades = 5;
         dead = false;
 
         blockImage = MainCharacterBlockImages.DOWN_1;
-        distanceToBackground = 100;
+        distanceToBackground = LAYER_2;
 
-        size = GameObjectConstants.BLOCKIMAGE_SIZE;
+        size = BLOCK_IMAGE_SIZE;
         rotation = 0;
         width = generateWidthFromBlockImage() * size;
         height = generateHeightFromBlockImage() * size;
@@ -51,7 +51,7 @@ public class MainCharacterImpl extends MovingCharacter implements MainCharacter 
 
     @Override
     public void reactToCollisionWith(CollidingGameObject other) {
-        if ((other instanceof Bullet && ((Bullet) other).getCreator() != this) || other instanceof Explosion) {
+        if (fatallyHit(other)) {
             try {
                 if (!dead) {
                     gamePlayManager.reduceLive();

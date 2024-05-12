@@ -33,20 +33,20 @@ public class Tree extends CollidingGameObject implements ShiftableGameObject, Ac
         } else {
             blockImage = mirrorBlockImage(ObjectBlockImages.TREE);
         }
-        distanceToBackground = 100;
+        distanceToBackground = LAYER_2;
 
-        size = GameObjectConstants.BLOCKIMAGE_SIZE;
+        size = BLOCK_IMAGE_SIZE;
         rotation = 0;
         width = generateWidthFromBlockImage() * size;
         height = generateHeightFromBlockImage() * size;
-        hitBoxOffsets(18, 63, -36, -90);
+        hitBoxOffsets(size * 6, size * 21, size * -12, size * -30);
     }
 
     @Override
     public boolean tryToActivate(GameObject info) {
         MainCharacterImpl infoObject = (MainCharacterImpl) info;
 
-        return (infoObject).getPosition().verticalDistance(this.position) <= GameView.HEIGHT;
+        return (infoObject).getPosition().verticalDistance(this.position) <= DEFAULT_SPAWN_DISTANCE;
     }
 
     @Override

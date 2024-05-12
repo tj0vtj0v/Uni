@@ -2,6 +2,7 @@ package thd.gameobjects.movable;
 
 import thd.game.managers.ExplosionCountdownExpiredException;
 import thd.gameobjects.base.Direction;
+import thd.gameobjects.base.GameObjectConstants;
 import thd.gameobjects.base.MovementPattern;
 import thd.gameobjects.base.Position;
 
@@ -18,17 +19,17 @@ class ParabolicMovementPattern extends MovementPattern {
         this.direction = direction;
         this.startPosition = new Position(startPosition);
 
-        trajectory = random.nextInt(20, 30);
-        maximumNumberOfSteps = random.nextInt(20, 30);
+        trajectory = random.nextInt(PARABOLIC_RANDOM_TRAJECTORY_START, PARABOLIC_RANDOM_TRAJECTORY_END);
+        maximumNumberOfSteps = random.nextInt(PARABOLIC_RANDOM_STEPS_START, PARABOLIC_RANDOM_STEPS_END);
         steps = 0;
     }
 
     @Override
     protected Position startPosition(Position... referencePositions) {
         if (direction == Direction.LEFT) {
-            startPosition.left(27);
+            startPosition.right(PARABOLIC_SPAWN_LEFT_X_OFFSET);
         } else {
-            startPosition.right(54);
+            startPosition.right(PARABOLIC_SPAWN_RIGHT_X_OFFSET);
         }
 
         return new Position(startPosition);

@@ -29,20 +29,20 @@ public class Stone extends CollidingGameObject implements ShiftableGameObject, A
         super(gameView, gamePlayManager, location, position);
 
         blockImage = ObjectBlockImages.STONE;
-        distanceToBackground = 100;
+        distanceToBackground = LAYER_2;
 
-        size = GameObjectConstants.BLOCKIMAGE_SIZE;
+        size = BLOCK_IMAGE_SIZE;
         rotation = 0;
         width = generateWidthFromBlockImage() * size;
         height = generateHeightFromBlockImage() * size;
-        hitBoxOffsets(3, 6, -6, -18);
+        hitBoxOffsets(size * 1, size * 2, size * -2, size * -6);
     }
 
     @Override
     public boolean tryToActivate(GameObject info) {
         MainCharacterImpl infoObject = (MainCharacterImpl) info;
 
-        return (infoObject).getPosition().verticalDistance(this.position) <= GameView.HEIGHT;
+        return (infoObject).getPosition().verticalDistance(this.position) <= DEFAULT_SPAWN_DISTANCE;
     }
 
     @Override

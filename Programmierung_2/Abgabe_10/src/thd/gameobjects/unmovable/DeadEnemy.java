@@ -27,9 +27,9 @@ public class DeadEnemy extends GameObject implements ShiftableGameObject {
         blockImage = currentState.display;
         animationRepetitions = 0;
 
-        distanceToBackground = 100;
+        distanceToBackground = LAYER_2;
 
-        size = GameObjectConstants.BLOCKIMAGE_SIZE;
+        size = BLOCK_IMAGE_SIZE;
         rotation = 0;
         width = generateWidthFromBlockImage() * size;
         height = generateHeightFromBlockImage() * size;
@@ -52,7 +52,7 @@ public class DeadEnemy extends GameObject implements ShiftableGameObject {
     @Override
     public void updateStatus() {
         super.updateStatus();
-        if (gameView.timer(50, this)) {
+        if (gameView.timer(ANIMATION_SPEED, this)) {
             switchToNextState();
 
             if (currentState == State.DEAD_14) {

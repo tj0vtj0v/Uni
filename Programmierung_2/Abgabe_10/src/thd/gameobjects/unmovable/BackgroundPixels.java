@@ -26,12 +26,12 @@ public class BackgroundPixels extends GameObject implements ShiftableGameObject 
 
         level = gamePlayManager.currentLevel();
 
-        size = GameObjectConstants.BLOCKIMAGE_SIZE;
+        size = BLOCK_IMAGE_SIZE;
         rotation = 0;
 
         gamePlayManager.currentLevel();
         blockImage = createBackgroundPattern((level.worldOffsetLines + Level.VISIBLE_COLUMNS));
-        distanceToBackground = 0;
+        distanceToBackground = BACKGROUND;
 
         width = generateWidthFromBlockImage();
         height = generateHeightFromBlockImage();

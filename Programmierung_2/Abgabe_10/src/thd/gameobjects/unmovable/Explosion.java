@@ -24,13 +24,13 @@ public class Explosion extends CollidingGameObject implements ShiftableGameObjec
         currentState = State.EXPLOSION_1;
         blockImage = currentState.display;
 
-        distanceToBackground = 50;
+        distanceToBackground = LAYER_1;
 
-        size = GameObjectConstants.BLOCKIMAGE_SIZE;
+        size = BLOCK_IMAGE_SIZE;
         rotation = 0;
         width = generateWidthFromBlockImage() * size;
         height = generateHeightFromBlockImage() * size;
-        hitBoxOffsets(-3, -3, 6, 6);
+        hitBoxOffsets(size * -1, size * -1, size * 2, size * 2);
 
         speedInPixel = 0;
     }
@@ -47,7 +47,7 @@ public class Explosion extends CollidingGameObject implements ShiftableGameObjec
     @Override
     public void updateStatus() {
         super.updateStatus();
-        if (gameView.timer(50, this)) {
+        if (gameView.timer(ANIMATION_SPEED, this)) {
             switchToNextState();
 
             if (currentState == State.EXPLOSION_1) {
@@ -61,7 +61,7 @@ public class Explosion extends CollidingGameObject implements ShiftableGameObjec
             blockImage = currentState.display;
             width = generateWidthFromBlockImage() * size;
             height = generateHeightFromBlockImage() * size;
-            hitBoxOffsets(-3, -3, 6, 6);
+            hitBoxOffsets(size * -1, size * -1, size * 2, size * 2);
         }
         blockImage = currentState.display;
     }

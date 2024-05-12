@@ -4,8 +4,6 @@ import thd.game.managers.GamePlayManager;
 import thd.game.utilities.GameView;
 import thd.gameobjects.base.*;
 import thd.gameobjects.resources.ObjectBlockImages;
-import thd.gameobjects.unmovable.DustExplosion;
-import thd.gameobjects.unmovable.Explosion;
 
 
 /**
@@ -39,9 +37,9 @@ public class Humvee extends Vehicle {
         rotation = 0;
         width = generateWidthFromBlockImage() * size;
         height = generateHeightFromBlockImage() * size;
-        hitBoxOffsets(GameObjectConstants.HUMVEE_HIT_BOX_X_OFFSET, GameObjectConstants.HUMVEE_HIT_BOX_Y_OFFSET, GameObjectConstants.HUMVEE_HIT_BOX_WIDTH_OFFSET, GameObjectConstants.HUMVEE_HIT_BOX_HEIGHT_OFFSET);
+        hitBoxOffsets(HUMVEE_HIT_BOX_X_OFFSET, HUMVEE_HIT_BOX_Y_OFFSET, HUMVEE_HIT_BOX_WIDTH_OFFSET, HUMVEE_HIT_BOX_HEIGHT_OFFSET);
 
-        speedInPixel = gamePlayManager.currentLevel().humveeSpeedInPixel;
+        speedInPixel = gamePlayManager.currentLevel().vehicleSpeedInPixel;
     }
     @Override
     public String toString() {

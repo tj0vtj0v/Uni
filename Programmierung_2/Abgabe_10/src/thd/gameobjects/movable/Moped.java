@@ -4,8 +4,6 @@ import thd.game.managers.GamePlayManager;
 import thd.game.utilities.GameView;
 import thd.gameobjects.base.*;
 import thd.gameobjects.resources.ObjectBlockImages;
-import thd.gameobjects.unmovable.DustExplosion;
-import thd.gameobjects.unmovable.Explosion;
 
 
 /**
@@ -35,14 +33,14 @@ public class Moped extends Vehicle {
             blockImage = mirrorBlockImage(ObjectBlockImages.MOPED);
         }
 
-        hitTolerance = gamePlayManager.currentLevel().mopedSpeedInPixel;
+        hitTolerance = gamePlayManager.currentLevel().mopedHitTolerance;
 
         rotation = 0;
         width = generateWidthFromBlockImage() * size;
         height = generateHeightFromBlockImage() * size;
-        hitBoxOffsets(GameObjectConstants.MOPED_HIT_BOX_X_OFFSET, GameObjectConstants.MOPED_HIT_BOX_Y_OFFSET, GameObjectConstants.MOPED_HIT_BOX_WIDTH_OFFSET, GameObjectConstants.MOPED_HIT_BOX_HEIGHT_OFFSET);
+        hitBoxOffsets(MOPED_HIT_BOX_X_OFFSET, MOPED_HIT_BOX_Y_OFFSET, MOPED_HIT_BOX_WIDTH_OFFSET, MOPED_HIT_BOX_HEIGHT_OFFSET);
 
-        speedInPixel = gamePlayManager.;
+        speedInPixel = gamePlayManager.currentLevel().vehicleSpeedInPixel;
     }
 
     @Override

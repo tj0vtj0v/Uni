@@ -30,20 +30,20 @@ public class Wall extends CollidingGameObject implements ShiftableGameObject, Ac
         super(gameView, gamePlayManager, location, position);
 
         blockImage = new ObjectBlockImages().wall(segments);
-        distanceToBackground = 100;
+        distanceToBackground = LAYER_2;
 
-        size = GameObjectConstants.BLOCKIMAGE_SIZE;
+        size = BLOCK_IMAGE_SIZE;
         rotation = 0;
         width = generateWidthFromBlockImage() * size;
         height = generateHeightFromBlockImage() * size;
-        hitBoxOffsets(15, 3, -33, -18);
+        hitBoxOffsets(size * 5, size * 1, size * -11, size * -6);
     }
 
     @Override
     public boolean tryToActivate(GameObject info) {
         MainCharacterImpl infoObject = (MainCharacterImpl) info;
 
-        return (infoObject).getPosition().verticalDistance(this.position) <= GameView.HEIGHT;
+        return (infoObject).getPosition().verticalDistance(this.position) <= DEFAULT_SPAWN_DISTANCE;
     }
 
     @Override

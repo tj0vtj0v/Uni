@@ -3,6 +3,7 @@ package thd.gameobjects.unmovable;
 import thd.game.managers.GamePlayManager;
 import thd.game.utilities.GameView;
 import thd.gameobjects.base.GameObject;
+import thd.gameobjects.base.GameObjectConstants;
 
 import java.awt.*;
 import java.util.Arrays;
@@ -25,7 +26,9 @@ public class Overlay extends GameObject {
     public Overlay(GameView gameView, GamePlayManager gamePlayManager) {
         super(gameView, gamePlayManager);
         size = 40;
-        distanceToBackground = 255;
+        distanceToBackground = FOREGROUND;
+
+        position.updateCoordinates(GameView.WIDTH / 2f, GameView.HEIGHT / 2f);
     }
 
     /**

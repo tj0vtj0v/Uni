@@ -27,9 +27,9 @@ public class AmmoBox extends CollidingGameObject implements ShiftableGameObject,
         super(gameView, gamePlayManager, location, position);
 
         blockImage = ObjectBlockImages.AMMO_BOX;
-        distanceToBackground = 100;
+        distanceToBackground = LAYER_2;
 
-        size = GameObjectConstants.BLOCKIMAGE_SIZE;
+        size = BLOCK_IMAGE_SIZE;
         rotation = 0;
         width = generateWidthFromBlockImage() * size;
         height = generateHeightFromBlockImage() * size;
@@ -40,7 +40,7 @@ public class AmmoBox extends CollidingGameObject implements ShiftableGameObject,
     public boolean tryToActivate(GameObject info) {
         MainCharacterImpl infoObject = (MainCharacterImpl) info;
 
-        return (infoObject).getPosition().verticalDistance(this.position) <= GameView.HEIGHT;
+        return (infoObject).getPosition().verticalDistance(this.position) <= DEFAULT_SPAWN_DISTANCE;
     }
 
     @Override

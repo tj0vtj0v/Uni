@@ -5,8 +5,8 @@ import thd.game.utilities.GameView;
 import thd.gameobjects.base.*;
 import thd.gameobjects.resources.EnemyGunnerBlockImages;
 import thd.gameobjects.unmovable.DeadEnemy;
-import thd.gameobjects.unmovable.Explosion;
 
+import java.lang.constant.Constable;
 import java.util.List;
 import java.util.Random;
 
@@ -35,13 +35,13 @@ public class EnemyGunner extends MovingCharacter implements ShiftableGameObject,
         shotCooldownInMilliseconds = gamePlayManager.currentLevel().enemyShotCooldown;
 
         blockImage = EnemyGunnerBlockImages.DOWN_1;
-        distanceToBackground = GameObjectConstants.LAYER_2;
+        distanceToBackground = LAYER_2;
 
-        size = GameObjectConstants.BLOCKIMAGE_SIZE;
+        size = BLOCK_IMAGE_SIZE;
         rotation = 0;
         width = generateWidthFromBlockImage() * size;
         height = generateHeightFromBlockImage() * size;
-        hitBoxOffsets(GameObjectConstants.MOVING_CHARACTER_HIT_BOX_X_OFFSET, GameObjectConstants.MOVING_CHARACTER_HIT_BOX_Y_OFFSET, GameObjectConstants.MOVING_CHARACTER_HIT_BOX_WIDTH_OFFSET, GameObjectConstants.MOVING_CHARACTER_HIT_BOX_HEIGHT_OFFSET);
+        hitBoxOffsets(MOVING_CHARACTER_HIT_BOX_X_OFFSET, MOVING_CHARACTER_HIT_BOX_Y_OFFSET, MOVING_CHARACTER_HIT_BOX_WIDTH_OFFSET, MOVING_CHARACTER_HIT_BOX_HEIGHT_OFFSET);
 
         speedInPixel = gamePlayManager.currentLevel().enemySpeedInPixel;
 
@@ -59,7 +59,7 @@ public class EnemyGunner extends MovingCharacter implements ShiftableGameObject,
 
     @Override
     public void reactToCollisionWith(CollidingGameObject other) {
-        if (other instanceof Bullet && ((Bullet) other).getCreator() != this || other instanceof Explosion) {
+        if (fatallyHit(other)) {
             gamePlayManager.addScorePoints(-1);
             gamePlayManager.destroyGameObject(this);
             gamePlayManager.spawnGameObject(new DeadEnemy(gameView, gamePlayManager, position));
@@ -84,7 +84,7 @@ public class EnemyGunner extends MovingCharacter implements ShiftableGameObject,
         if (pathIsBlocked()) {
             position.updateCoordinates(oldPosition);
         }
-        if (gameView.timer(new Random(hashCode()).nextInt(GameObjectConstants.ENEMY_CHANGE_DIRECTION_INTERVALL_START_IN_MILLISECONDS, GameObjectConstants.ENEMY_CHANGE_DIRECTION_INTERVALL_END_IN_MILLISECONDS), this)) {
+        if (gameView.timer(new Random(hashCode()).nextInt(ENEMY_CHANGE_DIRECTION_INTERVAL_START_IN_MILLISECONDS, ENEMY_CHANGE_DIRECTION_INTERVAL_END_IN_MILLISECONDS), this)) {
             targetPosition.updateCoordinates(movementPattern.nextTargetPosition(getPosition()));
             direction = movementPattern.getDirection();
         }

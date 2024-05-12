@@ -32,9 +32,9 @@ public class Bullet extends CollidingGameObject implements ShiftableGameObject {
         this.creator = creator;
 
         blockImage = ObjectBlockImages.BULLET;
-        distanceToBackground = GameObjectConstants.LAYER_5;
+        distanceToBackground = LAYER_5;
 
-        size = GameObjectConstants.BLOCKIMAGE_SIZE;
+        size = BLOCK_IMAGE_SIZE;
         rotation = 0;
         width = generateWidthFromBlockImage() * size;
         height = generateHeightFromBlockImage() * size;

@@ -74,7 +74,11 @@ public enum Direction {
         }
 
         if (diagonal()) {
-            return other;
+            if (name().contains(other.name())) {
+                return this;
+            } else {
+                return Direction.valueOf(this.name().replace(other.opposite().name(), "").replace("_", ""));
+            }
         } else {
             return Direction.valueOf(vertical() ? name() + "_" + other.name() : other.name() + "_" + name());
         }

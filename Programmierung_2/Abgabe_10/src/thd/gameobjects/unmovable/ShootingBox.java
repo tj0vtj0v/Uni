@@ -39,35 +39,34 @@ public class ShootingBox extends CollidingGameObject implements ShiftableGameObj
         } else {
             blockImage = mirrorBlockImage(currentState.display);
         }
-        distanceToBackground = 100;
-        hitTolerance = 2;
+        distanceToBackground = LAYER_2;
+        hitTolerance = DEFAULT_SHOOTING_BOX_HIT_TOLERANCE;
 
-        size = GameObjectConstants.BLOCKIMAGE_SIZE;
+        size = BLOCK_IMAGE_SIZE;
         rotation = 0;
         width = generateWidthFromBlockImage() * size;
         height = generateHeightFromBlockImage() * size;
-        hitBoxOffsets(6, 6, -12, -24);
+        hitBoxOffsets(size * 2, size * 2, size * -4, size * -8);
     }
 
     private void ruin() {
-        if (currentState == State.NORMAL) {
-            currentState = State.RUINED;
+        currentState = State.RUINED;
 
-            gamePlayManager.addScorePoints(-1);
-            gamePlayManager.spawnGameObject(new DustExplosion(gameView, gamePlayManager, direction, new Position(position.getX() + 12, position.getY() + 45)));
+        gamePlayManager.addScorePoints(-1);
+        gamePlayManager.spawnGameObject(new DustExplosion(gameView, gamePlayManager, direction, new Position(position.getX() + 12, position.getY() + 45)));
 
-            if (this.direction == Direction.LEFT) {
-                blockImage = currentState.display;
-            } else {
-                blockImage = mirrorBlockImage(currentState.display);
-            }
-
-            position.down(32);
-            distanceToBackground = 50;
-            width = 0;
-            height = 0;
-            hitBoxOffsets(0, 0, 0, 0);
+        if (this.direction == Direction.LEFT) {
+            blockImage = currentState.display;
+        } else {
+            blockImage = mirrorBlockImage(currentState.display);
         }
+
+        position.down(32);
+        distanceToBackground = LAYER_1;
+        width = 0;
+        height = 0;
+        hitBoxOffsets(0, 0, 0, 0);
+
     }
 
     @Override
@@ -76,8 +75,8 @@ public class ShootingBox extends CollidingGameObject implements ShiftableGameObj
         if (currentState == State.NORMAL) {
             if (gamePlayManager.mainCharacterYCoordinate() < position.getY()) {
                 ruin();
-            } else if (gameView.timer(new Random(hashCode()).nextInt(1000, 2000), this)) {
-                gamePlayManager.spawnGameObject(new Bullet(gameView, gamePlayManager, direction.opposite(), position, this));
+            } else if (gameView.timer(new Random(hashCode()).nextInt(SHOOTING_BOX_START_SHOOTING_TIME, SHOOTING_BOX_END_SHOOTING_TIME), this)) {
+                gamePlayManager.spawnGameObject(new Bullet(gameView, gamePlayManager, direction.opposite(), new Position(position.getX() + 30, position.getY() + 30), this));
             }
         }
     }
@@ -86,7 +85,7 @@ public class ShootingBox extends CollidingGameObject implements ShiftableGameObj
     public boolean tryToActivate(GameObject info) {
         MainCharacterImpl infoObject = (MainCharacterImpl) info;
 
-        return (infoObject).getPosition().verticalDistance(this.position) <= GameView.HEIGHT * 1.5;
+        return (infoObject).getPosition().verticalDistance(this.position) <= DEFAULT_SPAWN_DISTANCE;
     }
 
     @Override
@@ -97,7 +96,7 @@ public class ShootingBox extends CollidingGameObject implements ShiftableGameObj
             hitTolerance = 0;
         }
 
-        if (hitTolerance <= 0) {
+        if (hitTolerance <= 0 && currentState == State.NORMAL) {
             ruin();
         }
     }
