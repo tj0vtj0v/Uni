@@ -24,7 +24,7 @@ class GameManager extends LevelManager {
     }
 
     private boolean endOfLevel() {
-        return gameView.timer(30000, this);
+        return gameView.timer(3000, this);
     }
 
     @Override
