@@ -4,7 +4,7 @@ import thd.game.managers.GamePlayManager;
 import thd.game.managers.NoRemainingMenException;
 import thd.game.utilities.GameView;
 import thd.gameobjects.base.*;
-import thd.gameobjects.resources.MainCharacterBlockImages;
+import thd.gameobjects.resources.MovingCharacterBlockImages;
 import thd.gameobjects.unmovable.AmmoBox;
 
 import java.util.List;
@@ -37,16 +37,25 @@ public class MainCharacterImpl extends MovingCharacter implements MainCharacter 
         availableGrenades = 5;
         dead = false;
 
-        blockImage = MainCharacterBlockImages.DOWN_1;
+        changeBlockImageColors();
+        updateAnimation();
         distanceToBackground = LAYER_2;
 
         size = BLOCK_IMAGE_SIZE;
         rotation = 0;
         width = generateWidthFromBlockImage() * size;
         height = generateHeightFromBlockImage() * size;
-        hitBoxOffsets(6, 6, -12, -24);
+        hitBoxOffsets(size * 2, size * 2, size * -4, size * -8);
 
         speedInPixel = gamePlayManager.currentLevel().mainCharacterSpeedInPixel;
+    }
+
+    private void changeBlockImageColors(){
+        for (int directions = 0; directions < Direction.values().length; directions++) {
+            for (int frames = 0; frames < Animation.values().length; frames++) {
+                animationFrames[directions][frames] = animationFrames[directions][frames].replace("x", "5");
+            }
+        }
     }
 
     @Override
@@ -91,6 +100,8 @@ public class MainCharacterImpl extends MovingCharacter implements MainCharacter 
         } else {
             direction = direction.addDirection(Direction.LEFT);
         }
+
+        moved = true;
     }
 
     /**
@@ -107,6 +118,8 @@ public class MainCharacterImpl extends MovingCharacter implements MainCharacter 
         } else {
             direction = direction.addDirection(Direction.RIGHT);
         }
+
+        moved = true;
     }
 
     /**
@@ -130,6 +143,8 @@ public class MainCharacterImpl extends MovingCharacter implements MainCharacter 
         } else {
             direction = direction.addDirection(Direction.UP);
         }
+
+        moved = true;
     }
 
     /**
@@ -146,6 +161,8 @@ public class MainCharacterImpl extends MovingCharacter implements MainCharacter 
         } else {
             direction = direction.addDirection(Direction.DOWN);
         }
+
+        moved = true;
     }
 
     /**
@@ -161,7 +178,7 @@ public class MainCharacterImpl extends MovingCharacter implements MainCharacter 
      * Re setter for the direction if a new directional keyInput comes.
      */
     public void resetDirection() {
-        this.direction = null;
+        direction = null;
     }
 
     @Override
@@ -175,12 +192,14 @@ public class MainCharacterImpl extends MovingCharacter implements MainCharacter 
     public void updateStatus() {
         super.updateStatus();
         if (dead) {
-            blockImage = MainCharacterBlockImages.DEAD;
+            blockImage = MovingCharacterBlockImages.DEAD_MAIN_CHARACTER;
 
-            width = 0;
-            height = 0;
-            hitBoxOffsets(0, 0, 0, 0);
+            hitBoxOffsets(0, 0, -width, -height);
+        } else {
+            updateAnimation();
         }
+
+        moved = false;
     }
 
     @Override

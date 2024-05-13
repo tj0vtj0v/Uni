@@ -87,7 +87,7 @@ public class EnemyMortar extends CollidingGameObject implements ShiftableGameObj
             switchToNextState();
 
             if (direction == Direction.RIGHT) {
-                //position.left(currentState.leftShiftIfRight * size);
+                position.left(currentState.leftShiftIfRight * size);
                 mortarXOffset += currentState.leftShiftIfRight * size;
                 hitBoxOffsets(size * 6, size * 1, size * -2, size * -2);
             }
@@ -95,7 +95,7 @@ public class EnemyMortar extends CollidingGameObject implements ShiftableGameObj
             switchToNextState();
 
             if (direction == Direction.RIGHT) {
-                //position.left(currentState.leftShiftIfRight * size);
+                position.left(currentState.leftShiftIfRight * size);
                 mortarXOffset += currentState.leftShiftIfRight * size;
                 hitBoxOffsets(size * 1, size * 1, size * -2, size * -2);
             }
@@ -104,7 +104,7 @@ public class EnemyMortar extends CollidingGameObject implements ShiftableGameObj
             shoot();
 
             if (direction == Direction.RIGHT) {
-                //position.left(currentState.leftShiftIfRight * size);
+                position.left(currentState.leftShiftIfRight * size);
                 mortarXOffset += currentState.leftShiftIfRight * size;
             }
         }

@@ -6,6 +6,7 @@ import thd.gameobjects.base.MovementPattern;
 import thd.gameobjects.base.Position;
 
 // TODO advance
+
 class RandomMovementPattern extends MovementPattern {
     private final Direction launchSide;
     private Direction direction;
@@ -13,7 +14,6 @@ class RandomMovementPattern extends MovementPattern {
     RandomMovementPattern(Direction launchSide) {
         super(new Position());
         this.launchSide = launchSide;
-        direction = null;
     }
 
     Direction getDirection() {
@@ -23,8 +23,10 @@ class RandomMovementPattern extends MovementPattern {
     @Override
     protected Position startPosition(Position... referencePositions) {
         if (launchSide == Direction.LEFT) {
+            direction = Direction.RIGHT;
             return new Position(RANDOM_GLOBAL_SPAWN_LEFT_OFFSET, referencePositions[0].getY());
         } else {
+            direction = Direction.LEFT;
             return new Position(GameView.WIDTH + RANDOM_GLOBAL_SPAWN_RIGHT_OFFSET, referencePositions[0].getY());
         }
     }

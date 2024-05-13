@@ -3,7 +3,7 @@ package thd.gameobjects.movable;
 import thd.game.managers.GamePlayManager;
 import thd.game.utilities.GameView;
 import thd.gameobjects.base.*;
-import thd.gameobjects.resources.EnemyGunnerBlockImages;
+import thd.gameobjects.resources.MovingCharacterBlockImages;
 import thd.gameobjects.unmovable.DeadEnemy;
 
 import java.util.List;
@@ -34,7 +34,8 @@ public class EnemyGunner extends MovingCharacter implements ShiftableGameObject,
         super(gameView, gamePlayManager, location, position, collidingGameObjectsForPathDecision);
         shotCooldownInMilliseconds = gamePlayManager.currentLevel().enemyShotCooldown;
 
-        blockImage = EnemyGunnerBlockImages.DOWN_1;
+        changeBlockImageColors();
+        updateAnimation();
         distanceToBackground = LAYER_2;
 
         size = BLOCK_IMAGE_SIZE;
@@ -51,6 +52,14 @@ public class EnemyGunner extends MovingCharacter implements ShiftableGameObject,
         targetPosition.updateCoordinates(movementPattern.nextTargetPosition(position));
 
         changeDirectionInterval = random.nextInt(ENEMY_CHANGE_DIRECTION_INTERVAL_START_IN_MILLISECONDS, ENEMY_CHANGE_DIRECTION_INTERVAL_END_IN_MILLISECONDS);
+    }
+
+    private void changeBlockImageColors(){
+        for (int directions = 0; directions < Direction.values().length; directions++) {
+            for (int frames = 0; frames < Animation.values().length; frames++) {
+                animationFrames[directions][frames] = animationFrames[directions][frames].replace("x", "2");
+            }
+        }
     }
 
     private boolean hitPossible() {
@@ -83,6 +92,8 @@ public class EnemyGunner extends MovingCharacter implements ShiftableGameObject,
     @Override
     public void updateStatus() {
         super.updateStatus();
+        moved = !(position.similarTo(targetPosition));
+        updateAnimation();
 
         if (hitPossible()) {
             shoot();

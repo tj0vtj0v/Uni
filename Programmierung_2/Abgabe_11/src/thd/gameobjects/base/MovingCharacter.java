@@ -4,6 +4,7 @@ import thd.game.managers.GamePlayManager;
 import thd.game.utilities.GameView;
 import thd.gameobjects.movable.Bullet;
 import thd.gameobjects.movable.Vehicle;
+import thd.gameobjects.resources.MovingCharacterBlockImages;
 import thd.gameobjects.unmovable.Explosion;
 
 import java.util.List;
@@ -13,8 +14,14 @@ import java.util.List;
  * Creates an active moving character.
  */
 public class MovingCharacter extends CollidingGameObject {
+
+    protected enum Animation {FRAME_1, FRAME_2, FRAME_3, FRAME_4}
+
     private final List<CollidingGameObject> collidingGameObjectsForPathDecision;
     protected int shotCooldownInMilliseconds;
+    protected boolean moved;
+    private Animation currentFrame;
+    protected final String[][] animationFrames;
 
     /**
      * Creates an instance of a moving Character as the main character or an enemy.
@@ -25,13 +32,68 @@ public class MovingCharacter extends CollidingGameObject {
      * @param position                            Position from which to start movement.
      * @param collidingGameObjectsForPathDecision list of object which are path blockers.
      */
-    public MovingCharacter(GameView gameView, GamePlayManager gamePlayManager, Direction facing, Position position, List<CollidingGameObject> collidingGameObjectsForPathDecision) {
+    protected MovingCharacter(GameView gameView, GamePlayManager gamePlayManager, Direction facing, Position position, List<CollidingGameObject> collidingGameObjectsForPathDecision) {
         super(gameView, gamePlayManager, facing, position);
         this.collidingGameObjectsForPathDecision = collidingGameObjectsForPathDecision;
 
+        moved = false;
+        currentFrame = Animation.FRAME_1;
+        animationFrames = new String[Direction.values().length][Animation.values().length];
+        fillAnimationFrames();
+
         width = 0;
         height = 0;
-        hitBoxOffsets(0, 0, 0, 0);
+    }
+
+    private void fillAnimationFrames() {
+        for (int i = 0; i < Direction.values().length; i++) {
+            animationFrames[i][0] = MovingCharacterBlockImages.DOWN_1;
+            animationFrames[i][1] = MovingCharacterBlockImages.DOWN_2;
+            animationFrames[i][2] = MovingCharacterBlockImages.DOWN_1;
+            animationFrames[i][3] = MovingCharacterBlockImages.DOWN_3;
+        }
+        animationFrames[0][0] = MovingCharacterBlockImages.LEFT_1;
+        animationFrames[0][1] = MovingCharacterBlockImages.LEFT_2;
+        animationFrames[0][2] = MovingCharacterBlockImages.LEFT_3;
+        animationFrames[0][3] = MovingCharacterBlockImages.LEFT_2;
+
+        animationFrames[6][0] = MovingCharacterBlockImages.UP_1;
+        animationFrames[6][1] = MovingCharacterBlockImages.UP_2;
+        animationFrames[6][2] = MovingCharacterBlockImages.UP_1;
+        animationFrames[6][3] = MovingCharacterBlockImages.UP_3;
+        animationFrames[7][0] = MovingCharacterBlockImages.RIGHT_1;
+        animationFrames[7][1] = MovingCharacterBlockImages.RIGHT_2;
+        animationFrames[7][2] = MovingCharacterBlockImages.RIGHT_3;
+        animationFrames[7][3] = MovingCharacterBlockImages.RIGHT_2;
+    }
+
+    private void switchToNextState() {
+        int nextState = (currentFrame.ordinal() + 1) % Animation.values().length;
+        currentFrame = Animation.values()[nextState];
+    }
+
+    private void recalculateHitBox() {
+        width = generateWidthFromBlockImage() * size;
+        height = generateHeightFromBlockImage() * size;
+        // TODO switch for direction
+        hitBoxOffsets(size * 2, size * 2, size * -4, size * -8);
+    }
+
+    protected void updateAnimation() {
+        direction = direction == null ? Direction.DOWN : direction;
+
+        if (moved) {
+            if (gameView.timer(ANIMATION_SPEED, this)) {
+                switchToNextState();
+
+                blockImage = animationFrames[direction.ordinal()][currentFrame.ordinal()];
+                recalculateHitBox();
+            }
+        } else {
+            currentFrame = Animation.FRAME_1;
+            blockImage = animationFrames[direction.ordinal()][currentFrame.ordinal()];
+            recalculateHitBox();
+        }
     }
 
     /**
