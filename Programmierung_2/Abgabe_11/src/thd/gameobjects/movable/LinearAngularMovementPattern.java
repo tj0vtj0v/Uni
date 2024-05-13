@@ -28,8 +28,7 @@ class LinearAngularMovementPattern extends MovementPattern {
             case DOWN_RIGHT -> startAngle = 315;
         }
 
-        angleInDegree = random.nextInt(startAngle, startAngle + range);
-        System.out.println(startAngle + "  " + range + "  " + angleInDegree);
+        angleInDegree = random.nextInt(startAngle, startAngle + range) - range / 2;
     }
 
     @Override
@@ -39,11 +38,11 @@ class LinearAngularMovementPattern extends MovementPattern {
 
     @Override
     protected Position nextTargetPosition(Position... referencePositions) {
-        int distance = random.nextInt(300, GameView.WIDTH);
-        Position targetPosition = new Position();
+        int distance = random.nextInt(150, GameView.WIDTH / 2);
+        Position targetPosition = new Position(startPosition);
 
-        targetPosition.down(Math.cos(Math.toRadians(angleInDegree)) * distance);
-        targetPosition.right(Math.sin(Math.toRadians(angleInDegree)) * distance);
+        targetPosition.right(Math.cos(Math.toRadians(angleInDegree)) * distance);
+        targetPosition.up(Math.sin(Math.toRadians(angleInDegree)) * distance);
 
         return targetPosition;
     }

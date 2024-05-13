@@ -76,8 +76,8 @@ public class ShootingBox extends CollidingGameObject implements ShiftableGameObj
         if (currentState == State.NORMAL) {
             if (gamePlayManager.mainCharacterPosition().getY() < position.getY()) {
                 ruin();
-            } else if (true) { //gameView.timer(random.nextInt(SHOOTING_BOX_START_SHOOTING_TIME, SHOOTING_BOX_END_SHOOTING_TIME), this)) {
-                gamePlayManager.spawnGameObject(new ExplodingBullet(gameView, gamePlayManager, direction.opposite(), new Position(position.getX() + SHOOTING_BOX_BULLET_X_OFFSET, position.getY() + SHOOTING_BOX_BULLET_Y_OFFSET), this));
+            } else if (gameView.timer(random.nextInt(SHOOTING_BOX_START_SHOOTING_TIME, SHOOTING_BOX_END_SHOOTING_TIME), this)) {
+                gamePlayManager.spawnGameObject(new ExplodingBullet(gameView, gamePlayManager, direction.opposite().addDirection(Direction.DOWN), new Position(position.getX() + SHOOTING_BOX_BULLET_X_OFFSET, position.getY() + SHOOTING_BOX_BULLET_Y_OFFSET), this));
             }
         }
     }

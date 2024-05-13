@@ -55,7 +55,7 @@ public class EnemyMortar extends CollidingGameObject implements ShiftableGameObj
     }
 
     private void shoot() {
-        gamePlayManager.spawnGameObject(new Grenade(gameView, gamePlayManager, direction, getPosition()));
+        gamePlayManager.spawnGameObject(new Grenade(gameView, gamePlayManager, direction, position));
     }
 
     private void switchToNextState() {
@@ -85,24 +85,26 @@ public class EnemyMortar extends CollidingGameObject implements ShiftableGameObj
 
         if (currentState == State.WAITING & (gameView.timer(random.nextInt(MORTAR_START_WAITING_TIME, MORTAR_END_WAITING_TIME), this))) {
             switchToNextState();
+
             if (direction == Direction.RIGHT) {
-                position.left(currentState.leftShiftIfRight * size);
+                //position.left(currentState.leftShiftIfRight * size);
                 mortarXOffset += currentState.leftShiftIfRight * size;
                 hitBoxOffsets(size * 6, size * 1, size * -2, size * -2);
             }
         } else if (currentState == State.LOADING && gameView.timer(MORTAR_LOADING_TIME, this)) {
             switchToNextState();
+
             if (direction == Direction.RIGHT) {
-                position.left(currentState.leftShiftIfRight * size);
+                //position.left(currentState.leftShiftIfRight * size);
                 mortarXOffset += currentState.leftShiftIfRight * size;
                 hitBoxOffsets(size * 1, size * 1, size * -2, size * -2);
             }
         } else if (currentState == State.SHOOTING && gameView.timer(MORTAR_SHOOTING_TIME, this)) {
+            switchToNextState();
             shoot();
 
-            switchToNextState();
             if (direction == Direction.RIGHT) {
-                position.left(currentState.leftShiftIfRight * size);
+                //position.left(currentState.leftShiftIfRight * size);
                 mortarXOffset += currentState.leftShiftIfRight * size;
             }
         }

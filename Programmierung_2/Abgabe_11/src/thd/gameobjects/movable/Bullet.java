@@ -12,8 +12,7 @@ import thd.gameobjects.unmovable.Explosion;
  * Representation of the in-game-object 'Bullet'.
  * <p>
  * initial influenced linear movement
- * indestructible
- * png textured
+ * Blockimage
  */
 public class Bullet extends CollidingGameObject implements ShiftableGameObject {
     private final GameObject creator;

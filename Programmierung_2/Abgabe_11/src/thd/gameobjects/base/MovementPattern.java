@@ -12,7 +12,7 @@ public abstract class MovementPattern implements GameConstants {
 
     protected MovementPattern(Position startPosition) {
         random = new Random(System.currentTimeMillis() + startPosition.hashCode());
-        this.startPosition = startPosition;
+        this.startPosition = new Position(startPosition);
     }
 
     protected abstract Position startPosition(Position... referencePositions);

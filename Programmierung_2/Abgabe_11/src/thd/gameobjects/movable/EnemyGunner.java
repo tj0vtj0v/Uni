@@ -46,9 +46,9 @@ public class EnemyGunner extends MovingCharacter implements ShiftableGameObject,
         speedInPixel = gamePlayManager.currentLevel().enemySpeedInPixel;
 
         movementPattern = new RandomMovementPattern(location);
-        this.position.updateCoordinates(movementPattern.startPosition(getPosition()));
+        this.position.updateCoordinates(movementPattern.startPosition(position));
         random.setSeed(hashCode());
-        targetPosition.updateCoordinates(movementPattern.nextTargetPosition(getPosition()));
+        targetPosition.updateCoordinates(movementPattern.nextTargetPosition(position));
 
         changeDirectionInterval = random.nextInt(ENEMY_CHANGE_DIRECTION_INTERVAL_START_IN_MILLISECONDS, ENEMY_CHANGE_DIRECTION_INTERVAL_END_IN_MILLISECONDS);
     }
@@ -91,7 +91,7 @@ public class EnemyGunner extends MovingCharacter implements ShiftableGameObject,
 
     @Override
     public void updatePosition() {
-        Position oldPosition = new Position(getPosition());
+        Position oldPosition = new Position(position);
         position.moveToPosition(targetPosition, speedInPixel);
 
         if (pathIsBlocked()) {

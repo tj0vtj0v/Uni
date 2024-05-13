@@ -159,6 +159,10 @@ public interface GameConstants {
      * Represents a Constant in the Category UnmovingEnemy.
      */
     int SHOOTING_BOX_BULLET_Y_OFFSET = BLOCK_IMAGE_SIZE * 10;
+    /**
+     * Represents a Constant in the Category UnmovingEnemy.
+     */
+    int SHOOTING_BOX_BULLET_EXPLOSION_X_OFFSET = BLOCK_IMAGE_SIZE * -5;
 
     // Vehicles
     /**

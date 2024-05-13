@@ -27,7 +27,7 @@ public abstract class Vehicle extends CollidingGameObject implements ShiftableGa
     public boolean tryToActivate(GameObject info) {
         MainCharacterImpl infoObject = (MainCharacterImpl) info;
 
-        return (infoObject).getPosition().verticalDistance(this.position) <= gamePlayManager.currentLevel().vehicleSpawnDistance;
+        return infoObject.getPosition().verticalDistance(this.position) <= gamePlayManager.currentLevel().vehicleSpawnDistance;
     }
 
     @Override
