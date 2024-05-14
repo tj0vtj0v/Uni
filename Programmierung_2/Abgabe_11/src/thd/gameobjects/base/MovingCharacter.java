@@ -46,17 +46,30 @@ public class MovingCharacter extends CollidingGameObject {
     }
 
     private void fillAnimationFrames() {
-        for (int i = 0; i < Direction.values().length; i++) {
-            animationFrames[i][0] = MovingCharacterBlockImages.DOWN_1;
-            animationFrames[i][1] = MovingCharacterBlockImages.DOWN_2;
-            animationFrames[i][2] = MovingCharacterBlockImages.DOWN_1;
-            animationFrames[i][3] = MovingCharacterBlockImages.DOWN_3;
-        }
         animationFrames[0][0] = MovingCharacterBlockImages.LEFT_1;
         animationFrames[0][1] = MovingCharacterBlockImages.LEFT_2;
         animationFrames[0][2] = MovingCharacterBlockImages.LEFT_3;
         animationFrames[0][3] = MovingCharacterBlockImages.LEFT_2;
-
+        animationFrames[1][0] = MovingCharacterBlockImages.DOWN_1;
+        animationFrames[1][1] = MovingCharacterBlockImages.DOWN_2;
+        animationFrames[1][2] = MovingCharacterBlockImages.DOWN_1;
+        animationFrames[1][3] = MovingCharacterBlockImages.DOWN_3;
+        animationFrames[2][0] = MovingCharacterBlockImages.UP_RIGHT_1;
+        animationFrames[2][1] = MovingCharacterBlockImages.UP_RIGHT_2;
+        animationFrames[2][2] = MovingCharacterBlockImages.UP_RIGHT_3;
+        animationFrames[2][3] = MovingCharacterBlockImages.UP_RIGHT_2;
+        animationFrames[3][0] = MovingCharacterBlockImages.UP_LEFT_1;
+        animationFrames[3][1] = MovingCharacterBlockImages.UP_LEFT_2;
+        animationFrames[3][2] = MovingCharacterBlockImages.UP_LEFT_3;
+        animationFrames[3][3] = MovingCharacterBlockImages.UP_LEFT_2;
+        animationFrames[4][0] = MovingCharacterBlockImages.DOWN_RIGHT_1;
+        animationFrames[4][1] = MovingCharacterBlockImages.DOWN_RIGHT_2;
+        animationFrames[4][2] = MovingCharacterBlockImages.DOWN_RIGHT_3;
+        animationFrames[4][3] = MovingCharacterBlockImages.DOWN_RIGHT_2;
+        animationFrames[5][0] = MovingCharacterBlockImages.DOWN_LEFT_1;
+        animationFrames[5][1] = MovingCharacterBlockImages.DOWN_LEFT_2;
+        animationFrames[5][2] = MovingCharacterBlockImages.DOWN_LEFT_3;
+        animationFrames[5][3] = MovingCharacterBlockImages.DOWN_LEFT_2;
         animationFrames[6][0] = MovingCharacterBlockImages.UP_1;
         animationFrames[6][1] = MovingCharacterBlockImages.UP_2;
         animationFrames[6][2] = MovingCharacterBlockImages.UP_1;

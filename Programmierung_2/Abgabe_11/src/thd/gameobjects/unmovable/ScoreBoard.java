@@ -4,7 +4,6 @@ package thd.gameobjects.unmovable;
 import thd.game.managers.GamePlayManager;
 import thd.game.utilities.GameView;
 import thd.gameobjects.base.GameObject;
-import thd.gameobjects.resources.MovingCharacterBlockImages;
 
 import java.awt.*;
 
@@ -69,6 +68,5 @@ public class ScoreBoard extends GameObject {
                 true,
                 new Color(255, 238, 96),
                 rotation);
-        gameView.addBlockImageToCanvas(MovingCharacterBlockImages.UP_1.replace("x", "5"), GameView.WIDTH/2f, GameView.HEIGHT/2f, 3, 0);
     }
 }
