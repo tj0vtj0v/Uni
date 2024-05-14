@@ -5,7 +5,7 @@ package thd.gameobjects.resources;
  */
 public final class MovingCharacterBlockImages {
     /**
-     * Representation of a animation-frame.
+     * Representation of an animation-frame.
      */
     public static final String LEFT_1 = """
                      xxx
@@ -30,7 +30,7 @@ public final class MovingCharacterBlockImages {
                     666666
             """;
     /**
-     * Representation of a animation-frame.
+     * Representation of an animation-frame.
      */
     public static final String LEFT_2 = """
                      xxx
@@ -55,7 +55,7 @@ public final class MovingCharacterBlockImages {
                 6666      66
             """;
     /**
-     * Representation of a animation-frame.
+     * Representation of an animation-frame.
      */
     public static final String LEFT_3 = """
                      xxx
@@ -80,7 +80,7 @@ public final class MovingCharacterBlockImages {
                   6666
             """;
     /**
-     * Representation of a animation-frame.
+     * Representation of an animation-frame.
      */
     public static final String DOWN_1 = """
                xxxxxx
@@ -105,7 +105,7 @@ public final class MovingCharacterBlockImages {
              6666  6666
             """;
     /**
-     * Representation of a animation-frame.
+     * Representation of an animation-frame.
      */
     public static final String DOWN_2 = """
                xxxxxx
@@ -130,7 +130,7 @@ public final class MovingCharacterBlockImages {
              6666
             """;
     /**
-     * Representation of a animation-frame.
+     * Representation of an animation-frame.
      */
     public static final String DOWN_3 = """
                xxxxxx
@@ -155,7 +155,7 @@ public final class MovingCharacterBlockImages {
                    6666
             """;
     /**
-     * Representation of a animation-frame.
+     * Representation of an animation-frame.
      */
     public static final String UP_RIGHT_1 = """
                xxxxxx
@@ -180,7 +180,7 @@ public final class MovingCharacterBlockImages {
                  66
             """;
     /**
-     * Representation of a animation-frame.
+     * Representation of an animation-frame.
      */
     public static final String UP_RIGHT_2 = """
                xxxxxx
@@ -205,7 +205,7 @@ public final class MovingCharacterBlockImages {
              66  66
             """;
     /**
-     * Representation of a animation-frame.
+     * Representation of an animation-frame.
      */
     public static final String UP_RIGHT_3 = """
                xxxxxx
@@ -230,7 +230,7 @@ public final class MovingCharacterBlockImages {
                   66
             """;
     /**
-     * Representation of a animation-frame.
+     * Representation of an animation-frame.
      */
     public static final String UP_LEFT_1 = """
                 xxxxxx
@@ -255,7 +255,7 @@ public final class MovingCharacterBlockImages {
                  66
             """;
     /**
-     * Representation of a animation-frame.
+     * Representation of an animation-frame.
      */
     public static final String UP_LEFT_2 = """
                 xxxxxx
@@ -280,7 +280,7 @@ public final class MovingCharacterBlockImages {
                     66
             """;
     /**
-     * Representation of a animation-frame.
+     * Representation of an animation-frame.
      */
     public static final String UP_LEFT_3 = """
                 xxxxxx
@@ -305,7 +305,7 @@ public final class MovingCharacterBlockImages {
                     66
             """;
     /**
-     * Representation of a animation-frame.
+     * Representation of an animation-frame.
      */
     public static final String DOWN_RIGHT_1 = """
               xxxxxx
@@ -330,7 +330,7 @@ public final class MovingCharacterBlockImages {
                 66
             """;
     /**
-     * Representation of a animation-frame.
+     * Representation of an animation-frame.
      */
     public static final String DOWN_RIGHT_2 = """
               xxxxxx
@@ -355,7 +355,7 @@ public final class MovingCharacterBlockImages {
                  666
             """;
     /**
-     * Representation of a animation-frame.
+     * Representation of an animation-frame.
      */
     public static final String DOWN_RIGHT_3 = """
               xxxxxx
@@ -380,7 +380,7 @@ public final class MovingCharacterBlockImages {
                  666
             """;
     /**
-     * Representation of a animation-frame.
+     * Representation of an animation-frame.
      */
     public static final String DOWN_LEFT_1 = """
                   xxxxxx
@@ -405,7 +405,7 @@ public final class MovingCharacterBlockImages {
                     66
             """;
     /**
-     * Representation of a animation-frame.
+     * Representation of an animation-frame.
      */
     public static final String DOWN_LEFT_2 = """
                   xxxxxx
@@ -430,7 +430,7 @@ public final class MovingCharacterBlockImages {
                 66    66
             """;
     /**
-     * Representation of a animation-frame.
+     * Representation of an animation-frame.
      */
     public static final String DOWN_LEFT_3 = """
                   xxxxxx
@@ -455,7 +455,7 @@ public final class MovingCharacterBlockImages {
               66
             """;
     /**
-     * Representation of a animation-frame.
+     * Representation of an animation-frame.
      */
     public static final String UP_1 = """
                xxxxxx
@@ -480,7 +480,7 @@ public final class MovingCharacterBlockImages {
              6666  6666
             """;
     /**
-     * Representation of a animation-frame.
+     * Representation of an animation-frame.
      */
     public static final String UP_2 = """
                xxxxxx
@@ -505,7 +505,7 @@ public final class MovingCharacterBlockImages {
              6666
             """;
     /**
-     * Representation of a animation-frame.
+     * Representation of an animation-frame.
      */
     public static final String UP_3 = """
                xxxxxx
@@ -530,7 +530,7 @@ public final class MovingCharacterBlockImages {
                    6666
             """;
     /**
-     * Representation of a animation-frame.
+     * Representation of an animation-frame.
      */
     public static final String RIGHT_1 = """
                     xxx
@@ -555,7 +555,7 @@ public final class MovingCharacterBlockImages {
                   666666
             """;
     /**
-     * Representation of a animation-frame.
+     * Representation of an animation-frame.
      */
     public static final String RIGHT_2 = """
                     xxx
@@ -580,7 +580,7 @@ public final class MovingCharacterBlockImages {
                 66    6666
             """;
     /**
-     * Representation of a animation-frame.
+     * Representation of an animation-frame.
      */
     public static final String RIGHT_3 = """
                     xxx
