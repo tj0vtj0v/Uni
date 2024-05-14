@@ -88,14 +88,6 @@ public interface GameConstants {
     /**
      * Represents a Constant in the Category MovingCharacter.
      */
-    int MOVING_CHARACTER_BULLET_X_OFFSET = BLOCK_IMAGE_SIZE * 2;
-    /**
-     * Represents a Constant in the Category MovingCharacter.
-     */
-    int MOVING_CHARACTER_BULLET_Y_OFFSET = BLOCK_IMAGE_SIZE * 12;
-    /**
-     * Represents a Constant in the Category MovingCharacter.
-     */
     int ENEMY_CHANGE_DIRECTION_INTERVAL_START_IN_MILLISECONDS = 1500;
     /**
      * Represents a Constant in the Category MovingCharacter.

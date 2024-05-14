@@ -115,8 +115,40 @@ public class MovingCharacter extends CollidingGameObject {
     public void shoot() {
         direction = direction == null ? Direction.DOWN : direction;
 
+        double bulletXOffset = 0;
+        double bulletYOffset = 0;
+        switch (direction) {
+            case LEFT, UP_LEFT:
+                bulletXOffset = size * 0;
+                bulletYOffset = size * 7;
+                break;
+            case DOWN:
+                bulletXOffset = size * 2;
+                bulletYOffset = size * 12;
+                break;
+            case UP_RIGHT:
+                bulletXOffset = size * 12;
+                bulletYOffset = size * 5;
+                break;
+            case DOWN_RIGHT:
+                bulletXOffset = size * 8;
+                bulletYOffset = size * 9;
+                break;
+            case DOWN_LEFT:
+                bulletXOffset = size * 0;
+                bulletYOffset = size * 9;
+                break;
+            case UP:
+                bulletXOffset = size * 6;
+                bulletYOffset = size * 2;
+                break;
+            case RIGHT:
+                bulletXOffset = size * 16;
+                bulletYOffset = size * 7;
+        }
+
         if (gameView.timer(shotCooldownInMilliseconds, this)) {
-            gamePlayManager.spawnGameObject(new Bullet(gameView, gamePlayManager, direction, new Position(position.getX() + MOVING_CHARACTER_BULLET_X_OFFSET, position.getY() + MOVING_CHARACTER_BULLET_Y_OFFSET), this));
+            gamePlayManager.spawnGameObject(new Bullet(gameView, gamePlayManager, direction, new Position(position.getX() + bulletXOffset, position.getY() + bulletYOffset), this));
         }
     }
 
