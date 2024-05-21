@@ -44,6 +44,8 @@ public class Bullet extends CollidingGameObject implements ShiftableGameObject {
         LinearDirectionMovementPattern movementPattern = new LinearDirectionMovementPattern(originLocation, position);
         this.position.updateCoordinates(movementPattern.startPosition());
         targetPosition.updateCoordinates(movementPattern.nextTargetPosition());
+
+        gameView.playSound("piuu.wav", false);
     }
 
     /**

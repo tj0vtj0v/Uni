@@ -23,6 +23,10 @@ public class Level implements GameConstants {
      */
     int number;
     /**
+     * Represents the background music file.
+     */
+    public String music;
+    /**
      * Represents the World with its ObjectBlockImages in it.
      */
     public String world;

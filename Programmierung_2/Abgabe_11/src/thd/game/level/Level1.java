@@ -12,6 +12,7 @@ public class Level1 extends Level {
     public Level1() {
         name = "Level 1";
         number = 1;
+        music = "b3";
         world = World.LEVEL_1;
         worldOffsetLines = Math.max(world.split("\n").length - VISIBLE_COLUMNS, 0);
         worldOffsetColumns = 10;

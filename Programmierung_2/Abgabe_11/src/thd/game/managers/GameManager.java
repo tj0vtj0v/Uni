@@ -9,6 +9,7 @@ class GameManager extends LevelManager {
     GameManager(GameView gameView) {
         super(gameView);
     }
+    private int backgroundMusicID;
 
     void startNewGame() {
         Level.difficulty = Difficulty.EASY;
@@ -61,6 +62,9 @@ class GameManager extends LevelManager {
         super.initializeLevel();
 
         overlay.showMessage(level.name, 2);
+
+        gameView.stopSound(backgroundMusicID);
+        backgroundMusicID = gameView.playSound(level.music + ".wav", true);
     }
 
     @Override

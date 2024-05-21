@@ -3,7 +3,6 @@ package thd.gameobjects.movable;
 import thd.game.managers.GamePlayManager;
 import thd.game.utilities.GameView;
 import thd.gameobjects.base.*;
-import thd.gameobjects.resources.MovingCharacterBlockImages;
 import thd.gameobjects.unmovable.DeadEnemy;
 
 import java.util.List;
@@ -95,7 +94,7 @@ public class EnemyGunner extends MovingCharacter implements ShiftableGameObject,
         moved = !(position.similarTo(targetPosition));
         updateAnimation();
 
-        if (hitPossible()) {
+        if (gameView.timer(random.nextInt(shotCooldownInMilliseconds, 1000), this) && hitPossible()) {
             shoot();
         }
     }

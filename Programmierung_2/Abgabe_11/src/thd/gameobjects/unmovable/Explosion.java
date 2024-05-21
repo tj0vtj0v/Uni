@@ -33,6 +33,8 @@ public class Explosion extends CollidingGameObject implements ShiftableGameObjec
         hitBoxOffsets(size * -1, size * -1, size * 2, size * 2);
 
         speedInPixel = 0;
+
+        gameView.playSound("bumm.wav", false);
     }
 
     private void switchToNextState() {
