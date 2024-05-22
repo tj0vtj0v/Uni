@@ -10,6 +10,7 @@ class GameManager extends LevelManager {
     GameManager(GameView gameView) {
         super(gameView);
     }
+
     private int backgroundMusicID;
 
     void startNewGame() {
@@ -66,9 +67,10 @@ class GameManager extends LevelManager {
     protected void initializeLevel() {
         super.initializeLevel();
 
-        gameView.stopSound(backgroundMusicID);
-
         overlay.showMessage(level.name, 2);
+
+        gameView.stopSound(backgroundMusicID);
+        gameView.stopAllSounds();
         backgroundMusicID = gameView.playSound(level.music + ".wav", true);
     }
 
