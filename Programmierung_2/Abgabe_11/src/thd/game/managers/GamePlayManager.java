@@ -135,7 +135,7 @@ public class GamePlayManager extends WorldShiftManager {
      *
      * @param collidingGameObject CollidingGameObject to create.
      */
-    public void spawnPathBlockingGameObject(CollidingGameObject collidingGameObject) {
+    void spawnPathBlockingGameObject(CollidingGameObject collidingGameObject) {
         spawnGameObject(collidingGameObject);
         collidingGameObjectsForPathDecision.add(collidingGameObject);
     }

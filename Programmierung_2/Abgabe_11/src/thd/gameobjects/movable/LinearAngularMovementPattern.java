@@ -19,13 +19,27 @@ class LinearAngularMovementPattern extends MovementPattern {
         int startAngle = 0;
 
         switch (direction) {
-            case UP -> startAngle = 90;
-            case DOWN -> startAngle = 270;
-            case LEFT -> startAngle = 180;
-            case UP_LEFT -> startAngle = 135;
-            case UP_RIGHT -> startAngle = 45;
-            case DOWN_LEFT -> startAngle = 225;
-            case DOWN_RIGHT -> startAngle = 315;
+            case UP -> {
+                startAngle = 90;
+            }
+            case DOWN -> {
+                startAngle = 270;
+            }
+            case LEFT -> {
+                startAngle = 180;
+            }
+            case UP_LEFT -> {
+                startAngle = 135;
+            }
+            case UP_RIGHT -> {
+                startAngle = 45;
+            }
+            case DOWN_LEFT -> {
+                startAngle = 225;
+            }
+            case DOWN_RIGHT -> {
+                startAngle = 315;
+            }
         }
 
         angleInDegree = random.nextInt(startAngle, startAngle + range) - range / 2;

@@ -37,6 +37,8 @@ public class DeadEnemy extends GameObject implements ShiftableGameObject {
         speedInPixel = 0;
 
         this.position.updateCoordinates(position);
+
+        gameView.playSound("death.wav", false);
     }
 
     private void switchToNextState() {

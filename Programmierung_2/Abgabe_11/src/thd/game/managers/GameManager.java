@@ -2,6 +2,7 @@ package thd.game.managers;
 
 import thd.game.level.Difficulty;
 import thd.game.level.Level;
+import thd.game.utilities.FileAccess;
 import thd.game.utilities.GameView;
 
 
@@ -12,7 +13,11 @@ class GameManager extends LevelManager {
     private int backgroundMusicID;
 
     void startNewGame() {
-        Level.difficulty = Difficulty.EASY;
+        Difficulty difficulty = FileAccess.readDifficultyFromDisc();
+        difficulty = Difficulty.EASY;
+        FileAccess.writeDifficultyToDisc(difficulty);
+        Level.difficulty = difficulty;
+
         initializeGame();
     }
 
@@ -61,9 +66,9 @@ class GameManager extends LevelManager {
     protected void initializeLevel() {
         super.initializeLevel();
 
-        overlay.showMessage(level.name, 2);
-
         gameView.stopSound(backgroundMusicID);
+
+        overlay.showMessage(level.name, 2);
         backgroundMusicID = gameView.playSound(level.music + ".wav", true);
     }
 

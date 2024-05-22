@@ -64,6 +64,7 @@ public class MainCharacterImpl extends MovingCharacter implements MainCharacter 
             try {
                 if (!dead) {
                     gamePlayManager.reduceLive();
+                    gameView.playSound("maindeath.wav", false);
                     dead = true;
                 }
             } catch (NoRemainingMenException e) {
