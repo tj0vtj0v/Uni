@@ -18,10 +18,8 @@ public class Level2 extends Level {
         worldOffsetColumns = 10;
         worldScale = GameView.WIDTH / (world.split("\n")[0].length() - worldOffsetColumns - 1);
 
-        mainCharacterSpeedInPixel = 2;
-        bulletSpeedInPixel = 8;
-        grenadeSpeedInPixel = 5;
-        vehicleSpeedInPixel = 8;
+        bulletSpeedInPixel -= 2;
+        grenadeSpeedInPixel -= 1;
         mopedHitTolerance = 1;
         humveeHitTolerance = 1;
     }

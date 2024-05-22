@@ -8,51 +8,51 @@ public final class MovingCharacterBlockImages {
      * Representation of an animation-frame.
      */
     public static final String LEFT_1 = """
-                     xxx
-                   xxxxxxx
-                  xx1111xxx
-                  1116611xx
-                    111111
-                    xxxxx
-                  88xxxxxxx
-                  88xxxxxxxx
-            666666xx88xxxxxx
-            666666xx88xxxxxx
-              11xxxxxx88xxxx
-              11xxxxxxx88xx
-              66  xxxxxxx88
-                    xxxxxx
-                    xxxxxx
-                    xxxxxx
-                    xxxxxx
-                    xxxxxx
-                    xxxx66
-                    666666
+                     xxx   -
+                   xxxxxxx   -
+                  xx1111xxx   -
+                  1116611xx   -
+                    111111   -
+                    xxxxx   -
+                  88xxxxxxx   -
+                  88xxxxxxxx   -
+            666666xx88xxxxxx   -
+            666666xx88xxxxxx   -
+              11xxxxxx88xxxx   -
+              11xxxxxxx88xx   -
+              66  xxxxxxx88   -
+                    xxxxxx   -
+                    xxxxxx   -
+                    xxxxxx   -
+                    xxxxxx   -
+                    xxxxxx   -
+                    xxxx66   -
+                    666666   -
             """;
     /**
      * Representation of an animation-frame.
      */
     public static final String LEFT_2 = """
-                     xxx
-                   xxxxxxx
-                  xx1111xxx
-                  1116611xx
-                    111111
-                    xxxxx
-                  88xxxxxxx
-                  88xxxxxxxx
-            666666xx88xxxxxx
-            666666xx88xxxxxx
-              11xxxxxx88xxxx
-              11xxxxxxx88xx
-              66  xxxxxxx88
-                  xxxxxx66
-                  xxxx66xxxx
-                  xxxx  xxxx
-                  xxxx   xxx66
-                xxxx     xxx66
-                xx66      66
-                6666      66
+                     xxx -
+                   xxxxxxx -
+                  xx1111xxx -
+                  1116611xx -
+                    111111 -
+                    xxxxx -
+                  88xxxxxxx -
+                  88xxxxxxxx -
+            666666xx88xxxxxx -
+            666666xx88xxxxxx -
+              11xxxxxx88xxxx -
+              11xxxxxxx88xx -
+              66  xxxxxxx88 -
+                  xxxxxx66 -
+                  xxxx66xxxx -
+                  xxxx  xxxx -
+                  xxxx   xxx66 -
+                xxxx     xxx66 -
+                xx66      66 -
+                6666      66 -
             """;
     /**
      * Representation of an animation-frame.

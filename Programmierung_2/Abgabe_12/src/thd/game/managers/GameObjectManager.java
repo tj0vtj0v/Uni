@@ -3,7 +3,9 @@ package thd.game.managers;
 import thd.game.utilities.SortedGameObjectsList;
 import thd.gameobjects.base.GameObject;
 
-import java.util.*;
+import java.util.Comparator;
+import java.util.LinkedList;
+import java.util.List;
 
 
 class GameObjectManager extends CollisionManager {

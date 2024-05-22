@@ -89,10 +89,43 @@ public class Level implements GameConstants {
         bulletSpeedInPixel = DEFAULT_BULLET_SPEED_IN_PIXEL;
         grenadeSpeedInPixel = DEFAULT_GRENADE_SPEED_IN_PIXEL;
         enemySpeedInPixel = DEFAULT_ENEMY_SPEED_IN_PIXEL;
-        vehicleSpeedInPixel = DEFAULT_VEHICLE_SPEED_IN_PIXEL;
         enemyShotCooldown = DEFAULT_SHOOT_COOLDOWN_IN_MILLISECONDS;
+        vehicleSpeedInPixel = DEFAULT_VEHICLE_SPEED_IN_PIXEL;
         humveeHitTolerance = DEFAULT_HUMVEE_HIT_TOLERANCE;
         mopedHitTolerance = DEFAULT_MOPED_HIT_TOLERANCE;
         vehicleSpawnDistance = DEFAULT_VEHICLE_SPAWN_DISTANCE;
+
+        switch (difficulty) {
+            case EASY:
+                mainCharacterShotCooldown -= 100;
+                grenadeSpeedInPixel -= 3;
+                enemySpeedInPixel -= 1;
+                enemyShotCooldown += 200;
+                vehicleSpeedInPixel /= 2;
+                humveeHitTolerance = 1;
+                mopedHitTolerance = 1;
+                break;
+            case HARD:
+                mainCharacterShotCooldown += 100;
+                bulletSpeedInPixel += 5;
+                grenadeSpeedInPixel += 2;
+                enemyShotCooldown -= 50;
+                vehicleSpeedInPixel += 2;
+                vehicleSpawnDistance /= 2;
+                humveeHitTolerance += 2;
+                mopedHitTolerance += 2;
+                break;
+            case IMPOSSIBLE:
+                mainCharacterSpeedInPixel = 1;
+                mainCharacterShotCooldown += 200;
+                bulletSpeedInPixel *= 2;
+                grenadeSpeedInPixel *= 2;
+                enemySpeedInPixel += 1;
+                enemyShotCooldown -= 200;
+                vehicleSpeedInPixel *= 3;
+                vehicleSpawnDistance /= 5;
+                humveeHitTolerance *= 2;
+                mopedHitTolerance *= 2;
+        }
     }
 }

@@ -1,9 +1,14 @@
 package thd.game.managers;
 
 import thd.game.utilities.GameView;
-import thd.gameobjects.base.*;
+import thd.gameobjects.base.Direction;
+import thd.gameobjects.base.GameObject;
+import thd.gameobjects.base.Position;
+import thd.gameobjects.movable.EnemyGunner;
+import thd.gameobjects.movable.Humvee;
+import thd.gameobjects.movable.MainCharacterImpl;
+import thd.gameobjects.movable.Moped;
 import thd.gameobjects.unmovable.*;
-import thd.gameobjects.movable.*;
 
 import java.util.LinkedList;
 import java.util.List;

@@ -2,7 +2,8 @@ package thd.gameobjects.movable;
 
 import thd.game.managers.GamePlayManager;
 import thd.game.utilities.GameView;
-import thd.gameobjects.base.*;
+import thd.gameobjects.base.Direction;
+import thd.gameobjects.base.Position;
 import thd.gameobjects.resources.ObjectBlockImages;
 
 

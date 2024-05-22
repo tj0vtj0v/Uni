@@ -4,11 +4,11 @@ package thd.gameobjects.unmovable;
 import thd.game.managers.GamePlayManager;
 import thd.game.utilities.GameView;
 import thd.gameobjects.base.*;
-import thd.gameobjects.resources.EnemyMortarBlockImages;
-import thd.gameobjects.resources.ObjectBlockImages;
 import thd.gameobjects.movable.Bullet;
 import thd.gameobjects.movable.Grenade;
 import thd.gameobjects.movable.MainCharacterImpl;
+import thd.gameobjects.resources.EnemyMortarBlockImages;
+import thd.gameobjects.resources.ObjectBlockImages;
 
 /**
  * Representation of the in-game-object 'EnemyMortarBlockImages'.

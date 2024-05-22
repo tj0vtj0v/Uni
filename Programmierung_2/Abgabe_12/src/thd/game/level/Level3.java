@@ -19,10 +19,8 @@ public class Level3 extends Level {
         worldScale = GameView.WIDTH / (world.split("\n")[0].length() - worldOffsetColumns - 1);
 
         mainCharacterSpeedInPixel = 1;
-        mainCharacterShotCooldown = 500;
-        bulletSpeedInPixel = 15;
-        enemyShotCooldown = 100;
-        grenadeSpeedInPixel = 12;
-        vehicleSpawnDistance = DEFAULT_VEHICLE_SPAWN_DISTANCE / 2;
+        mainCharacterShotCooldown += 200;
+        bulletSpeedInPixel += 2;
+        enemyShotCooldown -= 50;
     }
 }

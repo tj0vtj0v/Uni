@@ -88,8 +88,25 @@ public class MovingCharacter extends CollidingGameObject {
     private void recalculateHitBox() {
         width = generateWidthFromBlockImage() * size;
         height = generateHeightFromBlockImage() * size;
-        // TODO switch for direction
-        hitBoxOffsets(size * 2, size * 2, size * -4, size * -8);
+
+        switch (direction) {
+            case RIGHT:
+                hitBoxOffsets(size * 5, size * 2, size * -12, size * -8);
+                break;
+            case LEFT:
+                hitBoxOffsets(size * 6, size * 2, size * -12, size * -8);
+                break;
+            case UP, DOWN, DOWN_RIGHT:
+                hitBoxOffsets(size * 2, size * 2, size * -4, size * -8);
+                break;
+            case DOWN_LEFT, UP_LEFT:
+                hitBoxOffsets(size * 3, size * 2, size * -6, size * -8);
+                break;
+            case UP_RIGHT:
+                hitBoxOffsets(size * 2, size * 2, size * -8, size * -8);
+                break;
+        }
+
     }
 
     protected void updateAnimation() {

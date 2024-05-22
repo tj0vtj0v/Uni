@@ -3,11 +3,11 @@ package thd.gameobjects.unmovable;
 import thd.game.managers.GamePlayManager;
 import thd.game.utilities.GameView;
 import thd.gameobjects.base.*;
-import thd.gameobjects.movable.ExplodingBullet;
-import thd.gameobjects.resources.ObjectBlockImages;
 import thd.gameobjects.movable.Bullet;
+import thd.gameobjects.movable.ExplodingBullet;
 import thd.gameobjects.movable.Grenade;
 import thd.gameobjects.movable.MainCharacterImpl;
+import thd.gameobjects.resources.ObjectBlockImages;
 
 
 /**

@@ -3,7 +3,10 @@ package thd.gameobjects.movable;
 import thd.game.managers.ExplosionCountdownExpiredException;
 import thd.game.managers.GamePlayManager;
 import thd.game.utilities.GameView;
-import thd.gameobjects.base.*;
+import thd.gameobjects.base.Direction;
+import thd.gameobjects.base.GameObject;
+import thd.gameobjects.base.Position;
+import thd.gameobjects.base.ShiftableGameObject;
 import thd.gameobjects.resources.ObjectBlockImages;
 import thd.gameobjects.unmovable.Explosion;
 
