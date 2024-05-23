@@ -48,6 +48,8 @@ public class MainCharacterImpl extends MovingCharacter implements MainCharacter 
         hitBoxOffsets(size * 2, size * 2, size * -4, size * -8);
 
         speedInPixel = gamePlayManager.currentLevel().mainCharacterSpeedInPixel;
+
+        shoot();
     }
 
     private void changeBlockImageColors(){
@@ -180,6 +182,10 @@ public class MainCharacterImpl extends MovingCharacter implements MainCharacter 
      */
     public void resetDirection() {
         direction = null;
+    }
+
+    public void throwGrenade() {
+
     }
 
     @Override
