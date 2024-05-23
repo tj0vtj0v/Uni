@@ -13,6 +13,7 @@ import java.nio.file.Path;
 public final class FileAccess {
     private static final Path WICHTEL_GAME_FILE = Path.of(System.getProperty("user.home")).resolve("wichtelgame.txt");
 
+    // TODO Json
     /**
      * Updates difficulty to the file.
      * Ends the Programm in case of a fail.
