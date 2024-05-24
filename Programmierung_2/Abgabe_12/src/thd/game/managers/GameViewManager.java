@@ -22,8 +22,6 @@ public class GameViewManager extends GameView {
         setWindowIcon("window_symbol.png");
         changeBackgroundColor(new Color(162, 102, 35));
 
-        showStatistic(true);
-
         addBlockimageColors();
         gameManager.startNewGame();
     }

@@ -44,7 +44,7 @@ class UserControlledGameObjectPool implements GameConstants {
             case 1, 2:
                 mainCharacter.shoot();
                 break;
-            case 100, 120:
+            case 50, 70:
                 mainCharacter.throwGrenade();
         }
     }

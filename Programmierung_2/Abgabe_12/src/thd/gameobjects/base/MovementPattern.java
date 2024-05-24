@@ -15,6 +15,6 @@ public abstract class MovementPattern implements GameConstants {
         this.startPosition = new Position(startPosition);
     }
 
-    protected abstract Position startPosition(Position... referencePositions);
-    protected abstract Position nextTargetPosition(Position... referencePositions);
+    public abstract Position startPosition(Position... referencePositions);
+    public abstract Position nextTargetPosition(Position... referencePositions);
 }

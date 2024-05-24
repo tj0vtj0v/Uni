@@ -3,10 +3,7 @@ package thd.gameobjects.movable;
 import thd.game.managers.ExplosionCountdownExpiredException;
 import thd.game.managers.GamePlayManager;
 import thd.game.utilities.GameView;
-import thd.gameobjects.base.Direction;
-import thd.gameobjects.base.GameObject;
-import thd.gameobjects.base.Position;
-import thd.gameobjects.base.ShiftableGameObject;
+import thd.gameobjects.base.*;
 import thd.gameobjects.resources.ObjectBlockImages;
 import thd.gameobjects.unmovable.Explosion;
 
@@ -18,17 +15,15 @@ import thd.gameobjects.unmovable.Explosion;
  * BlockImage
  */
 public class Grenade extends GameObject implements ShiftableGameObject {
-    private final ParabolicMovementPattern movementPattern;
+    private final MovementPattern movementPattern;
 
     /**
      * Crates a new Grenade.
      *
      * @param gameView        GameView to show the grenade on.
      * @param gamePlayManager GamePlayManager to manage the game actions.
-     * @param originLocation  Direction in which the bullet should travel.
-     * @param position        Position from which to start movement.
      */
-    public Grenade(GameView gameView, GamePlayManager gamePlayManager, Direction originLocation, Position position) {
+    public Grenade(GameView gameView, GamePlayManager gamePlayManager, MovementPattern movementPattern) {
         super(gameView, gamePlayManager);
 
         blockImage = ObjectBlockImages.MORTAR_GRENADE;
@@ -41,9 +36,9 @@ public class Grenade extends GameObject implements ShiftableGameObject {
 
         speedInPixel = gamePlayManager.currentLevel().grenadeSpeedInPixel;
 
-        movementPattern = new ParabolicMovementPattern(originLocation.opposite(), position);
-        this.position.updateCoordinates(movementPattern.startPosition());
-        targetPosition.updateCoordinates(movementPattern.nextTargetPosition(getPosition()));
+        this.movementPattern = movementPattern;
+        this.position.updateCoordinates(this.movementPattern.startPosition());
+        targetPosition.updateCoordinates(this.movementPattern.nextTargetPosition(getPosition()));
     }
 
     @Override

@@ -3,6 +3,8 @@ package thd.gameobjects.base;
 import thd.game.managers.GamePlayManager;
 import thd.game.utilities.GameView;
 import thd.gameobjects.movable.Bullet;
+import thd.gameobjects.movable.Grenade;
+import thd.gameobjects.movable.GrenadeMovementPattern;
 import thd.gameobjects.movable.Vehicle;
 import thd.gameobjects.resources.MovingCharacterBlockImages;
 import thd.gameobjects.unmovable.Explosion;
@@ -13,7 +15,7 @@ import java.util.List;
 /**
  * Creates an active moving character.
  */
-public class MovingCharacter extends CollidingGameObject {
+public abstract class MovingCharacter extends CollidingGameObject {
 
     protected enum Animation {FRAME_1, FRAME_2, FRAME_3, FRAME_4}
 
@@ -124,6 +126,10 @@ public class MovingCharacter extends CollidingGameObject {
             blockImage = animationFrames[direction.ordinal()][currentFrame.ordinal()];
             recalculateHitBox();
         }
+    }
+
+    public void throwGrenade() {
+        gamePlayManager.spawnGameObject(new Grenade(gameView, gamePlayManager, new GrenadeMovementPattern(direction, position)));
     }
 
     /**

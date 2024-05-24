@@ -21,7 +21,7 @@ class RandomMovementPattern extends MovementPattern {
     }
 
     @Override
-    protected Position startPosition(Position... referencePositions) {
+    public Position startPosition(Position... referencePositions) {
         if (launchSide == Direction.LEFT) {
             direction = Direction.RIGHT;
             return new Position(RANDOM_GLOBAL_SPAWN_LEFT_OFFSET, referencePositions[0].getY());
@@ -32,7 +32,7 @@ class RandomMovementPattern extends MovementPattern {
     }
 
     @Override
-    protected Position nextTargetPosition(Position... referencePositions) {
+    public Position nextTargetPosition(Position... referencePositions) {
         Position targetPosition = new Position(referencePositions[0]);
         int distance = random.nextInt(RANDOM_START_TARGET_DISTANCE, RANDOM_END_TARGET_DISTANCE);
         direction = Direction.values()[random.nextInt(Direction.values().length)];

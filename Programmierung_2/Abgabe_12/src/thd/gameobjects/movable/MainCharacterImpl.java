@@ -8,6 +8,7 @@ import thd.gameobjects.resources.MovingCharacterBlockImages;
 import thd.gameobjects.unmovable.AmmoBox;
 
 import java.util.List;
+import java.util.Queue;
 import java.util.Random;
 
 
@@ -52,7 +53,7 @@ public class MainCharacterImpl extends MovingCharacter implements MainCharacter 
         shoot();
     }
 
-    private void changeBlockImageColors(){
+    private void changeBlockImageColors() {
         for (int directions = 0; directions < Direction.values().length; directions++) {
             for (int frames = 0; frames < Animation.values().length; frames++) {
                 animationFrames[directions][frames] = animationFrames[directions][frames].replace("x", "5");
@@ -129,7 +130,7 @@ public class MainCharacterImpl extends MovingCharacter implements MainCharacter 
      * Moves the character its speed in pixels up.
      */
     public void up() {
-        if (position.getY() > GameView.HEIGHT / 2f) {
+        if (position.getY() > (GameView.HEIGHT - SCOREBOARD_HEIGHT) / 2f) {
             position.up(speedInPixel);
             if (pathIsBlocked()) {
                 position.down(speedInPixel);
@@ -185,7 +186,10 @@ public class MainCharacterImpl extends MovingCharacter implements MainCharacter 
     }
 
     public void throwGrenade() {
-
+        if (!dead && availableGrenades > 0) {
+            availableGrenades--;
+            super.throwGrenade();
+        }
     }
 
     @Override

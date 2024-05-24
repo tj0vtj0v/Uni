@@ -14,12 +14,12 @@ class LinearDirectionMovementPattern extends MovementPattern {
     }
 
     @Override
-    protected Position startPosition(Position... referencePositions) {
+    public Position startPosition(Position... referencePositions) {
         return new Position(startPosition);
     }
 
     @Override
-    protected Position nextTargetPosition(Position... referencePositions) {
+    public Position nextTargetPosition(Position... referencePositions) {
         final double oldX = startPosition.getX();
         final double oldY = startPosition.getY();
         final double saveDistance = GameView.WIDTH * 2;

@@ -5,24 +5,24 @@ import thd.gameobjects.base.Direction;
 import thd.gameobjects.base.MovementPattern;
 import thd.gameobjects.base.Position;
 
-class ParabolicMovementPattern extends MovementPattern {
+public class MortarMovementPattern extends MovementPattern {
     private final Direction direction;
     private final int trajectory;
-    private final int maximumNumberOfSteps;
+    private final int targetSteps;
     private int steps;
 
-    ParabolicMovementPattern(Direction direction, Position startPosition) {
+    public MortarMovementPattern(Direction direction, Position startPosition) {
         super(startPosition);
 
         this.direction = direction;
 
         trajectory = random.nextInt(PARABOLIC_RANDOM_TRAJECTORY_START, PARABOLIC_RANDOM_TRAJECTORY_END);
-        maximumNumberOfSteps = random.nextInt(PARABOLIC_RANDOM_STEPS_START, PARABOLIC_RANDOM_STEPS_END);
+        targetSteps = random.nextInt(PARABOLIC_RANDOM_STEPS_START, PARABOLIC_RANDOM_STEPS_END);
         steps = 0;
     }
 
     @Override
-    protected Position startPosition(Position... referencePositions) {
+    public Position startPosition(Position... referencePositions) {
         if (direction == Direction.LEFT) {
             startPosition.right(PARABOLIC_SPAWN_LEFT_X_OFFSET);
         } else {
@@ -33,8 +33,8 @@ class ParabolicMovementPattern extends MovementPattern {
     }
 
     @Override
-    protected Position nextTargetPosition(Position... referencePositions) {
-        if (steps >= maximumNumberOfSteps) {
+    public Position nextTargetPosition(Position... referencePositions) {
+        if (steps >= targetSteps) {
             throw new ExplosionCountdownExpiredException("Grenade is exploded.");
         }
 

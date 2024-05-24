@@ -46,12 +46,12 @@ class LinearAngularMovementPattern extends MovementPattern {
     }
 
     @Override
-    protected Position startPosition(Position... referencePositions) {
+    public Position startPosition(Position... referencePositions) {
         return new Position(startPosition);
     }
 
     @Override
-    protected Position nextTargetPosition(Position... referencePositions) {
+    public Position nextTargetPosition(Position... referencePositions) {
         int distance = random.nextInt(150, GameView.WIDTH / 2);
         Position targetPosition = new Position(startPosition);
 

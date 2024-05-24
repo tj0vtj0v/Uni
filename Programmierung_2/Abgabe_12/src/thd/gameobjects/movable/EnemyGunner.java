@@ -97,6 +97,9 @@ public class EnemyGunner extends MovingCharacter implements ShiftableGameObject,
         if (gameView.timer(random.nextInt(shotCooldownInMilliseconds, 1000), this) && hitPossible()) {
             shoot();
         }
+        if (gameView.timer(random.nextInt(shotCooldownInMilliseconds, 10000), this) && hitPossible()) {
+            throwGrenade();
+        }
     }
 
     @Override

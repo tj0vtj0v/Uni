@@ -7,6 +7,7 @@ import thd.gameobjects.base.*;
 import thd.gameobjects.movable.Bullet;
 import thd.gameobjects.movable.Grenade;
 import thd.gameobjects.movable.MainCharacterImpl;
+import thd.gameobjects.movable.MortarMovementPattern;
 import thd.gameobjects.resources.EnemyMortarBlockImages;
 import thd.gameobjects.resources.ObjectBlockImages;
 
@@ -55,7 +56,7 @@ public class EnemyMortar extends CollidingGameObject implements ShiftableGameObj
     }
 
     private void shoot() {
-        gamePlayManager.spawnGameObject(new Grenade(gameView, gamePlayManager, direction, position));
+        gamePlayManager.spawnGameObject(new Grenade(gameView, gamePlayManager, new MortarMovementPattern(direction.opposite(), position)));
     }
 
     private void switchToNextState() {
