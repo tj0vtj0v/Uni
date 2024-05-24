@@ -17,7 +17,7 @@ public class GrenadeMovementPattern extends MovementPattern {
         targetSteps = random.nextInt(18, 20);
 
         if (direction.name().contains("UP")) {
-            yVelocity = targetSteps * 2;
+            yVelocity = (int) (targetSteps * 1.5);
         } else if (direction.name().contains("DOWN")) {
             yVelocity = 2;
             targetSteps -= 2;
