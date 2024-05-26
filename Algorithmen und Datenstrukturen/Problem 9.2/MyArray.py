@@ -54,4 +54,3 @@ class MyArray:
         self._n -= 1
         if (self._capacity / self._n) > 5:  # up to 10
             self._resize(int(self._capacity / 2))
-        print(self._capacity)
