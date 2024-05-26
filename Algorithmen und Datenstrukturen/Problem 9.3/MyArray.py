@@ -58,6 +58,6 @@ class MyArray:
         for i in range(k, self._n - 1):
             self._A[i] = self._A[i + 1]
         self._n -= 1
-        if (self._capacity / self._n) > 3:
+        if (self._capacity / self._n) > 5:  # up to 10
             self._resize(int(self._capacity / 2))
         print(self._capacity)
