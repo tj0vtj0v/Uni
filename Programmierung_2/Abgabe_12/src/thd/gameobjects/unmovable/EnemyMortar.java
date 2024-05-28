@@ -92,7 +92,7 @@ public class EnemyMortar extends CollidingGameObject implements ShiftableGameObj
                 mortarXOffset += currentState.leftShiftIfRight * size;
                 hitBoxOffsets(size * 6, size * 1, size * -2, size * -2);
             }
-        } else if (currentState == State.LOADING && gameView.timer(MORTAR_LOADING_TIME, this)) {
+        } else if (currentState == State.LOADING && gameView.timer(gamePlayManager.currentLevel().mortarLoadingTime, this)) {
             switchToNextState();
 
             if (direction == Direction.RIGHT) {

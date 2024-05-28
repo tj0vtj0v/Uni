@@ -35,6 +35,10 @@ public class ScoreBoard extends GameObject {
     }
 
     @Override
+    public void updateStatus() {
+    }
+
+    @Override
     public void addToCanvas() {
         gameView.addRectangleToCanvas(0, GameView.HEIGHT - height, GameView.WIDTH, height, 0, true, Color.BLACK);
         gameView.addTextToCanvas(

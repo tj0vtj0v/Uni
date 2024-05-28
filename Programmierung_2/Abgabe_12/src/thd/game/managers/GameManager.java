@@ -15,7 +15,7 @@ class GameManager extends LevelManager {
 
     void startNewGame() {
         Difficulty difficulty = FileAccess.readDifficultyFromDisc();
-        difficulty = Difficulty.STANDARD;
+        difficulty = Difficulty.EASY;
         FileAccess.writeDifficultyToDisc(difficulty);
         Level.difficulty = difficulty;
 

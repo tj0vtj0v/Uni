@@ -67,7 +67,7 @@ public abstract class GameObject implements GameConstants {
      * Changes the status of an Object.
      */
     public void updateStatus() {
-        if (position.getY() > GameView.HEIGHT) {
+        if (position.getY() > GameView.HEIGHT - SCOREBOARD_HEIGHT) {
             gamePlayManager.destroyGameObject(this);
         }
     }

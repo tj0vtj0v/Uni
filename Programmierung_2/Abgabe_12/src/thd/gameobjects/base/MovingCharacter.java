@@ -42,9 +42,6 @@ public abstract class MovingCharacter extends CollidingGameObject {
         currentFrame = Animation.FRAME_1;
         animationFrames = new String[Direction.values().length][Animation.values().length];
         fillAnimationFrames();
-
-        width = 0;
-        height = 0;
     }
 
     private void fillAnimationFrames() {
@@ -90,26 +87,9 @@ public abstract class MovingCharacter extends CollidingGameObject {
     private void recalculateHitBox() {
         width = generateWidthFromBlockImage() * size;
         height = generateHeightFromBlockImage() * size;
-
-        switch (direction) {
-            case RIGHT:
-                hitBoxOffsets(size * 5, size * 2, size * -12, size * -8);
-                break;
-            case LEFT:
-                hitBoxOffsets(size * 6, size * 2, size * -12, size * -8);
-                break;
-            case UP, DOWN, DOWN_RIGHT:
-                hitBoxOffsets(size * 2, size * 2, size * -4, size * -8);
-                break;
-            case DOWN_LEFT, UP_LEFT:
-                hitBoxOffsets(size * 3, size * 2, size * -6, size * -8);
-                break;
-            case UP_RIGHT:
-                hitBoxOffsets(size * 2, size * 2, size * -8, size * -8);
-                break;
-        }
-
+        hitBoxOffsets(size * 7, size * 2, size * -12, size * -8);
     }
+
 
     protected void updateAnimation() {
         direction = direction == null ? Direction.DOWN : direction;
@@ -117,15 +97,13 @@ public abstract class MovingCharacter extends CollidingGameObject {
         if (moved) {
             if (gameView.timer(ANIMATION_SPEED, this)) {
                 switchToNextState();
-
-                blockImage = animationFrames[direction.ordinal()][currentFrame.ordinal()];
-                recalculateHitBox();
             }
         } else {
             currentFrame = Animation.FRAME_1;
-            blockImage = animationFrames[direction.ordinal()][currentFrame.ordinal()];
-            recalculateHitBox();
         }
+
+        blockImage = animationFrames[direction.ordinal()][currentFrame.ordinal()];
+        recalculateHitBox();
     }
 
     public void throwGrenade() {

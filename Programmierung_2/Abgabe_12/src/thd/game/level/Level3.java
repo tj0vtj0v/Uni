@@ -22,5 +22,6 @@ public class Level3 extends Level {
         mainCharacterShotCooldown += 200;
         bulletSpeedInPixel += 2;
         enemyShotCooldown -= 50;
+        mortarLoadingTime -= 200;
     }
 }

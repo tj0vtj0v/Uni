@@ -67,6 +67,10 @@ public class Level implements GameConstants {
      */
     public int enemyShotCooldown;
     /**
+     * Loading time of the mortar.
+     */
+    public int mortarLoadingTime;
+    /**
      * MovementSpeed of all Vehicles.
      */
     public int vehicleSpeedInPixel;
@@ -90,6 +94,7 @@ public class Level implements GameConstants {
         grenadeSpeedInPixel = DEFAULT_GRENADE_SPEED_IN_PIXEL;
         enemySpeedInPixel = DEFAULT_ENEMY_SPEED_IN_PIXEL;
         enemyShotCooldown = DEFAULT_SHOOT_COOLDOWN_IN_MILLISECONDS;
+        mortarLoadingTime = DEFAULT_MORTAR_LOADING_TIME;
         vehicleSpeedInPixel = DEFAULT_VEHICLE_SPEED_IN_PIXEL;
         humveeHitTolerance = DEFAULT_HUMVEE_HIT_TOLERANCE;
         mopedHitTolerance = DEFAULT_MOPED_HIT_TOLERANCE;
@@ -101,6 +106,7 @@ public class Level implements GameConstants {
                 grenadeSpeedInPixel -= 3;
                 enemySpeedInPixel -= 1;
                 enemyShotCooldown += 200;
+                mortarLoadingTime += 4000;
                 vehicleSpeedInPixel /= 2;
                 humveeHitTolerance = 1;
                 mopedHitTolerance = 1;
@@ -110,6 +116,7 @@ public class Level implements GameConstants {
                 bulletSpeedInPixel += 5;
                 grenadeSpeedInPixel += 2;
                 enemyShotCooldown -= 50;
+                mortarLoadingTime -= 200;
                 vehicleSpeedInPixel += 2;
                 vehicleSpawnDistance /= 2;
                 humveeHitTolerance += 2;
@@ -122,6 +129,7 @@ public class Level implements GameConstants {
                 grenadeSpeedInPixel *= 2;
                 enemySpeedInPixel += 1;
                 enemyShotCooldown -= 200;
+                mortarLoadingTime -= 500;
                 vehicleSpeedInPixel *= 3;
                 vehicleSpawnDistance /= 5;
                 humveeHitTolerance *= 2;

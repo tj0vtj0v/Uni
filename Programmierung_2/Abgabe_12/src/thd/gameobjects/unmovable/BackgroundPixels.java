@@ -29,13 +29,13 @@ public class BackgroundPixels extends GameObject implements ShiftableGameObject 
         rotation = 0;
 
         gamePlayManager.currentLevel();
-        blockImage = createBackgroundPattern((level.worldOffsetLines + Level.VISIBLE_COLUMNS));
+        blockImage = createBackgroundPattern(((level.worldOffsetLines * 2) + Level.VISIBLE_COLUMNS));
         distanceToBackground = BACKGROUND;
 
         width = generateWidthFromBlockImage();
         height = generateHeightFromBlockImage();
 
-        position.up(level.worldOffsetLines * level.worldScale);
+        position.up((level.worldOffsetLines * 2) * level.worldScale);
     }
 
     private String createBackgroundPattern(int length) {

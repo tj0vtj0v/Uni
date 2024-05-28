@@ -118,10 +118,6 @@ public interface GameConstants {
     /**
      * Represents a Constant in the Category UnmovingEnemy.
      */
-    int MORTAR_LOADING_TIME = 800;
-    /**
-     * Represents a Constant in the Category UnmovingEnemy.
-     */
     int MORTAR_SHOOTING_TIME = 400;
     /**
      * Represents a Constant in the Category UnmovingEnemy.
@@ -253,4 +249,8 @@ public interface GameConstants {
      * Represents a DEFAULT-VALUE Constant.
      */
     int DEFAULT_SHOOTING_BOX_HIT_TOLERANCE = 2;
+    /**
+     * Represents a DEFAULT-VALUE Constant.
+     */
+    int DEFAULT_MORTAR_LOADING_TIME = 800;
 }
