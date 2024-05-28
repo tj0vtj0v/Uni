@@ -60,6 +60,11 @@ class GameWorldManager extends GamePlayManager {
                         mainCharacter = new MainCharacterImpl(gameView, this, Direction.DOWN, position, collidingGameObjectsForPathDecision);
                         spawnGameObject(mainCharacter);
                         break;
+                    case 'E':
+                        addActivatableGameObject(new EndWall(gameView, this, located, position));
+                        addActivatableGameObject(new EndWallPanel(gameView, this, located, position));
+                        addActivatableGameObject(new EndWallPanel(gameView, this, located.opposite(), position));
+                        break;
                     case 'M':
                         addActivatableGameObject(new EnemyMortar(gameView, this, located, position));
                         break;
@@ -114,6 +119,15 @@ class GameWorldManager extends GamePlayManager {
                     spawnGameObject(enemyMortar);
                     iterator.remove();
                 }
+
+            } else if (gameObject instanceof EndWallPanel endWallPanel) {
+                spawnPathBlockingGameObject(endWallPanel);
+                iterator.remove();
+            } else if (gameObject instanceof EndWall endWall) {
+                if (endWall.tryToActivate(mainCharacter)) {
+                    spawnPathBlockingGameObject(endWall);
+                    iterator.remove();
+                }
             } else if (gameObject instanceof EnemyGunner enemyGunner) {
                 if (enemyGunner.tryToActivate(mainCharacter)) {
                     spawnGameObject(enemyGunner);
@@ -161,6 +175,7 @@ class GameWorldManager extends GamePlayManager {
                 }
             }
         }
+
     }
 
     @Override

@@ -19,6 +19,7 @@ public class GamePlayManager extends WorldShiftManager {
     int lives;
     int points;
     private int highScore;
+    public boolean endReached;
 
     /**
      * Creates an instance of the GamePlayManager.
@@ -32,6 +33,7 @@ public class GamePlayManager extends WorldShiftManager {
         lives = LIVES;
         points = 0;
         highScore = 0;
+        endReached = false;
     }
 
     /**
@@ -135,7 +137,7 @@ public class GamePlayManager extends WorldShiftManager {
      *
      * @param collidingGameObject CollidingGameObject to create.
      */
-    void spawnPathBlockingGameObject(CollidingGameObject collidingGameObject) {
+    public void spawnPathBlockingGameObject(CollidingGameObject collidingGameObject) {
         spawnGameObject(collidingGameObject);
         collidingGameObjectsForPathDecision.add(collidingGameObject);
     }
