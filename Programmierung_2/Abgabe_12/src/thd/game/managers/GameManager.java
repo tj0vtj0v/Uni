@@ -54,7 +54,7 @@ class GameManager extends LevelManager {
     }
 
     private boolean endOfLevel() {
-        return collidingGameObjectsForPathDecision.isEmpty();
+        return endReached && !enemyExisting() && !mainCharacter.isDead();
     }
 
     @Override
@@ -68,6 +68,7 @@ class GameManager extends LevelManager {
         super.initializeLevel();
 
         overlay.showMessage(level.name, 2);
+        endReached = false;
 
         gameView.stopSound(backgroundMusicID);
         gameView.stopAllSounds();

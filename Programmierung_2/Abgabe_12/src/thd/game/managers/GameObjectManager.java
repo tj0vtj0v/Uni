@@ -2,6 +2,13 @@ package thd.game.managers;
 
 import thd.game.utilities.SortedGameObjectsList;
 import thd.gameobjects.base.GameObject;
+import thd.gameobjects.movable.EnemyGunner;
+import thd.gameobjects.movable.Humvee;
+import thd.gameobjects.movable.Moped;
+import thd.gameobjects.movable.Vehicle;
+import thd.gameobjects.unmovable.DeadEnemy;
+import thd.gameobjects.unmovable.EnemyMortar;
+import thd.gameobjects.unmovable.ShootingBox;
 
 import java.util.Comparator;
 import java.util.LinkedList;
@@ -9,7 +16,6 @@ import java.util.List;
 
 
 class GameObjectManager extends CollisionManager {
-
     private static class CompareByLowerEdge implements Comparator<GameObject> {
         @Override
         public int compare(GameObject o1, GameObject o2) {
@@ -24,6 +30,7 @@ class GameObjectManager extends CollisionManager {
     private final List<GameObject> gameObjects;
     private final List<GameObject> gameObjectsToBeAdded;
     private final List<GameObject> gameObjectsToBeRemoved;
+    private boolean enemyInGameObjects;
 
     GameObjectManager() {
         super();
@@ -31,19 +38,29 @@ class GameObjectManager extends CollisionManager {
         gameObjects = new SortedGameObjectsList();
         gameObjectsToBeAdded = new LinkedList<>();
         gameObjectsToBeRemoved = new LinkedList<>();
+        enemyInGameObjects = false;
     }
 
     void gameLoopUpdate() {
         updateLists();
+        enemyInGameObjects = false;
 
         for (GameObject gameObject : gameObjects) {
             gameObject.updateStatus();
             gameObject.updatePosition();
             gameObject.addToCanvas();
+            if (gameObject instanceof EnemyGunner || gameObject instanceof EnemyMortar || gameObject instanceof DeadEnemy || gameObject instanceof Vehicle) {
+                enemyInGameObjects = true;
+            }
         }
 
         manageCollisions(true);
     }
+
+    boolean enemyExisting() {
+        return enemyInGameObjects;
+    }
+
 
     private void updateLists() {
         removeFromGameObjects();

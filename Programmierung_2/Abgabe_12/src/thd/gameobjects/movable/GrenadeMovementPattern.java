@@ -24,13 +24,13 @@ public class GrenadeMovementPattern extends MovementPattern {
         } else {
             yVelocity = targetSteps;
         }
-        yVelocity += (int) random.nextGaussian(0, 3);
+        yVelocity += (int) random.nextGaussian(0, 2);
 
-        xVelocity = random.nextInt(15, 25);
+        xVelocity = random.nextInt(18, 25);
         if (direction.name().contains("LEFT")) {
             xVelocity *= -1;
         } else if (!direction.name().contains("RIGHT")) {
-            xVelocity = (int) random.nextGaussian(0, 3);
+            xVelocity = (int) random.nextGaussian(0, 2);
         }
 
         steps = 0;

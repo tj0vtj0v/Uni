@@ -27,10 +27,9 @@ public class EndWall extends CollidingGameObject implements ShiftableGameObject,
 
     @Override
     public void updateStatus() {
-        if (position.getY() >= 0) {
+        if (position.getY() >= 0 && currentState == State.CLOSED) {
             gamePlayManager.endReached = true;
-        }
-        if (currentState == State.CLOSED && gamePlayManager.mainCharacterPosition().verticalDistance(position) < GameView.HEIGHT / 3f) {
+
             currentState = State.OPENED;
             blockImage = currentState.display;
         }

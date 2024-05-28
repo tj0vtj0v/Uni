@@ -126,6 +126,10 @@ public class GamePlayManager extends WorldShiftManager {
     private void gamePlayManagement() {
     }
 
+    boolean enemyExisting() {
+        return gameObjectManager.enemyExisting();
+    }
+
     @Override
     public void spawnGameObject(GameObject gameObject) {
         super.spawnGameObject(gameObject);
