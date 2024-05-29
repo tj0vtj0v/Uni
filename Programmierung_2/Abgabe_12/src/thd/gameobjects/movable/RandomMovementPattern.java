@@ -23,10 +23,8 @@ class RandomMovementPattern extends MovementPattern {
     @Override
     public Position startPosition(Position... referencePositions) {
         if (launchSide == Direction.LEFT) {
-            direction = Direction.RIGHT;
             return new Position(RANDOM_GLOBAL_SPAWN_LEFT_OFFSET, referencePositions[0].getY());
         } else {
-            direction = Direction.LEFT;
             return new Position(GameView.WIDTH + RANDOM_GLOBAL_SPAWN_RIGHT_OFFSET, referencePositions[0].getY());
         }
     }

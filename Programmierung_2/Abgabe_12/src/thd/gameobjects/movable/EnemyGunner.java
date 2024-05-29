@@ -30,7 +30,7 @@ public class EnemyGunner extends MovingCharacter implements ShiftableGameObject,
      * @param collidingGameObjectsForPathDecision List of ObjectBlockImages that block the movement.
      */
     public EnemyGunner(GameView gameView, GamePlayManager gamePlayManager, Direction location, Position position, List<CollidingGameObject> collidingGameObjectsForPathDecision) {
-        super(gameView, gamePlayManager, location, position, collidingGameObjectsForPathDecision);
+        super(gameView, gamePlayManager, location.opposite(), position, collidingGameObjectsForPathDecision);
         shotCooldownInMilliseconds = gamePlayManager.currentLevel().enemyShotCooldown;
 
         changeBlockImageColors();
@@ -45,7 +45,7 @@ public class EnemyGunner extends MovingCharacter implements ShiftableGameObject,
         movementPattern = new RandomMovementPattern(location);
         this.position.updateCoordinates(movementPattern.startPosition(position));
         random.setSeed(hashCode());
-        targetPosition.updateCoordinates(movementPattern.nextTargetPosition(position));
+        targetPosition.updateCoordinates(position);
 
         changeDirectionInterval = random.nextInt(ENEMY_CHANGE_DIRECTION_INTERVAL_START_IN_MILLISECONDS, ENEMY_CHANGE_DIRECTION_INTERVAL_END_IN_MILLISECONDS);
     }
