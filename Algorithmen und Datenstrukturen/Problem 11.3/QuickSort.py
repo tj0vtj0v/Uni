@@ -133,5 +133,4 @@ In [3]: %time random_quick_sort(s100000)
 CPU times: total: 2min 48s
 Wall time: 3min 20s
 Out[3]:
-...
 """
