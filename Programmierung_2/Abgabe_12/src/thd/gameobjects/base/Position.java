@@ -236,6 +236,6 @@ public class Position implements Comparable<Position> {
 
     @Override
     public String toString() {
-        return "Position (" + (int) Math.round(x) + ", " + (int) Math.round(y) + ")";
+        return "Position (x: " + (int) Math.round(x) + ", y: " + (int) Math.round(y) + ")";
     }
 }

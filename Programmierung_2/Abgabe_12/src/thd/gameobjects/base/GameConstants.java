@@ -224,6 +224,10 @@ public interface GameConstants {
     /**
      * Represents a DEFAULT-VALUE Constant.
      */
+    int DEFAULT_ENEMY_SPAWN_INTERVAL = 5000;
+    /**
+     * Represents a DEFAULT-VALUE Constant.
+     */
     int DEFAULT_ENEMY_SPEED_IN_PIXEL = 2;
     /**
      * Represents a DEFAULT-VALUE Constant.

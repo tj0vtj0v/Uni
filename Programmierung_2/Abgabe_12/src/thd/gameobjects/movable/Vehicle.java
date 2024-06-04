@@ -16,7 +16,7 @@ public abstract class Vehicle extends CollidingGameObject implements ShiftableGa
     Vehicle(GameView gameView, GamePlayManager gamePlayManager, Direction facing, Position position) {
         super(gameView, gamePlayManager, facing, position);
 
-        distanceToBackground = LAYER_4;
+        distanceToBackground = LAYER_2;
 
         size = BLOCK_IMAGE_SIZE;
 

@@ -5,11 +5,11 @@ import thd.gameobjects.base.Direction;
 import thd.gameobjects.base.MovementPattern;
 import thd.gameobjects.base.Position;
 
-class RandomMovementPattern extends MovementPattern {
+class WalkInRandomMovementPattern extends MovementPattern {
     private final Direction launchSide;
     private Direction direction;
 
-    RandomMovementPattern(Direction launchSide) {
+    WalkInRandomMovementPattern(Direction launchSide) {
         super(new Position());
         this.launchSide = launchSide;
     }

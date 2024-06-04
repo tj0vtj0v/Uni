@@ -17,7 +17,7 @@ import java.util.List;
  * png textured
  */
 public class EnemyGunner extends MovingCharacter implements ShiftableGameObject, ActivatableGameObject<GameObject> {
-    private final RandomMovementPattern movementPattern;
+    private final WalkInRandomMovementPattern movementPattern;
     private int changeDirectionInterval;
 
     /**
@@ -42,10 +42,10 @@ public class EnemyGunner extends MovingCharacter implements ShiftableGameObject,
 
         speedInPixel = gamePlayManager.currentLevel().enemySpeedInPixel;
 
-        movementPattern = new RandomMovementPattern(location);
+        movementPattern = new WalkInRandomMovementPattern(location);
         this.position.updateCoordinates(movementPattern.startPosition(position));
         random.setSeed(hashCode());
-        targetPosition.updateCoordinates(position);
+        targetPosition.updateCoordinates(this.position);
 
         changeDirectionInterval = random.nextInt(ENEMY_CHANGE_DIRECTION_INTERVAL_START_IN_MILLISECONDS, ENEMY_CHANGE_DIRECTION_INTERVAL_END_IN_MILLISECONDS);
     }

@@ -67,6 +67,10 @@ public class Level implements GameConstants {
      */
     public int enemyShotCooldown;
     /**
+     * Interval to pass between of an enemy spawn.
+     */
+    public int enemySpawnInterval;
+    /**
      * Loading time of the mortar.
      */
     public int mortarLoadingTime;
@@ -99,6 +103,7 @@ public class Level implements GameConstants {
         humveeHitTolerance = DEFAULT_HUMVEE_HIT_TOLERANCE;
         mopedHitTolerance = DEFAULT_MOPED_HIT_TOLERANCE;
         vehicleSpawnDistance = DEFAULT_VEHICLE_SPAWN_DISTANCE;
+        enemySpawnInterval = DEFAULT_ENEMY_SPAWN_INTERVAL;
 
         switch (difficulty) {
             case EASY:
@@ -106,6 +111,7 @@ public class Level implements GameConstants {
                 grenadeSpeedInPixel -= 3;
                 enemySpeedInPixel -= 1;
                 enemyShotCooldown += 200;
+                enemySpawnInterval *=2;
                 mortarLoadingTime += 4000;
                 vehicleSpeedInPixel /= 2;
                 humveeHitTolerance = 1;
@@ -116,6 +122,7 @@ public class Level implements GameConstants {
                 bulletSpeedInPixel += 5;
                 grenadeSpeedInPixel += 2;
                 enemyShotCooldown -= 50;
+                enemySpawnInterval /= 2;
                 mortarLoadingTime -= 200;
                 vehicleSpeedInPixel += 2;
                 vehicleSpawnDistance /= 2;
@@ -129,6 +136,7 @@ public class Level implements GameConstants {
                 grenadeSpeedInPixel *= 2;
                 enemySpeedInPixel += 1;
                 enemyShotCooldown -= 200;
+                enemySpawnInterval /= 5;
                 mortarLoadingTime -= 500;
                 vehicleSpeedInPixel *= 3;
                 vehicleSpawnDistance /= 5;

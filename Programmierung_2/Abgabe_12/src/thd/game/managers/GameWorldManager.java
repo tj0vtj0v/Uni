@@ -68,6 +68,9 @@ class GameWorldManager extends GamePlayManager {
                     case 'M':
                         addActivatableGameObject(new EnemyMortar(gameView, this, located, position));
                         break;
+                    case 'D':
+                        addActivatableGameObject(new Spawner(gameView, this, located, position, collidingGameObjectsForPathDecision));
+                        break;
                     case 'G':
                         addActivatableGameObject(new EnemyGunner(gameView, this, located, position, collidingGameObjectsForPathDecision));
                         break;
@@ -131,6 +134,11 @@ class GameWorldManager extends GamePlayManager {
             } else if (gameObject instanceof EnemyGunner enemyGunner) {
                 if (enemyGunner.tryToActivate(mainCharacter)) {
                     spawnGameObject(enemyGunner);
+                    iterator.remove();
+                }
+            } else if (gameObject instanceof Spawner spawner) {
+                if (spawner.tryToActivate(mainCharacter)) {
+                    spawnGameObject(spawner);
                     iterator.remove();
                 }
             } else if (gameObject instanceof Humvee humvee) {
