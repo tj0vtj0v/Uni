@@ -49,7 +49,7 @@ class GameObjectManager extends CollisionManager {
             gameObject.updateStatus();
             gameObject.updatePosition();
             gameObject.addToCanvas();
-            if (gameObject instanceof EnemyGunner || gameObject instanceof EnemyMortar || gameObject instanceof DeadEnemy || gameObject instanceof Vehicle) {
+            if (gameObject instanceof EnemyGunner || gameObject instanceof EnemyMortar || gameObject instanceof Vehicle) {
                 enemyInGameObjects = true;
             }
         }

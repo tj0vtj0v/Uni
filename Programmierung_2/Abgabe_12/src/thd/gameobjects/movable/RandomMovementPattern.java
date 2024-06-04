@@ -5,8 +5,6 @@ import thd.gameobjects.base.Direction;
 import thd.gameobjects.base.MovementPattern;
 import thd.gameobjects.base.Position;
 
-// TODO advance
-
 class RandomMovementPattern extends MovementPattern {
     private final Direction launchSide;
     private Direction direction;

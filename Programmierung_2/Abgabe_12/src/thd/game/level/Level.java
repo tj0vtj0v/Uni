@@ -19,9 +19,9 @@ public class Level implements GameConstants {
      */
     public String name;
     /**
-     * Represents the number of the Level. TODO: change GameManager.initializeLevel
+     * Represents the number of the Level.
      */
-    int number;
+    public int number;
     /**
      * Represents the background music file.
      */
