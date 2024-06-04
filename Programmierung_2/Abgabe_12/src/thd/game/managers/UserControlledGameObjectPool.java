@@ -7,7 +7,6 @@ import thd.gameobjects.movable.MainCharacterImpl;
 import thd.gameobjects.unmovable.Overlay;
 
 import java.awt.event.KeyEvent;
-import java.util.ArrayList;
 import java.util.Arrays;
 
 class UserControlledGameObjectPool implements GameConstants {

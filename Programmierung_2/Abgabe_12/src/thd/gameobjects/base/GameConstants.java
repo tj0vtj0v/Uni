@@ -18,7 +18,11 @@ public interface GameConstants {
     /**
      * Represents a Constant in the Category Game.
      */
-    int GAME_OVER_DISPLAY_TIME = 2000;
+    int GAME_OVER_DISPLAY_TIME = 3000;
+    /**
+     * Represents a Constant in the Category Game.
+     */
+    int GAME_OVER_TOGGLE_TIME = 500;
     /**
      * Represents a Constant in the Category Game.
      */

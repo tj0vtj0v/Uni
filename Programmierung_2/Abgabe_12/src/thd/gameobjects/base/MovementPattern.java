@@ -15,6 +15,19 @@ public abstract class MovementPattern implements GameConstants {
         this.startPosition = new Position(startPosition);
     }
 
+    /**
+     * Calculates the start position of a movement.
+     *
+     * @param referencePositions reference for calculation.
+     * @return position where to start from.
+     */
     public abstract Position startPosition(Position... referencePositions);
+
+    /**
+     * Calculates the next Position of a movement.
+     *
+     * @param referencePositions reference for calculation.
+     * @return position where to go to.
+     */
     public abstract Position nextTargetPosition(Position... referencePositions);
 }

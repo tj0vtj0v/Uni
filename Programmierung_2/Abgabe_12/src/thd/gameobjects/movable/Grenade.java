@@ -22,6 +22,7 @@ public class Grenade extends GameObject implements ShiftableGameObject {
      *
      * @param gameView        GameView to show the grenade on.
      * @param gamePlayManager GamePlayManager to manage the game actions.
+     * @param movementPattern for different trajectory depending on creator.
      */
     public Grenade(GameView gameView, GamePlayManager gamePlayManager, MovementPattern movementPattern) {
         super(gameView, gamePlayManager);

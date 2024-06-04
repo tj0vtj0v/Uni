@@ -19,6 +19,9 @@ public class GamePlayManager extends WorldShiftManager {
     int lives;
     int points;
     private int highScore;
+    /**
+     * Communicates if the end of the level is reached.
+     */
     public boolean endReached;
 
     /**
@@ -141,7 +144,7 @@ public class GamePlayManager extends WorldShiftManager {
      *
      * @param collidingGameObject CollidingGameObject to create.
      */
-    public void spawnPathBlockingGameObject(CollidingGameObject collidingGameObject) {
+    void spawnPathBlockingGameObject(CollidingGameObject collidingGameObject) {
         spawnGameObject(collidingGameObject);
         collidingGameObjectsForPathDecision.add(collidingGameObject);
     }

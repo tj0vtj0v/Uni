@@ -5,20 +5,29 @@ import thd.gameobjects.base.Direction;
 import thd.gameobjects.base.MovementPattern;
 import thd.gameobjects.base.Position;
 
+/**
+ * Represents the movement of an thrown grenade.
+ */
 public class GrenadeMovementPattern extends MovementPattern {
     private int yVelocity;
     private int xVelocity;
     private int targetSteps;
     private int steps;
 
+    /**
+     * Creates the movement of a thrown grenade.
+     *
+     * @param direction     where the grenade is heading.
+     * @param startPosition the grenade is thrown.
+     */
     public GrenadeMovementPattern(Direction direction, Position startPosition) {
         super(startPosition);
-        direction = direction == null ? Direction.DOWN : direction;
+        Direction saveDirection = direction == null ? Direction.DOWN : direction;
         targetSteps = random.nextInt(18, 20);
 
-        if (direction.name().contains("UP")) {
+        if (saveDirection.name().contains("UP")) {
             yVelocity = (int) (targetSteps * 1.5);
-        } else if (direction.name().contains("DOWN")) {
+        } else if (saveDirection.name().contains("DOWN")) {
             yVelocity = 2;
             targetSteps -= 2;
         } else {
@@ -27,9 +36,9 @@ public class GrenadeMovementPattern extends MovementPattern {
         yVelocity += (int) random.nextGaussian(0, 2);
 
         xVelocity = random.nextInt(18, 25);
-        if (direction.name().contains("LEFT")) {
+        if (saveDirection.name().contains("LEFT")) {
             xVelocity *= -1;
-        } else if (!direction.name().contains("RIGHT")) {
+        } else if (!saveDirection.name().contains("RIGHT")) {
             xVelocity = (int) random.nextGaussian(0, 2);
         }
 

@@ -21,7 +21,7 @@ public class Level implements GameConstants {
     /**
      * Represents the number of the Level.
      */
-    public int number;
+    int number;
     /**
      * Represents the background music file.
      */

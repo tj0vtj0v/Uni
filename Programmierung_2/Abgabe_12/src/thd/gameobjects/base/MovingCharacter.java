@@ -106,6 +106,9 @@ public abstract class MovingCharacter extends CollidingGameObject {
         recalculateHitBox();
     }
 
+    /**
+     * Creates a Grenade flying in the desired direction.
+     */
     public void throwGrenade() {
         gamePlayManager.spawnGameObject(new Grenade(gameView, gamePlayManager, new GrenadeMovementPattern(direction, position)));
     }

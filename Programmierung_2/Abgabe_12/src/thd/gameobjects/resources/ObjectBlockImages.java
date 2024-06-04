@@ -49,17 +49,6 @@ public final class ObjectBlockImages implements GameConstants {
             """;
 
     /**
-     * Blockimage of a grenade.
-     */
-    public static final String GRENADE = """
-              771-
-             77711
-            777777
-             77777
-             7777-
-            """;
-
-    /**
      * Blockimage of a grenade of a mortar.
      */
     public static final String MORTAR_GRENADE = """
@@ -68,17 +57,6 @@ public final class ObjectBlockImages implements GameConstants {
             77777711
              7777111
               71111-
-            """;
-
-    /**
-     * Blockimage of an exploded grenade of a mortar.
-     */
-    public static final String EXPLOSION = """
-             11111-
-            111r11-
-            1rr6r11
-            11rrr11
-             11111-
             """;
 
     /**
@@ -363,6 +341,9 @@ public final class ObjectBlockImages implements GameConstants {
         return result.toString();
     }
 
+    /**
+     * Represents the opened end wall.
+     */
     public static final String[] OPEN_DOOR = {
             "7777777777777777777777777777777777777777777",
             "7777777777777777777777777777777777777777777",
@@ -420,6 +401,9 @@ public final class ObjectBlockImages implements GameConstants {
             "11                                       11",
     };
 
+    /**
+     * Represents the closed end wall.
+     */
     public static final String[] CLOSE_DOOR = {
             "7777777777777777777777777777777777777777777",
             "7777777777777777777777777777777777777777777",
@@ -477,6 +461,12 @@ public final class ObjectBlockImages implements GameConstants {
             "7700000000000000000000000000000000000000077",
     };
 
+    /**
+     * Generates the Blockimage of the end Wall.
+     *
+     * @param opened switch if door is opened.
+     * @return a string containing the whole wall with door.
+     */
     public String endWall(boolean opened) {
         String[] door = opened ? OPEN_DOOR : CLOSE_DOOR;
         int panelWidth = (GameView.WIDTH / BLOCK_IMAGE_SIZE) - door[0].length() / 2;

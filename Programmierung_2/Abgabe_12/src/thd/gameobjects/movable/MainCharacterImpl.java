@@ -8,7 +8,6 @@ import thd.gameobjects.resources.MovingCharacterBlockImages;
 import thd.gameobjects.unmovable.AmmoBox;
 
 import java.util.List;
-import java.util.Queue;
 import java.util.Random;
 
 
@@ -181,6 +180,7 @@ public class MainCharacterImpl extends MovingCharacter implements MainCharacter 
         direction = null;
     }
 
+    @Override
     public void throwGrenade() {
         if (!dead && availableGrenades > 0) {
             availableGrenades--;

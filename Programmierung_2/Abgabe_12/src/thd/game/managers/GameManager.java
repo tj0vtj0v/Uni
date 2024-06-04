@@ -4,6 +4,8 @@ import thd.game.level.Difficulty;
 import thd.game.level.Level;
 import thd.game.utilities.FileAccess;
 import thd.game.utilities.GameView;
+import thd.screens.EndScreen;
+import thd.screens.StartScreen;
 
 
 class GameManager extends LevelManager {
@@ -14,8 +16,13 @@ class GameManager extends LevelManager {
     private int backgroundMusicID;
 
     void startNewGame() {
+
         Difficulty difficulty = FileAccess.readDifficultyFromDisc();
-        difficulty = Difficulty.EASY;
+
+        StartScreen startScreen = new StartScreen(gameView);
+        startScreen.showStartScreenWithPreselectedDifficulty(difficulty);
+        difficulty = startScreen.getSelectedDifficulty();
+
         FileAccess.writeDifficultyToDisc(difficulty);
         Level.difficulty = difficulty;
 
@@ -24,10 +31,15 @@ class GameManager extends LevelManager {
 
     private void gameManagement() {
         if (endOfGame()) {
-            if (!overlay.isMessageShown()) {
-                overlay.showMessage("Game Over");
-            } else if (gameView.timer(GAME_OVER_DISPLAY_TIME, this)) {
+            if (gameView.timer(GAME_OVER_TOGGLE_TIME, this)) {
+                overlay.toggleMessage("Game Over");
+            }
+            if (gameView.timer(GAME_OVER_DISPLAY_TIME, this)) {
                 overlay.stopShowing();
+
+                EndScreen endScreen = new EndScreen(gameView);
+                endScreen.showEndScreen(points);
+
                 startNewGame();
             }
         } else if (endOfLevel()) {

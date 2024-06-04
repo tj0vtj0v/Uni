@@ -3,12 +3,8 @@ package thd.game.managers;
 import thd.game.utilities.SortedGameObjectsList;
 import thd.gameobjects.base.GameObject;
 import thd.gameobjects.movable.EnemyGunner;
-import thd.gameobjects.movable.Humvee;
-import thd.gameobjects.movable.Moped;
 import thd.gameobjects.movable.Vehicle;
-import thd.gameobjects.unmovable.DeadEnemy;
 import thd.gameobjects.unmovable.EnemyMortar;
-import thd.gameobjects.unmovable.ShootingBox;
 
 import java.util.Comparator;
 import java.util.LinkedList;

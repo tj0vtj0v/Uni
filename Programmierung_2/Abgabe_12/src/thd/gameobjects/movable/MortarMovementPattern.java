@@ -5,12 +5,21 @@ import thd.gameobjects.base.Direction;
 import thd.gameobjects.base.MovementPattern;
 import thd.gameobjects.base.Position;
 
+/**
+ * Represents the movement of a mortar grenade.
+ */
 public class MortarMovementPattern extends MovementPattern {
     private final Direction direction;
     private final int trajectory;
     private final int targetSteps;
     private int steps;
 
+    /**
+     * Creates a movement pattern for a mortar grenade.
+     *
+     * @param direction     where the grenade should fly.
+     * @param startPosition where the grenade is launched.
+     */
     public MortarMovementPattern(Direction direction, Position startPosition) {
         super(startPosition);
 

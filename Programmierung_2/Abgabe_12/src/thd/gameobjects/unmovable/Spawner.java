@@ -8,6 +8,9 @@ import thd.gameobjects.movable.MainCharacterImpl;
 
 import java.util.List;
 
+/**
+ * Represents a Spawner for EnemyGunner.
+ */
 public class Spawner extends GameObject implements ShiftableGameObject, ActivatableGameObject<GameObject> {
     private final Direction location;
     private final List<CollidingGameObject> collidingGameObjectsForPathDecision;
@@ -15,8 +18,11 @@ public class Spawner extends GameObject implements ShiftableGameObject, Activata
     /**
      * Crates a new GameObject.
      *
-     * @param gameView        GameView to show the game object on.
-     * @param gamePlayManager GamePlayManager to manage the game actions.
+     * @param gameView                            GameView to show the game object on.
+     * @param gamePlayManager                     GamePlayManager to manage the game actions.
+     * @param location                            location on which side of the screen the enemy's should spawn.
+     * @param position                            position where the spawner is placed.
+     * @param collidingGameObjectsForPathDecision list for Enemy Instances.
      */
     public Spawner(GameView gameView, GamePlayManager gamePlayManager, Direction location, Position position, List<CollidingGameObject> collidingGameObjectsForPathDecision) {
         super(gameView, gamePlayManager);
@@ -44,8 +50,7 @@ public class Spawner extends GameObject implements ShiftableGameObject, Activata
 
         if (gameView.timer(gamePlayManager.currentLevel().enemySpawnInterval, this)) {
             double x = Math.abs(random.nextGaussian(0, 50) + position.getX());
-            double y =  position.getY() + random.nextInt(200);
-            System.out.println(new Position(x, y));
+            double y = position.getY() + random.nextInt(200);
             gamePlayManager.spawnGameObject(new EnemyGunner(gameView, gamePlayManager, location, new Position(x, y), collidingGameObjectsForPathDecision));
         }
     }

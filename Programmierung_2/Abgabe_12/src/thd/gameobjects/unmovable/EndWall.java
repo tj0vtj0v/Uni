@@ -7,10 +7,21 @@ import thd.gameobjects.movable.MainCharacterImpl;
 import thd.gameobjects.resources.ObjectBlockImages;
 
 
+/**
+ * Represents the Wall at the end of the game.
+ */
 public class EndWall extends CollidingGameObject implements ShiftableGameObject, ActivatableGameObject<GameObject> {
-    static final double HIT_BOX_WIDTH_OFFSET = -36 * BLOCK_IMAGE_SIZE;
+    static final double HIT_BOX_HEIGHT_OFFSET = -36 * BLOCK_IMAGE_SIZE;
     private State currentState;
 
+    /**
+     * Creates the Wall at the end of the game.
+     *
+     * @param gameView        window to be displayed on.
+     * @param gamePlayManager GamePlayManager to manage the game actions.
+     * @param located         parameter for the parent.
+     * @param position        where the wall is placed.
+     */
     public EndWall(GameView gameView, GamePlayManager gamePlayManager, Direction located, Position position) {
         super(gameView, gamePlayManager, located, position);
 
@@ -22,7 +33,7 @@ public class EndWall extends CollidingGameObject implements ShiftableGameObject,
         rotation = 0;
         width = generateWidthFromBlockImage() * size;
         height = generateHeightFromBlockImage() * size;
-        hitBoxOffsets(0, 0, 0, HIT_BOX_WIDTH_OFFSET);
+        hitBoxOffsets(0, 0, 0, HIT_BOX_HEIGHT_OFFSET);
     }
 
     @Override
