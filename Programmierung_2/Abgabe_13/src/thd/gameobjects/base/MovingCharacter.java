@@ -122,20 +122,24 @@ public abstract class MovingCharacter extends CollidingGameObject {
         double bulletXOffset = 0;
         double bulletYOffset = 0;
         switch (direction) {
-            case LEFT, UP_LEFT:
+            case UP_LEFT:
+                bulletXOffset = size * 3;
+                bulletYOffset = size * 5;
+                break;
+            case LEFT:
                 bulletXOffset = size * 0;
                 bulletYOffset = size * 7;
                 break;
             case DOWN:
-                bulletXOffset = size * 2;
+                bulletXOffset = size * 7;
                 bulletYOffset = size * 12;
                 break;
             case UP_RIGHT:
-                bulletXOffset = size * 12;
+                bulletXOffset = size * 17;
                 bulletYOffset = size * 5;
                 break;
             case DOWN_RIGHT:
-                bulletXOffset = size * 8;
+                bulletXOffset = size * 13;
                 bulletYOffset = size * 9;
                 break;
             case DOWN_LEFT:
@@ -143,7 +147,7 @@ public abstract class MovingCharacter extends CollidingGameObject {
                 bulletYOffset = size * 9;
                 break;
             case UP:
-                bulletXOffset = size * 6;
+                bulletXOffset = size * 7;
                 bulletYOffset = size * 2;
                 break;
             case RIGHT:

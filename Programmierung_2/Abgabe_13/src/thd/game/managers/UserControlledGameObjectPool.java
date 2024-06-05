@@ -16,7 +16,7 @@ class UserControlledGameObjectPool implements GameConstants {
     protected final GameView gameView;
     protected Level level;
     MainCharacterImpl mainCharacter;
-    Overlay overlay;
+    public Overlay overlay;
 
     UserControlledGameObjectPool(GameView gameView) {
         this.gameView = gameView;

@@ -27,7 +27,7 @@ public class LostScreen extends EndScreen {
                 The enemy forces have crushed your defenses,
                 and the land you swore to protect is now under their control.
 
-                Your Score: --> %d <--       will not be stored as a high score.
+                Your Score: --> %d <--                     is discarded...
 
                 WHO DARES WINNS – BUT TODAY, DEFEAT HAS STRUCK!
 

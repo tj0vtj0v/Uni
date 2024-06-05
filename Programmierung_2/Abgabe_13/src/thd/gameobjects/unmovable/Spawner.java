@@ -58,7 +58,7 @@ public class Spawner extends GameObject implements ShiftableGameObject, Activata
 
             gamePlayManager.spawnGameObject(new EnemyGunner(gameView, gamePlayManager, location, new Position(x, y), collidingGameObjectsForPathDecision));
 
-        } else if (gameView.timer(gamePlayManager.currentLevel().enemySpawnInterval / 2, this) && !basic) {
+        } else if (gameView.timer(gamePlayManager.currentLevel().enemySpawnInterval / 2, this) && !basic && !gamePlayManager.overlay.isMessageShown()) {
 
             gamePlayManager.spawnGameObject(new EnemyDoorGunner(gameView, gamePlayManager, location, new Position(position), collidingGameObjectsForPathDecision));
 
