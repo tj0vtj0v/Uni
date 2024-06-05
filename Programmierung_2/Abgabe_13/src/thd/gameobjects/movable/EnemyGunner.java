@@ -17,7 +17,7 @@ import java.util.List;
  * png textured
  */
 public class EnemyGunner extends MovingCharacter implements ShiftableGameObject, ActivatableGameObject<GameObject> {
-    private final WalkInRandomMovementPattern movementPattern;
+    WalkInRandomMovementPattern movementPattern;
     private int changeDirectionInterval;
 
     /**
@@ -79,7 +79,7 @@ public class EnemyGunner extends MovingCharacter implements ShiftableGameObject,
     @Override
     public void reactToCollisionWith(CollidingGameObject other) {
         if (fatallyHit(other)) {
-            gamePlayManager.addScorePoints(-1);
+            gamePlayManager.addScorePoints(100);
             gamePlayManager.destroyGameObject(this);
             gamePlayManager.spawnGameObject(new DeadEnemy(gameView, gamePlayManager, position));
         }
@@ -103,11 +103,12 @@ public class EnemyGunner extends MovingCharacter implements ShiftableGameObject,
     public void updatePosition() {
         Position oldPosition = new Position(position);
         position.moveToPosition(targetPosition, speedInPixel);
+        boolean blocked = pathIsBlocked();
 
-        if (pathIsBlocked()) {
+        if (blocked) {
             position.updateCoordinates(oldPosition);
         }
-        if (gameView.timer(changeDirectionInterval, this)) {
+        if (gameView.timer(changeDirectionInterval, this) || (blocked && random.nextInt(100) <= 1/ gamePlayManager.currentLevel().enemyAvoidObstacles)) {
             targetPosition.updateCoordinates(movementPattern.nextTargetPosition(getPosition()));
             direction = movementPattern.getDirection();
 

@@ -53,7 +53,7 @@ public class ShootingBox extends CollidingGameObject implements ShiftableGameObj
     private void ruin() {
         currentState = State.RUINED;
 
-        gamePlayManager.addScorePoints(-1);
+        gamePlayManager.addScorePoints(200);
         gamePlayManager.spawnGameObject(new DustExplosion(gameView, gamePlayManager, direction, new Position(position.getX() + SHOOTING_BOX_EXPLOSION_X_OFFSET, position.getY() + SHOOTING_BOX_EXPLOSION_Y_OFFSET)));
 
         if (this.direction == Direction.LEFT) {

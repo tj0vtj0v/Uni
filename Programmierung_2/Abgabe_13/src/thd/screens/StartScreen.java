@@ -47,7 +47,9 @@ public class StartScreen {
                 So, soldier, gear up and get ready to prove that you have what it takes... and remember: ONLY WHO DARES WINS!
                 """;
 
-        selectedDifficulty = gameView.showSimpleStartScreen(title, description, preselectedDifficulty == Difficulty.EASY) ? Difficulty.EASY : Difficulty.STANDARD;
+        String[] choices = {Difficulty.EASY.name(),Difficulty.STANDARD.name(),Difficulty.HARD.name(),Difficulty.IMPOSSIBLE.name()};
+        int difficultyOrdinal = gameView.showStartScreenWithChooseBox(title, description, "Difficulty", choices, preselectedDifficulty.ordinal());
+        selectedDifficulty = Difficulty.values()[difficultyOrdinal];
     }
 
     /**

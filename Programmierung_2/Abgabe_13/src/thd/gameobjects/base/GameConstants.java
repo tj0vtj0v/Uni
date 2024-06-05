@@ -194,7 +194,7 @@ public interface GameConstants {
     /**
      * Represents a Constant in the Category MovementPattern.
      */
-    int RANDOM_GLOBAL_SPAWN_LEFT_OFFSET = -30;
+    int RANDOM_GLOBAL_SPAWN_LEFT_OFFSET = -80;
     /**
      * Represents a Constant in the Category MovementPattern.
      */
@@ -229,6 +229,14 @@ public interface GameConstants {
      * Represents a DEFAULT-VALUE Constant.
      */
     int DEFAULT_ENEMY_SPAWN_INTERVAL = 5000;
+    /**
+     * Represents a DEFAULT-VALUE Constant.
+     */
+    int DEFAULT_DOOR_SPAWN_QUANTITY = 6;
+    /**
+     * Represents a DEFAULT-VALUE Constant.
+     */
+    double DEFAULT_ENEMY_AVOID_PROBABILITY = 0.1;
     /**
      * Represents a DEFAULT-VALUE Constant.
      */

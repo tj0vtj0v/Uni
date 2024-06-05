@@ -5,7 +5,12 @@ import thd.game.level.Level;
 import thd.game.utilities.FileAccess;
 import thd.game.utilities.GameView;
 import thd.screens.EndScreen;
+import thd.screens.LostScreen;
 import thd.screens.StartScreen;
+import thd.screens.WonScreen;
+
+import java.awt.*;
+import java.util.Random;
 
 
 class GameManager extends LevelManager {
@@ -16,17 +21,49 @@ class GameManager extends LevelManager {
     private int backgroundMusicID;
 
     void startNewGame() {
-
         Difficulty difficulty = FileAccess.readDifficultyFromDisc();
 
-        StartScreen startScreen = new StartScreen(gameView);
-        startScreen.showStartScreenWithPreselectedDifficulty(difficulty);
-        difficulty = startScreen.getSelectedDifficulty();
+        difficulty = executeStartSequence(difficulty);
 
         FileAccess.writeDifficultyToDisc(difficulty);
         Level.difficulty = difficulty;
 
         initializeGame();
+    }
+
+    private Difficulty executeStartSequence(Difficulty preselectedDifficulty) {
+        gameView.changeBackgroundColor(new Color(98, 63, 29));
+        gameView.playSound("startmelody.wav", true);
+
+        StartScreen startScreen = new StartScreen(gameView);
+        startScreen.showStartScreenWithPreselectedDifficulty(preselectedDifficulty);
+
+        gameView.changeBackgroundColor(new Color(162, 102, 35));
+        gameView.stopAllSounds();
+
+        return startScreen.getSelectedDifficulty();
+    }
+
+    private void executeEndSequence() {
+        gameView.changeBackgroundColor(new Color(98, 63, 29));
+        gameView.stopAllSounds();
+
+        EndScreen endScreen;
+        if (lives <= 0) {
+            gameView.playSound("lostmelody.wav", true);
+            endScreen = new LostScreen(gameView, points);
+        } else {
+            gameView.playSound("wonmelody.wav", true);
+            endScreen = new WonScreen(gameView, points);
+            if (points > highScore) {
+                highScore = points;
+                FileAccess.writeHighScoreToDisc(highScore);
+            }
+        }
+        endScreen.showEndScreen();
+
+        gameView.changeBackgroundColor(new Color(162, 102, 35));
+        gameView.stopAllSounds();
     }
 
     private void gameManagement() {
@@ -37,8 +74,7 @@ class GameManager extends LevelManager {
             if (gameView.timer(GAME_OVER_DISPLAY_TIME, this)) {
                 overlay.stopShowing();
 
-                EndScreen endScreen = new EndScreen(gameView);
-                endScreen.showEndScreen(points);
+                executeEndSequence();
 
                 startNewGame();
             }
@@ -62,7 +98,7 @@ class GameManager extends LevelManager {
     }
 
     private boolean endOfGame() {
-        return lives == 0 || (!hasNextLevel() && endOfLevel());
+        return lives <= 0 || (!hasNextLevel() && endOfLevel());
     }
 
     private boolean endOfLevel() {
@@ -84,7 +120,7 @@ class GameManager extends LevelManager {
 
         gameView.stopSound(backgroundMusicID);
         gameView.stopAllSounds();
-        backgroundMusicID = gameView.playSound(level.music + ".wav", true);
+        backgroundMusicID = gameView.playSound("theme" + new Random().nextInt(1, 8) + ".wav", true);
     }
 
     @Override

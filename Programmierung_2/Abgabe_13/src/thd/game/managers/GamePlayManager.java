@@ -1,6 +1,7 @@
 package thd.game.managers;
 
 import thd.game.level.Level;
+import thd.game.utilities.FileAccess;
 import thd.game.utilities.GameView;
 import thd.gameobjects.base.CollidingGameObject;
 import thd.gameobjects.base.GameObject;
@@ -18,7 +19,7 @@ public class GamePlayManager extends WorldShiftManager {
 
     int lives;
     int points;
-    private int highScore;
+    int highScore;
     /**
      * Communicates if the end of the level is reached.
      */
@@ -35,21 +36,15 @@ public class GamePlayManager extends WorldShiftManager {
         collidingGameObjectsForPathDecision = new ArrayList<>();
         lives = LIVES;
         points = 0;
-        highScore = 0;
+        highScore = FileAccess.readHighScoreFromDisc();
         endReached = false;
     }
 
     /**
-     * Reduces remaining lives of the main character and raises an error if there are no lives left.
-     *
-     * @throws NoRemainingMenException no men left results in game over.
+     * Reduces remaining lives of the main character.
      */
-    public void reduceLive() throws NoRemainingMenException {
+    public void reduceLive() {
         lives--;
-
-        if (lives <= 0) {
-            throw new NoRemainingMenException("No men left");
-        }
     }
 
     /**
@@ -58,8 +53,10 @@ public class GamePlayManager extends WorldShiftManager {
      * @param points amount of points to be added to the score.
      */
     public void addScorePoints(int points) {
+        if (points <= 0){
+            throw new IllegalArgumentException("Points have to be positive and bigger than 0!");
+        }
         this.points += points;
-        highScore = Math.max(points, highScore);
     }
 
     /**
@@ -116,19 +113,6 @@ public class GamePlayManager extends WorldShiftManager {
         return level;
     }
 
-
-    /**
-     * TODO Method that initiates the gameOver sequence.
-     *
-     * @param success determines if the game war cleared or failed.
-     */
-    public void gameOver(boolean success) {
-        System.exit(0);
-    }
-
-    private void gamePlayManagement() {
-    }
-
     boolean enemyExisting() {
         return gameObjectManager.enemyExisting();
     }
@@ -166,6 +150,5 @@ public class GamePlayManager extends WorldShiftManager {
     protected void gameLoopUpdate() {
         super.gameLoopUpdate();
         gameObjectManager.gameLoopUpdate();
-        gamePlayManagement();
     }
 }

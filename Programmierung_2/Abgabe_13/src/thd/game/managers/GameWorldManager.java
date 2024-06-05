@@ -17,7 +17,7 @@ import java.util.ListIterator;
 class GameWorldManager extends GamePlayManager {
     private final List<GameObject> activatableGameObjects;
 
-    protected GameWorldManager(GameView gameView) {
+    GameWorldManager(GameView gameView) {
         super(gameView);
         activatableGameObjects = new LinkedList<>();
     }
@@ -61,7 +61,7 @@ class GameWorldManager extends GamePlayManager {
                         spawnGameObject(mainCharacter);
                         break;
                     case 'E':
-                        addActivatableGameObject(new EndWall(gameView, this, located, position));
+                        addActivatableGameObject(new EndWall(gameView, this, located, position, collidingGameObjectsForPathDecision));
                         addActivatableGameObject(new EndWallPanel(gameView, this, located, position));
                         addActivatableGameObject(new EndWallPanel(gameView, this, located.opposite(), position));
                         break;
@@ -69,7 +69,7 @@ class GameWorldManager extends GamePlayManager {
                         addActivatableGameObject(new EnemyMortar(gameView, this, located, position));
                         break;
                     case 'D':
-                        addActivatableGameObject(new Spawner(gameView, this, located, position, collidingGameObjectsForPathDecision));
+                        addActivatableGameObject(new Spawner(gameView, this, located, position, collidingGameObjectsForPathDecision, true));
                         break;
                     case 'G':
                         addActivatableGameObject(new EnemyGunner(gameView, this, located, position, collidingGameObjectsForPathDecision));

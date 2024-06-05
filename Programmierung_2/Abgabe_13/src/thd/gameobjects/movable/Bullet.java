@@ -45,7 +45,7 @@ public class Bullet extends CollidingGameObject implements ShiftableGameObject {
         this.position.updateCoordinates(movementPattern.startPosition());
         targetPosition.updateCoordinates(movementPattern.nextTargetPosition());
 
-        gameView.playSound("piuu.wav", false);
+        gameView.playSound("shot.wav", false);
     }
 
     /**

@@ -1,7 +1,6 @@
 package thd.gameobjects.movable;
 
 import thd.game.managers.GamePlayManager;
-import thd.game.managers.NoRemainingMenException;
 import thd.game.utilities.GameView;
 import thd.gameobjects.base.*;
 import thd.gameobjects.resources.MovingCharacterBlockImages;
@@ -59,14 +58,10 @@ public class MainCharacterImpl extends MovingCharacter implements MainCharacter 
     @Override
     public void reactToCollisionWith(CollidingGameObject other) {
         if (fatallyHit(other)) {
-            try {
-                if (!dead) {
-                    gamePlayManager.reduceLive();
-                    gameView.playSound("maindeath.wav", false);
-                    dead = true;
-                }
-            } catch (NoRemainingMenException e) {
-                gamePlayManager.gameOver(false);
+            if (!dead) {
+                gamePlayManager.reduceLive();
+                gameView.playSound("maindeath.wav", false);
+                dead = true;
             }
 
         }

@@ -3,6 +3,7 @@ package thd.gameobjects.unmovable;
 import thd.game.managers.GamePlayManager;
 import thd.game.utilities.GameView;
 import thd.gameobjects.base.*;
+import thd.gameobjects.movable.EnemyDoorGunner;
 import thd.gameobjects.movable.EnemyGunner;
 import thd.gameobjects.movable.MainCharacterImpl;
 
@@ -13,6 +14,7 @@ import java.util.List;
  */
 public class Spawner extends GameObject implements ShiftableGameObject, ActivatableGameObject<GameObject> {
     private final Direction location;
+    private final boolean basic;
     private final List<CollidingGameObject> collidingGameObjectsForPathDecision;
 
     /**
@@ -23,14 +25,16 @@ public class Spawner extends GameObject implements ShiftableGameObject, Activata
      * @param location                            location on which side of the screen the enemy's should spawn.
      * @param position                            position where the spawner is placed.
      * @param collidingGameObjectsForPathDecision list for Enemy Instances.
+     * @param basic                               determines if the spawner is basic or at the door.
      */
-    public Spawner(GameView gameView, GamePlayManager gamePlayManager, Direction location, Position position, List<CollidingGameObject> collidingGameObjectsForPathDecision) {
+    public Spawner(GameView gameView, GamePlayManager gamePlayManager, Direction location, Position position, List<CollidingGameObject> collidingGameObjectsForPathDecision, boolean basic) {
         super(gameView, gamePlayManager);
 
         blockImage = "";
 
         this.position.updateCoordinates(position);
         this.location = location;
+        this.basic = basic;
         this.collidingGameObjectsForPathDecision = collidingGameObjectsForPathDecision;
 
         updateStatus();
@@ -44,14 +48,23 @@ public class Spawner extends GameObject implements ShiftableGameObject, Activata
     public void updateStatus() {
         super.updateStatus();
 
-        if (gamePlayManager.endReached) {
+        if (gamePlayManager.endReached && basic) {
             gamePlayManager.destroyGameObject(this);
         }
 
-        if (gameView.timer(gamePlayManager.currentLevel().enemySpawnInterval, this)) {
-            double x = Math.abs(random.nextGaussian(0, 50) + position.getX());
+        if (gameView.timer(gamePlayManager.currentLevel().enemySpawnInterval, this) && basic) {
+            double x = Math.abs(random.nextGaussian(-50, 20) + position.getX());
             double y = position.getY() + random.nextInt(200);
+
             gamePlayManager.spawnGameObject(new EnemyGunner(gameView, gamePlayManager, location, new Position(x, y), collidingGameObjectsForPathDecision));
+
+        } else if (gameView.timer(gamePlayManager.currentLevel().enemySpawnInterval / 2, this) && !basic) {
+
+            gamePlayManager.spawnGameObject(new EnemyDoorGunner(gameView, gamePlayManager, location, new Position(position), collidingGameObjectsForPathDecision));
+
+            if (random.nextInt(gamePlayManager.currentLevel().enemyDoorSpawn) == 0) {
+                gamePlayManager.destroyGameObject(this);
+            }
         }
     }
 
@@ -64,6 +77,6 @@ public class Spawner extends GameObject implements ShiftableGameObject, Activata
 
     @Override
     public String toString() {
-        return "Spawner: on the %s at %s".formatted(location.name(), position);
+        return "Spawner: on the %s at %s is %b basic".formatted(location.name(), position, basic);
     }
 }

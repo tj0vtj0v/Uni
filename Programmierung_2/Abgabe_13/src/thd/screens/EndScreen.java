@@ -5,24 +5,23 @@ import thd.game.utilities.GameView;
 /**
  * Represents the Screen showing at the end.
  */
-public class EndScreen {
-    private final GameView gameView;
+public abstract class EndScreen {
+    protected final GameView gameView;
+    final int score;
 
     /**
      * Represents the Screen showing at gameStart.
      *
      * @param gameView window to display on.
+     * @param score    the player scored.
      */
-    public EndScreen(GameView gameView) {
+    EndScreen(GameView gameView, int score) {
         this.gameView = gameView;
+        this.score = score;
     }
 
     /**
      * Prints the Screen onto the gameView.
-     *
-     * @param score the player achieved.
      */
-    public void showEndScreen(int score) {
-        gameView.showEndScreen(String.valueOf(score));
-    }
+    public abstract void showEndScreen();
 }

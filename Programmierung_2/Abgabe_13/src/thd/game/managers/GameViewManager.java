@@ -20,7 +20,6 @@ public class GameViewManager extends GameView {
         setWindowTitle("Who Dares Wins");
         setStatusText("Tjorven Burdorf - Java Programmierung SS 2024");
         setWindowIcon("window_symbol.png");
-        changeBackgroundColor(new Color(162, 102, 35));
 
         addBlockimageColors();
         gameManager.startNewGame();

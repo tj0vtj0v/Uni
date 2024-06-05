@@ -23,10 +23,6 @@ public class Level implements GameConstants {
      */
     int number;
     /**
-     * Represents the background music file.
-     */
-    public String music;
-    /**
      * Represents the World with its ObjectBlockImages in it.
      */
     public String world;
@@ -67,9 +63,17 @@ public class Level implements GameConstants {
      */
     public int enemyShotCooldown;
     /**
+     * Probability of the enemy to turn each game cycle if he hits an obstacle.
+     */
+    public double enemyAvoidObstacles;
+    /**
      * Interval to pass between of an enemy spawn.
      */
     public int enemySpawnInterval;
+    /**
+     * Approximate enemy spawn in the door.
+     */
+    public int enemyDoorSpawn;
     /**
      * Loading time of the mortar.
      */
@@ -104,6 +108,8 @@ public class Level implements GameConstants {
         mopedHitTolerance = DEFAULT_MOPED_HIT_TOLERANCE;
         vehicleSpawnDistance = DEFAULT_VEHICLE_SPAWN_DISTANCE;
         enemySpawnInterval = DEFAULT_ENEMY_SPAWN_INTERVAL;
+        enemyAvoidObstacles = DEFAULT_ENEMY_AVOID_PROBABILITY;
+        enemyDoorSpawn = DEFAULT_DOOR_SPAWN_QUANTITY;
 
         switch (difficulty) {
             case EASY:
@@ -112,6 +118,8 @@ public class Level implements GameConstants {
                 enemySpeedInPixel -= 1;
                 enemyShotCooldown += 200;
                 enemySpawnInterval *=2;
+                enemyAvoidObstacles = 0;
+                enemyDoorSpawn -= 4;
                 mortarLoadingTime += 4000;
                 vehicleSpeedInPixel /= 2;
                 humveeHitTolerance = 1;
@@ -123,6 +131,8 @@ public class Level implements GameConstants {
                 grenadeSpeedInPixel += 2;
                 enemyShotCooldown -= 50;
                 enemySpawnInterval /= 2;
+                enemyAvoidObstacles *= 4;
+                enemyDoorSpawn += 4;
                 mortarLoadingTime -= 200;
                 vehicleSpeedInPixel += 2;
                 vehicleSpawnDistance /= 2;
@@ -137,6 +147,8 @@ public class Level implements GameConstants {
                 enemySpeedInPixel += 1;
                 enemyShotCooldown -= 200;
                 enemySpawnInterval /= 5;
+                enemyAvoidObstacles *= 8;
+                enemyDoorSpawn += 14;
                 mortarLoadingTime -= 500;
                 vehicleSpeedInPixel *= 3;
                 vehicleSpawnDistance /= 5;
