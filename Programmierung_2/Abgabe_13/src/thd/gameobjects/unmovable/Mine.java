@@ -3,6 +3,7 @@ package thd.gameobjects.unmovable;
 import thd.game.managers.GamePlayManager;
 import thd.game.utilities.GameView;
 import thd.gameobjects.base.*;
+import thd.gameobjects.movable.Bullet;
 import thd.gameobjects.movable.MainCharacterImpl;
 import thd.gameobjects.movable.Vehicle;
 import thd.gameobjects.resources.ObjectBlockImages;
@@ -41,7 +42,7 @@ public class Mine extends CollidingGameObject implements ShiftableGameObject {
             }
             gamePlayManager.destroyGameObject(this);
             gamePlayManager.spawnGameObject(new Explosion(gameView, gamePlayManager, direction, position));
-        } else {
+        } else if (!(other instanceof Bullet)) {
             gamePlayManager.destroyGameObject(this);
         }
     }
