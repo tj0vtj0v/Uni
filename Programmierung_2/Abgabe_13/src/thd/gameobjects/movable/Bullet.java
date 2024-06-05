@@ -7,6 +7,7 @@ import thd.gameobjects.base.*;
 import thd.gameobjects.resources.ObjectBlockImages;
 import thd.gameobjects.unmovable.AmmoBox;
 import thd.gameobjects.unmovable.Explosion;
+import thd.gameobjects.unmovable.Mine;
 
 /**
  * Representation of the in-game-object 'Bullet'.
@@ -59,7 +60,7 @@ public class Bullet extends CollidingGameObject implements ShiftableGameObject {
 
     @Override
     public void reactToCollisionWith(CollidingGameObject other) {
-        if (other != creator && !(other instanceof Explosion) && !(other instanceof AmmoBox)) {
+        if (other != creator && !(other instanceof Explosion) && !(other instanceof AmmoBox) && !(other instanceof Mine)) {
             gamePlayManager.destroyGameObject(this);
         }
     }

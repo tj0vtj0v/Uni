@@ -94,6 +94,10 @@ public class Level implements GameConstants {
      * distance to be activated for vehicles.
      */
     public int vehicleSpawnDistance;
+    /**
+     * amount of mines in a minefield.
+     */
+    public int minesPerMinefield;
 
     Level() {
         mainCharacterSpeedInPixel = DEFAULT_MAIN_CHARACTER_SPEED_IN_PIXEL;
@@ -110,6 +114,7 @@ public class Level implements GameConstants {
         enemySpawnInterval = DEFAULT_ENEMY_SPAWN_INTERVAL;
         enemyAvoidObstacles = DEFAULT_ENEMY_AVOID_PROBABILITY;
         enemyDoorSpawn = DEFAULT_DOOR_SPAWN_QUANTITY;
+        minesPerMinefield = DEFAULT_MINES_PER_MINEFIELD;
 
         switch (difficulty) {
             case EASY:
@@ -124,6 +129,7 @@ public class Level implements GameConstants {
                 vehicleSpeedInPixel /= 2;
                 humveeHitTolerance = 1;
                 mopedHitTolerance = 1;
+                minesPerMinefield -= 5;
                 break;
             case HARD:
                 mainCharacterShotCooldown += 100;
@@ -138,6 +144,7 @@ public class Level implements GameConstants {
                 vehicleSpawnDistance /= 2;
                 humveeHitTolerance += 2;
                 mopedHitTolerance += 2;
+                minesPerMinefield += 5;
                 break;
             case IMPOSSIBLE:
                 mainCharacterSpeedInPixel = 1;
@@ -154,6 +161,7 @@ public class Level implements GameConstants {
                 vehicleSpawnDistance /= 5;
                 humveeHitTolerance *= 2;
                 mopedHitTolerance *= 2;
+                minesPerMinefield *= 3;
         }
     }
 }

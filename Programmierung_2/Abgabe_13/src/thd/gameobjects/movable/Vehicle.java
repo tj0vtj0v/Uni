@@ -53,7 +53,7 @@ public abstract class Vehicle extends CollidingGameObject implements ShiftableGa
 
         if (hitTolerance <= 0) {
             destroy();
-            gamePlayManager.addScorePoints(200);
+            gamePlayManager.addPoints(200);
             gamePlayManager.spawnGameObject(new DustExplosion(gameView, gamePlayManager, direction, new Position(position.getX(), position.getY() + VEHICLE_EXPLOSION_Y_OFFSET)));
             gamePlayManager.spawnGameObject(new DustExplosion(gameView, gamePlayManager, direction, new Position(position.getX() + VEHICLE_EXPLOSION_2_X_OFFSET, position.getY() + VEHICLE_EXPLOSION_Y_OFFSET)));
         }

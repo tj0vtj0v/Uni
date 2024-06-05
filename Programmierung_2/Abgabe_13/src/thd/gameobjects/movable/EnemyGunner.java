@@ -79,7 +79,7 @@ public class EnemyGunner extends MovingCharacter implements ShiftableGameObject,
     @Override
     public void reactToCollisionWith(CollidingGameObject other) {
         if (fatallyHit(other)) {
-            gamePlayManager.addScorePoints(100);
+            gamePlayManager.addPoints(100);
             gamePlayManager.destroyGameObject(this);
             gamePlayManager.spawnGameObject(new DeadEnemy(gameView, gamePlayManager, position));
         }

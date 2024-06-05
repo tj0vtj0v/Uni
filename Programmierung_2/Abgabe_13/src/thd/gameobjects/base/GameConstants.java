@@ -10,7 +10,7 @@ public interface GameConstants {
     /**
      * Represents a Constant in the Category Game.
      */
-    int LIVES = 3;
+    int LIVES = 5;
     /**
      * Represents a Constant in the Category Game.
      */
@@ -269,4 +269,8 @@ public interface GameConstants {
      * Represents a DEFAULT-VALUE Constant.
      */
     int DEFAULT_MORTAR_LOADING_TIME = 800;
+    /**
+     * Represents a DEFAULT-VALUE Constant.
+     */
+    int DEFAULT_MINES_PER_MINEFIELD = 10;
 }

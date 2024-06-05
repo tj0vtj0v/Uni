@@ -18,7 +18,6 @@ import java.util.Random;
  * BlockImage
  */
 public class MainCharacterImpl extends MovingCharacter implements MainCharacter {
-    private int availableGrenades;
     private boolean dead;
 
     /**
@@ -33,7 +32,6 @@ public class MainCharacterImpl extends MovingCharacter implements MainCharacter 
     public MainCharacterImpl(GameView gameView, GamePlayManager gamePlayManager, Direction direction, Position position, List<CollidingGameObject> collidingGameObjectsForPathDecision) {
         super(gameView, gamePlayManager, direction, position, collidingGameObjectsForPathDecision);
         shotCooldownInMilliseconds = gamePlayManager.currentLevel().mainCharacterShotCooldown;
-        availableGrenades = 5;
         dead = false;
 
         changeBlockImageColors();
@@ -58,7 +56,7 @@ public class MainCharacterImpl extends MovingCharacter implements MainCharacter 
     @Override
     public void reactToCollisionWith(CollidingGameObject other) {
         if (fatallyHit(other)) {
-            if (!dead) {
+            if (!dead && !gamePlayManager.overlay.isMessageShown()) {
                 gamePlayManager.reduceLive();
                 gameView.playSound("maindeath.wav", false);
                 dead = true;
@@ -67,17 +65,8 @@ public class MainCharacterImpl extends MovingCharacter implements MainCharacter 
         }
 
         if (other instanceof AmmoBox) {
-            availableGrenades += new Random(hashCode()).nextInt(3, 6);
+            gamePlayManager.addGrenades(new Random(hashCode()).nextInt(3, 6));
         }
-    }
-
-    /**
-     * Communicates the number of remaining Grenades.
-     *
-     * @return amount of Grenades.
-     */
-    public int getAvailableGrenades() {
-        return availableGrenades;
     }
 
     /**
@@ -177,8 +166,8 @@ public class MainCharacterImpl extends MovingCharacter implements MainCharacter 
 
     @Override
     public void throwGrenade() {
-        if (!dead && availableGrenades > 0) {
-            availableGrenades--;
+        if (!dead && gamePlayManager.getAvailableGrenades() > 0) {
+            gamePlayManager.reduceGrenades();
             super.throwGrenade();
         }
     }
@@ -212,6 +201,6 @@ public class MainCharacterImpl extends MovingCharacter implements MainCharacter 
 
     @Override
     public String toString() {
-        return "MainCharacterBlockImages: %s is %b dead with %d available Grenades".formatted(position, dead, availableGrenades);
+        return "MainCharacterBlockImages: %s is %b dead".formatted(position, dead);
     }
 }

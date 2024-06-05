@@ -68,6 +68,7 @@ class GameManager extends LevelManager {
 
     private void gameManagement() {
         if (endOfGame()) {
+            overlay.showMessage("");
             if (gameView.timer(GAME_OVER_TOGGLE_TIME, this)) {
                 overlay.toggleMessage("Game Over");
             }

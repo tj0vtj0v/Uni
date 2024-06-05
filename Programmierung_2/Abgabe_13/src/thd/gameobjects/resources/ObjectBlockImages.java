@@ -60,13 +60,12 @@ public final class ObjectBlockImages implements GameConstants {
             """;
 
     /**
-     * Blockimage of a Rocket.
+     * Blockimage of a Mine.
      */
-    public static final String ROCKET = """
-            88  88
-              88 -
-              88 -
-              88 -
+    public static final String MINE = """
+             777
+            77977
+             777
             """;
 
     /**

@@ -95,6 +95,9 @@ class GameWorldManager extends GamePlayManager {
                     case 'A':
                         addActivatableGameObject(new AmmoBox(gameView, this, located, position));
                         break;
+                    case 'N':
+                        addActivatableGameObject(new MineField(gameView, this, position));
+                        break;
                     case '0', '1', '2', '3', '4', '5', '6', '7', '8', '9':
                         addActivatableGameObject(new Wall(gameView, this, located, position, tile - 47));
                 }
@@ -122,7 +125,6 @@ class GameWorldManager extends GamePlayManager {
                     spawnGameObject(enemyMortar);
                     iterator.remove();
                 }
-
             } else if (gameObject instanceof EndWallPanel endWallPanel) {
                 spawnPathBlockingGameObject(endWallPanel);
                 iterator.remove();
@@ -174,6 +176,11 @@ class GameWorldManager extends GamePlayManager {
             } else if (gameObject instanceof AmmoBox ammoBox) {
                 if (ammoBox.tryToActivate(mainCharacter)) {
                     spawnGameObject(ammoBox);
+                    iterator.remove();
+                }
+            } else if (gameObject instanceof MineField mineField) {
+                if (mineField.tryToActivate(mainCharacter)) {
+                    spawnGameObject(mineField);
                     iterator.remove();
                 }
             } else if (gameObject instanceof Wall wall) {

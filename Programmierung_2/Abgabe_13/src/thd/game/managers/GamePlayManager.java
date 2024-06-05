@@ -17,6 +17,7 @@ public class GamePlayManager extends WorldShiftManager {
     private final GameObjectManager gameObjectManager;
     final List<CollidingGameObject> collidingGameObjectsForPathDecision;
 
+    int availableGrenades;
     int lives;
     int points;
     int highScore;
@@ -35,6 +36,7 @@ public class GamePlayManager extends WorldShiftManager {
         gameObjectManager = new GameObjectManager();
         collidingGameObjectsForPathDecision = new ArrayList<>();
         lives = LIVES;
+        availableGrenades = 5;
         points = 0;
         highScore = FileAccess.readHighScoreFromDisc();
         endReached = false;
@@ -52,10 +54,7 @@ public class GamePlayManager extends WorldShiftManager {
      *
      * @param points amount of points to be added to the score.
      */
-    public void addScorePoints(int points) {
-        if (points <= 0){
-            throw new IllegalArgumentException("Points have to be positive and bigger than 0!");
-        }
+    public void addPoints(int points) {
         this.points += points;
     }
 
@@ -78,12 +77,28 @@ public class GamePlayManager extends WorldShiftManager {
     }
 
     /**
-     * Getter of the remaining grenades to the main character.
+     * Getter of the remaining grenades of the main character.
      *
      * @return remaining grenades.
      */
-    public int availableGrenades() {
-        return mainCharacter.getAvailableGrenades();
+    public int getAvailableGrenades() {
+        return availableGrenades;
+    }
+
+    /**
+     * Adds grenades to the main character.
+     *
+     * @param amount of grenades to add.
+     */
+    public void addGrenades(int amount) {
+        availableGrenades += amount;
+    }
+
+    /**
+     * Removes a grenades from the main character.
+     */
+    public void reduceGrenades() {
+        availableGrenades -= 1;
     }
 
     /**

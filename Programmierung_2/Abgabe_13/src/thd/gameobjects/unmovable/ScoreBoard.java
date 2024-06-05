@@ -58,7 +58,7 @@ public class ScoreBoard extends GameObject {
                 new Color(148, 209, 90),
                 rotation);
         gameView.addTextToCanvas(
-                "BOOMS %d".formatted(gamePlayManager.availableGrenades()),
+                "BOOMS %d".formatted(gamePlayManager.getAvailableGrenades()),
                 GameView.WIDTH / 1.8,
                 localYZero + (height - size) / 2,
                 size,
