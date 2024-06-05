@@ -5,12 +5,16 @@ import thd.game.utilities.GameView;
 import thd.gameobjects.base.*;
 import thd.gameobjects.movable.MainCharacterImpl;
 
+/**
+ * Represents a minefield consisting of a number of mines.
+ */
 public class MineField extends GameObject implements ShiftableGameObject, ActivatableGameObject<GameObject> {
     /**
      * Crates a new GameObject.
      *
      * @param gameView        GameView to show the game object on.
      * @param gamePlayManager GamePlayManager to manage the game actions.
+     * @param position        position where the minefield is at.
      */
     public MineField(GameView gameView, GamePlayManager gamePlayManager, Position position) {
         super(gameView, gamePlayManager);

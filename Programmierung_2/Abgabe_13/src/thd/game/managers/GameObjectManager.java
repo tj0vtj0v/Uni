@@ -50,7 +50,7 @@ class GameObjectManager extends CollisionManager {
             }
         }
 
-        manageCollisions(true);
+        manageCollisions(false);
     }
 
     boolean enemyExisting() {

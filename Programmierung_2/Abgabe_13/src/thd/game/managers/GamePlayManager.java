@@ -17,7 +17,7 @@ public class GamePlayManager extends WorldShiftManager {
     private final GameObjectManager gameObjectManager;
     final List<CollidingGameObject> collidingGameObjectsForPathDecision;
 
-    int availableGrenades;
+    private int availableGrenades;
     int lives;
     int points;
     int highScore;

@@ -7,6 +7,9 @@ import thd.gameobjects.movable.MainCharacterImpl;
 import thd.gameobjects.movable.Vehicle;
 import thd.gameobjects.resources.ObjectBlockImages;
 
+/**
+ * Represents a Mine.
+ */
 public class Mine extends CollidingGameObject implements ShiftableGameObject {
     Mine(GameView gameView, GamePlayManager gamePlayManager, Direction facing, Position position) {
         super(gameView, gamePlayManager, facing, position);
@@ -38,6 +41,8 @@ public class Mine extends CollidingGameObject implements ShiftableGameObject {
             }
             gamePlayManager.destroyGameObject(this);
             gamePlayManager.spawnGameObject(new Explosion(gameView, gamePlayManager, direction, position));
+        } else {
+            gamePlayManager.destroyGameObject(this);
         }
     }
 }

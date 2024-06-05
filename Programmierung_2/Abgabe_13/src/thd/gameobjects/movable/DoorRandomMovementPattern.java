@@ -6,7 +6,7 @@ import thd.gameobjects.base.Position;
 /**
  * Represents the Movement pattern of the Enemy's spawning in the door.
  */
-public class DoorRandomMovementPattern extends WalkInRandomMovementPattern {
+class DoorRandomMovementPattern extends WalkInRandomMovementPattern {
     private boolean firstCheckpoint;
 
     DoorRandomMovementPattern(Direction launchSide) {
