@@ -7527,7 +7527,7 @@ a.anchor-link {
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<h4 id="Remark">Remark<a class="anchor-link" href="#Remark">¶</a></h4><p>This submission is additional to another one where I participated.
+<h4 id="Remark">Remark<a class="anchor-link" href="#Remark">¶</a></h4><p>This submission is additional to another one in which I participated.<br/>
 My main goal is to get potential feedback to my algorithm which differs severely from the collaborated one.</p>
 <p>Regarding the intent of the submission the overhead is minimized and the visualisation is drastically reduced.</p>
 </div>
@@ -7552,9 +7552,9 @@ Participant: 22211158 -&gt; Noah Tjorven Burdorf</p>
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<h2 id="Overhead">Overhead<a class="anchor-link" href="#Overhead">¶</a></h2><p>Considering the remark there is almost no Overhead, there are a few things to be said. For example about the dataset or the visualisation.
+<h2 id="Overhead">Overhead<a class="anchor-link" href="#Overhead">¶</a></h2><p>There are a few things to be mentioned regarding the dataset and visualisation.
 This project is divided in a few files, but for simplicity we view it all as a simple script.
-Used library's for this solution are pprint, math and random.</p>
+Used libraries for this solution are pprint, math and random.</p>
 </div>
 </div>
 </div>
@@ -7581,9 +7581,9 @@ Used library's for this solution are pprint, math and random.</p>
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<h3 id="The-Dataset">The Dataset<a class="anchor-link" href="#The-Dataset">¶</a></h3><p>The dataset is a simple list containing a dictionary with the keys "result" and "dependencies".
+<h3 id="The-Dataset">The Dataset<a class="anchor-link" href="#The-Dataset">¶</a></h3><p>The dataset is a simple list containing a dictionary with the keys "result" and "dependencies".<br/>
 Here the dependencies are representing a table, a method for reading a csv for data acquisition can be found in the other submission.
-The data are from the lecture where we initially got the DT_LEARNING function to know.</p>
+The data are from the lecture where we initially got to know the DT_LEARNING function.</p>
 </div>
 </div>
 </div>
@@ -7621,7 +7621,7 @@ The data are from the lecture where we initially got the DT_LEARNING function to
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<p>The attributes are additionally stored in another list of dictionary's, consisting of the keys "name" and "values".</p>
+<p>The attributes are additionally stored in another list of dictionaries, consisting of the keys "name" and "values".</p>
 </div>
 </div>
 </div>
@@ -7640,17 +7640,6 @@ The data are from the lecture where we initially got the DT_LEARNING function to
 <span class="p">]</span>
 </pre></div>
 </div>
-</div>
-</div>
-</div>
-</div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=11603247-7526-46cf-915a-d5f8f95b8342">
-<div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<p>I will not further explain the naming or structure of these lists.</p>
 </div>
 </div>
 </div>
@@ -7705,7 +7694,7 @@ An additional overview over the received data is provided by the pretty print li
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<h3 id="Implementation-of-the-predefined-methods">Implementation of the predefined methods<a class="anchor-link" href="#Implementation-of-the-predefined-methods">¶</a></h3><p>First of all the implementation of the three methods "DT_LEANING", "PLURALITY_VAL" and "IMPORTANCE".
+<h3 id="Implementation-of-the-predefined-methods">Implementation of the predefined methods<a class="anchor-link" href="#Implementation-of-the-predefined-methods">¶</a></h3><p>First of all the implementation of the three methods "DT_LEANING", "PLURALITY_VAL" and "IMPORTANCE".<br/>
 A few functionalities are outsourced, but all methods are named intuitively, and are going to be explained in the course of this documentation.</p>
 </div>
 </div>
@@ -7894,7 +7883,7 @@ A few functionalities are outsourced, but all methods are named intuitively, and
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<p>After that we have the function "_attribute_occurrence", returning the occurrence and occurrence with a positive result of an attribute in the examples in a tuple.
+<p>After that we have the function "_attribute_occurrence", returning a tuple consisting of the total occurrence of an attribute and the corresponding occurrences with a positive result in the examples.
 This was combined to prevent repetition and a higher runtime.</p>
 </div>
 </div>
@@ -7996,7 +7985,7 @@ This was combined to prevent repetition and a higher runtime.</p>
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<p>The last unexplored step of this algorithm is the argmax function of the IMPORTANCE, named according to its functionality "_argmax_importance".
+<p>The last unexplored step of this algorithm is the argmax function of the IMPORTANCE, named according to its functionality "_argmax_importance".<br/>
 It loops over all attributes and calculates the number and name of the attributes affecting the result the most. In case of a tie it breaks it randomly, which is the only use for the random function in this program.</p>
 </div>
 </div>
@@ -8079,11 +8068,11 @@ In this case it is not pretty but does the job.</p>
 <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
 <div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
 <pre>|-- distance
-|-- &lt; 10 -- visible
-    |-- 0 -- armed
-        |-- 0 -&gt; True
-        |-- 1 -&gt; False
-    |-- 1 -&gt; True
+|-- &lt; 10 -- armed
+    |-- 0 -&gt; True
+    |-- 1 -- visible
+        |-- 0 -&gt; False
+        |-- 1 -&gt; True
 |-- 10 - 20 -- visible
     |-- 0 -&gt; False
     |-- 1 -&gt; True
@@ -8091,7 +8080,7 @@ In this case it is not pretty but does the job.</p>
 
 
 {'10 - 20': {0: False, 1: True},
- '&lt; 10': {0: {0: True, 1: False}, 1: True},
+ '&lt; 10': {0: True, 1: {0: False, 1: True}},
  '&gt; 20': False,
  'attribute': 'distance'}
 </pre>
@@ -8106,7 +8095,7 @@ In this case it is not pretty but does the job.</p>
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<p>First there is my own visualisation, with the attribute named on top, and the values called out on each branch. Followed by the child decision tree and eventually the classification, labeled with an additional "-&gt;".
+<p>First there is my own visualisation, with the attribute named on top, and the values called out on each branch. Followed by the child decision tree and eventually the classification, labeled with an additional "-&gt;".<br/>
 Because of the awful visualisation, I added a pretty-printed version of the raw output right behind.</p>
 </div>
 </div>
@@ -8118,8 +8107,8 @@ Because of the awful visualisation, I added a pretty-printed version of the raw 
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<h2 id="Sources">Sources<a class="anchor-link" href="#Sources">¶</a></h2><p>Ideas can be influenced by the other approach.
-There were no external sources utilized beside the lecture material.
+<h2 id="Sources">Sources<a class="anchor-link" href="#Sources">¶</a></h2><p>Ideas can be influenced by the other approach.<br/>
+There were no external sources utilized beside the lecture material.<br/>
 I emphasize that no AI was used and all the code - except the DT_LEANING - is entirely self written.</p>
 </div>
 </div>
