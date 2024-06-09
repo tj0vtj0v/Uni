@@ -1,0 +1,28 @@
+prename(abner; bruce; chuck; duane).
+name(engels; foster; gunter; halvey).
+animal(iguana; jackal; kingcobra; llama).
+
+{person(P, N, A) : prename(P), name(N)} = 1 :- animal(A).
+:- person(P, _, A), person(P, _, A'), A != A'.
+:- person(_, N, A), person(_, N, A'), A != A'.
+
+:- person(abner, engels, _).
+:- person(abner, foster, _).
+
+:- person(chuck, _, iguana).
+:- person(duane, _, iguana).
+
+:- person(_, foster, jackal).
+:- person(_, foster, kingcobra).
+
+:- person(duane, _, llama).
+
+:- person(abner, gunter, _).
+:- person(abner, _, kingcobra).
+
+:- person(bruce, foster, _).
+
+:- person(_, halvey, iguana).
+
+
+#show person/3.
