@@ -30,7 +30,7 @@ public class WonScreen extends EndScreen {
 
                 You've proven that you have what it takes to be the best.
 
-                WHO DARES WINNS, AND YOU HAVE TRIUMPHED!
+                WHO DARES WINS, AND YOU HAVE TRIUMPHED!
 
                 Thank you for playing, soldier.
                 Until the next mission, rest well – you've earned it.

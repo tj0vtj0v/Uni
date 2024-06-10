@@ -45,6 +45,7 @@ public class EndWall extends CollidingGameObject implements ShiftableGameObject,
     public void updateStatus() {
         if (position.getY() >= 0 && currentState == State.CLOSED) {
             gamePlayManager.endReached = true;
+            gamePlayManager.overlay.showMessage("Kill all enemies to continue!", 2);
 
             gameView.playSound("door.wav", false);
             gamePlayManager.spawnGameObject(new Spawner(gameView, gamePlayManager, Direction.UP, new Position((double) GameView.WIDTH / 2, 40), collidingGameObjectsForPathDecision, false));

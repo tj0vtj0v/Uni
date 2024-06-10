@@ -29,7 +29,7 @@ public class LostScreen extends EndScreen {
 
                 Your Score: --> %d <--                     is discarded...
 
-                WHO DARES WINNS – BUT TODAY, DEFEAT HAS STRUCK!
+                WHO DARES WINS – BUT TODAY, DEFEAT HAS STRUCK!
 
                 Thank you for playing, soldier. Reflect on this defeat,
                 harness your anger, and prepare for the next fight.
