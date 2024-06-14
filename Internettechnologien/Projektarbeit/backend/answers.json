@@ -1,0 +1,4 @@
+{
+    "positive": ["yes","ja","ya","positive","true","ok","affirm"],
+    "negative": ["no", "nt", "n't","never","negative","false"]
+}

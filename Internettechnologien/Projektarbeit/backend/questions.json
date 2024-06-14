@@ -1,0 +1,494 @@
+{
+    "type": {
+        "question": "For what type of activity do you hve in mind in terms of using the drone?",
+        "fallback": "Please help me to fit your input into one of these categories: fun, sport or work.",
+        "result": {
+            "fun": [
+                "fun",
+                "experiment",
+                "try",
+                "play",
+                "indoors",
+                "looping",
+                "foto",
+                "film",
+                "video"
+            ],
+            "sport": [
+                "sport",
+                "achieve",
+                "push",
+                "limit",
+                "race",
+                "explore"
+            ],
+            "work": [
+                "work",
+                "job",
+                "farm",
+                "find",
+                "professional",
+                "cinema",
+                "search",
+                "help",
+                "rescue"
+            ]
+        },
+        "followup": "spec_type"
+    },
+    "spec_type": {
+        "question": "What concrete use-case do you want to satisfy with the drone?",
+        "fallback": "Please specify which use the drone should have: foto/video, playing, freestyle, racing, movie shoots, agricultural work or monitoring.",
+        "result": {
+            "foto": [
+                "film",
+                "foto",
+                "capture",
+                "video",
+                "vacation"
+            ],
+            "toy": [
+                "play",
+                "toy",
+                "kid",
+                "experiment",
+                "looping",
+                "indoors"
+            ],
+            "freestyle": [
+                "explore",
+                "hit",
+                "tricks",
+                "learn",
+                "find out",
+                "experience"
+            ],
+            "race": [
+                "race",
+                "compete",
+                "fast",
+                "sport",
+                "athlete"
+            ],
+            "movie": [
+                "cinema",
+                "movie",
+                "quality"
+            ],
+            "agricultural": [
+                "farm",
+                "field",
+                "spray",
+                "auto"
+            ],
+            "monitoring": [
+                "find",
+                "search",
+                "help",
+                "get",
+                "rescue"
+            ]
+        },
+        "followup": false
+    },
+    "budget": {
+        "question": "How much are you willing to spend on this adventure?",
+        "fallback": "Please enter your answer in a common format in the unit EUR!",
+        "result": false,
+        "followup": "margin"
+    },
+    "margin": {
+        "question": "How big is your margin on top of that? No worries, I won't ask another time.",
+        "fallback": "Please enter your answer in a common format in the unit EUR!",
+        "result": false,
+        "followup": false
+    },
+    "country": {
+        "question": "Now I have to roughly know where you live, for further consideration of course.",
+        "fallback": "It is sufficient when you say if you are in or outside the european union.",
+        "result": {
+            "eu": [
+                "germany",
+                "ger",
+                "de",
+                "france",
+                "fr",
+                "spain",
+                "portugal",
+                "austria",
+                "belgium",
+                "croatia",
+                "denmark",
+                "estonia",
+                "finland",
+                "greece",
+                "hungary",
+                "island",
+                "ireland",
+                "italy",
+                "luxembourg",
+                "netherlands",
+                "sweden",
+                "eu",
+                "europe",
+                "union"
+            ],
+            "no_eu": [
+                "america",
+                "africa",
+                "any",
+                "asia",
+                "suisse",
+                "australia"
+            ]
+        },
+        "followup": "license"
+    },
+    "license": {
+        "question": "Do you already have a licence registered in the EU? And if yes which?",
+        "fallback": "The valid options are A1, A2, A3 or none!",
+        "result": {
+            "none": [
+                "no",
+                "nt",
+                "n't"
+            ],
+            "A1": [
+                "minor",
+                "a1",
+                "500"
+            ],
+            "A2": [
+                "normal",
+                "a2",
+                "2,5",
+                "2.5",
+                "2500"
+            ],
+            "A3": [
+                "big",
+                "major",
+                "a3",
+                "25",
+                "25000"
+            ]
+        },
+        "followup": "people"
+    },
+    "people": {
+        "question": "Talking about people, where do you want to fly in regard of uninvolved people?",
+        "fallback": "Do you want to fly near, over or far away from people?",
+        "result": {
+            "over": [
+                "over",
+                "crowds",
+                "concert",
+                "town",
+                "urban",
+                "groups"
+            ],
+            "close": [
+                "near",
+                "next",
+                "close",
+                "sports",
+                "around"
+            ],
+            "away": [
+                "far",
+                "forest",
+                "willow",
+                "away",
+                "remote",
+                "isolated",
+                "secure",
+                "distance"
+            ]
+        },
+        "followup": "knowledge"
+    },
+    "knowledge": {
+        "question": "Which knowledge about the applicable law do you have?",
+        "fallback": "How would you categorize your knowledge over your countries drone law, not existing, little, or big enough?",
+        "result": {
+            "none": [
+                "no",
+                "nt",
+                "n't"
+            ],
+            "little": [
+                "little",
+                "bit",
+                "some",
+                "few",
+                "small"
+            ],
+            "enough": [
+                "enough",
+                "much",
+                "know",
+                "detail",
+                "all",
+                "every"
+            ]
+        },
+        "followup": false
+    },
+    "distance": {
+        "question": "How far do you want to fly and explore your surrounding?",
+        "fallback": "Possible options are in sight, further than your visual line, and long range (over a kilometer).",
+        "result": {
+            "vlos": [
+                "near",
+                "close",
+                "side",
+                "sight"
+            ],
+            "bvlos": [
+                "wide",
+                "far",
+                "away",
+                "explore"
+            ]
+        },
+        "followup": "time"
+    },
+    "time": {
+        "question": "In regard of this distance you want to overcome, what is your targeted airtime?",
+        "fallback": "How long do you want to fly in minutes?",
+        "result": {
+            "short": [
+                "short",
+                "around",
+                "1",
+                "2"
+            ],
+            "middle": [
+                "middle",
+                "bit",
+                "some",
+                "3",
+                "4",
+                "5"
+            ],
+            "long": [
+                "long",
+                "around",
+                "long",
+                "last"
+            ]
+        },
+        "followup": "behaviour"
+    },
+    "behaviour": {
+        "question": "Another factor, which drastically influences your airtime is your flight style. How hard are you going to push your quad?",
+        "fallback": "How would you describe your flight style, defensive, moderate or aggressive?",
+        "result": {
+            "defensive": [
+                "defensive",
+                "slow",
+                "secure",
+                "around",
+                "look",
+                "search",
+                "find"
+            ],
+            "moderate": [
+                "moderate",
+                "normal",
+                "explore",
+                "view",
+                "tricks"
+            ],
+            "aggressive": [
+                "aggressive",
+                "fast",
+                "push",
+                "race",
+                "crash",
+                "risk"
+            ]
+        },
+        "followup": "size"
+    },
+    "size": {
+        "question": "Drone are out there in all different sizes. What is your idea of the size of the drone?",
+        "fallback": "How big should your drone be? Small, medium, large or huge...",
+        "result": {
+            "small": [
+                "small",
+                "little",
+                "mini",
+                "hand",
+                "finger",
+                "tiny",
+                "1",
+                "2"
+            ],
+            "medium": [
+                "medium",
+                "middle",
+                "normal",
+                "standard",
+                "average",
+                "typical",
+                "general",
+                "3",
+                "4",
+                "5"
+            ],
+            "large": [
+                "big",
+                "large",
+                "arm",
+                "6",
+                "7",
+                "8",
+                "9"
+            ],
+            "huge": [
+                "huge",
+                "insane",
+                "great",
+                "gigantic",
+                "colossal",
+                "massive",
+                "sit",
+                "10",
+                "11",
+                "12"
+            ]
+        },
+        "followup": false
+    },
+    "fpv": {
+        "question": "FPV - First-Person-View is an immersive experience, do you want to sit in the virtual cockpit?",
+        "fallback": "Do you want the opportunity to see what the drone sees, yes or no?",
+        "result": {
+            "yes": [
+                "yes",
+                "ja",
+                "ya",
+                "positive",
+                "true",
+                "do",
+                "want"
+            ],
+            "no": [
+                "no",
+                "never",
+                "nt",
+                "n't",
+                "negative",
+                "false",
+                "never"
+            ]
+        },
+        "followup": "feed"
+    },
+    "feed": {
+        "question": "When you got a live - cam, you have to choose between quality and performance... What is your preference?",
+        "fallback": "The difference between analog and digital are performance and quality, respectively, what is your choice?",
+        "result": {
+            "analog": [
+                "analog",
+                "noisy",
+                "noise",
+                "performance",
+                "fast",
+                "race",
+                "speed",
+                "transmission",
+                "camera"
+            ],
+            "digital": [
+                "digital",
+                "clear",
+                "quality",
+                "image",
+                "cinema",
+                "latency"
+            ]
+        },
+        "followup": false
+    },
+    "automation": {
+        "question": "The degree of automation is the last big question, how much should your drone can do by itself?",
+        "fallback": "How automated should your drone be, not at all, minimal, normal or complete autonomous?",
+        "result": {
+            "none": [
+                "no",
+                "nt",
+                "n't"
+            ],
+            "minimal": [
+                "mini",
+                "gps",
+                "almost",
+                "half",
+                "bit",
+                "some",
+                "few"
+            ],
+            "automated": [
+                "auto",
+                "gps",
+                "sensors",
+                "mavic",
+                "dji",
+                "control"
+            ],
+            "autonomous": [
+                "itself",
+                "completely",
+                "all",
+                "everything",
+                "autonomous",
+                "alone"
+            ]
+        },
+        "followup": "camera"
+    },
+    "camera": {
+        "question": "Additional cameras have their own flavour, do you need an extra camera, or external rig for your setup?",
+        "fallback": "Extra cameras on your drone have many forms, now you have to choose between none, action-cams, normal cameras, cinematic cameras, and infrared (eg. for searches).",
+        "result": {
+            "none": [
+                "no",
+                "nt",
+                "n't",
+                "try",
+                "experiment"
+            ],
+            "action": [
+                "action",
+                "go",
+                "pro",
+                "little",
+                "small",
+                "tiny"
+            ],
+            "camera": [
+                "mount",
+                "events",
+                "camera",
+                "big",
+                "film"
+            ],
+            "movie": [
+                "movie",
+                "create",
+                "profession",
+                "cinema"
+            ],
+            "infrared": [
+                "search",
+                "find",
+                "rescue",
+                "infrared",
+                "operation"
+            ]
+        },
+        "followup": false
+    }
+}

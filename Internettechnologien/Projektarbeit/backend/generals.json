@@ -1,0 +1,42 @@
+{
+    "change": {
+        "keywords": [
+            "change",
+            "update",
+            "correct",
+            "mistake"
+        ],
+        "action": "Do you want to change your latest message?",
+        "action_fallback": "Please answer with yes or no if you want to update your latest statement!"
+    },
+    "capabilities": {
+        "keywords": [
+            "capability",
+            "what",
+            "ability",
+            "use"
+        ],
+        "action": "I provide you with a few information about drones, specifically so called quadcopters. Please answer the questions for optimal feedback on which drone suits you most.",
+        "action_fallback": "You already got to know what I can do. general information can be found <a href=\"https://quadcopterarena.com/15-little-known-facts-about-drones/\">here</a>"
+    },
+    "start": {
+        "keywords": [
+            "restart",
+            "redo",
+            "begin",
+            "start",
+            "lets go",
+            "let's go"
+        ],
+        "action": "Hey, you are about to start your personal drone test, please stick with the questions to make this as convenient as possible."
+    },
+    "exit": {
+        "keywords": [
+            "exit",
+            "stop",
+            "end",
+            "no more"
+        ],
+        "action": "You are about to exit this session, please confirm your decision."
+    }
+}
