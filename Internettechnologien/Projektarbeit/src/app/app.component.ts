@@ -11,5 +11,5 @@ export const BASE_URL = 'http://127.0.0.1:8000';
   styleUrl: './app.component.css'
 })
 export class AppComponent {
-  title = 'Projektarbeit';
+  title = 'Projektarbeit - Tjorven Burdorf';
 }

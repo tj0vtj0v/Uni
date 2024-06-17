@@ -1,1 +1,8 @@
+<div *ngIf="controller.isLoggedIn()" id="chat">
+    <p>username set: {{ controller.getLoginName() }}</p>
+    <app-chat></app-chat>
+</div>
+<div *ngIf="!controller.isLoggedIn()">
+    <app-login></app-login>
+</div>
 <p>chatbot works!</p>

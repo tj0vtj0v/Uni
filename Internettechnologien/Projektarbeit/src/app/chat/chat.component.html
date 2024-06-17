@@ -1,0 +1,10 @@
+<div class="chat-messages">
+    <div *ngFor="let field of messages" class="{{field[1]}}">
+        {{field[0]}}
+    </div>
+</div>
+
+<div>
+    <input title="Your message..." [(ngModel)]="message">
+    <button (click)="sendMessage()">Send</button>
+</div>

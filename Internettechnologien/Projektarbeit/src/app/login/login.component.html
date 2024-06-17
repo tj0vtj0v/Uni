@@ -1,1 +1,8 @@
 <p>login works!</p>
+
+<div>
+    <label>Your username: </label>
+    <input [(ngModel)]="username">
+</div>
+
+<button (click)="confirm()" routerLink="/chat">Confirm</button>

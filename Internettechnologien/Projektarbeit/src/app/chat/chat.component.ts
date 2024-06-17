@@ -1,0 +1,31 @@
+import {Component} from '@angular/core';
+import {FormsModule, ReactiveFormsModule} from "@angular/forms";
+import {NgForOf} from "@angular/common";
+import {ApiService} from "../api.service";
+
+@Component({
+    selector: 'app-chat',
+    standalone: true,
+    imports: [
+        ReactiveFormsModule,
+        FormsModule,
+        NgForOf
+    ],
+    templateUrl: './chat.component.html',
+    styleUrl: './chat.component.css'
+})
+export class ChatComponent {
+    messages:string[][] = [];
+    message = "";
+
+    sendMessage(api: ApiService) {
+        this.messages.push([this.message, "user-text"])
+        this.answerToMessage(this.message)
+        this.message = ""
+    }
+
+    answerToMessage(input: string) {
+        this.messages.push(["aaaaaaaaaaa", "bot-text"])
+        api
+    }
+}

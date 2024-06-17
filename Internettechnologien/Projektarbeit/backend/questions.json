@@ -371,18 +371,10 @@
                 "ya",
                 "positive",
                 "true",
-                "do",
+                "do ",
                 "want"
             ],
-            "no": [
-                "no",
-                "never",
-                "nt",
-                "n't",
-                "negative",
-                "false",
-                "never"
-            ]
+            "no": []
         },
         "followup": "feed"
     },
