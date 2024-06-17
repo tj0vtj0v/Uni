@@ -1,10 +1,18 @@
 from fastapi import FastAPI  # provides API application
 import json
+from starlette.middleware.cors import CORSMiddleware
 
 # assign API Object
 app = FastAPI(
     title="IT-Project Knowledge-DB API",
     version="0.1.0"
+)
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=["http://localhost:4200"],
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
 )
 
 question_data: dict = json.loads(open('questions.json').read())
