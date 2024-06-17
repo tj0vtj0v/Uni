@@ -15,17 +15,23 @@ import {ApiService} from "../api.service";
     styleUrl: './chat.component.css'
 })
 export class ChatComponent {
-    messages:string[][] = [];
-    message = "";
+    messages: string[][] = [];
+    message: string = "";
+    topic: string = "";
 
-    sendMessage(api: ApiService) {
-        this.messages.push([this.message, "user-text"])
-        this.answerToMessage(this.message)
-        this.message = ""
+    constructor(private api: ApiService) {
+        api.get_next_topic().subscribe(value => {this.topic = value as string});
     }
 
-    answerToMessage(input: string) {
-        this.messages.push(["aaaaaaaaaaa", "bot-text"])
-        api
+    sendMessage() {
+        this.messages.push([this.message, "user-text"]);
+        this.answerToMessage();
+        this.message = "";
+    }
+
+    answerToMessage() {
+        this.messages.push(["aaaaaaaaaaa", "bot-text"]);
+        let result: string = "";
+        this.api.get_result(this.topic, this.message).subscribe(value => {result = value as string})
     }
 }

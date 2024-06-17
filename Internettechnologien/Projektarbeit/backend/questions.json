@@ -1,108 +1,4 @@
 {
-    "type": {
-        "question": "For what type of activity do you hve in mind in terms of using the drone?",
-        "fallback": "Please help me to fit your input into one of these categories: fun, sport or work.",
-        "result": {
-            "fun": [
-                "fun",
-                "experiment",
-                "try",
-                "play",
-                "indoors",
-                "looping",
-                "foto",
-                "film",
-                "video"
-            ],
-            "sport": [
-                "sport",
-                "achieve",
-                "push",
-                "limit",
-                "race",
-                "explore"
-            ],
-            "work": [
-                "work",
-                "job",
-                "farm",
-                "find",
-                "professional",
-                "cinema",
-                "search",
-                "help",
-                "rescue"
-            ]
-        },
-        "followup": "spec_type"
-    },
-    "spec_type": {
-        "question": "What concrete use-case do you want to satisfy with the drone?",
-        "fallback": "Please specify which use the drone should have: foto/video, playing, freestyle, racing, movie shoots, agricultural work or monitoring.",
-        "result": {
-            "foto": [
-                "film",
-                "foto",
-                "capture",
-                "video",
-                "vacation"
-            ],
-            "toy": [
-                "play",
-                "toy",
-                "kid",
-                "experiment",
-                "looping",
-                "indoors"
-            ],
-            "freestyle": [
-                "explore",
-                "hit",
-                "tricks",
-                "learn",
-                "find out",
-                "experience"
-            ],
-            "race": [
-                "race",
-                "compete",
-                "fast",
-                "sport",
-                "athlete"
-            ],
-            "movie": [
-                "cinema",
-                "movie",
-                "quality"
-            ],
-            "agricultural": [
-                "farm",
-                "field",
-                "spray",
-                "auto"
-            ],
-            "monitoring": [
-                "find",
-                "search",
-                "help",
-                "get",
-                "rescue"
-            ]
-        },
-        "followup": false
-    },
-    "budget": {
-        "question": "How much are you willing to spend on this adventure?",
-        "fallback": "Please enter your answer in a common format in the unit EUR!",
-        "result": false,
-        "followup": "margin"
-    },
-    "margin": {
-        "question": "How big is your margin on top of that? No worries, I won't ask another time.",
-        "fallback": "Please enter your answer in a common format in the unit EUR!",
-        "result": false,
-        "followup": false
-    },
     "country": {
         "question": "Now I have to roughly know where you live, for further consideration of course.",
         "fallback": "It is sufficient when you say if you are in or outside the european union.",
@@ -230,6 +126,110 @@
                 "detail",
                 "all",
                 "every"
+            ]
+        },
+        "followup": false
+    },
+    "budget": {
+        "question": "How much are you willing to spend on this adventure?",
+        "fallback": "Please enter your answer in a common format in the unit EUR!",
+        "result": false,
+        "followup": "margin"
+    },
+    "margin": {
+        "question": "How big is your margin on top of that? No worries, I won't ask another time.",
+        "fallback": "Please enter your answer in a common format in the unit EUR!",
+        "result": false,
+        "followup": false
+    },
+    "type": {
+        "question": "For what type of activity do you hve in mind in terms of using the drone?",
+        "fallback": "Please help me to fit your input into one of these categories: fun, sport or work.",
+        "result": {
+            "fun": [
+                "fun",
+                "experiment",
+                "try",
+                "play",
+                "indoors",
+                "looping",
+                "foto",
+                "film",
+                "video"
+            ],
+            "sport": [
+                "sport",
+                "achieve",
+                "push",
+                "limit",
+                "race",
+                "explore"
+            ],
+            "work": [
+                "work",
+                "job",
+                "farm",
+                "find",
+                "professional",
+                "cinema",
+                "search",
+                "help",
+                "rescue"
+            ]
+        },
+        "followup": "spec_type"
+    },
+    "spec_type": {
+        "question": "What concrete use-case do you want to satisfy with the drone?",
+        "fallback": "Please specify which use the drone should have: foto/video, playing, freestyle, racing, movie shoots, agricultural work or monitoring.",
+        "result": {
+            "foto": [
+                "film",
+                "foto",
+                "capture",
+                "video",
+                "vacation"
+            ],
+            "toy": [
+                "play",
+                "toy",
+                "kid",
+                "experiment",
+                "looping",
+                "indoors"
+            ],
+            "freestyle": [
+                "explore",
+                "hit",
+                "tricks",
+                "learn",
+                "find out",
+                "experience"
+            ],
+            "race": [
+                "race",
+                "compete",
+                "fast",
+                "sport",
+                "athlete"
+            ],
+            "movie": [
+                "cinema",
+                "movie",
+                "quality"
+            ],
+            "agricultural": [
+                "farm",
+                "field",
+                "spray",
+                "auto"
+            ],
+            "monitoring": [
+                "find",
+                "search",
+                "help",
+                "get",
+                "rescue"
             ]
         },
         "followup": false

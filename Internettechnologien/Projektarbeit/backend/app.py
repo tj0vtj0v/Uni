@@ -10,7 +10,6 @@ app = FastAPI(
 question_data: dict = json.loads(open('questions.json').read())
 general_data: dict = json.loads(open('generals.json').read())
 answer_data: dict = json.loads(open('answers.json').read())
-paths = ["/question/{intend}", "/questions/intends", "/generals/intends", "/pos_neg", "/generals"]
 
 
 def _question_generator():
@@ -23,7 +22,7 @@ qg = _question_generator()
 
 @app.get("/")
 async def root():
-    return paths
+    return "works"
 
 
 @app.get("/question/{intend}")
@@ -31,7 +30,7 @@ async def get_question(intend: str):
     return question_data[intend]
 
 
-@app.get("/questions/intends")
+@app.get("/questions/topics")
 async def get_question_intends():
     return list(question_data.keys())
 
@@ -88,10 +87,8 @@ async def get_result(intend: str, answer: str):
     for word in answer_data["negative"]:
         if word in answer:
             spot_count += 1
-    print(spot_count)
-    print(results)
 
-    if spot_count % 2 == 0 or results[0] == "none" or results[0] == "no":  # not negated -> poitive
+    if spot_count % 2 == 0 or results[0] == "none" or results[0] == "no":  # not negated -> positive
         if len(results) == 1:
             return results[0]
         else:

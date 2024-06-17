@@ -1,15 +1,13 @@
-import { Component } from '@angular/core';
+import {Component} from '@angular/core';
 import {RouterLink, RouterOutlet} from '@angular/router';
 
-export const BASE_URL = 'http://127.0.0.1:8000';
-
 @Component({
-  selector: 'app-root',
-  standalone: true,
+    selector: 'app-root',
+    standalone: true,
     imports: [RouterOutlet, RouterLink],
-  templateUrl: './app.component.html',
-  styleUrl: './app.component.css'
+    templateUrl: './app.component.html',
+    styleUrl: './app.component.css'
 })
 export class AppComponent {
-  title = 'Projektarbeit - Tjorven Burdorf';
+    title = 'Projektarbeit - Tjorven Burdorf';
 }
