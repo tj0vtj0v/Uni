@@ -33,9 +33,9 @@ async def root():
     return "works"
 
 
-@app.get("/question/{intend}")
-async def get_question(intend: str):
-    return question_data[intend]
+@app.get("/question/{topic}")
+async def get_question(topic: str):
+    return question_data[topic]["question"]
 
 
 @app.get("/questions/topics")
@@ -58,14 +58,14 @@ async def get_generals():
     return general_data
 
 
-@app.get("/next_question")
-async def get_next_question():
+@app.get("/next_topic")
+async def get_next_topic():
     return next(qg)
 
 
-@app.get("/result/{intend}/{answer}")
-async def get_result(intend: str, answer: str):
-    question = question_data[intend]
+@app.get("/result/{topic}")
+async def get_result(topic: str, answer: str):
+    question = question_data[topic]
     results = []
     max_count = 0
 

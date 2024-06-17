@@ -37,8 +37,7 @@
                 "suisse",
                 "australia"
             ]
-        },
-        "followup": "license"
+        }
     },
     "license": {
         "question": "Do you already have a licence registered in the EU? And if yes which?",
@@ -68,8 +67,7 @@
                 "25",
                 "25000"
             ]
-        },
-        "followup": "people"
+        }
     },
     "people": {
         "question": "Talking about people, where do you want to fly in regard of uninvolved people?",
@@ -100,8 +98,7 @@
                 "secure",
                 "distance"
             ]
-        },
-        "followup": "knowledge"
+        }
     },
     "knowledge": {
         "question": "Which knowledge about the applicable law do you have?",
@@ -127,20 +124,17 @@
                 "all",
                 "every"
             ]
-        },
-        "followup": false
+        }
     },
     "budget": {
         "question": "How much are you willing to spend on this adventure?",
         "fallback": "Please enter your answer in a common format in the unit EUR!",
-        "result": false,
-        "followup": "margin"
+        "result": false
     },
     "margin": {
         "question": "How big is your margin on top of that? No worries, I won't ask another time.",
         "fallback": "Please enter your answer in a common format in the unit EUR!",
-        "result": false,
-        "followup": false
+        "result": false
     },
     "type": {
         "question": "For what type of activity do you hve in mind in terms of using the drone?",
@@ -176,8 +170,7 @@
                 "help",
                 "rescue"
             ]
-        },
-        "followup": "spec_type"
+        }
     },
     "spec_type": {
         "question": "What concrete use-case do you want to satisfy with the drone?",
@@ -231,8 +224,7 @@
                 "get",
                 "rescue"
             ]
-        },
-        "followup": false
+        }
     },
     "distance": {
         "question": "How far do you want to fly and explore your surrounding?",
@@ -250,8 +242,7 @@
                 "away",
                 "explore"
             ]
-        },
-        "followup": "time"
+        }
     },
     "time": {
         "question": "In regard of this distance you want to overcome, what is your targeted airtime?",
@@ -277,8 +268,7 @@
                 "long",
                 "last"
             ]
-        },
-        "followup": "behaviour"
+        }
     },
     "behaviour": {
         "question": "Another factor, which drastically influences your airtime is your flight style. How hard are you going to push your quad?",
@@ -308,8 +298,7 @@
                 "crash",
                 "risk"
             ]
-        },
-        "followup": "size"
+        }
     },
     "size": {
         "question": "Drone are out there in all different sizes. What is your idea of the size of the drone?",
@@ -358,8 +347,7 @@
                 "11",
                 "12"
             ]
-        },
-        "followup": false
+        }
     },
     "fpv": {
         "question": "FPV - First-Person-View is an immersive experience, do you want to sit in the virtual cockpit?",
@@ -375,8 +363,7 @@
                 "want"
             ],
             "no": []
-        },
-        "followup": "feed"
+        }
     },
     "feed": {
         "question": "When you got a live - cam, you have to choose between quality and performance... What is your preference?",
@@ -401,8 +388,7 @@
                 "cinema",
                 "latency"
             ]
-        },
-        "followup": false
+        }
     },
     "automation": {
         "question": "The degree of automation is the last big question, how much should your drone can do by itself?",
@@ -438,8 +424,7 @@
                 "autonomous",
                 "alone"
             ]
-        },
-        "followup": "camera"
+        }
     },
     "camera": {
         "question": "Additional cameras have their own flavour, do you need an extra camera, or external rig for your setup?",
@@ -480,7 +465,6 @@
                 "infrared",
                 "operation"
             ]
-        },
-        "followup": false
+        }
     }
 }

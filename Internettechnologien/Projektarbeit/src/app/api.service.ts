@@ -12,7 +12,7 @@ export class ApiService {
     }
 
     get_next_topic() {
-        return this.http.get(`${BASE_URL}/next_question`)
+        return this.http.get(`${BASE_URL}/next_topic`)
     }
 
     get_question(topic: string) {
@@ -20,7 +20,7 @@ export class ApiService {
     }
 
     get_result(topic: string, input: string) {
-        return this.http.get(`${BASE_URL}/result/${topic}/${input}`)
+        return this.http.get(`${BASE_URL}/result/${topic}?answer=${input}`)
     }
 
 }
