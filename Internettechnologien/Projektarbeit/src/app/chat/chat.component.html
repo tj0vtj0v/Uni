@@ -1,6 +1,14 @@
 <div class="chat-messages">
-    <div *ngFor="let field of messages" class="{{field[1]}}">
-        {{field[0]}}
+    <div *ngFor="let field of messages" class="{{field.class}}">
+        <div class="text">
+            {{field.text}}
+        </div>
+        <div class="name">
+            {{field.sender}}
+        </div>
+        <div class="time">
+            {{field.time}}
+        </div>
     </div>
 </div>
 

@@ -1,5 +1,6 @@
 import {Injectable} from '@angular/core';
 import {HttpClient} from "@angular/common/http";
+import {take} from "rxjs";
 
 const BASE_URL = 'http://127.0.0.1:8000';
 
@@ -11,16 +12,19 @@ export class ApiService {
     constructor(private http: HttpClient) {
     }
 
-    get_next_topic() {
-        return this.http.get(`${BASE_URL}/next_topic`)
+    greeting() {
+        return this.http.get(`${BASE_URL}/`).pipe(take(1))
     }
 
-    get_question(topic: string) {
-        return this.http.get(`${BASE_URL}/question/${topic}`)
+    get_sid() {
+        return this.http.get(`${BASE_URL}/sid`).pipe(take(1))
     }
 
-    get_result(topic: string, input: string) {
-        return this.http.get(`${BASE_URL}/result/${topic}?answer=${input}`)
+    get_time() {
+        return this.http.get(`${BASE_URL}/time`).pipe(take(1))
     }
 
+    compute_input(sid: number, text: string) {
+        return this.http.get(`${BASE_URL}/${sid}/${text}`).pipe(take(1))
+    }
 }

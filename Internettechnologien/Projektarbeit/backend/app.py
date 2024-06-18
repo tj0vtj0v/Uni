@@ -1,5 +1,8 @@
-from fastapi import FastAPI  # provides API application
+from datetime import datetime
 import json
+import random
+
+from fastapi import FastAPI  # provides API application
 from starlette.middleware.cors import CORSMiddleware
 
 # assign API Object
@@ -30,41 +33,25 @@ qg = _question_generator()
 
 @app.get("/")
 async def root():
-    return "works"
+    return "Hello, I am your assistance at finding your sort of drone according to your application."
 
 
-@app.get("/question/{topic}")
-async def get_question(topic: str):
-    return question_data[topic]["question"]
+@app.get("/sid")
+async def create_sid():
+    return random.randrange(1000, 10000)
 
 
-@app.get("/questions/topics")
-async def get_question_intends():
-    return list(question_data.keys())
+@app.get("/time")
+async def get_time():
+    return datetime.strftime(datetime.now(), "%H:%M")
 
 
-@app.get("/generals/intends")
-async def get_intends():
-    return list(question_data.keys())
+@app.get("/{sid}/{text}")
+async def compute_text(sid: int, text: str):
+    return f"session {sid} received: {text}"
 
 
-@app.get("/pos_neg")
-async def get_pos_neg():
-    return answer_data
-
-
-@app.get("/generals")
-async def get_generals():
-    return general_data
-
-
-@app.get("/next_topic")
-async def get_next_topic():
-    return next(qg)
-
-
-@app.get("/result/{topic}")
-async def get_result(topic: str, answer: str):
+def get_result(topic: str, answer: str):
     question = question_data[topic]
     results = []
     max_count = 0

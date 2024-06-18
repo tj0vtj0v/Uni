@@ -2,9 +2,9 @@ import {Component} from '@angular/core';
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import {NgForOf} from "@angular/common";
 import {ApiService} from "../api.service";
+import {ControllerService} from "../controller.service";
+import {Message} from "../Message";
 import {take} from "rxjs";
-import {resolve} from "@angular/compiler-cli";
-import {log} from "@angular-devkit/build-angular/src/builders/ssr-dev-server";
 
 @Component({
     selector: 'app-chat',
@@ -18,44 +18,38 @@ import {log} from "@angular-devkit/build-angular/src/builders/ssr-dev-server";
     styleUrl: './chat.component.css'
 })
 export class ChatComponent {
-    messages: string[][] = [];
-    message: string = "";
+    messages: Message[] = [];
+    message!: string;
     topic!: string;
 
-    constructor(private api: ApiService) {
-        this.topic = this.getNextTopic()
-        this.addQuestion(this.topic)
+    constructor(private api: ApiService, private controller: ControllerService) {
+    }
+
+    ngOnInit() {
+        this.api.greeting().pipe(take(1)).subscribe(text =>
+            this.api.get_time().pipe(take(1)).subscribe(time =>
+                this.messages.push(new Message(text as string, "Bot", time as string))
+            )
+        )
     }
 
     sendMessage() {
-        this.messages.push([this.message, "user-text"]);
-        this.answerToMessage();
-        this.message = "";
+        if (this.message != "") {
+            this.api.get_time().subscribe(time => {
+                    this.messages.push(new Message(this.message, this.controller.name, time as string));
+                }
+            )
+            this.answerToMessage();
+        }
     }
 
     answerToMessage() {
-        let result!: string;
-        this.api.get_result(this.topic, this.message).subscribe(value => {
-            result = value as string
-        })
-
-
-        this.topic = this.getNextTopic()
-        this.addQuestion(this.topic)
-    }
-
-    getNextTopic():string {
-        let a!: string;
-        this.api.get_next_topic().pipe(take(1)).subscribe(value => {
-            a = value as string
-        })
-        console.log("a", a)
-        return "type"
-    }
-
-    addQuestion(topic: string) {
-        this.api.get_question(topic).pipe(take(1)).subscribe(value => {
-            this.messages.push([value as string, "bot-text"])
-        })
+        this.api.get_time().pipe(take(1)).subscribe(time =>
+            this.api.compute_input(this.controller.sessionID, this.message).pipe(take(1)).subscribe(response => {
+                    this.messages.push(new Message(response as string, "Bot", time as string))
+                    this.message = "";
+                }
+            )
+        )
     }
 }
