@@ -3,7 +3,7 @@ export class Message {
         this.text = text;
         this.time = time;
         this.sender = sender;
-        this.class = sender === "Bot" ? "bot-text" : "user-text";
+        this.class = sender === "Bot" ? "bot" : "user";
     }
 
     text: string;

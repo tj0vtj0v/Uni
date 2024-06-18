@@ -1,4 +1,4 @@
-import {Component} from '@angular/core';
+import {Component, ElementRef, ViewChild} from '@angular/core';
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import {NgForOf} from "@angular/common";
 import {ApiService} from "../api.service";
@@ -18,11 +18,15 @@ import {take} from "rxjs";
     styleUrl: './chat.component.css'
 })
 export class ChatComponent {
+    @ViewChild('messageContainer') private messageContainer!: ElementRef<HTMLDivElement>;
     messages: Message[] = [];
     message!: string;
-    topic!: string;
 
     constructor(private api: ApiService, private controller: ControllerService) {
+    }
+
+    ngAfterViewChecked() {
+        this.scroll_down()
     }
 
     ngOnInit() {
@@ -31,6 +35,15 @@ export class ChatComponent {
                 this.messages.push(new Message(text as string, "Bot", time as string))
             )
         )
+        this.scroll_down()
+    }
+
+
+    scroll_down() {
+        try {
+            this.messageContainer.nativeElement.scrollTop = this.messageContainer.nativeElement.scrollHeight;
+        } catch (err) {
+        }
     }
 
     sendMessage() {

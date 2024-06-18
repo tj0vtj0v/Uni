@@ -1,18 +1,17 @@
-<div class="chat-messages">
-    <div *ngFor="let field of messages" class="{{field.class}}">
-        <div class="text">
-            {{field.text}}
-        </div>
-        <div class="name">
-            {{field.sender}}
-        </div>
-        <div class="time">
-            {{field.time}}
+<div class="chat-container">
+    <div class="chat-messages" #messageContainer>
+        <div *ngFor="let field of messages" class="{{field.class}}">
+            <div class="{{field.class}}-text">
+                {{field.text}}
+            </div>
+            <div class="{{field.class}}-info">
+                {{field.sender}} - {{field.time}}
+            </div>
         </div>
     </div>
-</div>
 
-<div>
-    <input title="Your message..." [(ngModel)]="message">
-    <button (click)="sendMessage()">Send</button>
+    <div class="chat-input">
+        <input title="Your message..." [(ngModel)]="message">
+        <button (click)="sendMessage()">Send</button>
+    </div>
 </div>

@@ -1,1 +1,14 @@
-/* You can add global styles to this file, and also import other style files */
+body {
+    margin: 0;
+    background: linear-gradient(-90deg, rgba(20,34,44,1) 0%, rgba(20,38,72,1) 100%);
+    font-family: Roboto, Cochin, Georgia, Times, 'Times New Roman', serif;
+    color: #e0e0e0;
+}
+
+/* Header */
+h1 {
+    color: #D0CEBA;
+    text-align: center;
+    margin: 20px 0;
+    font-size: 40px;
+}
