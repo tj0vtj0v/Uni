@@ -23,12 +23,13 @@ general_data: dict = json.loads(open('generals.json').read())
 answer_data: dict = json.loads(open('answers.json').read())
 
 
-def _question_generator():
-    for key in question_data.keys():
-        yield str(key)
+def _sid_generator():
+    sid = 0
+    while True:
+        sid += 1
+        yield sid
 
-
-qg = _question_generator()
+_sid_iterator = _sid_generator()
 
 
 @app.get("/")
@@ -38,7 +39,7 @@ async def root():
 
 @app.get("/sid")
 async def create_sid():
-    return random.randrange(1000, 10000)
+    return next(_sid_iterator)
 
 
 @app.get("/time")
