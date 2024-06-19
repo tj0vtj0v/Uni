@@ -1,26 +1,8 @@
-button {
-    background-color: #8490da;
-    color: #121212;
-    padding: 10px 20px;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-}
-
-button:hover {
-    background-color: #454eb6;
-    color: #ffffff;
-}
-
-input {
-    padding: 8px;
-    font-size: 16px;
-    border-radius: 5px;
-    border: 1px solid #ccc;
-    margin-right: 10px;
-}
-
-label {
-    display: block;
-    margin-bottom: 5px;
+.container {
+    width: 80vw;
+    min-width: 400px;
+    max-width: 1000px;
+    align-content: center;
+    justify-content: center;
+    justify-items: center;
 }

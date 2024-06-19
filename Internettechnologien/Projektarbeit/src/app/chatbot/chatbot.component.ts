@@ -3,6 +3,7 @@ import { ControllerService } from "../controller.service";
 import {NgIf} from "@angular/common";
 import {ChatComponent} from "../chat/chat.component";
 import {LoginComponent} from "../login/login.component";
+import {DataComponent} from "../data/data.component";
 
 @Component({
   selector: 'app-chatbot',
@@ -10,7 +11,8 @@ import {LoginComponent} from "../login/login.component";
     imports: [
         NgIf,
         ChatComponent,
-        LoginComponent
+        LoginComponent,
+        DataComponent
     ],
   templateUrl: './chatbot.component.html',
   styleUrl: './chatbot.component.css'

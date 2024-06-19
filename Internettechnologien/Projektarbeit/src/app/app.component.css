@@ -1,13 +1,11 @@
-/* Grundlegende Stile für den Dark Mode */
-/* Navigation */
-nav {
+.header {
     display: flex;
     justify-content: center;
     background-color: rgba(31, 31, 31, 0.5);
     padding: 10px 0;
 }
 
-nav a {
+.header a {
     color: #027abb;
     padding: 14px 20px;
     text-decoration: none;
@@ -16,7 +14,7 @@ nav a {
     font-size: 18px;
 }
 
-nav a:hover {
+.header a:hover {
     background-color: rgba(51, 51, 51, 0.5);
     color: #8098bd;
 }
@@ -25,5 +23,5 @@ nav a:hover {
     display: flex;
     align-items: center;
     justify-content: center;
-    margin-top: 10vh;
+    margin-top: 5vh;
 }

@@ -1,10 +1,11 @@
-<h1>{{ title }}</h1>
-<nav>
-    <a routerLink="/login">Login</a>
-    <a routerLink="/chat">Chatbot</a>
-    <a routerLink="/about">About</a>
-    <a routerLink="/notice">Legal Notice</a>
-</nav>
-<div class="content">
-    <router-outlet></router-outlet>
-</div>
+
+    <h1>{{ title }}</h1>
+    <nav class="header">
+        <a routerLink="/login">Login</a>
+        <a routerLink="/chat">Chatbot</a>
+        <a routerLink="/about">About</a>
+        <a routerLink="/imprint">Imprint</a>
+    </nav>
+    <div class="content">
+        <router-outlet></router-outlet>
+    </div>

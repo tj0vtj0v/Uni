@@ -1,5 +1,12 @@
-#chat {
-    background-color: rgba(30, 30, 30, 0.6);
+.container {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+.chat {
+    align-self: center;
+    background-color: rgba(30, 30, 30, 0.75);
     color: #ffffff;
     padding: 20px 20px 0 20px;
     border-radius: 10px;
@@ -9,6 +16,12 @@
     width: 80vw;
     min-width: 400px;
     max-width: 1000px;
+    overflow-y: auto;
+}
+
+.explanation {
+    width: 80vw;
+    margin-top: 50px;
 }
 
 p {

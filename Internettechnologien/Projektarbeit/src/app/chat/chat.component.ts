@@ -4,7 +4,7 @@ import {NgForOf} from "@angular/common";
 import {ApiService} from "../api.service";
 import {ControllerService} from "../controller.service";
 import {Message} from "../Message";
-import {take} from "rxjs";
+import {delay, take, timeout} from "rxjs";
 
 @Component({
     selector: 'app-chat',
@@ -49,7 +49,7 @@ export class ChatComponent {
     sendMessage() {
         if (this.message != "") {
             this.api.get_time().subscribe(time => {
-                    this.messages.push(new Message(this.message, this.controller.name, time as string));
+                    this.pushMessage(this.message, this.controller.name, time as string, 100);
                 }
             )
             this.answerToMessage();
@@ -59,10 +59,15 @@ export class ChatComponent {
     answerToMessage() {
         this.api.get_time().pipe(take(1)).subscribe(time =>
             this.api.compute_input(this.controller.sessionID, this.message).pipe(take(1)).subscribe(response => {
-                    this.messages.push(new Message(response as string, "Bot", time as string))
                     this.message = "";
+                    this.pushMessage(response as string, "Bot", time as string, 1000)
                 }
             )
         )
+    }
+
+    async pushMessage(text: string, sender: string, time: string, wait: number) {
+        await new Promise(_ => setTimeout(_, wait))
+        this.messages.push(new Message(text, sender, time))
     }
 }

@@ -1,0 +1,8 @@
+<div class="container">
+    <div>
+        <label>Your username: </label>
+        <input [(ngModel)]="username" placeholder="User Name" (keydown.enter)="confirm()">
+    </div>
+
+    <button (click)="confirm()" routerLink="/chat">Confirm</button>
+</div>
