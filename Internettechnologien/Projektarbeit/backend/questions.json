@@ -43,11 +43,7 @@
         "question": "Do you already have a licence registered in the EU? And if yes which?",
         "fallback": "The valid options are A1, A2, A3 or none!",
         "result": {
-            "none": [
-                "no",
-                "nt",
-                "n't"
-            ],
+            "none": [],
             "A1": [
                 "minor",
                 "a1",
@@ -104,11 +100,7 @@
         "question": "Which knowledge about the applicable law do you have?",
         "fallback": "How would you categorize your knowledge over your countries drone law, not existing, little, or big enough?",
         "result": {
-            "none": [
-                "no",
-                "nt",
-                "n't"
-            ],
+            "none": [],
             "little": [
                 "little",
                 "bit",
@@ -394,11 +386,7 @@
         "question": "The degree of automation is the last big question, how much should your drone can do by itself?",
         "fallback": "How automated should your drone be, not at all, minimal, normal or complete autonomous?",
         "result": {
-            "none": [
-                "no",
-                "nt",
-                "n't"
-            ],
+            "none": [],
             "minimal": [
                 "mini",
                 "gps",
@@ -431,9 +419,6 @@
         "fallback": "Extra cameras on your drone have many forms, now you have to choose between none, action-cams, normal cameras, cinematic cameras, and infrared (eg. for searches).",
         "result": {
             "none": [
-                "no",
-                "nt",
-                "n't",
                 "try",
                 "experiment"
             ],

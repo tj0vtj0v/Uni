@@ -1,0 +1,8 @@
+.iframe-container {
+    margin-top: -5vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 90vh; /* Full viewport height */
+    width: 100vw;
+}

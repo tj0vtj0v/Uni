@@ -12,8 +12,8 @@
     "capabilities": {
         "keywords": [
             "capability",
-            "what",
             "ability",
+            "you do",
             "use"
         ],
         "action": "I provide you with a few information about drones, specifically so called quadcopters. Please answer the questions for optimal feedback on which drone suits you most.",
