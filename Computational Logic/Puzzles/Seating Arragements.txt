@@ -1,0 +1,22 @@
+#const n = 5.
+guest(1..n).
+chair(1..n).
+
+like(1, 2; 3, 4;4, 1).
+dislike(2, 3; 1, 3).
+
+{at(G, C) : guest(G)} = 1 :- chair(C).
+
+:- at(G, C), at(G, C'), C != C'.
+C = C' :- at(G, C), at(G, C'). %same
+
+besides(C, C+1)  :- chair(C), C != n.
+besides(n, 1).
+besides(C1, C2) :- besides(C2, C1).
+
+% für nach Möglichkeit braucht man ein soft constraint.
+:- not besides(C1, C2), like(G1, G2), at(G1, C1), at(G2, C2).
+
+:- besides(C1, C2), dislike(G1, G2), at(G1, C1), at(G2, C2).
+
+#show at/2.
