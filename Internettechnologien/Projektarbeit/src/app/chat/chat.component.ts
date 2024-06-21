@@ -52,7 +52,9 @@ export class ChatComponent {
                     this.pushMessage(this.message, this.controller.name, time as string, 100);
                 }
             )
-            this.answerToMessage();
+            if (!(this.messages[this.messages.length - 1].sender === this.controller.name)) {
+                this.answerToMessage();
+            }
         }
     }
 

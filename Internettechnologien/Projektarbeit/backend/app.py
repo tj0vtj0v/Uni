@@ -22,7 +22,7 @@ sessions: dict[int, BotSession] = {}
 
 @app.get("/")
 async def root():
-    return "Hello, I am your assistance at finding your sort of drone according to your application."
+    return "Hello, I am your assistance at finding your sort of drone according to your application. Let's get started!"
 
 
 @app.get("/sid")

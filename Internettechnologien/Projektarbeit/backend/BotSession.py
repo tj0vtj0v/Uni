@@ -1,5 +1,4 @@
 import json
-from pprint import pprint
 
 
 def _sid_generator():
@@ -14,25 +13,94 @@ _sid_iterator = _sid_generator()
 
 class BotSession:
     sid: int
+    state: str
+    question: str
+    knowledge: dict
 
     def __init__(self):
-        self.sid = next(_sid_iterator)
-
         self.question_data: dict = json.loads(open('questions.json').read())
         self.general_data: dict = json.loads(open('generals.json').read())
         self.answer_data: dict = json.loads(open('answers.json').read())
+        self.drones_data: dict = json.loads(open('drones.json').read())
 
-    def test(self):
-        return [self.question_data[key]["result"] for key in self.question_data.keys()]
+        self.sid = next(_sid_iterator)
+        self.state = "greet"
+        self.question_iterator = self._question_generator()
+        self.question = next(self.question_iterator)
+        self.knowledge = {}
 
     def generate_answer(self, text: str):
+        print(self.state)
+        match self.state:
+            case "greet":
+                if self._check_for_general(text) == "capabilities":
+                    self.state = "capabilities"
+                    return self.general_data["capabilities"]["action"]
+
+                self.state = "asking"
+                return self.question_data[self.question]["question"]
+            case "asking":
+                general = self._check_for_general(text)
+
+                if general:
+                    self.state = general
+                    return self.general_data[general]["action"]
+
+                result = self._get_result(text)
+                print(self.question, "-->", result)
+                if not result:
+                    return self.question_data[self.question]["fallback"]
+
+                self.knowledge[self.question] = result
+                try:
+                    self.question = next(self.question_iterator)
+                except StopIteration:
+                    self.state = "evaluation"
+                    return "Your recommendation is ready! Please answer anything to receive it!"
+                return self.question_data[self.question]["question"]
+            case "change":
+                self.question_iterator = self._question_generator()
+                for i in range([str(x) for x in self.question_data.keys()].index(self.question) - 2):
+                    next(self.question_iterator)
+                self.question = next(self.question_iterator)
+            case "capabilities":
+                if self._check_for_general(text) == self.state:
+                    return self.general_data["capabilities"]["fallback"]
+                self.state = "asking"
+                return self.question_data[self.question]["fallback"]
+            case "start", "exit":
+                if self._confirmed(text):
+                    self.state = "greet"
+                    self.knowledge = {}
+                    if self.state == "start":
+                        return "Now you can start from the beginning!"
+                    return "We evaluated the data you provided. Please answer anything to receive it!"
+                self.state = "asking"
+                return self.question_data[self.question]["fallback"]
+            case "evaluation":
+                return self._create_advice()
+
         return f"session {self.sid} received message: {text}"
 
-    def check_for_general(self):
-        pass
+    def _question_generator(self):
+        for question in self.question_data.keys():
+            yield question
 
-    def get_result(self, topic: str, answer: str):
-        question = self.question_data[topic]
+    def _check_for_general(self, text: str) -> str:
+        maximum = 0
+        action = ""
+        for general in [self.general_data[key] for key in self.general_data.keys()]:
+            current = 0
+            for keyword in general["keywords"]:
+                if keyword in text:
+                    current += 1
+            if current > maximum:
+                maximum = current
+                action = general
+        return action
+
+    def _get_result(self, answer: str):
+        question = self.question_data[self.question]
         results = []
         max_count = 0
 
@@ -43,7 +111,7 @@ class BotSession:
                     result += char
             result = result.split(",")[0].split(".")[0]
             if result == "":
-                return -1
+                return False
             else:
                 return result
 
@@ -58,16 +126,12 @@ class BotSession:
             elif spot_count == max_count:
                 results.append(word)
 
-        spot_count = 0
-        for word in self.answer_data["negative"]:
-            if word in answer:
-                spot_count += 1
-
-        if spot_count % 2 == 0 or results[0] == "none" or results[0] == "no":  # not negated -> positive
+        print(results, "is negated:", self._negated(answer))
+        if not self._negated(answer) or results[0] == "none" or results[0] == "no":  # not negated -> positive
             if len(results) == 1:
                 return results[0]
             else:
-                return -1
+                return False
         else:
             new_results = list(question["result"].keys())
             for result in results:
@@ -79,8 +143,21 @@ class BotSession:
             elif "no" in new_results:
                 return "no"
             else:
-                return -1
+                return False
 
+    def _negated(self, text: str) -> bool:
+        spot_count = 0
+        for word in self.answer_data["negative"]:
+            if word in text:
+                print("neg:", word)
+                spot_count += text.count(word)
+        return bool(spot_count % 2)
 
-c = BotSession()
-pprint(c.test())
+    def _confirmed(self, text: str) -> bool:
+        confirm = False
+        for keyword in self.answer_data["positive"]:
+            confirm |= keyword in text
+        return confirm and not self._negated(text)
+
+    def _create_advice(self):
+        return str(self.knowledge)
