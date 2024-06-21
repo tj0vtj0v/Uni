@@ -37,8 +37,15 @@ async def get_time():
     return datetime.strftime(datetime.now(), "%H:%M")
 
 
-@app.get("/{sid}/{text}")
+@app.get("/compute/{sid}/{text}")
 async def compute_text(sid: int, text: str):
     return sessions[sid].generate_answer(text)
 
+
+@app.get("/evaluation/{sid}")
+async def get_evaluation(sid: int):
+    if sid in sessions.keys():
+        return sessions[sid].evaluation
+    else:
+        return []
 

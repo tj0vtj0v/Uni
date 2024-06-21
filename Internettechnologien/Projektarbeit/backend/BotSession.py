@@ -14,25 +14,32 @@ _sid_iterator = _sid_generator()
 class BotSession:
     sid: int
     state: str
+    last: str
     question: str
     knowledge: dict
+    result: list
+    evaluation: list
 
     def __init__(self):
         self.question_data: dict = json.loads(open('questions.json').read())
         self.general_data: dict = json.loads(open('generals.json').read())
         self.answer_data: dict = json.loads(open('answers.json').read())
-        self.drones_data: dict = json.loads(open('drones.json').read())
+        self.drone_data: dict = json.loads(open('drones.json').read())
+        self.weight_data: dict = json.loads(open('weight.json').read())
 
         self.sid = next(_sid_iterator)
         self.state = "greet"
+        self.last = "greet"
         self.question_iterator = self._question_generator()
         self.question = next(self.question_iterator)
         self.knowledge = {}
+        self.evaluation = []
 
     def generate_answer(self, text: str):
         print(self.state)
         match self.state:
             case "greet":
+                self.last = self.state
                 if self._check_for_general(text) == "capabilities":
                     self.state = "capabilities"
                     return self.general_data["capabilities"]["action"]
@@ -40,8 +47,8 @@ class BotSession:
                 self.state = "asking"
                 return self.question_data[self.question]["question"]
             case "asking":
+                self.last = self.state
                 general = self._check_for_general(text)
-                print(general)
 
                 if general:
                     self.state = general
@@ -57,9 +64,10 @@ class BotSession:
                     self.question = next(self.question_iterator)
                 except StopIteration:
                     self.state = "evaluation"
-                    return "Your recommendation is ready! Please answer anything to receive it!"
+                    return self.general_data["recommendation"]["action"]
                 return self.question_data[self.question]["question"]
             case "change":
+                self.last = self.state
                 if self._confirmed(text):
                     self.question_iterator = self._question_generator()
                     for i in range([str(x) for x in self.question_data.keys()].index(self.question) - 1):
@@ -71,20 +79,35 @@ class BotSession:
             case "capabilities":
                 if self._check_for_general(text) == self.state:
                     return self.general_data["capabilities"]["fallback"]
-                self.state = "asking"
-                return self.question_data[self.question]["fallback"]
-            case "start", "exit":
+                self.state = self.last
+                self.last = "capabilities"
+                return self.generate_answer(text)
+            case "start" | "exit":
+                self.last = self.state
                 if self._confirmed(text):
                     if self.state == "start":
-                        self.state = "greet"
-                        self.knowledge = {}
-                        return "Now you can start from the beginning!"
+                        self.state = "asking"
+                        self.question_iterator = self._question_generator()
+                        self.question = next(self.question_iterator)
+                        print(self.question)
+                        return self.question_data[self.question]["question"]
                     self.state = "evaluation"
-                    return "We evaluated the data you provided. Please answer anything to receive it!"
+                    return self.general_data["recommendation"]["action"]
                 self.state = "asking"
                 return self.question_data[self.question]["fallback"]
             case "evaluation":
+                self.last = self.state
+                self.state = "finished"
                 return self._create_advice()
+            case "finished":
+                self.last = self.state
+                general = self._check_for_general(text)
+
+                if general:
+                    self.state = general
+                    return self.general_data[general]["action"]
+
+                return self.general_data["finish"]["action"]
 
         return f"session {self.sid} received message: {text}"
 
@@ -161,7 +184,35 @@ class BotSession:
         confirm = False
         for keyword in self.answer_data["positive"]:
             confirm = confirm or keyword in text
+        print("conf -->", confirm and not self._negated(text))
         return confirm and not self._negated(text)
 
     def _create_advice(self):
-        return str(self.knowledge)
+        self.evaluation = []
+        max_score = sum(self.weight_data.values()) * 2
+        try:
+            self.knowledge["budget"] = int(self.knowledge["budget"]) + int(self.knowledge["margin"])
+        except KeyError:
+            pass
+        for name, data in self.drone_data.items():
+            score = max_score / 2
+            for key, val in data["characteristic"].items():
+                if key not in self.knowledge.keys():
+                    continue
+                if key == "budget":
+                    if int(self.knowledge[key]) >= val:
+                        score += self.weight_data[key]
+                    else:
+                        score -= self.weight_data[key]
+                else:
+                    if self.knowledge[key] == val:
+                        score += self.weight_data[key]
+                    else:
+                        score -= self.weight_data[key]
+            self.evaluation.append([round(score / max_score * 100, 1), name])
+        self.evaluation.sort()
+        self.evaluation.reverse()
+
+        text = (self.drone_data[self.evaluation[0][1]]["text"]
+                + f"This result has been found with {self.evaluation[0][0]}% certainty. Congratulations!")
+        return text

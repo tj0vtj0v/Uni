@@ -25,6 +25,10 @@ export class ApiService {
     }
 
     compute_input(sid: number, text: string) {
-        return this.http.get(`${BASE_URL}/${sid}/${text}`).pipe(take(1))
+        return this.http.get(`${BASE_URL}/compute/${sid}/${text}`).pipe(take(1))
+    }
+
+    get_evaluation(sid:number) {
+        return this.http.get(`${BASE_URL}/evaluation/${sid}`).pipe(take(1))
     }
 }

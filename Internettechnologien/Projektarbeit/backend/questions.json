@@ -1,6 +1,6 @@
 {
     "country": {
-        "question": "Now I have to roughly know where you live, for further consideration of course.",
+        "question": "For the start I have to roughly know where you live, for further consideration of course.",
         "fallback": "It is sufficient when you say if you are in or outside the european union.",
         "result": {
             "eu": [
@@ -115,6 +115,7 @@
                 "forest",
                 "field",
                 "band",
+                "garden",
                 "away",
                 "both",
                 "all",
@@ -229,6 +230,7 @@
                 "indoors"
             ],
             "freestyle": [
+                "free",
                 "explore",
                 "hit",
                 "tricks",
@@ -249,12 +251,14 @@
                 "quality"
             ],
             "agricultural": [
+                "agri",
                 "farm",
                 "field",
                 "spray",
                 "auto"
             ],
             "monitoring": [
+                "monitor",
                 "find",
                 "search",
                 "help",
@@ -321,9 +325,13 @@
                 "around",
                 "look",
                 "search",
-                "find"
+                "find",
+                "new",
+                "check"
             ],
             "moderate": [
+                "bit",
+                "some",
                 "moderate",
                 "normal",
                 "explore",
@@ -402,11 +410,17 @@
                 "do ",
                 "want"
             ],
-            "no": []
+            "no": [
+                "no",
+                "dont",
+                "n't",
+                "never",
+                "negative",
+                "false"]
         }
     },
     "feed": {
-        "question": "When you got a live - cam, you have to choose between quality and performance... What is your preference?",
+        "question": "When you got a live-cam, you have to choose between quality and performance... What is your preference?",
         "fallback": "The difference between analog and digital are performance and quality, respectively, what is your choice?",
         "result": {
             "analog": [

@@ -25,4 +25,6 @@ export class DataComponent {
             this.controller.logIn(this.username)
         }
     }
+
+    protected readonly navigator = navigator;
 }
