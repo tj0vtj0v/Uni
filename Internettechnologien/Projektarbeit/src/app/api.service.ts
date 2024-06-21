@@ -7,8 +7,10 @@ const BASE_URL = 'http://127.0.0.1:8000';
 @Injectable({
     providedIn: 'root'
 })
+// represents a service executing api calls which is in the whole app available
 export class ApiService {
 
+    // calls are executed with the httpClient as single subscriptions
     constructor(private http: HttpClient) {
     }
 

@@ -15,16 +15,17 @@ import {ControllerService} from "../controller.service";
     styleUrl: './data.component.css'
 })
 export class DataComponent {
+    // login requires the session controller
     constructor(protected controller: ControllerService) {
     }
 
+    // main functionality is to get the username
     username: string = "";
 
+    // button logic to commit the username
     confirm() {
         if (this.username != "") {
             this.controller.logIn(this.username)
         }
     }
-
-    protected readonly navigator = navigator;
 }

@@ -1,5 +1,6 @@
 <div class="container">
     <h1>{{ title }}</h1>
+    <!-- header with links to subpages -->
     <nav class="header">
         <a routerLink="/login">Login</a>
         <a routerLink="/chat">Chatbot</a>
@@ -8,9 +9,11 @@
         <a routerLink="/about">About</a>
         <a routerLink="/imprint">Imprint</a>
     </nav>
+    <!-- here the site content is pasted -->
     <div class="content">
         <router-outlet></router-outlet>
     </div>
+    <!-- footer with marginal information -->
     <div class="footer">
         <p>Technische Hochschule Deggendorf | Internettechnologien - Winterfeld | Projektarbeit von Tjorven Burdorf</p>
     </div>

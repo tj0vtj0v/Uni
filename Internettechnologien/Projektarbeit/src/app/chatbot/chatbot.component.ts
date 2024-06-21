@@ -18,6 +18,7 @@ import {DataComponent} from "../data/data.component";
   styleUrl: './chatbot.component.css'
 })
 export class ChatbotComponent {
+    // requires the session manager for display
     constructor(protected controller: ControllerService) {
     }
 }

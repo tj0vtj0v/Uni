@@ -2,6 +2,7 @@ import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { ImprintComponent } from './imprint.component';
 
+// file from angular
 describe('ImprintComponent', () => {
   let component: ImprintComponent;
   let fixture: ComponentFixture<ImprintComponent>;

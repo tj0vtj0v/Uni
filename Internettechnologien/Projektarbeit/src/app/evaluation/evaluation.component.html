@@ -1,12 +1,15 @@
 <div class="container">
+    <!-- message when bot has not finished -->
     <div *ngIf="(evaluation_data.length === 0)">
-        <h2>Please complete the Chatbot at first!</h2>
+        <h2 routerLink="/chat">Please complete the Chatbot at first!</h2>
     </div>
+    <!-- greeting -->
     <div *ngIf="!(evaluation_data.length === 0)">
         <h2>Hello {{name}}!</h2>
         <p>Congratulations on completing the drone recommendation quiz! Based on your responses, here's a summary of the drones we discussed and your accuracy score for answering the chatbot:</p>
         <br>
     </div>
+    <!-- enumeration of the drones with the corresponding accordance -->
     <div *ngFor="let evaluation of evaluation_data" class="evaluation">
         <p>The <strong>{{evaluation[1]}}</strong> achieved a <strong>{{evaluation[0]}}%</strong> certainty.</p>
     </div>

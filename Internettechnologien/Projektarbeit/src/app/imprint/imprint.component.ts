@@ -8,5 +8,5 @@ import { Component } from '@angular/core';
   styleUrl: './imprint.component.css'
 })
 export class ImprintComponent {
-
+    // this component also has no logic.
 }

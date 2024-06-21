@@ -1,3 +1,4 @@
+/* additional styles for the chat window */
 .chat-container {
     display: flex;
     flex-direction: column;
@@ -17,6 +18,7 @@
     width: 100%;
 }
 
+/* adjusted styles according to the sender (eg. left and right display) */
 .bot {
     display: flex;
     flex-direction: column;
@@ -69,6 +71,7 @@
     margin-right: 10px; /* Margin between text and sender info */
 }
 
+/* style for the input field */
 .chat-input {
     display: flex;
     align-items: center;

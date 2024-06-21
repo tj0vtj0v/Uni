@@ -8,6 +8,7 @@ import {RouterLink, RouterOutlet} from '@angular/router';
     templateUrl: './app.component.html',
     styleUrl: './app.component.css'
 })
+// logic of the main component
 export class AppComponent {
     title = 'Projektarbeit - Tjorven Burdorf';
 }

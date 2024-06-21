@@ -44,7 +44,7 @@
         "fallback": "The valid options are A1, A2, A3 or none!",
         "result": {
             "none": [
-                "no",
+                "no ",
                 "dont",
                 "n't",
                 "never",
@@ -140,7 +140,7 @@
         "fallback": "How would you categorize your knowledge over your country's drone law, not existing, little, or big enough?",
         "result": {
             "none": [
-                "no",
+                "no ",
                 "dont",
                 "n't",
                 "never",
@@ -411,7 +411,7 @@
                 "want"
             ],
             "no": [
-                "no",
+                "no ",
                 "dont",
                 "n't",
                 "never",
@@ -449,7 +449,7 @@
         "fallback": "How automated should your drone be, not at all, minimal, normal or complete autonomous?",
         "result": {
             "none": [
-                "no",
+                "no ",
                 "dont",
                 "n't",
                 "never",
@@ -466,7 +466,7 @@
                 "few"
             ],
             "automated": [
-                "auto",
+                "automa",
                 "gps",
                 "sensors",
                 "mavic",
@@ -478,7 +478,7 @@
                 "completely",
                 "all",
                 "everything",
-                "autonomous",
+                "autono",
                 "alone"
             ]
         }
@@ -490,7 +490,7 @@
             "none": [
                 "try",
                 "experiment",
-                "no",
+                "no ",
                 "dont",
                 "n't",
                 "never",
@@ -523,6 +523,7 @@
                 "find",
                 "rescue",
                 "infrared",
+                "thermal",
                 "operation"
             ]
         }

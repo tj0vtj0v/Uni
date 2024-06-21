@@ -8,5 +8,5 @@ import { Component } from '@angular/core';
   styleUrl: './external.component.css'
 })
 export class ExternalComponent {
-
+    // even here is no logic
 }

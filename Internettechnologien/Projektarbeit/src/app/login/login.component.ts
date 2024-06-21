@@ -10,6 +10,7 @@ import {DataComponent} from "../data/data.component";
     templateUrl: './login.component.html',
     styleUrl: './login.component.css'
 })
+// logic of the login component
 export class LoginComponent {
-
+    // yep there is none :)
 }

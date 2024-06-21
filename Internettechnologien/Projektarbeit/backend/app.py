@@ -5,11 +5,13 @@ from starlette.middleware.cors import CORSMiddleware
 
 from BotSession import BotSession
 
-
+# create fastapi instance
 app = FastAPI(
     title="IT-Project Knowledge-DB API",
     version="0.1.0"
 )
+
+# edit middleware to allow connections
 app.add_middleware(
     CORSMiddleware,
     allow_origins=["http://localhost:4200"],
@@ -17,14 +19,18 @@ app.add_middleware(
     allow_methods=["*"],
     allow_headers=["*"],
 )
+
+# store sessions
 sessions: dict[int, BotSession] = {}
 
 
+# returns welcome message
 @app.get("/")
 async def root():
     return "Hello, I am your assistance at finding your sort of drone according to your application. Let's get started!"
 
 
+# returns an unique session id
 @app.get("/sid")
 async def create_sid():
     session = BotSession()
@@ -32,16 +38,19 @@ async def create_sid():
     return session.sid
 
 
+# returns current time
 @app.get("/time")
 async def get_time():
     return datetime.strftime(datetime.now(), "%H:%M")
 
 
+# returns the answer to a text of a session
 @app.get("/compute/{sid}/{text}")
 async def compute_text(sid: int, text: str):
     return sessions[sid].generate_answer(text)
 
 
+# returns the complete evaluation of a session
 @app.get("/evaluation/{sid}")
 async def get_evaluation(sid: int):
     if sid in sessions.keys():

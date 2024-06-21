@@ -17,18 +17,25 @@ import {delay, take, timeout} from "rxjs";
     templateUrl: './chat.component.html',
     styleUrl: './chat.component.css'
 })
+// logic of the cat realised in the frontend
 export class ChatComponent {
+    // required for full scroll down
     @ViewChild('messageContainer') private messageContainer!: ElementRef<HTMLDivElement>;
+
+    // storage variables for the conversation
     messages: Message[] = [];
     message!: string;
 
+    // requirement of api service and session controller
     constructor(private api: ApiService, private controller: ControllerService) {
     }
 
+    // function executed after each update on the screen
     ngAfterViewChecked() {
         this.scroll_down()
     }
 
+    // first contact message on every side open
     ngOnInit() {
         this.api.greeting().pipe(take(1)).subscribe(text =>
             this.api.get_time().pipe(take(1)).subscribe(time =>
@@ -39,6 +46,7 @@ export class ChatComponent {
     }
 
 
+    // scrolls message body completely down
     scroll_down() {
         try {
             this.messageContainer.nativeElement.scrollTop = this.messageContainer.nativeElement.scrollHeight;
@@ -46,26 +54,34 @@ export class ChatComponent {
         }
     }
 
+    // function which is executed when message is send
     sendMessage() {
+        // if last message is from bot and own message has content
         if (this.message != "" && !(this.messages[this.messages.length - 1].sender === this.controller.name)) {
             this.api.get_time().subscribe(time => {
+                    // actual transmission of the message to the chat
                     this.pushMessage(this.message, this.controller.name, time as string, 100);
                 }
             )
+            // initiate bot answer
             this.answerToMessage();
         }
     }
 
+    // function that answers to the user
     answerToMessage() {
         this.api.get_time().pipe(take(1)).subscribe(time =>
             this.api.compute_input(this.controller.sessionID, this.message).pipe(take(1)).subscribe(response => {
+                    // clear user input field
                     this.message = "";
-                    this.pushMessage(response as string, "Bot", time as string, 1000)
+                    // transmits answer to display with fake "computing delay"
+                    this.pushMessage(response as string, "Bot", time as string, 800)
                 }
             )
         )
     }
 
+    // method that adds message to display after delay
     async pushMessage(text: string, sender: string, time: string, wait: number) {
         await new Promise(_ => setTimeout(_, wait))
         this.messages.push(new Message(text, sender, time))

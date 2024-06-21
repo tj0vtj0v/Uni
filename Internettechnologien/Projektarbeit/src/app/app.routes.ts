@@ -6,6 +6,7 @@ import {ImprintComponent} from "./imprint/imprint.component";
 import {ExternalComponent} from "./external/external.component";
 import {EvaluationComponent} from "./evaluation/evaluation.component";
 
+// represents the routes and the corresponding paths and components
 export const routes: Routes = [
     {path: '', redirectTo: 'login', pathMatch: 'full'},
     {path: 'login', component: LoginComponent},
