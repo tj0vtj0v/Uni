@@ -29,3 +29,15 @@ p {
     font-size: 18px;
     margin-top: 20px;
 }
+
+a {
+    color: #a5f8f5;
+}
+
+a:hover {
+    color: #368fde;
+}
+
+a:visited {
+    color: #446988;
+}

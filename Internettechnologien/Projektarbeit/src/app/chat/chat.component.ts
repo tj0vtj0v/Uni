@@ -47,14 +47,12 @@ export class ChatComponent {
     }
 
     sendMessage() {
-        if (this.message != "") {
+        if (this.message != "" && !(this.messages[this.messages.length - 1].sender === this.controller.name)) {
             this.api.get_time().subscribe(time => {
                     this.pushMessage(this.message, this.controller.name, time as string, 100);
                 }
             )
-            if (!(this.messages[this.messages.length - 1].sender === this.controller.name)) {
-                this.answerToMessage();
-            }
+            this.answerToMessage();
         }
     }
 

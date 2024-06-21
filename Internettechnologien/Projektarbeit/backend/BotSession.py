@@ -41,6 +41,7 @@ class BotSession:
                 return self.question_data[self.question]["question"]
             case "asking":
                 general = self._check_for_general(text)
+                print(general)
 
                 if general:
                     self.state = general
@@ -59,10 +60,14 @@ class BotSession:
                     return "Your recommendation is ready! Please answer anything to receive it!"
                 return self.question_data[self.question]["question"]
             case "change":
-                self.question_iterator = self._question_generator()
-                for i in range([str(x) for x in self.question_data.keys()].index(self.question) - 2):
-                    next(self.question_iterator)
-                self.question = next(self.question_iterator)
+                if self._confirmed(text):
+                    self.question_iterator = self._question_generator()
+                    for i in range([str(x) for x in self.question_data.keys()].index(self.question) - 1):
+                        next(self.question_iterator)
+                    self.state = "asking"
+                    self.question = next(self.question_iterator)
+                    return self.question_data[self.question]["question"]
+                return self.question_data[self.question]["fallback"]
             case "capabilities":
                 if self._check_for_general(text) == self.state:
                     return self.general_data["capabilities"]["fallback"]
@@ -70,10 +75,11 @@ class BotSession:
                 return self.question_data[self.question]["fallback"]
             case "start", "exit":
                 if self._confirmed(text):
-                    self.state = "greet"
-                    self.knowledge = {}
                     if self.state == "start":
+                        self.state = "greet"
+                        self.knowledge = {}
                         return "Now you can start from the beginning!"
+                    self.state = "evaluation"
                     return "We evaluated the data you provided. Please answer anything to receive it!"
                 self.state = "asking"
                 return self.question_data[self.question]["fallback"]
@@ -89,14 +95,14 @@ class BotSession:
     def _check_for_general(self, text: str) -> str:
         maximum = 0
         action = ""
-        for general in [self.general_data[key] for key in self.general_data.keys()]:
+        for key in self.general_data.keys():
             current = 0
-            for keyword in general["keywords"]:
+            for keyword in self.general_data[key]["keywords"]:
                 if keyword in text:
                     current += 1
             if current > maximum:
                 maximum = current
-                action = general
+                action = key
         return action
 
     def _get_result(self, answer: str):
@@ -126,7 +132,6 @@ class BotSession:
             elif spot_count == max_count:
                 results.append(word)
 
-        print(results, "is negated:", self._negated(answer))
         if not self._negated(answer) or results[0] == "none" or results[0] == "no":  # not negated -> positive
             if len(results) == 1:
                 return results[0]
@@ -149,14 +154,13 @@ class BotSession:
         spot_count = 0
         for word in self.answer_data["negative"]:
             if word in text:
-                print("neg:", word)
                 spot_count += text.count(word)
         return bool(spot_count % 2)
 
     def _confirmed(self, text: str) -> bool:
         confirm = False
         for keyword in self.answer_data["positive"]:
-            confirm |= keyword in text
+            confirm = confirm or keyword in text
         return confirm and not self._negated(text)
 
     def _create_advice(self):
