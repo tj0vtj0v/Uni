@@ -53,6 +53,6 @@
     },
     "finish": {
         "keywords": [],
-        "action": "You finished your journey, you can find general information at the 'Info' screen, and review your results at the 'Result' screen. Thank you for using this Tool!"
+        "action": "You finished your journey, you can find general information at the 'Info' screen, and an extended review your results in the 'Evaluation' screen. Thank you for using this Tool!"
     }
 }
