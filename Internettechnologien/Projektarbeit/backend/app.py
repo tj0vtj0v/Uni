@@ -27,7 +27,7 @@ sessions: dict[int, BotSession] = {}
 # returns welcome message
 @app.get("/")
 async def root():
-    return "Hello, I am your assistance at finding your sort of drone according to your application. Let's get started!"
+    return BotSession.greet()
 
 
 # returns an unique session id

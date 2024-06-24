@@ -45,6 +45,7 @@
         "result": {
             "none": [
                 "no ",
+                "none",
                 "dont",
                 "n't",
                 "never",
@@ -141,6 +142,7 @@
         "result": {
             "none": [
                 "no ",
+                "none",
                 "dont",
                 "n't",
                 "never",
@@ -273,14 +275,17 @@
         "result": {
             "vlos": [
                 "near",
+                "vlos",
                 "close",
                 "side",
                 "around",
+                "visual",
                 "sight"
             ],
             "bvlos": [
                 "wide",
                 "far",
+                "bvlos",
                 "away",
                 "explore",
                 "long",
@@ -412,11 +417,13 @@
             ],
             "no": [
                 "no ",
+                "none",
                 "dont",
                 "n't",
                 "never",
                 "negative",
-                "false"]
+                "false"
+            ]
         }
     },
     "feed": {
@@ -450,6 +457,7 @@
         "result": {
             "none": [
                 "no ",
+                "none",
                 "dont",
                 "n't",
                 "never",
@@ -491,6 +499,7 @@
                 "try",
                 "experiment",
                 "no ",
+                "none",
                 "dont",
                 "n't",
                 "never",

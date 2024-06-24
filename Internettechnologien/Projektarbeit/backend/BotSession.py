@@ -45,8 +45,14 @@ class BotSession:
         self.knowledge = {}
         self.evaluation = []
 
+    # returns first chat message
+    @staticmethod
+    def greet() -> str:
+        return general_data['greeting']["action"]
+
     # state action automat for answer generation
     def generate_answer(self, text: str) -> str:
+        text = text.lower()
         match self.state:
             # first state which introduces the conversation
             case "greet":

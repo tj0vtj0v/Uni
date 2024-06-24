@@ -43,6 +43,10 @@
         "action": "You are about to exit this session, please confirm your decision.",
         "fallback": "Please answer with yes or no if you want to exit this session!"
     },
+    "greeting": {
+        "keywords": [],
+        "action": "Hello, I am your assistance at finding your sort of drone according to your application. Let's get started!"
+    },
     "recommendation": {
         "keywords": [],
         "action": "We evaluated the data you provided. Please answer anything to receive it!"
