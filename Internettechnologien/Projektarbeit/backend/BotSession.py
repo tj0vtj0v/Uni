@@ -80,7 +80,7 @@ class BotSession:
 
                 # compute and log result from answer
                 result = self._get_result(text)
-                print(self.question, "-->", result)
+                print(f'{self.sid}: {self.question} --> {result}')
 
                 # answer with fallback if no result was achieved
                 if not result:
