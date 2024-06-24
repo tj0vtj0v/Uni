@@ -15,7 +15,7 @@
     height: 60vh;
     min-height: 300px;
     width: 80vw;
-    min-width: 400px;
+    min-width: 300px;
     max-width: 1000px;
     overflow-y: auto;
 }
