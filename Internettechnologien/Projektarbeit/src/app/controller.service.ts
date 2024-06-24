@@ -17,13 +17,14 @@ export class ControllerService {
     loggedIn: boolean = false;
     name!: string;
     sessionID!: number;
-    messages: Message[] = []
+    messages: Message[] = [];
 
     // logs user in and assigns session id
     logIn(name: string) {
         this.name = name;
         this.loggedIn = true;
         this.api.get_sid().subscribe(result => this.sessionID = result as number);
+        this.messages = [];
 
         // first contact message on every side open
         this.api.greeting().pipe(take(1)).subscribe(text =>
