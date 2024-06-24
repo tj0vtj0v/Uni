@@ -325,7 +325,7 @@ class BotSession:
                         score -= weight_data[key]
 
             # append calculated data to the evaluation storage
-            self.evaluation.append([round(score / max_score * 100, 1), name])
+            self.evaluation.append([round(score / max_score * 100, 1), name, data["image"], data["link"]])
 
         # sort the evaluation
         self.evaluation.sort()

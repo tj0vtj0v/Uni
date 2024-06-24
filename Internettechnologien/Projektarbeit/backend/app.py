@@ -47,7 +47,7 @@ async def get_time():
 # returns the answer to a text of a session
 @app.get("/compute/{sid}/{text}")
 async def compute_text(sid: int, text: str):
-    return sessions[sid].generate_answer(text)
+    return sessions[sid].generate_answer(text + " ")
 
 
 # returns the complete evaluation of a session

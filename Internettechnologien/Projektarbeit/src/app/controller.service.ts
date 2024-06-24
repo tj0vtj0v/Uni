@@ -1,5 +1,7 @@
 import {Injectable} from '@angular/core';
 import {ApiService} from "./api.service";
+import {Message} from "./Message";
+import {take} from "rxjs";
 
 @Injectable({
     providedIn: 'root'
@@ -15,11 +17,19 @@ export class ControllerService {
     loggedIn: boolean = false;
     name!: string;
     sessionID!: number;
+    messages: Message[] = []
 
     // logs user in and assigns session id
     logIn(name: string) {
         this.name = name;
         this.loggedIn = true;
         this.api.get_sid().subscribe(result => this.sessionID = result as number);
+
+        // first contact message on every side open
+        this.api.greeting().pipe(take(1)).subscribe(text =>
+            this.api.get_time().pipe(take(1)).subscribe(time =>
+                this.messages.push(new Message(text as string, "Bot", time as string))
+            )
+        )
     }
 }

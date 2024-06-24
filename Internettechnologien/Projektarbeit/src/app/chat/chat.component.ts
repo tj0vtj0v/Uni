@@ -4,7 +4,7 @@ import {NgForOf} from "@angular/common";
 import {ApiService} from "../api.service";
 import {ControllerService} from "../controller.service";
 import {Message} from "../Message";
-import {delay, take, timeout} from "rxjs";
+import {take} from "rxjs";
 
 @Component({
     selector: 'app-chat',
@@ -23,25 +23,14 @@ export class ChatComponent {
     @ViewChild('messageContainer') private messageContainer!: ElementRef<HTMLDivElement>;
 
     // storage variables for the conversation
-    messages: Message[] = [];
     message!: string;
 
     // requirement of api service and session controller
-    constructor(private api: ApiService, private controller: ControllerService) {
+    constructor(private api: ApiService, protected controller: ControllerService) {
     }
 
     // function executed after each update on the screen
     ngAfterViewChecked() {
-        this.scroll_down()
-    }
-
-    // first contact message on every side open
-    ngOnInit() {
-        this.api.greeting().pipe(take(1)).subscribe(text =>
-            this.api.get_time().pipe(take(1)).subscribe(time =>
-                this.messages.push(new Message(text as string, "Bot", time as string))
-            )
-        )
         this.scroll_down()
     }
 
@@ -57,7 +46,7 @@ export class ChatComponent {
     // function which is executed when message is send
     sendMessage() {
         // if last message is from bot and own message has content
-        if (this.message != "" && !(this.messages[this.messages.length - 1].sender === this.controller.name)) {
+        if (this.message != "" && !(this.controller.messages[this.controller.messages.length - 1].sender === this.controller.name)) {
             this.api.get_time().subscribe(time => {
                     // actual transmission of the message to the chat
                     this.pushMessage(this.message, this.controller.name, time as string, 100);
@@ -84,6 +73,6 @@ export class ChatComponent {
     // method that adds message to display after delay
     async pushMessage(text: string, sender: string, time: string, wait: number) {
         await new Promise(_ => setTimeout(_, wait))
-        this.messages.push(new Message(text, sender, time))
+        this.controller.messages.push(new Message(text, sender, time))
     }
 }

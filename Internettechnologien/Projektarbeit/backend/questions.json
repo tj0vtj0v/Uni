@@ -114,6 +114,8 @@
                 "free",
                 "air",
                 "forest",
+                "beach",
+                "mountain",
                 "field",
                 "band",
                 "garden",
@@ -151,6 +153,7 @@
             ],
             "little": [
                 "little",
+                "existing",
                 "bit",
                 "some",
                 "few",
@@ -158,6 +161,7 @@
             ],
             "enough": [
                 "enough",
+                "big",
                 "much",
                 "know",
                 "detail",
@@ -195,6 +199,7 @@
                 "sport",
                 "achieve",
                 "push",
+                "fast",
                 "limit",
                 "race",
                 "explore"

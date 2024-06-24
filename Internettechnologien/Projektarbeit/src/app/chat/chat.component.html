@@ -3,7 +3,7 @@
     <!-- displays all messages -->
     <div class="chat-messages" #messageContainer>
         <!-- iterates over all messages and style them according to their sender -->
-        <div *ngFor="let field of messages" class="{{field.class}}">
+        <div *ngFor="let field of controller.messages" class="{{field.class}}">
             <!-- represents the message-bubble -->
             <div class="{{field.class}}-text">
                 {{field.text}}
