@@ -1,3 +1,9 @@
+"""
+last change: 24.06.2024
+author: Tjorven Burdorf
+
+description: api application for the chatbot
+"""
 from datetime import datetime
 
 from fastapi import FastAPI

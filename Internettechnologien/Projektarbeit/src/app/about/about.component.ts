@@ -1,3 +1,9 @@
+/*
+last change: 24.06.2024
+author: Tjorven Burdorf
+
+description: logic of the about component
+*/
 import { Component } from '@angular/core';
 
 @Component({

@@ -1,4 +1,11 @@
+/*
+last change: 24.06.2024
+author: Tjorven Burdorf
+
+description: style of the imprint page
+*/
 /* additional content for the imprint */
+
 strong {
     text-decoration: underline;
     font-size: 16px;

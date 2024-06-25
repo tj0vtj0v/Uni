@@ -1,3 +1,9 @@
+/*
+last change: 24.06.2024
+author: Tjorven Burdorf
+
+description: controls all api applications
+*/
 import {Injectable} from '@angular/core';
 import {HttpClient} from "@angular/common/http";
 import {take} from "rxjs";

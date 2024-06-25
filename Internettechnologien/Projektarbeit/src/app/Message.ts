@@ -1,3 +1,9 @@
+/*
+last change: 24.06.2024
+author: Tjorven Burdorf
+
+description: represents a message with all of its properties
+*/
 /* represents a message with all of its properties */
 export class Message {
     /* crates a message object */

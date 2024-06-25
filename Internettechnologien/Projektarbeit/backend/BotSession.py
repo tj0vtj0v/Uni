@@ -1,4 +1,11 @@
+"""
+last change: 24.06.2024
+author: Tjorven Burdorf
+
+description: logic of the chatbot
+"""
 import json
+import random
 
 
 # generator for the unique session ids
@@ -82,9 +89,9 @@ class BotSession:
                 result = self._get_result(text)
                 print(f'{self.sid}: {self.question} --> {result}')
 
-                # answer with fallback if no result was achieved
+                # answer with changing fallback if no result was achieved
                 if not result:
-                    return question_data[self.question]["fallback"]
+                    return random.choice(question_data[self.question]["fallback"])
 
                 # update knowledge storage
                 self.knowledge[self.question] = result

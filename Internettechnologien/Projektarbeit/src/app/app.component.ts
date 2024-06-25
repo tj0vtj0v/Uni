@@ -1,3 +1,9 @@
+/*
+last change: 24.06.2024
+author: Tjorven Burdorf
+
+description: logic of the main component
+*/
 import {Component} from '@angular/core';
 import {RouterLink, RouterOutlet} from '@angular/router';
 

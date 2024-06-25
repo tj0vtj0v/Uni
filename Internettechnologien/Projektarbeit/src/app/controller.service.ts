@@ -1,3 +1,9 @@
+/*
+last change: 24.06.2024
+author: Tjorven Burdorf
+
+description: controls session properties
+*/
 import {Injectable} from '@angular/core';
 import {ApiService} from "./api.service";
 import {Message} from "./Message";

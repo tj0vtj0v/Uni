@@ -1,3 +1,9 @@
+/*
+last change: 24.06.2024
+author: Tjorven Burdorf
+
+description: router for the entire application
+*/
 import {Routes} from '@angular/router';
 import {LoginComponent} from "./login/login.component";
 import {ChatbotComponent} from "./chatbot/chatbot.component";
