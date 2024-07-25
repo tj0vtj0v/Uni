@@ -1,3 +1,4 @@
+import java.util.Comparator;
 import java.util.Objects;
 
 public class Main {
@@ -11,6 +12,13 @@ public class Main {
             this.num = num;
         }
     }
+    Comparator<Integer> comp = new Comparator<>() {
+        @Override
+        public int compare(Integer o1, Integer o2) {
+            return Integer.compare(o1, o2);
+        }
+    };
+
     public static void main(String[] args) {
         Auto a;
 
