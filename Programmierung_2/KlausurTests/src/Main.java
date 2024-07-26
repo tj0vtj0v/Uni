@@ -1,7 +1,5 @@
-import java.util.Comparator;
-import java.util.LinkedList;
-import java.util.List;
-import java.util.Objects;
+import javax.swing.*;
+import java.util.*;
 
 public class Main {
     enum OneAndTwo {
@@ -33,6 +31,18 @@ public class Main {
 
         LinkedList<Integer> l = new LinkedList<>(List.of(1, 2, 3));
         l.get(0);
-        l.get(3);
+        //l.get(3);
+
+        TreeMap<String, Integer> ln = new TreeMap<>();
+        ln.put("Mary", 7);
+        ln.put("Paul", 13);
+        ln.put("Peter", 7);
+
+        System.out.println(ln.firstEntry());
+
+        Iterator it = ln.descendingKeySet().iterator();
+        while (it.hasNext()) {
+            System.out.println(it.next());
+        }
     }
 }
