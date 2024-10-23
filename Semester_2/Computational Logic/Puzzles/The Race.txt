@@ -1,0 +1,14 @@
+friend(ann;franz;janina;luke;tim).
+
+{position(F, P) : friend(F)} = 1 :- P = 1..5.
+
+:- position(F, P), position(F, P'), P != P'.
+
+:- position(tim, T), position(luke, L), T > L.
+:- position(tim, T), position(luke, L), position(franz, F), position(janina, J), J < T, J < L, J < F.
+:- position(janina, J), position(franz, F), position(ann, A), A < J, A < F.
+:- position(tim, T), position(luke, L), position(ann, A), T < A, L < A.
+:- position(tim, T), position(franz, F), F > T.
+
+
+#show position/2.

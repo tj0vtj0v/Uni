@@ -1,0 +1,17 @@
+- Jedes Modell hat natürlich q(1) q(2) q(3) q(4) p(a) p(b) p(c) p(d).
+
+{comb1(P,Q) : p(P), q(Q) } = 1.
+
+- einzelne Kombination aller möglichen (p,q) Paare (4x4=16 Modelle).
+
+{comb2(P,Q)} = 1 :- p(P), q(Q).
+
+- alle Kombinationen von (p,q) in einem Modell.
+
+{comb3(P, Q) : p(P)} = 1 :- q(Q).
+
+- in jedem Modell gibt es jedes Q genau einmal, und es gibt so viele Modelle, wie P Möglichkeiten hat(4^4=256).
+
+{comb4(P,Q): q(Q)} = 1 :- p(P).
+
+- gleiches wie comb3, nur dass P und Q die Rollen getauscht haben (-> distinct P).

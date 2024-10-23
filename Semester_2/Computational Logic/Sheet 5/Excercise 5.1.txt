@@ -1,0 +1,11 @@
+available_hour(7..17).
+
+{bank(H) : available_hour(H), not email(H)} = 1.
+{shopping(H) : available_hour(H), not bank(H), not email(H), H > B} = 2 :- bank(B).
+{email(H) : available_hour(H)} = 1.
+{work(H) : available_hour(H), not bank(H), not email(H), not shopping(H), H > E} = 4 :- email(E).
+
+#show bank/1.
+#show shopping/1.
+#show email/1.
+#show work/1.

@@ -1,0 +1,2 @@
+class Full(Exception):
+    pass

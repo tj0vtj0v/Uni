@@ -1,0 +1,18 @@
+% person(prename, name, pet)
+prename(a;b;c;d).
+name(e;f;g;h).
+pet(i;j;k;l).
+
+{person(P, N, A) : name(N), prename(P), pet(A)} = 4.
+{person(P, N, A) : person(X, N, A)} = 1 :- prename(P).
+{person(P, N, A) : person(P, X, A)} = 1 :- name(N).
+{person(P, N, A) : person(P, N, X)} = 1 :- pet(A).
+
+-person(c, N, i); -person(d, N, i) :- person(_, N, _).
+-person(P, f, j) :- person(P, _, _). -person(N, f, k) :- person(N, _, _).
+-person(d, N, l) :- person(_, N, _).
+-person(a, N, k) :- person(_, N, _). -person(a, g, A) :- person(_, _, A).
+-person(b, f, A) :- person(_, _, A).
+-person(P, h, i) :- person(P, _, _).
+
+#show person/3.

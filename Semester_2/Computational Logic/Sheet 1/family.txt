@@ -1,0 +1,11 @@
+parent(a, b).
+parent(b, c).
+parent(b, d).
+
+parent(a, b; b, c; b, d).
+
+child(X,Y) :- parent(Y, X).
+
+sibling(X,Y) :- parent(Z, X), parent(Z, Y), X!=Y.
+grandparent(X, Z) :- parent(X, Y), parent(Y, Z).
+

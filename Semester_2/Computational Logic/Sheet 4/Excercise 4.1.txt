@@ -1,0 +1,16 @@
+%%% Ein Modell mit allen Antworten %%
+#const n = 100.
+
+p(X) :- X=1..n, A=0..X, B=0..A, C=0..B, A**2+B**2+C**2==X.
+
+#show.
+#show X : p(X).
+
+
+%%% Viele Modelle mit jeweils einer Antwort %%%
+#const n = 100.
+
+{o(X) : X=1..n, A=0..X, B=0..A, C=0..B, A**2+B**2+C**2==X} = 1.
+
+#show.
+#show X : o(X).

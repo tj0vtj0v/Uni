@@ -1,0 +1,17 @@
+enrolled(S, C).
+enrolled(S) :- enrolled(S, A).
+
+
+lives_in(P, C).
+same_city(A, B) :- lives_in(A, X), lives_in(B, X).
+
+
+age(A, B).
+older(A, B) :- age(A, X), age(B, Y), X > Y.
+
+
+ok(A) :- A = 0..100, B = 0..A, C = 0..B, D = 0..C, B**2+C**2+D**2 == A.
+
+nio(A) :- A = 0..100, not ok(A).
+#show nio/1.
+

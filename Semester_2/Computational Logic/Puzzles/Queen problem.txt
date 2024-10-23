@@ -1,0 +1,8 @@
+{queen(1..5, 1..5)} = 5.
+
+queen(1, 1).
+
+:- queen(X, Y), queen(X', Y), X != X'.
+:- queen(X, Y), queen(X, Y'), Y != Y'.
+:- queen(X, Y), queen(X+D, Y+D), D = -5..5, D != 0.
+:- queen(X, Y), queen(X+D, Y-D), D = -5..5, D != 0.

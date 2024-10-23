@@ -1,0 +1,133 @@
+\documentclass[a4paper,onecolumn,pdftex]{report}
+
+\usepackage{enumitem}
+\usepackage[p,osf]{scholax}
+\usepackage{amsmath}
+\usepackage[margin=1in]{geometry}
+
+\fontfamily{scholax}
+\overfullrule=0pt
+
+\begin{document}
+    \author{Noah Tjorven Burdorf}
+    \title{Kapitel 2, \"Ubung 1 \\ Grundlagen Informatik \\ Vorlesung vom 11.10.2023}
+    \date{23/10/11}
+    \maketitle
+
+    \begin{enumerate}
+        \item Stellen Sie die Wahrheitstabelle folgender aussagenlogischer Formeln auf. 
+        \begin{enumerate}
+            \item $(\neg A \wedge \neg B) \lor  C$ \\
+            \begin{tabular}{|c|c|c|c|c|} \hline
+                A & B & C & $\neg A \wedge \neg B$ & $(\neg A \wedge \neg B) \lor  C$ \\ \hline
+                F&F&F&T&T \\ \hline
+                F&F&T&T&T \\ \hline
+                F&T&T&F&T \\ \hline
+                F&T&F&F&F \\ \hline
+                T&F&F&F&F \\ \hline
+                T&F&T&F&T \\ \hline
+                T&T&F&F&F \\ \hline
+                T&T&T&F&T \\ \hline
+            \end{tabular}
+
+            \item $\neg A \lor \neg B \lor C$ \\
+            \begin{tabular}{|c|c|c|c|c|c|} \hline
+                A&B&C&$\neg A$&$\neg B$&$\neg A \lor \neg B \lor C$ \\ \hline
+                F&F&F&T&T&T \\ \hline
+                F&F&T&T&T&T \\ \hline
+                F&T&F&T&F&T \\ \hline
+                F&T&T&T&F&T \\ \hline
+                T&F&F&F&T&T \\ \hline
+                T&F&T&F&T&T \\ \hline
+                T&T&F&F&F&F \\ \hline
+                T&T&T&F&F&T \\ \hline
+            \end{tabular}
+        \end{enumerate}
+
+        \vspace{50px}
+        \item Stellen Sie die Wahrheitstabelle folgender aussagenlogischer Formel auf. Reduzieren Sie vorher die Anzahl der benötigten Zwischenaussagen durch Anwendung von der Regel nach DeMorgan.  \\
+        $\neg (\neg A \wedge B) \lor \neg C \equiv A \lor \neg B \lor \neg C$ \\
+        \begin{tabular}{|c|c|c|c|c|c|} \hline
+            A&B&C&$\neg B$&$\neg C$&$A \lor \neg B \lor \neg C$ \\ \hline
+            F&F&F&T&T&T \\ \hline
+            F&F&T&T&F&T \\ \hline
+            F&T&F&F&T&T \\ \hline
+            F&T&T&F&F&F \\ \hline
+            T&F&F&T&T&T \\ \hline
+            T&F&T&T&F&T \\ \hline
+            T&T&F&F&T&T \\ \hline
+            T&T&T&F&F&T \\ \hline
+        \end{tabular}
+
+        \newpage
+        \item Vereinfachen Sie die folgenden Ausdrücke, bis nur noch die booleschen Operatoren $\lor$ und $\neg$ vorkommen:
+        \begin{enumerate}
+            \item $(\neg A \wedge \neg B) \lor C$
+            \begin{align*}
+                (\neg A \wedge \neg B) \lor C &\equiv \neg (A \lor B) \lor C
+            \end{align*}
+
+            \item $\neg (A \wedge \neg (B \Rightarrow C))$
+            \begin{align*}
+                \neg (A \wedge \neg (B \Rightarrow C)) &\equiv \neg A \lor (B \Rightarrow C) \\
+                &\equiv \neg A \lor (\neg B \lor C) \\
+                &\equiv \neg A \lor \neg B \lor C
+            \end{align*}
+
+            \item $\neg ((A \wedge \neg B) \wedge \neg (C \Rightarrow D))$
+            \begin{align*}
+                \neg ((A \wedge \neg B) \wedge \neg (C \Rightarrow D)) &\equiv \neg (A \wedge \neg B) \lor (C \Rightarrow D) \\
+                &\equiv (\neg A \lor B) \lor (\neg C \lor D) \\
+                &\equiv \neg A \lor B \lor \neg C \lor D
+            \end{align*}
+        \end{enumerate}
+    
+        \vspace{50px}
+        \item Stellen Sie fest, ob die folgenden aussagenlogischen Formeln Tautologien sind: Nutzen Sie dazu keine Wertetabelle/Wahrheitstabelle sondern erklären Sie Ihre Feststellung! Falls es keine Tautologie ist, genügt eine Belegung mit dem Ergebnis „falsch“. 
+        \begin{enumerate}
+            \item $(A \wedge \neg A) \Rightarrow (B \lor C)$ \\
+            Ist eine Tautologie da $(A \wedge \neg A)$ eine Kontradiktion ist, und somit immer falsch. \\
+            Woraufhin der erste Teil der Implikation immer falsch ist, weswegen die Aussage immer wahr ist.
+            
+            \item $(A \wedge B) \Leftrightarrow (A \lor B)$ \\
+            falsch
+        \end{enumerate}
+    
+        \vspace{50px}
+        \item Stellen Sie fest, ob die folgenden Aussagenlogischen Formeln Kontradiktionen sind: 
+        \begin{enumerate}
+            \item $A \wedge \neg A$ \\
+            Ist eine Kontradiktion, da immer $A$ oder $\neg A$ faslch ist.
+            
+            \item $(A \wedge \neg B) \Leftrightarrow (\neg A \lor B)$ \\
+            Ist eine Kontradiktion, da immer eine Seite falsch und eine Seite wahr ist, und eine Äquivalenz vorliegt. \\
+            Da eine Äquivalenz immer falsch ist wenn beide Seiten unterschiedliche Wahrheitswerte haben, ist die gesamte Aussage falsch.
+        \end{enumerate}
+    
+        \newpage
+        \item Zeigen Sie folgende Äquivalenz durch Umformung der linken Seite. Notieren Sie bei jedem Schritt alle Rechenregeln die Sie anwenden.
+        \begin{align}
+            (C \wedge T) \lor \neg (\neg A \Rightarrow B) \lor (\neg A \wedge \neg C) \lor \neg (\neg C) \lor (\neg A \wedge A) &\equiv (A \lor (B \wedge C)) \Rightarrow C \\
+            C \lor \neg (A \lor B) \lor \neg (A \lor C) \lor C \lor K &\equiv \\
+            C \lor \neg (A \lor B) \lor \neg (A \lor C) \lor C &\equiv \\
+            C \lor (\neg A \wedge \neg B) \lor (\neg A \wedge \neg C) \lor C &\equiv  \\
+            ((\neg A \wedge \neg B) \lor (\neg A \wedge \neg C)) \lor C &\equiv \\
+            (\neg A \wedge (\neg B \lor  \neg C)) \lor C &\equiv \\
+            \neg A \wedge \neg (B \wedge C) \lor C &\equiv \\
+            \neg (A \lor (B \wedge C)) \lor C &\equiv (A \lor (B \wedge C)) \Rightarrow C
+        \end{align}
+
+        \vspace{20px}
+        \setlist[enumerate]{label={\arabic*.}}
+        \begin{enumerate}
+            \item Originale Aufgabe
+            \item K\"urzungsregel 2x, DeMorgan'sche Regel 2x, Doppelte Verneinung
+            \item K\"urzungsregel
+            \item DeMorgan'sche Regel
+            \item Idempotenz
+            \item Distributiv Gesetz
+            \item DeMorgan'sche Regel
+            \item DeMorgan'sche Regel, Implikationsregel
+        \end{enumerate}
+    \end{enumerate}
+\end{document}

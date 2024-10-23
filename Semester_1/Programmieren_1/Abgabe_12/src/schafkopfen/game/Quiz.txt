@@ -1,0 +1,61 @@
+Quiz.txt
+
+Hinweise:
+- Bitte beantworten Sie die Fragen richtig und vollständig.
+- Bitte ändern Sie die Struktur der Datei nicht.
+- Antworten Sie jeweils hinter dem Doppelpunkt bei "Antwort: ".
+- Antworten passen immer in eine Zeile.
+
+
+JProfiler
+
+Starten Sie die Performance-Klasse mit dem IntelliJ Profiler.
+
+1. Welcher Algorithmus läuft schneller?
+Antwort: Bubblesort
+(Mögliche Antworten: Bubblesort, Selectionsort, Abwechselnd)
+
+2. Welche Methode in der Klasse CardSorter verbraucht am meisten CPU-Zeit?
+Antwort: firstCardIsHigherThanSecondCard
+(Beispielantwort: shuffle)
+
+3. Welche Java-Methode (nicht von Ihnen implementiert) verbraucht am meisten Zeit?
+Antwort: equals
+(Beispielantwort: shuffle)
+
+
+Debugger
+
+Setzen Sie in Performance beim Ausführen von cardSorter.bubbleSort() einen Breakpoint. Sie wollen genau dann anhalten,
+wenn der echte Test bereits gestartet ist und wenn sich in der Spielerhand an der ersten Stelle "hand[0]" zufällig der
+"Eichel O" befindet. Sie müssen dazu den Breakpoint mit einer Bedingung konfigurieren. Starten Sie die Performance-Klasse
+mit dem IntelliJ Debugger.
+
+4. Wie sieht der Code für die Bedingung aus?
+Antwort: testHasStarted && hand[0].toString().equals("Eichel O")
+(Beispielantwort: x < y || a == b)
+
+5. In welchem Durchlauf ist die Bedingung zum ersten Mal eingetreten?
+Antwort: 25
+(Beispielantwort: 12056)
+
+6. Was ist die zweite Karte der Spielerhand?
+Antwort: Schelln 9
+(Beispielantwort: Herz 8)
+
+Ändern Sie im Debugger-Fenster die Variable run auf die Zahl 100. Springen Sie dann weiter mit „step over“ von
+Zeile zu Zeile bis sie wieder beim selben Befehl landen.
+
+7. Was ist die erste Karte der Spielerhand?
+Antwort: Eichel 7
+(Beispielantwort: Herz 8)
+
+
+Coverage
+
+Wir wollen sehen, wie gut die Testabdeckung der Klasse Performance für das Package schafkopfen.game ist. Starten Sie
+die main-Methode mit Coverage.
+
+8. Wie hoch ist die Abdeckung der Klassen in Prozent?
+Antwort: 40
+(Beispielantwort: 307)

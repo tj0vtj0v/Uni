@@ -1,0 +1,13 @@
+person(a;c;d;e;g;i;j;l;m;o;s;t;w).
+car(a, 6).
+car(b, 5).
+car(c, 2).
+license(i;j;l;m;o).
+
+{driver(P, C) : license(P)} = 1 :- car(C, X).
+seat(P, C) :- driver(P, C).
+
+{seat(P, C) : person(P)} = N :- car(C, N).
+{seat(P, C) : car(C, N)} = 1 :- person(P).
+
+#show seat/2.

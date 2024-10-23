@@ -1,0 +1,45 @@
+% Spielfeld
+tree(2, 1; 6, 1; 4, 2; 1, 4; 4, 4; 5, 5; 1, 6; 6, 6).
+
+{tent(A+X, B+Y) : A = -1..1, B=-1..1, A != B, -A != B, A+X > 0, B+Y > 0, A+X <= 6, B+Y <= 6} :- tree(X, Y).
+
+{tent(X, Y) : tent(X, Y)} = 8.
+
+#show tent/2.
+
+
+
+
+% Spielfeld
+tree(2, 1; 6, 1; 4, 2; 1, 4; 4, 4; 5, 5; 1, 6; 6, 6).
+
+{tent(A+X, B+Y) : A = -1..1, B=-1..1, A != B, -A != B, A+X > 0, B+Y > 0, A+X <= 6, B+Y <= 6} = 1 :- tree(X, Y).
+
+%{tent(X, Y) : tent(X, Y), not tree(X, Y} = 8.  WARUM NUR 7 MODELS?
+
+#show tent/2.
+
+
+#const border = 6;
+
+% Spielfeld
+%tree(2, 1; 6, 1; 4, 2; 1, 4; 4, 4; 5, 5; 1, 6; 6, 6).
+tree(5, 5; 6, 6).
+
+{tent(A+X, B+Y) : A = -1..1, B=-1..1, A != B, -A != B, A+X > 0, B+Y > 0, A+X <= border, B+Y <= border} = 1 :- tree(X, Y).
+
+%:- {tent(_, _)} < 8. PROBLEM tree(5, 5) und tree(6, 6).
+
+#show tent/2.
+
+
+
+#const border = 6.
+
+% Spielfeld
+tree(2, 1; 6, 1; 4, 2; 1, 4; 4, 4; 5, 5; 1, 6; 6, 6).
+
+tent(A+X, B+Y) :- A = -1..1, B=-1..1, A != B, -A != B, A+X > 0, B+Y > 0, A+X <= border, B+Y <= border,  tree(X, Y).
+
+
+#show tent/2.

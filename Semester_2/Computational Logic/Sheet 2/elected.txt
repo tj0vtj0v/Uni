@@ -1,0 +1,22 @@
+person(a;b;c;d;e;f).
+
+{elected(X) : person(X)} = 1.
+
+{elected(X) : person(X)} = 3.
+
+{elected(a;b;c;d;e;f)} = 3.
+
+#const n=3.
+{q(X); p(X)} = 1 :- X = 1..n.
+
+p(a;b).
+{p(X,Y) : p(X), p(Y)} = 1.
+{q((a;b), (a;b))} = 1.
+- 4
+
+p(a;b).
+q(1..4).
+1 {r(X, Y) : p(X)} :- q(Y).
+1 {r((a;b), Y)} :- q(Y).
+- 81
+

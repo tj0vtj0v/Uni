@@ -1,0 +1,13 @@
+p. q.
+
+-r :- q.
+-> p q   + -r
+
+-r :- q. s:- -r.
+-> p q s   + -r
+
+-r :- q. s :- not -r.
+-> p q -r
+
+-r : q. s :- -r. -p :- s.
+-> UNSATISFIABLE

@@ -1,0 +1,24 @@
+%%% Approach 1 %%%
+population(france, 65).
+population(germany, 83).
+population(italy, 61).
+population(uk, 64).
+
+area(france, 55100).
+area(germany, 35700).
+area(italy, 30200).
+area(uk, 24300).
+
+large(C) :- population(C, P), area(C, A), P > 80, A > 6/10.
+
+
+%%% Approach 2 %%%
+size(france, 65, 55100).
+size(germany, 83, 35700).
+size(italy, 61, 30200).
+size(uk, 64, 24300).
+
+large(C) :- size(C, P, A), P > 80, A > 6/10.
+
+
+#show large/1.
