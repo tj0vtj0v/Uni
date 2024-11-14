@@ -1,0 +1,270 @@
+\documentclass[a4paper, 12pt]{article}
+\usepackage{enumitem}
+\usepackage{multirow}
+\usepackage[utf8]{inputenc}
+\usepackage[ngerman]{babel}
+\usepackage{geometry}
+\geometry{a4paper, margin=1in}
+\usepackage{titlesec}
+\usepackage{setspace}
+\usepackage{lipsum}
+
+\begin{document}
+\begin{titlepage}
+    \centering
+    \vspace*{2cm}
+    
+    {\Huge \textbf{Projektantrag}}
+
+    \vspace{.5cm}
+    
+    {\LARGE Migration des Werzeugausgabesystems im Bildungszentrum zu einer Full-Stack Applikation}
+    
+    \vspace{4cm}
+    
+    \textbf{Antragsteller:} \\
+    Gerald Hauptmann \\
+    Ausbildungsleiter für kaufmännische Berufe \\
+    TJ-969
+    
+    \vspace{2cm}
+    
+    \textbf{Abgestimmt mit:} \\
+    Nicolas Disimiano, Timo Morkoss \\
+    Alfons Backmeier
+    
+    \vspace{2cm}
+    
+    \textbf{Abgabedatum:} \\
+    18.11.2024
+    
+    \vfill
+    \setcounter{page}{2}
+\end{titlepage}
+
+
+\tableofcontents
+
+\newpage
+
+    
+\section{Zusammenfassung}
+
+Das aktuelle System zur Verwaltung der Werkzeugausgabe basiert auf Microsoft Access und erfüllt die heutigen Anforderungen an Geschwindigkeit, Benutzerfreundlichkeit und Skalierbarkeit nicht mehr. Diese Schwächen haben das Interesse der Ausbildungsabteilung in Dingolfing geweckt, welche die Migration auf eine moderne Full-Stack-Lösung initiiert hat. \\
+\textbf{Vorschlag der Projektidee:} Die Projektidee sieht die Entwicklung einer neuen Anwendung zur Verwaltung der Werkzeugausgabe vor, die den Anforderungen der heutigen Arbeitswelt besser gerecht wird. Es soll eine robuste und benutzerfreundliche Applikation implementiert werden, die durch verbesserte Funktionen, geringere Fehlerrate und kürzere Bearbeitungszeiten überzeugt. \\
+\textbf{Wichtigkeit des Projekts:} Das Projekt ist essentiell, um die Effizienz und Zufriedenheit der Mitarbeiter in der Werkzeugausgabeabteilung zu steigern. Zudem wird eine höhere Skalierbarkeit und Wartbarkeit des Systems ermöglicht, was zukünftige Anpassungen und Erweiterungen erleichtert. \\
+\textbf{Produktleistung:} Die Anwendung soll sämtliche Funktionen zur Werkzeugverwaltung umfassen, darunter Ein- und Ausbuchungen, Bestandsverwaltung und Reporting. Ziel ist es unter anderem Benutzerfehler zu verringern. \\
+\textbf{Projektfortschritt:} Bisher wurden erste Entwürfe und technische Spezifikationen entwickelt. Die bisherigen Systeme und Anforderungen wurden analysiert und dokumentiert, um eine fundierte Grundlage für die Implementierung zu schaffen. \\
+\textbf{Kosten} Die reinen Entwicklungskosten werden, auf die Personalkosten beschränkt, mit einer Summe von knapp 10.000 Euro betitelt \\
+\textbf{Zeitplan:} Der Projektstart ist für den 15. Februar 2025 angesetzt, mit einem geplanten Abschlussdatum am 15. Februar 2026. Wichtige Meilensteine und Zwischentermine werden im Projektverlauf gesetzt. Da das Projekt von Dualen Studenten realisiert wird, werden die Entwichlungszeiträume auf die Praxisphasen beschränkt.
+
+\newpage
+
+
+\section{Beschlussantrag}
+
+\subsection*{Projekt:} 
+Migration des Werzeugausgabesystems im Bildungszentrum zu einer Full-Stack Applikation.
+
+\vspace{1cm}
+
+\subsection*{Projektleiter:} Thomas Boll, TJ-969
+\subsection*{Projektstart:} 15.02.2025
+\subsection*{Projektende:} 15.02.2026
+\subsection*{Projektgenehmigung:}
+\begin{itemize}
+    \item Gerald Hauptmann (Ausbildungsleiter für Kaufmännische Berufe, TJ-969)
+    \item Nicolas Disimianos (Ausbilder IT, TJ-969)
+    \item Timo Morkoss (Ausbilder Lagerlogistik, Leiter der Werkzeugausgabe, TJ-969)
+\end{itemize}
+
+\vspace{1cm}
+
+\subsection*{Projekt wird in der vorgeschlagenen Form akzeptiert:}
+
+\vfill
+
+\begin{center}
+\parbox{4cm}{\centering \rule{4cm}{0.4pt} \\[0.2cm] Gerald Hauptmann} \hfill
+\parbox{4cm}{\centering \rule{4cm}{0.4pt} \\[0.2cm] Nicolas Disimianos} \hfill
+\parbox{4cm}{\centering \rule{4cm}{0.4pt} \\[0.2cm] Timo Morkoss}
+\end{center}
+
+\vspace{1cm}
+
+\newpage
+
+
+\section{Hauptteil}
+
+\subsection{Allgemeines zum Projekt}
+
+\begin{tabular}{@{} l l @{}}
+    \textbf{Projektbezeichnung:} & Full-Stack Applikation Werkzeugausgabe \\
+    \textbf{Projekttyp:} & Softwareentwicklung \\
+    \textbf{Auftraggeber:} & Berufsausbildung Dingolfing \\
+\end{tabular}
+
+\vspace{1cm}
+
+\subsection{Darstellung der Ausgangslage}
+Das derzeitige System zur Verwaltung der Werkzeugausgabe in der Berufsausbilding ist in Microsoft Access implementiert. Dieses erfüllt allerdings nicht mehr die Anforderungen für Geschwindigkeit, Datenkonsistenz, Benutzerfreundlichkeit und Skalierung. Außerdem wurden einige Features gefordert, die in MS Access nicht umgesetzt werden können. \\
+Zum jetzigen Stand dauern einfache Ein- und Ausbuchungen ins System durchschnittlich 120 Sekunden.
+
+\vspace{1cm}
+
+\subsection{Projektziele}
+\subsection*{Wirtschaftlichkeitsziele:}
+\begin{itemize}[itemsep=0cm] 
+    \item Reduzierung von Bearbeitungszeiten bei der Werkzeugausgabe auf 80 Sekunden
+    \item Vermeidung von Dateninkonsistenzen
+    \item Optimierung der Ressourcenverwaltung
+    \item Vermeidung von Benutzerfehlern
+\end{itemize}
+
+\subsection*{Systemleistungsziele:}
+\begin{itemize}[itemsep=0cm] 
+    \item Implementierung eines zentralen Datenmanagements mit PostgreSQL
+    \item Benutzerfreundliche Oberfläche für effiziente Dateneingabe und -suche
+    \item Backend in FastAPI für schnelle und sichere Datenverarbeitung
+\end{itemize}
+
+\subsection*{Vorgehensziele:}
+\begin{itemize}[itemsep=0cm]
+    \item Bereitstellung neuer Software
+    \item Ergänzung der aktuellen Hardware durch zusätzliche Geräte
+    \item Migration der bestehenden Access-Daten in das neue System
+    \item Regelmäßige Schulung der Benutzer auf das neue System
+\end{itemize}
+
+\vspace{1cm}
+
+\subsection{Projektumfang}
+\begin{itemize}[itemsep=0cm]
+    \item Definition des Umfangs der Werkzeugausgabe: Welche Werkzeuge und Materialien in das neue System aufgenommen werden sollen.
+    \item Integration in bestehendes IT-Ökosystem: Die neue Applikation wird mit den aktuellen Systemen zur Verwaltung von Beständen und Nutzerzugängen verknüpft.
+    \item Anpassung der Benutzeroberfläche: Das Frontend wird speziell auf die Bedürfnisse der Ausbilder und Nutzer zugeschnitten.
+\end{itemize}
+
+\vspace{1cm}
+
+\subsection{Schnittstellen zu und Abhängigkeiten von anderen \\ Systemen und Bereichen}
+Die Kompatibilität der neuen Applikation mit den bestehenden IT-Systemen muss sichergestellt werden, damit eine reibungslose Interaktion möglich ist. Eine Schulung des Personals der Werkzeugausgabe gewährleistet die effiziente und korrekte Nutzung der neuen Applikation. Für die firmeninterne Applikationsverwaltung ist zudem eine Genehmigung durch TP-8 (Abteilung für IT-Infrastruktur) erforderlich und ein. Zusätzlich sollte ein Verantwortlicher für die Applikation benannt werden. In Bezug auf den Datenschutz ist eine Abstimmung mit dem Betriebsrat notwendig, um die Genehmigung zur Verwaltung personenbezogener Daten zu erhalten. Ebenso ist eine enge Abstimmung mit Alfons Backmeier, der die ursprüngliche MS-Access-Lösung implementiert hat, vorgesehen, damit eine sorgfältige Migration der Daten aus der bestehenden Access-Datenbank stattfinden kann. Nicolas Disimiano wird für technische und fachliche Fragen konsultiert, Timo Morkoss Fragen zur technischen Umsetzung.
+
+\vspace{1cm}
+
+\subsection{Rahmenbedingungen/Auflagen}
+Es soll ein abgestuftes Rollenkonzept für die Werkzeugausgabe implementiert werden, bei dem Zugriffsrechte auf Basis der jeweiligen Rollen festgelegt werden, um die Datensicherheit und Benutzerfreundlichkeit zu erhöhen. Zusätzlich müssen die Anwendungs- und Designkriterien der Corporate Identity (CI) beachtet werden, und der Datenschutz muss in Zusammenarbeit mit dem Betriebsrat gewährleistet sein. Die Wartung und Weiterentwicklung der Applikation muss dauerhaft sichergestellt werden. Darüber hinaus sollte die Applikation aufgrund des häufigen Personalwechsels in der Werkzeugausgabe gut dokumentiert und intuitiv zu bedienen sein.
+
+\vspace{1cm}
+\newpage % remove for further editing
+
+\subsection{Lösungsalternativen}
+\begin{itemize}[itemsep=0cm]
+    \item Beibehaltung des Access-Systems und schrittweise Verbesserung
+    \item Einsatz einer Middleware-Lösung, die zwischen dem bestehenden Access-System und neuen Modulen vermittelt, um bestimmte Prozesse zu optimieren, ohne das gesamte System sofort zu ersetzen
+\end{itemize}
+
+\vspace{1cm}
+
+\subsection{Geplante Fremdvergaben}
+Einbezug von anderen Dualis, wobei eine externe Fremdvergabe ausgeschlossen ist.
+
+\vspace{1cm}
+
+\subsection{Bereits erbrachte Vorleistungen}
+Eine ähnliche technische Implementierung einer Full-Stack-Applikation ist bereits vorhanden und bietet eine solide technische Grundlage für das neue System. Die aktuelle MS Access Lösung liegt uns vollständig einsehbar vor, und bietet eine fachliche Grundlage. Große Teile der Struktur der Datenhaltung und Anwendung können daher übernommen werden.
+
+\vspace{1cm}
+
+\subsection{Systemgrenzen}
+Da sich das Personal in der Werkzeugausgabe häufig ändert, ist es auf lange Zeit sinnvoll, eine kurze, automatische Schulung zur Bedienung des Systems zu erstellen. Dies ist jedoch nicht Teil dieses Projekts.
+
+\vspace{1cm}
+
+\subsection{Benötigte IT-Infrastruktur}
+\begin{itemize}[itemsep=0cm] 
+    \item Bestellung eines PostgreSQL-Servers bei der zuständigen IT-Abteilung (FG-8)
+    \item Erstellung eines Kubernetes-Clusters für die Berufsausbildung
+    \item Bereitstellung eines Kartenlesers zur automatischen Authentifizierung von Nutzern
+\end{itemize}
+
+\vspace{1cm}
+\newpage % remove for further editing
+
+\subsection{Wirtschaftlichkeitsbegründung}
+Es wird von Personalkosten in der Höhe von 9.835 Euro ausgegangen, die sich zusammensetzen aus:
+\begin{itemize}[itemsep=0cm] 
+    \item 7.875 Euro für den Arbeitsaufwand der Auszubildenden (875 Stunden à 9 Euro/Stunde)
+    \item 1.960 Euro für den Arbeitsaufwand der Ausbilder (56 Stunden à 35 Euro/Stunde)
+\end{itemize}
+Kosten die durch Hardwarebeschaffung anfallen werden aufgrund der geringen Höhe vernachlässigt.
+Die laufenden Kosten verursacht von Servermieten werden auf 600 Euro pa. geschätzt. 
+
+\vspace{1cm}
+
+\subsection{Projektorganisation}
+\subsection*{Projektleiter:} Thomas Boll, TJ-969
+\subsection*{Projektteam:}
+
+\setlength{\tabcolsep}{.2cm}
+\renewcommand{\arraystretch}{1.5}
+\begin{tabular}{|c|l|l|c|} \hline
+\textbf{Anzahl} & \textbf{Fachbereich, Thema} & \textbf{Qualifikation} & \textbf{Kapazität [Personentage]} \\ \hline
+1 & Backend & Dualer Student & 30 \\ \hline
+1 & Datenbank & Dualer Student & 20 \\ \hline
+1 & CI/CD & Dualer Student & 15 \\ \hline
+2 & Frontend & Dualer Student & 60 \\ \hline
+1 & Ansprechpartner Fachprozess & Ausbilder & 5 \\ \hline
+1 & Technischer Ansprechpartner & Ausbilder & 3 \\ \hline
+\end{tabular}
+
+\subsection*{Spezialisierungen und Bedarf pro Rolle:}
+\begin{itemize}[itemsep=0cm]
+    \item \textbf{Backend}: Wird ab Projektstart für die Entwicklung und Implementierung der API benötigt, besonders in den Phasen der Anwendungsentwicklung und beim Testing.
+    \item \textbf{Datenbank}: Die Datenbankentwicklung wird zu Beginn für das Datenmodell und die Migration der Daten aus Access benötigt und bei späteren Optimierungsphasen wieder eingebunden.
+    \item \textbf{CI/CD}: Diese Rolle ist vor allem in der Einrichtungsphase der CI/CD-Pipeline relevant, um kontinuierliche Integration und Deployment-Prozesse für das Projekt einzurichten und zu optimieren.
+    \item \textbf{Frontend}: Benötigt ab der Entwicklungsphase, insbesondere für die Benutzeroberfläche und Usability-Tests, sowie zur Endphase für die Feinabstimmung.
+    \item \textbf{Ansprechpartner Fachprozess}: Wird zu Beginn und zum Abschluss des Projekts zur Abstimmung und zur Überprüfung der Fachanforderungen einbezogen.
+    \item \textbf{Technischer Ansprechpartner}: Ist für die technische Betreuung und Absicherung des Projekts vorgesehen, speziell bei Implementierungsfragen und der finalen Übergabe.
+\end{itemize}
+
+\subsection*{Gremium:} 
+Lenkungsausschuss aus Disimianos, Morkoss, Hauptmann
+
+\vspace{1cm}
+
+\subsection{Geplantes Vorgehen}
+
+\setlength{\tabcolsep}{.3cm}
+\renewcommand{\arraystretch}{1.5}
+\begin{tabular}{|l|l|l|} \hline
+\multicolumn{3}{|l|}{\textbf{Projektbeginn: 15.02.2025}} \\ \hline
+\multicolumn{3}{|l|}{\textbf{Meilensteine:}} \\ \hline
+Bezeichnung & Verantwortlicher & Termin \\ \cline{1-3}
+Datenbankmodell ist erstellt & Torben Burow & 15.03.2025 \\ \hline
+Rollenkonzept ist erstellt & Konstantin Zornmüller & 01.04.2025 \\ \hline
+Frontend, Backend und DB haben ein MVP & Martin Kirschbaum, & 01.06.2025 \\
+&  Barbara Horcher & \\ \hline
+Die CI/CD Pipeline steht & Konstantin Zornmüller & 01.07.2025 \\ \hline
+Die Applikation ist für simple Buchungen & Entwicklerteam & 01.09.2025 \\ 
+und Ausbuchungen nutzbar & & \\ \hline
+Die Applikation ist fertig implementiert & Entwicklerteam & 01.11.2025 \\ \hline
+Die Datenbankmigration ist vollzogen & Torben Burow & 01.12.2025 \\ \hline
+Die Applikation wird gehostet und ist im & Thomas Boll & 01.01.2026 \\
+Firmennetz erreichbar & & \\ \hline
+Schulung für Personal der Werkzeugausgabe & Barbara Horcher & 15.01.2026 \\ \hline
+\multicolumn{3}{|l|}{\textbf{Projektende: 15.02.2026}} \\ \hline
+\end{tabular}
+
+\vspace{1cm}
+
+\subsection{Risikofaktoren und K.O.-Kriterien für das Projekt}
+Das Ausscheiden des bisherigen IT-Ausbilders könnte zu Problemen bei der Betreuung der Applikation führen, wenn der neue Ausbilder nicht über die erforderliche Qualifikation oder Motivation verfügt. Ein Mangel an Fachwissen und Engagement könnte die Wartung und Weiterentwicklung der Applikation beeinträchtigen. Ebenfalls könnte es Schwierigkeiten geben einen langfristigen Verantwortlichen zu benennen.
+
+\vspace{1cm}
+
+\subsection{Projektpriorität aus Sicht der Fachabteilung}
+Herr Backmeier, der die Microsoft Access-Anwendung implementiert hat, geht zum Ende des Jahres 2026 in den Ruhestand, wodurch wertvolles Know-how verloren geht. Daher sollte bis zu diesem Zeitpunkt ein neues, wartbares System entwickelt sein. Zudem führen Inkonsistenzen und unsaubere Datenhaltung zunehmend zu Problemen in der Wartbarkeit, wodurch die Migration immer schwieriger macht, je länger sie hinausgezögert wird. Daher sollten die vorgegebenen Meilensteine umbedingt eingehalten werden.
+
+\end{document}
