@@ -1,0 +1,6 @@
+.idea/
+.venv/
+.rasa/
+models/
+*.pyc
+credentials.yml
